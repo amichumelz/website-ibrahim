@@ -108,12 +108,23 @@ i{font-style:normal}
   flex-direction:column;
   padding:20px var(--pad) 0;
   background-color:#16312E;
-  background-image:linear-gradient(180deg,rgba(16,29,27,0.62) 0%,rgba(16,29,27,0.18) 32%,rgba(16,29,27,0.3) 55%,rgba(16,29,27,0.85) 100%),url('images/hero.jpg');
-  background-size:cover;
-  background-position:center;
-  background-attachment:fixed;
   overflow:hidden;
 }
+.hero-bg{
+  position:absolute;
+  inset:-25% 0 -25% 0;
+  width:100%;
+  height:150%;
+  background-color:#16312E;
+  background-image:linear-gradient(180deg,rgba(16,29,27,0.62) 0%,rgba(16,29,27,0.18) 32%,rgba(16,29,27,0.3) 55%,rgba(16,29,27,0.85) 100%),url('images/hero.jpg');
+  background-size:cover;
+  background-position:center center;
+  pointer-events:none;
+  z-index:0;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+}
+.hero>*:not(.hero-bg){position:relative;z-index:2}
 
 .nav{
   display:flex;
@@ -860,11 +871,24 @@ i{font-style:normal}
   justify-content:space-between;
   gap:32px;
   background-color:#2A403C;
-  background-image:linear-gradient(180deg,rgba(16,29,27,0.3) 0%,rgba(16,29,27,0.85) 100%),url('images/cta_sunset.jpg');
-  background-attachment:fixed;
-  background-size:cover;
-  background-position:center;
+  position:relative;
+  overflow:hidden;
 }
+.cta-bg{
+  position:absolute;
+  inset:-30% 0 -30% 0;
+  width:100%;
+  height:160%;
+  background-color:#2A403C;
+  background-image:linear-gradient(180deg,rgba(16,29,27,0.3) 0%,rgba(16,29,27,0.85) 100%),url('images/cta_sunset.jpg');
+  background-size:cover;
+  background-position:center center;
+  pointer-events:none;
+  z-index:0;
+  will-change:transform;
+  transform:translate3d(0,0,0);
+}
+.cta>*:not(.cta-bg){position:relative;z-index:2}
 .cta h2{font-size:clamp(44px,7vw,100px);line-height:1;letter-spacing:-.03em;font-weight:600;text-shadow:0 4px 28px rgba(0,0,0,.45)}
 .cta h2 i{display:block;color:var(--sun)}.cta h2 span{display:block}
 
@@ -1374,20 +1398,17 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
    RESPONSIVENESS (MOBILE & TABLET POLISH - TAK CRAMP & TAK CUT)
    ========================================================= */
 
-/* 1. UNIVERSAL PARALLAX FIX: Ensure background images always render sharply on mobile/touch */
-@media (max-width: 1024px), (hover: none) and (pointer: coarse){
-  .hero, .cta{
-    background-attachment: scroll !important;
-    background-position: center center !important;
-    background-size: cover !important;
-  }
+/* 1. UNIVERSAL PARALLAX: Hardware-accelerated GPU layer on mobile & desktop */
+.hero, .cta{
+  position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 980px){
   .hero{
     min-height: auto;
     padding: 18px var(--pad) 24px;
-    overflow: visible; /* Prevent any cutting at bottom or edges */
+    overflow: hidden;
   }
   .hero-end{
     gap: 24px;
@@ -1424,9 +1445,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   .hero{
     padding:14px 16px 20px;
     min-height:auto;
-    overflow:visible;
-    background-attachment:scroll !important;
-    background-position:center center !important;
+    overflow:hidden;
   }
   .nav{
     display:flex;
@@ -1575,9 +1594,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   .cta{
     padding:48px 16px;
     min-height:auto;
-    background-attachment:scroll !important;
-    background-position:center center !important;
-    background-size:cover !important;
+    overflow:hidden;
   }
   .cta h2{font-size:34px;line-height:1.1}
 
@@ -1890,6 +1907,7 @@ body.no-scroll{overflow:hidden}
 <div class="page" id="page-home" data-page="home">
 
 <header class="hero bg" id="hero">
+<div class="hero-bg" aria-hidden="true"></div>
 <nav class="nav" aria-label="Main">
 <div>
   <button type="button" data-open-menu style="font-size:14px;font-weight:700">
@@ -2201,6 +2219,7 @@ body.no-scroll{overflow:hidden}
 
 <!-- CTA (all pages) -->
 <section class="cta bg" id="hubungi">
+<div class="cta-bg" aria-hidden="true"></div>
 <div>
   <div class="eyebrow" style="color:#fff;margin-bottom:14px" data-en="Contact us">Hubungi kami</div>
   <h2 data-en="&lt;i&gt;See You in&lt;/i&gt;&lt;span&gt;Langkawi&lt;/span&gt;"><i>Jom ke</i><span>Langkawi</span></h2>
@@ -3259,6 +3278,37 @@ body.no-scroll{overflow:hidden}
     }, { threshold:0, rootMargin:'0px 0px -8% 0px' });
     revealEls.forEach(function(el){ obs.observe(el); });
   } else revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+
+  // Universal Hardware-Accelerated Parallax (Mobile Phone & Desktop)
+  var heroBg = document.querySelector('.hero-bg');
+  var ctaBg = document.querySelector('.cta-bg');
+  var pTicking = false;
+  function updateParallax(){
+    var vh = window.innerHeight;
+    if(heroBg){
+      var hr = heroBg.parentElement.getBoundingClientRect();
+      if(hr.bottom > 0 && hr.top < vh){
+        var hShift = (-hr.top) * 0.35;
+        heroBg.style.transform = 'translate3d(0, ' + hShift.toFixed(1) + 'px, 0)';
+      }
+    }
+    if(ctaBg){
+      var cr = ctaBg.parentElement.getBoundingClientRect();
+      if(cr.bottom > 0 && cr.top < vh){
+        var cShift = (vh - cr.top) * 0.3 - 50;
+        ctaBg.style.transform = 'translate3d(0, ' + cShift.toFixed(1) + 'px, 0)';
+      }
+    }
+    pTicking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!pTicking){
+      window.requestAnimationFrame(updateParallax);
+      pTicking = true;
+    }
+  }, { passive:true });
+  window.addEventListener('resize', updateParallax, { passive:true });
+  updateParallax();
 })();
 </script>
 </body>
