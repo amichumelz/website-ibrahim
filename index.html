@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<title>Ibrahim Hussain Empire — Langkawi Homestays, Tours &amp; Car Rental</title>
-<meta name="description" content="Tempahan homestay, pakej aktiviti pulau, dan kereta sewa di Langkawi dengan bayaran selamat terus di laman web dan pengesahan WhatsApp pantas.">
+<title>Ibrahim Hussin Empire — Langkawi Homestays, Cenang Hotels &amp; Car Rental</title>
+<meta name="description" content="Tempahan rasmi hotel Pantai Cenang, homestay, aktiviti pulau, dan kereta sewa di Langkawi bersama Ibrahim Hussin Empire dengan bayaran selamat di laman web.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -606,6 +606,230 @@ i{font-style:normal}
   transition:all .25s var(--ease);
 }
 .car-action-btn:hover{background:var(--sun);color:#111;transform:translateY(-2px)}
+
+/* =========================================================
+   SEASON SELECTOR & CAR FLEET FILTERS
+   ========================================================= */
+.season-selector-card{
+  background:var(--deep);
+  color:#fff;
+  border-radius:var(--radius-md);
+  padding:clamp(18px, 2.5vw, 26px);
+  margin-top:clamp(28px, 4vw, 44px);
+  border:1.5px solid rgba(245,199,26,0.25);
+  box-shadow:var(--shadow-md);
+}
+.season-head{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+.season-pills{
+  display:inline-flex;
+  flex-wrap:wrap;
+  gap:8px;
+  background:rgba(255,255,255,0.08);
+  padding:5px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.15);
+}
+.season-btn{
+  border:0;
+  background:transparent;
+  color:#E6E3DB;
+  font-size:13.5px;
+  font-weight:700;
+  padding:8px 18px;
+  border-radius:999px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:all .25s ease;
+  cursor:pointer;
+}
+.season-btn .dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  display:inline-block;
+}
+.dot.green{background:#25D366;box-shadow:0 0 8px rgba(37,211,102,.6)}
+.dot.yellow{background:#F4C91A;box-shadow:0 0 8px rgba(244,201,26,.6)}
+.dot.red{background:#FF4B4B;box-shadow:0 0 8px rgba(255,75,75,.6)}
+.season-btn.active{
+  background:var(--sun);
+  color:#111;
+  box-shadow:0 4px 14px rgba(244,201,26,0.4);
+}
+.season-note{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid rgba(255,255,255,0.12);
+  font-size:13.5px;
+  color:#C9C9C4;
+}
+
+/* Category filter tabs */
+.car-filter-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:24px 0 20px;
+}
+.filter-tab{
+  border:1.5px solid #DCD8CD;
+  background:#fff;
+  color:var(--ink);
+  font-size:13px;
+  font-weight:700;
+  padding:8px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.filter-tab:hover{
+  border-color:var(--deep);
+  background:#F4F3F0;
+}
+.filter-tab.active{
+  background:var(--deep);
+  color:var(--sun);
+  border-color:var(--deep);
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Full Price Comparison Table */
+.price-table-wrap{
+  overflow-x:auto;
+  background:#fff;
+  border-radius:var(--radius-md);
+  border:1px solid #E2DFD6;
+  box-shadow:var(--shadow-sm);
+  margin-top:28px;
+}
+.price-table{
+  width:100%;
+  border-collapse:collapse;
+  text-align:left;
+  font-size:13.5px;
+  min-width:640px;
+}
+.price-table th{
+  background:#172B28;
+  color:#fff;
+  padding:14px 16px;
+  font-weight:700;
+  letter-spacing:.04em;
+  font-size:13px;
+  text-transform:uppercase;
+}
+.price-table td{
+  padding:12px 16px;
+  border-bottom:1px solid #EAE7DE;
+  vertical-align:middle;
+}
+.price-table tr:hover td{
+  background:#FAF9F5;
+}
+.price-table .col-model{font-weight:800;color:var(--ink)}
+.price-table .col-norm{color:#0D6832;font-weight:700}
+.price-table .col-pub{color:#B87000;font-weight:700}
+.price-table .col-event{color:#C92A2A;font-weight:800}
+
+/* Hotel Grid & Cards */
+.hotels-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:20px;
+  margin-top:28px;
+}
+.hotel-card{
+  background:#fff;
+  border:1px solid #DDD8CD;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.hotel-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-md);
+}
+.hotel-img{
+  height:210px;
+  background-size:cover;
+  background-position:center;
+  position:relative;
+}
+.hotel-badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:rgba(20,20,20,0.85);
+  backdrop-filter:blur(6px);
+  color:var(--sun);
+  font-size:11px;
+  font-weight:800;
+  padding:5px 12px;
+  border-radius:999px;
+  letter-spacing:.05em;
+}
+.hotel-info{
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  flex:1;
+}
+.hotel-info h3{
+  font-size:18px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.25;
+}
+.hotel-loc{
+  font-size:13px;
+  color:var(--mute);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.hotel-perks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  font-size:11.5px;
+  margin:4px 0;
+}
+.hotel-perks span{
+  background:#F4F2EC;
+  color:#4A4843;
+  padding:4px 8px;
+  border-radius:4px;
+  font-weight:600;
+}
+.hotel-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid #EAE7DE;
+}
+.hotel-rate{
+  font-size:19px;
+  font-weight:800;
+  color:var(--accent-teal);
+}
+.hotel-rate small{
+  font-size:12px;
+  font-weight:500;
+  color:var(--mute);
+}
 
 .cats-row{display:flex;flex-wrap:wrap;align-items:center;gap:24px 48px;margin-top:clamp(56px,7vw,92px)}
 .cats-row h2{font-size:clamp(24px,2.6vw,32px);line-height:1.2;flex:0 0 auto;max-width:220px;font-weight:700}
@@ -1389,7 +1613,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
           <span class="logo-mark-text">IHE</span>
         </div>
         <div class="logo-text" style="display:flex!important">
-          <span class="logo-name" style="font-size:13px">IBRAHIM HUSSAIN</span>
+          <span class="logo-name" style="font-size:13px">IBRAHIM HUSSIN</span>
           <span class="logo-sub" style="font-size:9px">EMPIRE &bull; LANGKAWI</span>
         </div>
       </div>
@@ -1398,16 +1622,16 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
     <div class="mobile-drawer-links">
       <a href="#hero" class="menu-link">🏠 Utama (Home)</a>
       <a href="#perkhidmatan" class="menu-link">ℹ️ Tentang Kami</a>
-      <a href="#homestay" class="menu-link">🏡 Homestay &amp; Villa</a>
+      <a href="#homestay" class="menu-link">🏡 Hotel &amp; Homestay Cenang</a>
       <a href="#aktiviti" class="menu-link">⛵ Pakej Aktiviti</a>
-      <a href="#kereta" class="menu-link">🚗 Kereta Sewa</a>
+      <a href="#kereta" class="menu-link">🚗 Kereta &amp; Motor Sewa</a>
       <a href="#hubungi" class="menu-link">📞 Hubungi Kami</a>
     </div>
     <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
       <button class="btn-sun" id="btnDrawerCart" style="width:100%;justify-content:center">
         Troli Tempahan (<span class="cart-total-badge">0</span>)
       </button>
-      <a class="btn-line" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussain%20Empire" target="_blank" style="text-align:center;padding:12px;border-radius:8px">
+      <a class="btn-line" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussin%20Empire" target="_blank" style="text-align:center;padding:12px;border-radius:8px">
         WhatsApp Pasukan Kami
       </a>
     </div>
@@ -1428,7 +1652,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   </div>
 </div>
 
-<a class="logo" href="#" aria-label="Ibrahim Hussain Empire">
+<a class="logo" href="#" aria-label="Ibrahim Hussin Empire">
   <div class="logo-mark">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
       <path d="M12 2L2 7l10 5 10-5-10-5z" fill="var(--sun)" stroke="var(--sun)"/>
@@ -1437,7 +1661,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
     <span class="logo-mark-text">IHE</span>
   </div>
   <div class="logo-text">
-    <span class="logo-name">IBRAHIM HUSSAIN</span>
+    <span class="logo-name">IBRAHIM HUSSIN</span>
     <span class="logo-sub">EMPIRE &bull; LANGKAWI</span>
   </div>
 </a>
@@ -1496,87 +1720,213 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 </div>
 </section>
 
-<!-- HOMESTAY (BENTO GRID) -->
+<!-- HOTEL & HOMESTAY (PANTAI CENANG SPECIALIST) -->
 <section class="home reveal" id="homestay">
 <div class="home-head">
   <div>
-    <div class="eyebrow">Penginapan Pilihan</div>
-    <h2 class="display">Koleksi <i>Homestay &amp; Villa</i></h2>
+    <div class="eyebrow">Penginapan Pilihan Pantai Cenang</div>
+    <h2 class="display">Koleksi <i>Hotel &amp; Homestay</i></h2>
   </div>
-  <p class="mute" style="max-width:440px">Rumah percutian selesa, bilik berhawa dingin sepenuhnya dengan lokasi strategik di Pantai Cenang dan Kuah.</p>
+  <p class="mute" style="max-width:480px">Pilihan hotel dan resort terbaik di Pantai Cenang, Langkawi. Akses pantas ke pantai berpasir putih, Cenang Mall, restoran dan pemandangan laut memukau.</p>
 </div>
 
 <div class="home-grid">
-<div class="home-main bg" id="homeMain">
+<div class="home-main bg" id="homeMain" style="background-image:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('images/hotel_cenang_beach.jpg')">
 <div class="home-top">
-<div class="chips"><span>Beachside</span><span>Family stays</span><span>Private Pool</span></div>
+<div class="chips"><span>Pantai Cenang</span><span>Beachfront</span><span>Family &amp; Couple</span></div>
 <div class="home-note">
-  <p>The comfort and warmth of a home away from home, in Langkawi.</p>
+  <p><strong>Lokasi Terbaik di Cenang:</strong> Selangkah ke pantai, restoran makanan laut &amp; kedai bebas cukai.</p>
   <form class="search" id="hsSearchForm" onsubmit="return false">
-    <label for="hs" class="vh">Search homestays</label>
-    <input id="hs" type="search" placeholder="Search area (Cenang / Kuah)…">
+    <label for="hs" class="vh">Cari hotel atau homestay</label>
+    <input id="hs" type="search" placeholder="Cari: Langgura, Best Star, Adya, Paretto…">
     <button type="submit" id="btnHsSearch" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg></button>
   </form>
 </div>
 </div>
 <div class="home-bottom">
 <div>
-  <h2>Your <i>Comfort</i><br>Outside Home</h2>
-  <p style="color:rgba(255,255,255,.9);font-size:15px;margin-top:6px" id="sliderDesc">Villa Seri Chenang — Kolam renang persendirian &amp; taman tropika.</p>
+  <h2 id="sliderTitle">Best Star <i>Hotel</i><br>Cenang</h2>
+  <p style="color:rgba(255,255,255,.9);font-size:15px;margin-top:6px" id="sliderDesc">Direct Beachfront Resort — Keluar bilik terus jejak pasir putih Pantai Cenang &amp; sunset view spektakular.</p>
 </div>
-<div class="dots" role="group" aria-label="Homestay photos">
-  <button type="button" aria-label="Photo 1: Private Pool Villa" aria-pressed="true" data-img="images/homestay_villa.jpg" data-desc="Villa Seri Chenang — Kolam renang persendirian &amp; taman tropika."></button>
-  <button type="button" aria-label="Photo 2: Cozy Bedroom Suite" aria-pressed="false" data-img="images/homestay_bedroom.jpg" data-desc="Master Suite Chenang — Katil King &amp; pintu kaca ke beranda."></button>
-  <button type="button" aria-label="Photo 3: Cenang Beach View" aria-pressed="false" data-img="images/hero.jpg" data-desc="Pantai Cenang View — 3 minit berjalan kaki ke pantai berpasir putih."></button>
+<div class="dots" role="group" aria-label="Pilihan Hotel Cenang">
+  <button type="button" aria-label="Hotel 1: Best Star Hotel Cenang" aria-pressed="true" data-img="images/hotel_cenang_beach.jpg" data-title="Best Star Hotel Cenang" data-desc="Direct Beachfront Resort — Keluar bilik terus jejak pasir putih Pantai Cenang &amp; sunset view spektakular."></button>
+  <button type="button" aria-label="Hotel 2: Langgura Baron Hotel Cenang" aria-pressed="false" data-img="images/hotel_langgura_adya.jpg" data-title="Langgura Baron Hotel Cenang" data-desc="Berhadapan Cenang Mall — Chalet kolam renang &amp; bilik hotel selesa, sangat dekat ke pantai."></button>
+  <button type="button" aria-label="Hotel 3: Adya Hotel Cenang" aria-pressed="false" data-img="images/homestay_villa.jpg" data-title="Adya Hotel Cenang" data-desc="Hotel Moden &amp; Kolam Renang — Penginapan santai di zon utama Pantai Cenang berdekatan restoran."></button>
+  <button type="button" aria-label="Hotel 4: Paretto Seaview Hotel Cenang" aria-pressed="false" data-img="images/homestay_bedroom.jpg" data-title="Paretto Seaview Hotel Cenang" data-desc="Balkoni Pemandangan Laut — Menikmati pemandangan laut lepas dari balkoni bilik peribadi."></button>
 </div>
 </div>
 </div>
 
 <div class="home-side">
-<!-- FEATURED HOMESTAY CARD -->
-<div class="home-feat bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,.08) 25%,rgba(0,0,0,.82) 100%),url('images/homestay_villa.jpg')">
-<button class="go" type="button" id="btnFeatAdd" aria-label="Tambah Villa ke Troli"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></button>
+<!-- FEATURED HOTEL 1: BEST STAR -->
+<div class="home-feat bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,.15) 20%,rgba(0,0,0,.85) 100%),url('images/hotel_cenang_beach.jpg')">
+<button class="go" type="button" onclick="quickAdd('Best Star Hotel Cenang', 180, 'hotel', 'images/hotel_cenang_beach.jpg')" aria-label="Tambah Best Star Hotel ke Troli"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 1v12M1 7h12"/></svg></button>
 <div class="feat-text">
-  <span class="pill" style="align-self:flex-start">Paling Popular</span>
-  <strong>Villa Seri Chenang (Private Pool)</strong>
+  <span class="pill sun" style="align-self:flex-start">Beachfront Direct</span>
+  <strong>Best Star Hotel Cenang</strong>
   <div class="feat-row">
-    <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M7 13s4.5-4 4.5-7.5a4.5 4.5 0 10-9 0C2.5 9 7 13 7 13z"/><circle cx="7" cy="5.5" r="1.5"/></svg> Pantai Cenang, Langkawi</span>
-    <span class="feat-price">RM 380 / malam</span>
+    <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 13s4.5-4 4.5-7.5a4.5 4.5 0 10-9 0C2.5 9 7 13 7 13z"/><circle cx="7" cy="5.5" r="1.5"/></svg> Tepi Pasir Pantai Cenang</span>
+    <span class="feat-price">RM 180 / malam</span>
   </div>
-  <button class="act-btn" type="button" id="btnAddVillaCart" style="margin-top:10px;height:40px;background:var(--sun)">
-    🛒 Tambah ke Troli (RM 380)
+  <button class="act-btn" type="button" onclick="quickAdd('Best Star Hotel Cenang', 180, 'hotel', 'images/hotel_cenang_beach.jpg')" style="margin-top:10px;height:40px;background:var(--sun)">
+    🛒 Tempah Best Star (RM 180)
   </button>
 </div>
 </div>
 
 <!-- QUICK BOOK FORM -->
 <form class="home-book" id="homeBookForm" onsubmit="return false">
-<div class="home-book-row"><label for="hb1">Check In</label><input id="hb1" type="date"></div>
-<div class="home-book-row"><label for="hb2">Check Out</label><input id="hb2" type="date"></div>
-<div class="home-book-row"><label for="hb3">Pakej Tetamu</label><select id="hb3"><option value="Deluxe Room (1-2 Pax)">1-2 Dewasa (Bilik Deluxe)</option><option value="2-Room Homestay (3-5 Pax)" selected>3-5 Dewasa (Homestay 2 Bilik)</option><option value="3-Room Homestay (6-8 Pax)">6-8 Dewasa (Homestay 3 Bilik)</option><option value="Pool Villa (8-12 Pax)">8-12 Dewasa (Pool Villa)</option></select></div>
+<div class="home-book-row"><label for="hb1">Tarikh Masuk (Check In)</label><input id="hb1" type="date"></div>
+<div class="home-book-row"><label for="hb2">Tarikh Keluar (Check Out)</label><input id="hb2" type="date"></div>
+<div class="home-book-row">
+  <label for="hb3">Pilih Hotel Cenang</label>
+  <select id="hb3">
+    <option value="Best Star Hotel Cenang|180|images/hotel_cenang_beach.jpg" selected>Best Star Hotel Cenang (RM 180/mlm)</option>
+    <option value="Langgura Baron Hotel Cenang|160|images/hotel_langgura_adya.jpg">Langgura Baron Hotel Cenang (RM 160/mlm)</option>
+    <option value="Adya Hotel Cenang|150|images/homestay_villa.jpg">Adya Hotel Cenang (RM 150/mlm)</option>
+    <option value="Paretto Seaview Hotel Cenang|190|images/homestay_bedroom.jpg">Paretto Seaview Hotel Cenang (RM 190/mlm)</option>
+  </select>
+</div>
 <button type="button" id="btnBookHs">
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-  Tambah Homestay ke Troli
+  Tambah Tempahan Hotel ke Troli
 </button>
 </form>
 
+<!-- TWO COMPACT HOTEL CARDS: LANGGURA BARON & ADYA -->
 <div class="home-two">
-<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/intro_eagle.jpg')">
-  <button class="go" type="button" onclick="quickAdd('Kuah Town Suites (2 Bilik)', 180, 'homestay', 'images/intro_eagle.jpg')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></button>
+<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/hotel_langgura_adya.jpg')">
+  <button class="go" type="button" onclick="quickAdd('Langgura Baron Hotel Cenang', 160, 'hotel', 'images/hotel_langgura_adya.jpg')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></button>
   <div>
-    <strong>Kuah Town Suites</strong>
-    <span class="sub">RM 180 / malam &bull; Dekat Jeti</span>
+    <strong>Langgura Baron Hotel</strong>
+    <span class="sub">RM 160 / malam &bull; Depan Cenang Mall</span>
   </div>
 </div>
-<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/homestay_bedroom.jpg')">
-  <button class="go" type="button" onclick="quickAdd('Padang Matsirat Chalet', 220, 'homestay', 'images/homestay_bedroom.jpg')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></button>
+<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/homestay_villa.jpg')">
+  <button class="go" type="button" onclick="quickAdd('Adya Hotel Cenang', 150, 'hotel', 'images/homestay_villa.jpg')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></button>
   <div>
-    <strong>Padang Matsirat Chalet</strong>
-    <span class="sub">RM 220 / malam &bull; Dekat Airport</span>
+    <strong>Adya Hotel Cenang</strong>
+    <span class="sub">RM 150 / malam &bull; Kolam Renang Moden</span>
   </div>
 </div>
 </div>
 </div>
+</div>
+
+<!-- 4 DEDICATED CENANG HOTEL CARDS -->
+<div style="margin-top:40px">
+  <h3 style="font-size:clamp(22px, 2.5vw, 30px);font-weight:700">Senarai 4 Hotel Pilihan di Pantai Cenang</h3>
+  <p class="mute sm" style="margin-top:4px">Kadar bilik harian telus. Boleh terus masukkan ke troli tempahan.</p>
+</div>
+
+<div class="hotels-grid reveal-stagger">
+  <!-- 1. Langgura Baron Hotel Cenang -->
+  <article class="hotel-card">
+    <div class="hotel-img" style="background-image:url('images/hotel_langgura_adya.jpg')">
+      <span class="hotel-badge">Depan Cenang Mall</span>
+    </div>
+    <div class="hotel-info">
+      <h3>Langgura Baron Hotel Cenang</h3>
+      <div class="hotel-loc">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Jalan Pantai Chenang, Langkawi
+      </div>
+      <p class="sm mute">Lokasi tersangat strategik berhadapan Cenang Mall dan restoran. Resort mempunyai kolam renang dan akses mudah ke pantai.</p>
+      <div class="hotel-perks">
+        <span>🏊 Kolam Renang</span>
+        <span>🛍️ Sebelah Mall</span>
+        <span>📶 Wifi Percuma</span>
+        <span>❄️ Aircond Penuh</span>
+      </div>
+      <div class="hotel-foot">
+        <div class="hotel-rate">RM 160 <small>/ malam</small></div>
+        <button class="car-action-btn" type="button" onclick="quickAdd('Langgura Baron Hotel Cenang', 160, 'hotel', 'images/hotel_langgura_adya.jpg')" style="height:38px;padding:0 14px">
+          🛒 Tempah Bilik
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 2. Best Star Hotel Cenang -->
+  <article class="hotel-card">
+    <div class="hotel-img" style="background-image:url('images/hotel_cenang_beach.jpg')">
+      <span class="hotel-badge" style="background:var(--sun);color:#111">Paling Popular Beachfront</span>
+    </div>
+    <div class="hotel-info">
+      <h3>Best Star Hotel Cenang</h3>
+      <div class="hotel-loc">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Pesisir Pasir Pantai Cenang
+      </div>
+      <p class="sm mute">Hotel terus ke pesisir pasir Pantai Cenang. Buka pintu hotel terus nampak laut, kafe pantai dan pemandangan sunset yang sangat cantik.</p>
+      <div class="hotel-perks">
+        <span>🏖️ Terus ke Pasir Pantai</span>
+        <span>🌅 Sunset View</span>
+        <span>☕ Kafe Tepi Laut</span>
+        <span>📶 Wifi Percuma</span>
+      </div>
+      <div class="hotel-foot">
+        <div class="hotel-rate">RM 180 <small>/ malam</small></div>
+        <button class="car-action-btn" type="button" onclick="quickAdd('Best Star Hotel Cenang', 180, 'hotel', 'images/hotel_cenang_beach.jpg')" style="height:38px;padding:0 14px">
+          🛒 Tempah Bilik
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 3. Adya Hotel Cenang -->
+  <article class="hotel-card">
+    <div class="hotel-img" style="background-image:url('images/homestay_villa.jpg')">
+      <span class="hotel-badge">Moden &amp; Selesa</span>
+    </div>
+    <div class="hotel-info">
+      <h3>Adya Hotel Cenang</h3>
+      <div class="hotel-loc">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Zon Utama Pantai Cenang
+      </div>
+      <p class="sm mute">Penginapan berkonsepkan moden dan santai. Bilik luas, kemudahan kolam renang outdoor, serta berdekatan medan selera tempatan.</p>
+      <div class="hotel-perks">
+        <span>🏊 Kolam Renang</span>
+        <span>🍽️ Dekat Medan Selera</span>
+        <span>🅿️ Parking Mudah</span>
+        <span>❄️ Bilik Berhawa Dingin</span>
+      </div>
+      <div class="hotel-foot">
+        <div class="hotel-rate">RM 150 <small>/ malam</small></div>
+        <button class="car-action-btn" type="button" onclick="quickAdd('Adya Hotel Cenang', 150, 'hotel', 'images/homestay_villa.jpg')" style="height:38px;padding:0 14px">
+          🛒 Tempah Bilik
+        </button>
+      </div>
+    </div>
+  </article>
+
+  <!-- 4. Paretto Seaview Hotel Cenang -->
+  <article class="hotel-card">
+    <div class="hotel-img" style="background-image:url('images/homestay_bedroom.jpg')">
+      <span class="hotel-badge">Balkoni Laut Lepas</span>
+    </div>
+    <div class="hotel-info">
+      <h3>Paretto Seaview Hotel Cenang</h3>
+      <div class="hotel-loc">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Pantai Cenang (Sea View Wing)
+      </div>
+      <p class="sm mute">Bilik dilengkapi balkoni peribadi dengan pemandangan laut membiru. Hanya 1 minit berjalan kaki ke pantai dan tarikan Cenang night walk.</p>
+      <div class="hotel-perks">
+        <span>🌊 Pemandangan Laut</span>
+        <span>🚪 Balkoni Peribadi</span>
+        <span>🚶 1 Minit ke Pantai</span>
+        <span>📶 High-Speed Wifi</span>
+      </div>
+      <div class="hotel-foot">
+        <div class="hotel-rate">RM 190 <small>/ malam</small></div>
+        <button class="car-action-btn" type="button" onclick="quickAdd('Paretto Seaview Hotel Cenang', 190, 'hotel', 'images/homestay_bedroom.jpg')" style="height:38px;padding:0 14px">
+          🛒 Tempah Bilik
+        </button>
+      </div>
+    </div>
+  </article>
 </div>
 </section>
 
@@ -1660,130 +2010,126 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 </div>
 </section>
 
-<!-- KERETA SEWA -->
+<!-- KERETA & SCOOTER SEWA (IBRAHIM HUSSIN EMPIRE) -->
 <section class="rent reveal" id="kereta">
 <div class="rent-hero bg">
 <div>
-  <h2>Quick and affordable car rental in Langkawi</h2>
-  <p>Penghantaran percuma ke Jeti Kuah atau Airport Langkawi. Kondisi kenderaan sejuk, bersih dan servis terjaga.</p>
+  <span class="pill sun" style="align-self:flex-start;margin-bottom:8px">Ibrahim Hussin Empire Fleet</span>
+  <h2>Sewa Kereta &amp; Scooter Langkawi</h2>
+  <p>Penghantaran percuma ke Jeti Kuah atau Airport Langkawi. Kondisi kenderaan sejuk, bersih, wangi dan servis terjaga rapi.</p>
 </div>
-<a class="btn-sun" href="#koleksi" style="align-self:flex-start">Pilih Model Kereta <span class="sq"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></span></a>
+<a class="btn-sun" href="#koleksi" style="align-self:flex-start">Pilih Kenderaan &amp; Lihat Kadar <span class="sq"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></span></a>
 </div>
 
 <div class="rent-in">
-<h2 class="perks-title">Explore the island on your own schedule, at clear daily rates</h2>
+<h2 class="perks-title">Pilihan 17 Model Kenderaan — Kadar Harian Jelas &amp; Telus</h2>
 
 <div class="perks reveal-stagger">
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Well-maintained cars</h3><p>Servis tepat pada masa dan dibersihkan rapi sebelum setiap penyerahan.</p></div>
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><h3>Online Booking &amp; Pay</h3><p>Pilih kereta, bayar selamat di website atau sahkan di WhatsApp.</p></div>
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg><h3>Harga Telus &amp; Jelas</h3><p>Kadar harian tetap. Tiada sebarang caj tersembunyi semasa serahan.</p></div>
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3>Delivered to you</h3><p>Jeti Kuah, Airport Langkawi atau terus di pintu homestay anda.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Kenderaan Terjaga &amp; Wangi</h3><p>Servis berjadual, tayar baik dan dibersihkan rapi sebelum setiap penyerahan.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><h3>Online Booking &amp; Pay</h3><p>Pilih kenderaan, bayar selamat di website atau sahkan resit pantas di WhatsApp.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg><h3>Harga Rasmi Mengikut Musim</h3><p>Kadar harian telus mengikut Hari Biasa, Cuti Umum &amp; Event 5 Langkawi.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3>Serahan Percuma</h3><p>Jeti Kuah, Airport Langkawi atau terus di depan hotel / homestay Cenang anda.</p></div>
+</div>
+
+<!-- SEASON SELECTOR (DYNAMIC RATE TOGGLE) -->
+<div class="season-selector-card" id="seasonCard">
+  <div class="season-head">
+    <div>
+      <span class="eyebrow" style="color:var(--sun)">PILIHAN KADAR HARGA SEWAAN</span>
+      <h3 style="font-size:20px;font-weight:800;color:#fff;margin-top:4px">Pilih Musim Sewaan Anda:</h3>
+    </div>
+    <div class="season-pills" role="tablist">
+      <button class="season-btn active" data-season="normal" type="button" role="tab" id="btnSeasonNormal">
+        <span class="dot green"></span> Hari Biasa (Normal)
+      </button>
+      <button class="season-btn" data-season="public" type="button" role="tab" id="btnSeasonPublic">
+        <span class="dot yellow"></span> Cuti Umum (Public)
+      </button>
+      <button class="season-btn" data-season="event" type="button" role="tab" id="btnSeasonEvent">
+        <span class="dot red"></span> Event 5 Langkawi / Peak
+      </button>
+    </div>
+  </div>
+  <p class="season-note" id="seasonNote">
+    💡 <strong>Kadar Semasa:</strong> <span id="seasonBadgeText" style="color:var(--sun);font-weight:700">Hari Biasa (Normal Rate)</span> &bull; Scooter dari RM35/hari &bull; Kereta Axia dari RM60/hari &bull; MPV/Van dari RM120/hari &bull; SUV/VIP dari RM250/hari.
+  </p>
 </div>
 
 <div class="coll-head" id="koleksi">
-  <h2>Our rental car collection</h2>
-  <a class="btn-sun" href="#koleksi" style="height:42px;font-size:14px" onclick="document.querySelector('.cars').scrollIntoView({behavior:'smooth'})">Lihat Semua Kereta</a>
+  <div>
+    <h2>Armada Kenderaan Sewa Kami</h2>
+    <p class="mute sm" style="margin-top:2px">Pilih mengikut saiz kumpulan dan bajet percutian anda.</p>
+  </div>
+  <button class="btn-sun" type="button" id="btnShowTableTop" style="height:42px;font-size:13.5px">
+    📋 Bandingkan Semua Harga
+  </button>
 </div>
 
-<div class="cars reveal-stagger">
-<!-- 1. AXIA / MYVI -->
-<article class="car">
-<div class="car-img-wrap">
-  <div class="car-img" style="background-image:url('images/car_compact.jpg')"></div>
-  <span class="car-tag">Jimat Minyak</span>
-</div>
-<div class="car-head">
-  <div><h3>Compact city car</h3><div class="mute sm">Perodua Axia / Myvi (Auto)</div></div>
-  <div class="price">RM 80 <span>/hari</span></div>
-</div>
-<div class="specs">
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>Tempat Duduk</small>5 Orang</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Transmisi</small>Auto</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>Bagasi</small>2 Beg</span></div>
-</div>
-<button class="car-action-btn" type="button" onclick="quickAdd('Perodua Myvi / Axia (Auto)', 80, 'kereta', 'images/car_compact.jpg')">
-  🛒 Sewa Kereta Ini (RM 80/hari)
-</button>
-</article>
-
-<!-- 2. BEZZA -->
-<article class="car">
-<div class="car-img-wrap">
-  <div class="car-img" style="background-image:url('images/car_sedan.jpg')"></div>
-  <span class="car-tag">Pilihan Selesa</span>
-</div>
-<div class="car-head">
-  <div><h3>Comfort sedan</h3><div class="mute sm">Perodua Bezza / Vios (Auto)</div></div>
-  <div class="price">RM 110 <span>/hari</span></div>
-</div>
-<div class="specs">
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>Tempat Duduk</small>5 Orang</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Transmisi</small>Auto</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>Boot Luas</small>3-4 Beg</span></div>
-</div>
-<button class="car-action-btn" type="button" onclick="quickAdd('Perodua Bezza / Sedan', 110, 'kereta', 'images/car_sedan.jpg')">
-  🛒 Sewa Kereta Ini (RM 110/hari)
-</button>
-</article>
-
-<!-- 3. ALZA -->
-<article class="car">
-<div class="car-img-wrap">
-  <div class="car-img" style="background-image:url('images/car_mpv.jpg')"></div>
-  <span class="car-tag">Keluarga 7-Seat</span>
-</div>
-<div class="car-head">
-  <div><h3>Family MPV</h3><div class="mute sm">Perodua Alza (7-Seater)</div></div>
-  <div class="price">RM 160 <span>/hari</span></div>
-</div>
-<div class="specs">
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>Tempat Duduk</small>7 Orang</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Transmisi</small>Auto</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>Bagasi</small>3-4 Beg</span></div>
-</div>
-<button class="car-action-btn" type="button" onclick="quickAdd('Perodua Alza 7-Seat', 160, 'kereta', 'images/car_mpv.jpg')">
-  🛒 Sewa Kereta Ini (RM 160/hari)
-</button>
-</article>
-
-<!-- 4. ALPHARD -->
-<article class="car">
-<div class="car-img-wrap">
-  <div class="car-img" style="background-image:url('images/car_luxury.jpg')"></div>
-  <span class="car-tag">VIP Premium</span>
-</div>
-<div class="car-head">
-  <div><h3>Luxury VIP MPV</h3><div class="mute sm">Toyota Alphard / Vellfire</div></div>
-  <div class="price">RM 480 <span>/hari</span></div>
-</div>
-<div class="specs">
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>Tempat Duduk</small>7 VIP</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Transmisi</small>Auto</span></div>
-  <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>Bagasi</small>4-5 Beg</span></div>
-</div>
-<button class="car-action-btn" type="button" onclick="quickAdd('Toyota Alphard VIP MPV', 480, 'kereta', 'images/car_luxury.jpg')">
-  🛒 Sewa Kereta Ini (RM 480/hari)
-</button>
-</article>
+<!-- CATEGORY FILTER TABS -->
+<div class="car-filter-row" role="tablist">
+  <button class="filter-tab active" data-cat="all" type="button">Semua Model (17)</button>
+  <button class="filter-tab" data-cat="scooter" type="button">🛵 Scooter / Motor (3)</button>
+  <button class="filter-tab" data-cat="kompak" type="button">🚗 Kompak (2)</button>
+  <button class="filter-tab" data-cat="sedan" type="button">🚘 Sedan (4)</button>
+  <button class="filter-tab" data-cat="mpv" type="button">🚐 MPV &amp; Van (5)</button>
+  <button class="filter-tab" data-cat="vip" type="button">👑 SUV, 4x4 &amp; VIP (3)</button>
 </div>
 
-<div class="cats-row reveal">
-<h2>Who is travelling?</h2>
+<!-- DYNAMIC VEHICLE CARDS GRID (17 MODELS) -->
+<div class="cars reveal-stagger" id="carsContainer">
+  <!-- Javascript will dynamically populate & update cards based on active season & category filter -->
+</div>
+
+<!-- FULL COMPARATIVE PRICE TABLE (COLLAPSIBLE / INSTANT VIEW) -->
+<div style="text-align:center;margin-top:36px">
+  <button class="btn-sun" id="btnTogglePriceTable" type="button" style="height:48px;font-size:14.5px;margin:0 auto">
+    📋 Buka Jadual Penuh 17 Kenderaan (Normal / Public / Event 5 Lgk)
+  </button>
+</div>
+
+<div class="price-table-wrap" id="priceTableWrap" style="display:none;margin-top:24px">
+  <div style="padding:16px 20px;background:#172B28;color:#fff;display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <h3 style="font-size:17px;font-weight:700">Senarai Rasmi Harga CarRental Langkawi — Ibrahim Hussin Empire</h3>
+      <p class="sm" style="color:var(--sun);margin-top:2px">Nota: Event 5 Langkawi merujuk kepada tarikh acara khas seperti LIMA, Ironman &amp; musim puncak.</p>
+    </div>
+    <button class="close-btn" id="btnClosePriceTable" style="color:#fff;background:rgba(255,255,255,0.15)">&times;</button>
+  </div>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Model Kenderaan</th>
+        <th>Kategori</th>
+        <th class="col-norm">Hari Biasa (Normal)</th>
+        <th class="col-pub">Cuti Umum (Public)</th>
+        <th class="col-event">Event 5 Langkawi</th>
+        <th>Tindakan</th>
+      </tr>
+    </thead>
+    <tbody id="priceTableBody">
+      <!-- Populated via script -->
+    </tbody>
+  </table>
+</div>
+
+<div class="cats-row reveal" style="margin-top:44px">
+<h2>Pakej Percutian Kombo</h2>
 <div class="cats">
-  <button class="cat" type="button" onclick="quickAdd('Pakej Keluarga (Alza + Homestay)', 540, 'kombo', 'images/car_mpv.jpg')"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family</button>
-  <button class="cat" type="button" onclick="quickAdd('Pakej Rakan (Myvi + Hopping)', 115, 'kombo', 'images/act_island_hopping.jpg')"><span class="cat-img" style="background-image:url('images/act_island_hopping.jpg')"></span>Friends</button>
-  <button class="cat" type="button" onclick="quickAdd('Pakej Rombongan (Alphard + Sunset Cruise)', 660, 'kombo', 'images/act_sunset_cruise.jpg')"><span class="cat-img" style="background-image:url('images/act_sunset_cruise.jpg')"></span>Groups</button>
-  <button class="cat" type="button" onclick="quickAdd('Pakej Santai Pantai Cenang', 415, 'kombo', 'images/hero.jpg')"><span class="cat-img" style="background-image:url('images/hero.jpg')"></span>Beach days</button>
+  <button class="cat" type="button" onclick="quickAdd('Pakej Keluarga (Alza + Hotel Cenang)', 540, 'kombo', 'images/car_mpv.jpg')"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family</button>
+  <button class="cat" type="button" onclick="quickAdd('Pakej Rakan (Myvi + Island Hopping)', 115, 'kombo', 'images/act_island_hopping.jpg')"><span class="cat-img" style="background-image:url('images/act_island_hopping.jpg')"></span>Friends</button>
+  <button class="cat" type="button" onclick="quickAdd('Pakej Rombongan (Vellfire + Sunset Cruise)', 730, 'kombo', 'images/car_luxury.jpg')"><span class="cat-img" style="background-image:url('images/car_luxury.jpg')"></span>Groups VIP</button>
+  <button class="cat" type="button" onclick="quickAdd('Pakej Santai Scooter Pantai Cenang', 70, 'kombo', 'images/scooter.jpg')"><span class="cat-img" style="background-image:url('images/scooter.jpg')"></span>Scooter Trip</button>
 </div>
 </div>
 
 <div class="steps reveal">
 <div class="steps-img" role="img" aria-label="Scenic coastal road in Langkawi"></div>
 <div class="steps-body">
-<h2>Rent your car in 3 easy steps</h2>
-<div class="step"><b>01</b><div><h3>Choose your car</h3><p>A compact for two, a sedan for a small family, an MPV for a group.</p></div></div>
-<div class="step"><b>02</b><div><h3>Book &amp; Pay</h3><p>Tambah ke troli &amp; bayar online terus di website atau bayar deposit melalui FPX / QR.</p></div></div>
-<div class="step"><b>03</b><div><h3>Pick up &amp; drive</h3><p>Your car will be waiting at the jetty, the airport or your homestay.</p></div></div>
+<h2>Tempah sewaan kenderaan dalam 3 langkah mudah</h2>
+<div class="step"><b>01</b><div><h3>Pilih Kenderaan &amp; Musim</h3><p>Pilih scooter santai, kompak jimat, sedan, MPV rombongan atau SUV 4x4 VIP mengikut musim percutian anda.</p></div></div>
+<div class="step"><b>02</b><div><h3>Tempah &amp; Bayar Terus</h3><p>Masukkan ke troli dan buat bayaran selamat online (FPX, QR, Kad atau Touch 'n Go) tanpa perlu beratur.</p></div></div>
+<div class="step"><b>03</b><div><h3>Pandu Sebaik Tiba</h3><p>Kenderaan dihantar tepat pada masanya di Jeti Kuah, Airport Langkawi atau terus di pintu hotel anda.</p></div></div>
 </div>
 </div>
 </div>
@@ -1799,7 +2145,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   <button class="btn-sun reveal" id="btnCtaCheckout" type="button" style="height:54px;font-size:16px">
     🛒 Buka Troli &amp; Bayar Online
   </button>
-  <a class="btn-sun reveal" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussain%20Empire,%20saya%20nak%20tanya%20pakej%20Langkawi" target="_blank" rel="noopener" style="height:54px;font-size:16px;background:#25D366;color:#fff">
+  <a class="btn-sun reveal" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussin%20Empire,%20saya%20nak%20tanya%20pakej%20Langkawi" target="_blank" rel="noopener" style="height:54px;font-size:16px;background:#25D366;color:#fff">
     WhatsApp Us
     <span class="sq" style="width:38px;height:38px;background:#fff;color:#25D366"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11L11 3M5 3h6v6"/></svg></span>
   </a>
@@ -1811,17 +2157,17 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 <div class="wrap">
 <div class="foot">
 <div>
-  <div class="eyebrow">Navigation</div>
-  <a href="#hero">Home</a>
-  <a href="#homestay">Homestay</a>
-  <a href="#aktiviti">Activity Packages</a>
-  <a href="#kereta">Car Rental</a>
+  <div class="eyebrow">Navigasi</div>
+  <a href="#hero">Utama</a>
+  <a href="#homestay">Hotel &amp; Homestay Cenang</a>
+  <a href="#aktiviti">Pakej Aktiviti</a>
+  <a href="#kereta">Kereta &amp; Motor Sewa</a>
 </div>
 <div style="align-items:center;text-align:center">
-  <div style="font-size:18px;font-weight:700;letter-spacing:.1em">IBRAHIM HUSSAIN EMPIRE</div>
+  <div style="font-size:18px;font-weight:700;letter-spacing:.1em">IBRAHIM HUSSIN EMPIRE</div>
   <div style="font-size:12px;color:var(--sun);letter-spacing:.16em;margin-top:2px">LANGKAWI TRIP SPECIALIST</div>
   <div style="width:100%;max-width:340px;margin-top:20px">
-    <label for="nl" class="sm" style="color:#A9AEA8">Dapatkan diskaun RM30 &amp; tawaran promosi:</label>
+    <label for="nl" class="sm" style="color:#A9AEA8">Dapatkan promosi &amp; pengesahan sewaan:</label>
     <form class="news" id="newsletterForm" onsubmit="return false">
       <input id="nl" type="email" placeholder="Alamat emel anda…" required>
       <button type="submit" id="btnSubscribe" aria-label="Subscribe"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
@@ -1829,16 +2175,16 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   </div>
 </div>
 <div style="text-align:right;align-items:flex-end">
-  <div class="eyebrow">Contact</div>
-  <div>salam@ibrahimhussain.com</div>
-  <div>+60 11-2345 6789</div>
-  <div>Kuah &amp; Pantai Cenang, Langkawi, Kedah</div>
-  <div>MOTAC Licence No.: KPK/LN/8921</div>
+  <div class="eyebrow">Hubungi Kami</div>
+  <div><a href="mailto:Ibrahimhussin5971@gmail.com" style="color:var(--sun);font-weight:700">Ibrahimhussin5971@gmail.com</a></div>
+  <div><a href="https://wa.me/601123456789" target="_blank" rel="noopener">+60 11-2345 6789</a></div>
+  <div>Pantai Cenang &amp; Jeti Kuah, Langkawi, Kedah</div>
+  <div>MOTAC Registered Agency &bull; Langkawi Car Rental &amp; Stays</div>
 </div>
 </div>
 <div class="legal">
-  <span>© 2026 Ibrahim Hussain Empire. All rights reserved.</span>
-  <span>Local Langkawi Hospitality &bull; Tourism, Homestays &amp; Car Rental</span>
+  <span>© 2026 Ibrahim Hussin Empire. All rights reserved.</span>
+  <span>Local Langkawi Hospitality &bull; Cenang Hotels, Homestays, Tours &amp; Car Rental</span>
 </div>
 </div>
 </footer>
@@ -1851,7 +2197,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
     <span class="badge cart-total-badge">0</span>
   </button>
 
-  <a class="wa-float" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussain%20Empire,%20saya%20berminat%20nak%20tanya%20pakej%20Langkawi" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <a class="wa-float" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussin%20Empire,%20saya%20berminat%20nak%20tanya%20sewa%20kereta%20dan%20hotel" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
     <span class="wa-pulse"></span>
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
     <span>WhatsApp</span>
@@ -2372,14 +2718,15 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
         tb.innerHTML = rHtml;
 
         // WhatsApp receipt link
-        var waMsg = "Salam Ibrahim Hussain Empire! Saya baru selesai bayar tempahan di website:\n\n" +
+        var waMsg = "Salam Ibrahim Hussin Empire! Saya baru selesai bayar tempahan di website:\n\n" +
           "*NO. RUJUKAN:* " + refNum + "\n" +
           "*NAMA:* " + name + "\n" +
           "*TEL:* " + phone + "\n" +
           "*EMEL:* " + email + "\n" +
           "*STATUS:* LULUS / PAID (RM " + finalAmount + ")\n\n" +
           "*ITEM DITEMPAH:*\n" + waItemsText + "\n" +
-          "Mohon sahkan jadual dan ketersediaan kunci / tiket saya. Terima kasih!";
+          "Mohon sahkan jadual dan ketersediaan kenderaan / bilik saya. Terima kasih!\n" +
+          "Emel Rasmi Tempahan: Ibrahimhussin5971@gmail.com";
 
         document.getElementById('btnRecWa').href = "https://wa.me/601123456789?text=" + encodeURIComponent(waMsg);
 
@@ -2426,44 +2773,255 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
     document.getElementById('homestay').scrollIntoView({behavior:'smooth'});
   });
 
-  // Homestay search
-  var btnHsSearch = document.getElementById('btnHsSearch');
-  if(btnHsSearch){
-    btnHsSearch.addEventListener('click', function(){
-      var q = (document.getElementById('hs').value || '').trim();
-      if(q){
-        showToast('🔍 Menapis homestay di kawasan: "' + q + '"');
-      } else {
-        showToast('Sila masukkan nama kawasan (Cenang / Kuah).');
+  // =========================================================
+  // 4. CAR RENTAL FLEET CATALOG & SEASON PRICING LOGIC
+  // =========================================================
+  var activeSeason = 'normal'; // 'normal' | 'public' | 'event'
+  var activeCategory = 'all';
+
+  var vehicles = [
+    // 1. SCOOTER / MOTOR
+    { id:'sc_avantiz', name:'Scooter Yamaha AVANTIZ', cat:'scooter', catLabel:'Scooter / Motor', tag:'Jimat &amp; Pantas', seats:'2 Orang', trans:'Auto', luggage:'Helmet Box', img:'images/scooter.jpg', pNorm:35, pPub:50, pEvent:80 },
+    { id:'sc_nvx', name:'Scooter Yamaha NVX', cat:'scooter', catLabel:'Scooter / Motor', tag:'Paling Popular', seats:'2 Orang', trans:'Auto', luggage:'Ruang Luas', img:'images/scooter.jpg', pNorm:50, pPub:70, pEvent:100 },
+    { id:'sc_adv', name:'Scooter Honda ADV', cat:'scooter', catLabel:'Scooter / Motor', tag:'Adventure Touring', seats:'2 Orang', trans:'Auto', luggage:'Ruang Luas', img:'images/scooter.jpg', pNorm:70, pPub:90, pEvent:120 },
+
+    // 2. KOMPAK
+    { id:'c_axia_old', name:'Perodua AXIA (Old Model)', cat:'kompak', catLabel:'Kompak Jimat', tag:'Ekonomi Jimat', seats:'5 Orang', trans:'Auto', luggage:'2 Beg', img:'images/car_compact.jpg', pNorm:60, pPub:80, pEvent:150 },
+    { id:'c_axia_new', name:'Perodua AXIA (New Model)', cat:'kompak', catLabel:'Kompak Jimat', tag:'Model Terkini', seats:'5 Orang', trans:'Auto', luggage:'2 Beg', img:'images/car_compact.jpg', pNorm:70, pPub:90, pEvent:180 },
+
+    // 3. SEDAN
+    { id:'s_bezza', name:'Perodua BEZZA', cat:'sedan', catLabel:'Sedan Selesa', tag:'Boot Luas 508L', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:80, pPub:100, pEvent:200 },
+    { id:'s_almera', name:'Nissan ALMERA', cat:'sedan', catLabel:'Sedan Selesa', tag:'Selesa &amp; Senyap', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:80, pPub:100, pEvent:200 },
+    { id:'s_vios', name:'Toyota VIOS (2023)', cat:'sedan', catLabel:'Sedan Selesa', tag:'Generasi Baru', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:90, pPub:120, pEvent:250 },
+    { id:'s_city', name:'Honda CITY (2023)', cat:'sedan', catLabel:'Sedan Selesa', tag:'V-Spec Premium', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:90, pPub:120, pEvent:250 },
+
+    // 4. MPV & VAN
+    { id:'m_avanza', name:'Toyota AVANZA (Old Model)', cat:'mpv', catLabel:'MPV 7-Seat', tag:'Keluarga Selesa', seats:'7 Orang', trans:'Auto', luggage:'3 Beg', img:'images/car_mpv.jpg', pNorm:120, pPub:150, pEvent:250 },
+    { id:'m_serena', name:'Nissan SERENA Highway Star', cat:'mpv', catLabel:'MPV 7-Seat', tag:'Pintu Slaid Auto', seats:'7 Orang', trans:'Auto', luggage:'4 Beg', img:'images/car_mpv.jpg', pNorm:150, pPub:180, pEvent:300 },
+    { id:'v_van14', name:'VAN 14-Seater (Toyota Hiace)', cat:'mpv', catLabel:'Van Rombongan', tag:'Kapasiti 14 Pax', seats:'14 Orang', trans:'Manual/Auto', luggage:'6+ Beg', img:'images/car_mpv.jpg', pNorm:150, pPub:200, pEvent:350 },
+    { id:'m_zenix', name:'Toyota INNOVA ZENIX', cat:'mpv', catLabel:'Premium MPV', tag:'Model Terbaharu', seats:'7-8 Orang', trans:'Auto', luggage:'4-5 Beg', img:'images/car_suv.jpg', pNorm:180, pPub:250, pEvent:350 },
+    { id:'v_starex', name:'Hyundai STAREX (12-Seater)', cat:'mpv', catLabel:'VIP MPV 12-Seat', tag:'Captain Seats VIP', seats:'11-12 Orang', trans:'Auto', luggage:'5 Beg', img:'images/car_mpv.jpg', pNorm:250, pPub:300, pEvent:400 },
+
+    // 5. SUV, 4x4 & MEWAH VIP
+    { id:'suv_crv', name:'Honda CR-V', cat:'vip', catLabel:'SUV Selesa', tag:'Tinggi &amp; Premium', seats:'5 Orang', trans:'Auto', luggage:'4 Beg', img:'images/car_suv.jpg', pNorm:250, pPub:300, pEvent:400 },
+    { id:'suv_hilux', name:'Toyota HILUX 4x4', cat:'vip', catLabel:'Pickup 4x4', tag:'Gagah &amp; Lasak', seats:'5 Orang', trans:'Auto', luggage:'Kargo Luas', img:'images/car_suv.jpg', pNorm:300, pPub:400, pEvent:500 },
+    { id:'vip_velfire', name:'Toyota VELLFIRE VIP', cat:'vip', catLabel:'Mewah Eksekutif', tag:'Pilot Seats VIP', seats:'7 Orang', trans:'Auto', luggage:'4-5 Beg', img:'images/car_luxury.jpg', pNorm:550, pPub:650, pEvent:750 }
+  ];
+
+  function getVehiclePrice(v, season){
+    if(season === 'public') return v.pPub;
+    if(season === 'event') return v.pEvent;
+    return v.pNorm;
+  }
+
+  function getSeasonLabel(season){
+    if(season === 'public') return 'Kadar Cuti Umum';
+    if(season === 'event') return 'Event 5 Langkawi / Peak';
+    return 'Kadar Hari Biasa';
+  }
+
+  window.addVehicleToCart = function(id){
+    var v = vehicles.find(function(item){ return item.id === id; });
+    if(!v) return;
+    var price = getVehiclePrice(v, activeSeason);
+    var seasonLbl = getSeasonLabel(activeSeason);
+    var title = v.name + ' (' + seasonLbl + ')';
+    quickAdd(title, price, 'kereta', v.img);
+  };
+
+  function renderVehicles(){
+    var container = document.getElementById('carsContainer');
+    if(!container) return;
+
+    var filtered = vehicles.filter(function(v){
+      return activeCategory === 'all' || v.cat === activeCategory;
+    });
+
+    var seasonLbl = getSeasonLabel(activeSeason);
+    var html = '';
+
+    filtered.forEach(function(v){
+      var currentPrice = getVehiclePrice(v, activeSeason);
+      html += '<article class="car">' +
+        '<div class="car-img-wrap">' +
+          '<div class="car-img" style="background-image:url(\'' + v.img + '\')"></div>' +
+          '<span class="car-tag">' + v.tag + '</span>' +
+        '</div>' +
+        '<div class="car-head">' +
+          '<div>' +
+            '<h3>' + v.name + '</h3>' +
+            '<div class="mute sm">' + v.catLabel + '</div>' +
+          '</div>' +
+          '<div class="price">RM ' + currentPrice + ' <span>/hari</span></div>' +
+        '</div>' +
+        '<div style="font-size:11.5px;color:var(--mute);padding:0 4px;margin-top:-6px">' +
+          'Kadar: <strong style="color:var(--accent-teal)">' + seasonLbl + '</strong> &bull; ' +
+          'Normal: RM' + v.pNorm + ' | Cuti: RM' + v.pPub + ' | 5Lgk: RM' + v.pEvent +
+        '</div>' +
+        '<div class="specs">' +
+          '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>Kapasiti</small>' + v.seats + '</span></div>' +
+          '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Gear</small>' + v.trans + '</span></div>' +
+          '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>Bagasi</small>' + v.luggage + '</span></div>' +
+        '</div>' +
+        '<button class="car-action-btn" type="button" onclick="addVehicleToCart(\'' + v.id + '\')">' +
+          '🛒 Sewa Kenderaan Ini (RM ' + currentPrice + '/hari)' +
+        '</button>' +
+      '</article>';
+    });
+
+    container.innerHTML = html;
+  }
+
+  function renderPriceTable(){
+    var tb = document.getElementById('priceTableBody');
+    if(!tb) return;
+    var html = '';
+    vehicles.forEach(function(v, idx){
+      var curPrice = getVehiclePrice(v, activeSeason);
+      html += '<tr>' +
+        '<td style="font-weight:700;color:var(--mute)">' + (idx + 1) + '</td>' +
+        '<td class="col-model">' + v.name + '</td>' +
+        '<td><span class="sm mute">' + v.catLabel + '</span></td>' +
+        '<td class="col-norm"' + (activeSeason === 'normal' ? ' style="background:#EBF7EE;font-weight:800"' : '') + '>RM ' + v.pNorm + '</td>' +
+        '<td class="col-pub"' + (activeSeason === 'public' ? ' style="background:#FFF9E6;font-weight:800"' : '') + '>RM ' + v.pPub + '</td>' +
+        '<td class="col-event"' + (activeSeason === 'event' ? ' style="background:#FDEEEE;font-weight:800"' : '') + '>RM ' + v.pEvent + '</td>' +
+        '<td>' +
+          '<button class="car-action-btn" type="button" onclick="addVehicleToCart(\'' + v.id + '\')" style="height:34px;padding:0 12px;font-size:12px">' +
+            '🛒 Tempah (RM ' + curPrice + ')' +
+          '</button>' +
+        '</td>' +
+      '</tr>';
+    });
+    tb.innerHTML = html;
+  }
+
+  // Season Buttons
+  var seasonButtons = document.querySelectorAll('.season-btn');
+  seasonButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      seasonButtons.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      activeSeason = btn.dataset.season;
+
+      var note = document.getElementById('seasonBadgeText');
+      if(note){
+        if(activeSeason === 'public'){
+          note.textContent = 'Cuti Umum (Public Holiday Rate)';
+          note.style.color = '#F4C91A';
+        } else if(activeSeason === 'event'){
+          note.textContent = 'Event 5 Langkawi / Peak (Ironman / LIMA)';
+          note.style.color = '#FF5252';
+        } else {
+          note.textContent = 'Hari Biasa (Normal Rate)';
+          note.style.color = 'var(--sun)';
+        }
       }
+
+      renderVehicles();
+      renderPriceTable();
+      showToast('🔄 Kadar ditukar: ' + getSeasonLabel(activeSeason));
     });
+  });
+
+  // Filter Tabs
+  var filterTabs = document.querySelectorAll('.filter-tab');
+  filterTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      filterTabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      activeCategory = tab.dataset.cat;
+      renderVehicles();
+    });
+  });
+
+  // Comparison Price Table Toggle
+  var tableWrap = document.getElementById('priceTableWrap');
+  var btnTogglePriceTable = document.getElementById('btnTogglePriceTable');
+  var btnShowTableTop = document.getElementById('btnShowTableTop');
+  var btnClosePriceTable = document.getElementById('btnClosePriceTable');
+
+  function toggleTable(){
+    if(!tableWrap) return;
+    var isOpen = tableWrap.style.display !== 'none';
+    tableWrap.style.display = isOpen ? 'none' : 'block';
+    if(!isOpen){
+      renderPriceTable();
+      tableWrap.scrollIntoView({behavior:'smooth'});
+    }
   }
 
-  // Homestay Featured add
-  var btnAddVillaCart = document.getElementById('btnAddVillaCart');
-  if(btnAddVillaCart){
-    btnAddVillaCart.addEventListener('click', function(){
-      quickAdd('Villa Seri Chenang (Private Pool)', 380, 'homestay', 'images/homestay_villa.jpg');
-    });
-  }
-  var btnFeatAdd = document.getElementById('btnFeatAdd');
-  if(btnFeatAdd){
-    btnFeatAdd.addEventListener('click', function(){
-      quickAdd('Villa Seri Chenang (Private Pool)', 380, 'homestay', 'images/homestay_villa.jpg');
-    });
-  }
+  if(btnTogglePriceTable) btnTogglePriceTable.addEventListener('click', toggleTable);
+  if(btnShowTableTop) btnShowTableTop.addEventListener('click', toggleTable);
+  if(btnClosePriceTable) btnClosePriceTable.addEventListener('click', function(){
+    if(tableWrap) tableWrap.style.display = 'none';
+  });
 
-  // Homestay Book Form button
+  // Initial vehicle rendering
+  renderVehicles();
+  renderPriceTable();
+
+  // =========================================================
+  // 5. HOTEL & HOMESTAY (PANTAI CENANG) LOGIC
+  // =========================================================
+  // Hotel Dots Slider
+  var hm = document.getElementById('homeMain');
+  var sliderTitle = document.getElementById('sliderTitle');
+  var sliderDesc = document.getElementById('sliderDesc');
+  var hotelDots = document.querySelectorAll('.dots button');
+  hotelDots.forEach(function(d){
+    d.addEventListener('click', function(){
+      hotelDots.forEach(function(x){ x.setAttribute('aria-pressed', x === d ? 'true' : 'false'); });
+      hm.style.backgroundImage = "linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('" + d.dataset.img + "')";
+      if(sliderTitle && d.dataset.title) sliderTitle.innerHTML = d.dataset.title.replace('Hotel', '<i>Hotel</i><br>');
+      if(sliderDesc && d.dataset.desc) sliderDesc.textContent = d.dataset.desc;
+    });
+  });
+
+  // Hotel Quick Book Form
   var btnBookHs = document.getElementById('btnBookHs');
   if(btnBookHs){
     btnBookHs.addEventListener('click', function(){
       var d1 = document.getElementById('hb1').value;
       var d2 = document.getElementById('hb2').value;
-      var pkg = document.getElementById('hb3').value;
-      var title = 'Homestay ' + pkg + (d1 ? (' (' + d1 + ')') : '');
-      var price = pkg.indexOf('Pool') !== -1 ? 380 : (pkg.indexOf('3-Room') !== -1 ? 260 : 180);
+      var selVal = document.getElementById('hb3').value.split('|');
+      var hotelName = selVal[0] || 'Best Star Hotel Cenang';
+      var hotelPrice = Number(selVal[1] || 180);
+      var hotelImg = selVal[2] || 'images/hotel_cenang_beach.jpg';
 
-      quickAdd(title, price, 'homestay', 'images/homestay_villa.jpg');
+      var dateStr = (d1 && d2) ? (' (' + d1 + ' - ' + d2 + ')') : (d1 ? (' (Dari ' + d1 + ')') : '');
+      var title = hotelName + dateStr;
+
+      quickAdd(title, hotelPrice, 'hotel', hotelImg);
+    });
+  }
+
+  // Hotel Search Form
+  var btnHsSearch = document.getElementById('btnHsSearch');
+  if(btnHsSearch){
+    btnHsSearch.addEventListener('click', function(){
+      var q = (document.getElementById('hs').value || '').trim().toLowerCase();
+      if(!q){
+        showToast('Sila masukkan nama hotel (Langgura, Best Star, Adya, Paretto).');
+        return;
+      }
+      var cards = document.querySelectorAll('.hotel-card');
+      var matchCount = 0;
+      cards.forEach(function(c){
+        var text = c.textContent.toLowerCase();
+        if(text.indexOf(q) !== -1){
+          c.style.display = 'flex';
+          matchCount++;
+        } else {
+          c.style.display = 'none';
+        }
+      });
+      if(matchCount > 0){
+        showToast('🔍 Dijumpai ' + matchCount + ' hotel padanan untuk: "' + q + '"');
+        document.querySelector('.hotels-grid').scrollIntoView({behavior:'smooth'});
+      } else {
+        cards.forEach(function(c){ c.style.display = 'flex'; });
+        showToast('Semua 4 hotel Pantai Cenang sedia dipilih.');
+      }
     });
   }
 
@@ -2477,25 +3035,13 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
         document.getElementById('promoInput').value = 'LANGKAWI2026';
         discountPercent = 0.10;
         saveCart();
-        showToast('✨ Kod LANGKAWI2026 (10% OFF) telah diaktifkan dalam troli anda!');
+        showToast('✨ Kod promosi 10% OFF diaktifkan! Pengesahan dihantar ke emel anda.');
         document.getElementById('nl').value = '';
       } else {
         showToast('Sila masukkan format emel yang sah.');
       }
     });
   }
-
-  // Homestay dots slider
-  var hm = document.getElementById('homeMain');
-  var sliderDesc = document.getElementById('sliderDesc');
-  var dots = document.querySelectorAll('.dots button');
-  dots.forEach(function(d){
-    d.addEventListener('click', function(){
-      dots.forEach(function(x){ x.setAttribute('aria-pressed', x === d ? 'true' : 'false'); });
-      hm.style.backgroundImage = "linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('" + d.dataset.img + "')";
-      if(sliderDesc && d.dataset.desc) sliderDesc.textContent = d.dataset.desc;
-    });
-  });
 
   // Language toggle
   var langBtns = document.querySelectorAll('.lang-btn');
