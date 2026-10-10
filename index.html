@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <title>Ibrahim Hussin Empire — Langkawi Homestays, Cenang Hotels &amp; Car Rental</title>
-<meta name="description" content="Tempahan rasmi hotel Pantai Cenang, homestay, aktiviti pulau, dan kereta sewa di Langkawi bersama Ibrahim Hussin Empire dengan bayaran selamat di laman web.">
+<meta name="description" content="Tempah hotel Pantai Cenang, homestay, pakej aktiviti pulau dan kereta sewa di Langkawi bersama Ibrahim Hussin Empire.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -938,6 +938,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   transition:all .3s var(--ease);
 }
 .cart-float:hover{transform:translateY(-3px) scale(1.03);background:#000;box-shadow:0 16px 36px rgba(0,0,0,.5)}
+.cart-float .badge, .cart-nav-btn .badge{font-variant-numeric:tabular-nums}
 .cart-float .badge{
   background:var(--sun);
   color:#111;
@@ -1596,54 +1597,237 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   html{scroll-behavior:auto}
   .reveal,.reveal-stagger>*, .act, .car, .home-feat, .home-sm{transition:none!important;opacity:1!important;transform:none!important}
 }
+
+/* =========================================================
+   V2 ADDITIONS: PAGES, TOP BAR, PLACEHOLDERS, DETAIL POP-UP
+   ========================================================= */
+.reveal-stagger.is-visible > *{opacity:1;transform:translateY(0)}
+.page[hidden],.topbar[hidden]{display:none!important}
+body.no-scroll{overflow:hidden}
+:focus-visible{outline:2.5px solid var(--sun);outline-offset:2px}
+
+.topbar{
+  position:sticky;top:0;z-index:500;
+  background:var(--deep);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px var(--pad);
+  border-bottom:1px solid rgba(255,255,255,.1);
+  box-shadow:0 6px 20px rgba(0,0,0,.18);
+}
+.topbar .tb-side{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:0}
+.topbar .tb-side:last-child{justify-content:flex-end}
+.tb-btn,.tb-link{
+  min-height:40px;display:inline-flex;align-items:center;gap:8px;
+  padding:0 12px;border-radius:999px;color:#fff;font-size:13.5px;font-weight:700;white-space:nowrap;
+  transition:background .2s ease,color .2s ease;
+}
+.tb-btn:hover,.tb-link:hover{background:rgba(255,255,255,.1);color:var(--sun)}
+.tb-link.active{background:var(--sun);color:#111}
+@media (max-width:900px){.tb-link{display:none}}
+
+.page-head{padding:clamp(32px,5vw,60px) var(--pad) 0}
+.page-head .lede{max-width:620px;margin-top:14px;color:#454845}
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13px;color:var(--mute);margin-bottom:16px}
+.crumb a{font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--sun)}
+.acts-sec .crumb{color:#A9AEA8}
+.acts-sec .crumb a{color:#fff}
+.acts-page{min-height:70vh}
+.acts-page .acts{margin-top:24px}
+
+.more-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px 20px;margin-top:36px}
+.more-row .count{font-size:14px;color:var(--mute)}
+.acts-sec .more-row .count{color:#C9C9C4}
+
+.acts-sec .filter-tab{background:transparent;color:#F3F1EC;border-color:rgba(255,255,255,.28)}
+.acts-sec .filter-tab:hover{background:rgba(255,255,255,.08);border-color:#fff}
+.acts-sec .filter-tab.active{background:var(--sun);color:#111;border-color:var(--sun)}
+.act-meta{font-size:12.5px;color:rgba(255,255,255,.85);text-align:right}
+.act-price-badge small:first-child{margin-right:2px}
+
+/* Vehicle image loader & styling */
+.car-img-wrap .ph{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:#EAE8E1;
+  color:#8C8F89;
+}
+.car-img-wrap .ph svg{width:48px;height:48px;stroke:#A6A59D;opacity:.4}
+.car-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.car:hover .car-photo{transform:scale(1.06)}
+.car-tag{z-index:2}
+.car-btns{margin-top:auto;display:grid;grid-template-columns:auto 1fr;gap:8px}
+.car-btns .car-action-btn{margin-top:0;padding:0 12px}
+.btn-ghost{
+  height:44px;padding:0 14px;border-radius:var(--radius-sm);
+  border:1.5px solid #CFCBC0;background:#fff;color:var(--ink);
+  font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  transition:all .2s ease;
+}
+.btn-ghost:hover{border-color:var(--deep);background:#F4F3F0}
+.rates-line{font-size:11.5px;color:var(--mute);padding:0 4px;margin-top:-6px}
+
+/* Detail pop-up */
+.dt-card{max-width:640px}
+.dt-hero{
+  position:relative;height:230px;overflow:hidden;
+  background-color:#2A403C;background-size:cover;background-position:center;
+  border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+}
+.dt-hero .car-img-wrap{height:100%;border-radius:0}
+.dt-hero .close-btn{position:absolute;top:14px;right:14px;z-index:3;background:rgba(255,255,255,.95);box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.dt-hero .pill{position:absolute;left:16px;bottom:16px;z-index:3}
+.dt-body{padding:22px 24px 8px;display:flex;flex-direction:column;gap:20px}
+.dt-body h3{font-size:clamp(22px,3vw,28px);line-height:1.2;font-weight:800;text-wrap:balance}
+.dt-body h4{margin:0 0 10px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:800}
+.dt-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dt-meta span{background:#F4F2EC;border-radius:6px;padding:5px 10px;font-size:12.5px;font-weight:700;color:#3F423E}
+.dt-opts{display:flex;flex-direction:column;gap:8px}
+.dt-opt{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  border:2px solid #E2DFD6;border-radius:8px;padding:10px 14px;
+  font-size:14px;font-weight:600;cursor:pointer;transition:border-color .15s ease,background .15s ease;
+}
+.dt-opt span:first-of-type{flex:1;min-width:0}
+.dt-opt input{accent-color:#111;width:16px;height:16px;flex:none;margin:0}
+.dt-opt b{white-space:nowrap;color:var(--accent-teal);font-weight:800;font-variant-numeric:tabular-nums}
+.dt-opt.sel{border-color:#111;background:#FFFBEA}
+.dt-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px 18px;font-size:14px}
+.dt-list li{display:flex;gap:8px;align-items:flex-start;line-height:1.4}
+.dt-list li::before{content:"";flex:none;width:16px;height:16px;margin-top:2px;border-radius:50%;background:var(--accent-teal) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='2'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.dt-note{background:#FFFDEB;border:1px solid #EADB92;border-radius:8px;padding:10px 14px;font-size:13px;color:#5E4A00;display:flex;flex-direction:column;gap:4px}
+.dt-foot{
+  position:sticky;bottom:0;z-index:4;
+  background:#fff;border-top:1px solid var(--line);
+  padding:14px 24px;margin-top:16px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+  border-radius:0 0 var(--radius-lg) var(--radius-lg);
+}
+.dt-qty{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
+.dt-qty .qty-btn{width:34px;height:34px;font-size:17px}
+.dt-qty .qty-val{min-width:26px;font-size:16px}
+.dt-total{font-size:13px;color:var(--mute)}
+.dt-total strong{display:block;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.1}
+.dt-foot .btn-checkout{flex:1 1 200px;padding:0 18px}
+.dt-ask{font-size:13px;font-weight:700;color:#128C4B;display:inline-flex;align-items:center;gap:6px;border-bottom:1.5px solid currentColor;align-self:flex-start}
+
+.pay-err{display:none;background:#FDEEEE;border:1px solid #F2B8B5;color:#A31515;border-radius:8px;padding:10px 14px;font-size:13.5px;font-weight:600}
+.pay-err.show{display:block}
+.pay-info{background:#F1F7F4;border:1px solid #CFE3D9;border-radius:8px;padding:12px 14px;font-size:13.5px;color:#234239}
+.drawer-lang{align-self:flex-start}
+.hotel-foot{gap:8px;flex-wrap:wrap}
+.hotel-foot .btns{display:flex;gap:8px}
+.contact-nums{display:flex;flex-direction:column;gap:2px}
+
+@media (max-width:680px){
+  .dt-hero{height:180px}
+  .dt-body{padding:18px 16px 6px}
+  .dt-foot{padding:12px 16px}
+  .dt-foot .btn-checkout{flex:1 1 100%}
+  .topbar{padding:8px 12px}
+  .tb-btn{padding:0 8px}
+  .page-head{padding-top:28px}
+  .acts-page{padding-top:0!important}
+}
+@media print{
+  body>*:not(#receiptModal){display:none!important}
+  #receiptModal{position:static;opacity:1;background:none;padding:0}
+  #receiptModal .pay-card{box-shadow:none;max-height:none;transform:none}
+}
+@media (max-width:980px){.nav .btn-line{display:none}}
+@media (max-width:680px){.season-pills{border-radius:18px;width:100%}.season-btn{width:100%}}
+.reveal{will-change:auto}
+.rent-in{max-width:1240px}
+.cars{grid-template-columns:repeat(auto-fill,minmax(262px,1fr))}
+.car-btns .car-action-btn{white-space:nowrap}
+.home-main{gap:18px}
+.cart-float[hidden]{display:none}
+@media (min-width:981px){.hero-foot{padding-right:160px}}
+@media (max-width:680px){footer{padding-bottom:96px}.cars{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+@media (max-width:680px){.acts-page{padding-top:28px!important}}
+#btnDrawerCart{gap:6px}
+.car-head{flex-direction:column;align-items:flex-start;gap:6px}
 </style>
 </head>
 <body>
 
-<!-- MOBILE MENU DRAWER -->
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11L11 3M5 3h6v6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M0 2h20M0 10h12"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13l2-5.5A2 2 0 0 1 6.9 6h10.2a2 2 0 0 1 1.9 1.5L21 13v5h-3v-2H6v2H3z"/><circle cx="7.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></symbol>
+  <symbol id="i-logo" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#F5C71A" stroke="#F5C71A"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff"/></symbol>
+</svg>
+
+<!-- MENU DRAWER -->
 <div class="mobile-drawer" id="mobileDrawer">
   <div class="mobile-drawer-card">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <div class="logo" style="pointer-events:none">
-        <div class="logo-mark">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="var(--sun)" stroke="var(--sun)"/>
-            <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff"/>
-          </svg>
-          <span class="logo-mark-text">IHE</span>
-        </div>
+        <div class="logo-mark"><svg width="18" height="18" aria-hidden="true"><use href="#i-logo"/></svg><span class="logo-mark-text">IHE</span></div>
         <div class="logo-text" style="display:flex!important">
           <span class="logo-name" style="font-size:13px">IBRAHIM HUSSIN</span>
           <span class="logo-sub" style="font-size:9px">EMPIRE &bull; LANGKAWI</span>
         </div>
       </div>
-      <button class="close-btn" id="btnCloseMenu" style="background:rgba(255,255,255,0.15);color:#fff" aria-label="Tutup Menu">&times;</button>
+      <button class="close-btn" id="btnCloseMenu" type="button" style="background:rgba(255,255,255,0.15);color:#fff" aria-label="Tutup menu">&times;</button>
     </div>
     <div class="mobile-drawer-links">
-      <a href="#hero" class="menu-link">🏠 Utama (Home)</a>
-      <a href="#perkhidmatan" class="menu-link">ℹ️ Tentang Kami</a>
-      <a href="#homestay" class="menu-link">🏡 Hotel &amp; Homestay Cenang</a>
-      <a href="#aktiviti" class="menu-link">⛵ Pakej Aktiviti</a>
-      <a href="#kereta" class="menu-link">🚗 Kereta &amp; Motor Sewa</a>
-      <a href="#hubungi" class="menu-link">📞 Hubungi Kami</a>
+      <a href="#utama" class="menu-link" data-en="Home">Utama</a>
+      <a href="#perkhidmatan" class="menu-link" data-en="About us">Tentang Kami</a>
+      <a href="#homestay" class="menu-link" data-en="Cenang Hotels &amp; Homestays">Hotel &amp; Homestay Cenang</a>
+      <a href="#aktiviti" class="menu-link" data-en="Activity Packages">Pakej Aktiviti</a>
+      <a href="#kereta" class="menu-link" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</a>
+      <a href="#hubungi" class="menu-link" data-en="Contact us">Hubungi Kami</a>
+    </div>
+    <div class="lang-toggle drawer-lang" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="en" type="button">EN</button>
+      <button class="lang-btn active" data-lang="ms" type="button">BM</button>
     </div>
     <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px">
-      <button class="btn-sun" id="btnDrawerCart" style="width:100%;justify-content:center">
-        Troli Tempahan (<span class="cart-total-badge">0</span>)
+      <button class="btn-sun" id="btnDrawerCart" type="button" style="width:100%;justify-content:center;padding:0 16px">
+        <span data-en="Booking cart">Troli Tempahan</span> (<span class="cart-total-badge">0</span>)
       </button>
-      <a class="btn-line" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussin%20Empire" target="_blank" style="text-align:center;padding:12px;border-radius:8px">
-        WhatsApp Pasukan Kami
-      </a>
+      <a class="btn-line wa-link" href="#" target="_blank" rel="noopener" style="display:flex;justify-content:center;align-items:center;min-height:46px;border-radius:8px;color:#fff;font-weight:700" data-en="WhatsApp our team">WhatsApp Pasukan Kami</a>
     </div>
   </div>
 </div>
 
-<!-- FIRST SECTION (HERO HEADER AS REQUESTED) -->
+<!-- TOP BAR (shown on the Hotel / Activities / Vehicles pages) -->
+<div class="topbar" id="topbar" hidden>
+  <div class="tb-side">
+    <button class="tb-btn" type="button" data-open-menu aria-label="Menu"><svg width="20" height="12" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
+    <a class="tb-link" href="#utama" data-en="Home">Utama</a>
+    <a class="tb-link" href="#homestay" data-page-link="stays" data-en="Hotels">Hotel</a>
+    <a class="tb-link" href="#aktiviti" data-page-link="activities" data-en="Activities">Aktiviti</a>
+    <a class="tb-link" href="#kereta" data-page-link="vehicles" data-en="Vehicles">Kenderaan</a>
+  </div>
+  <a class="logo" href="#utama" aria-label="Ibrahim Hussin Empire">
+    <div class="logo-mark"><svg width="18" height="18" aria-hidden="true"><use href="#i-logo"/></svg><span class="logo-mark-text">IHE</span></div>
+  </a>
+  <div class="tb-side">
+    <button class="cart-nav-btn" type="button" data-open-cart aria-label="Buka troli tempahan">
+      <svg width="16" height="16" aria-hidden="true"><use href="#i-cart"/></svg>
+      <span data-en="Cart">Troli</span>
+      <span class="badge cart-total-badge">0</span>
+    </button>
+  </div>
+</div>
+
+<!-- =========================================================
+   PAGE 1: HOME
+   ========================================================= -->
+<div class="page" id="page-home" data-page="home">
+
 <header class="hero bg" id="hero">
 <nav class="nav" aria-label="Main">
 <div>
-  <button id="btnOpenMenu" style="font-size:14px;font-weight:700">
-    <svg width="20" height="12" viewBox="0 0 20 12" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M0 2h20M0 10h12"/></svg>
+  <button type="button" data-open-menu style="font-size:14px;font-weight:700">
+    <svg width="20" height="12" aria-hidden="true"><use href="#i-menu"/></svg>
     <span>Menu</span>
   </button>
   <div class="lang-toggle" role="group" aria-label="Language">
@@ -1652,14 +1836,8 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   </div>
 </div>
 
-<a class="logo" href="#" aria-label="Ibrahim Hussin Empire">
-  <div class="logo-mark">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-      <path d="M12 2L2 7l10 5 10-5-10-5z" fill="var(--sun)" stroke="var(--sun)"/>
-      <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff"/>
-    </svg>
-    <span class="logo-mark-text">IHE</span>
-  </div>
+<a class="logo" href="#utama" aria-label="Ibrahim Hussin Empire">
+  <div class="logo-mark"><svg width="20" height="20" aria-hidden="true"><use href="#i-logo"/></svg><span class="logo-mark-text">IHE</span></div>
   <div class="logo-text">
     <span class="logo-name">IBRAHIM HUSSIN</span>
     <span class="logo-sub">EMPIRE &bull; LANGKAWI</span>
@@ -1667,34 +1845,34 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 </a>
 
 <div>
-  <button class="cart-nav-btn" id="btnNavCart" type="button" aria-label="Buka Troli Tempahan">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    <span>Troli</span>
+  <button class="cart-nav-btn" type="button" data-open-cart aria-label="Buka troli tempahan">
+    <svg width="16" height="16" aria-hidden="true"><use href="#i-cart"/></svg>
+    <span data-en="Cart">Troli</span>
     <span class="badge cart-total-badge">0</span>
   </button>
-  <button class="btn-line" id="btnNavBookNow" type="button">Book Now</button>
+  <a class="btn-line" href="#perkhidmatan" data-en="Book Now">Tempah</a>
 </div>
 </nav>
 
 <div class="hero-end">
 <div class="hero-copy">
 <p class="hero-kicker">Langkawi, Kedah</p>
-<h1><i>Island Time,</i><span>Langkawi</span></h1>
+<h1 data-en="&lt;i&gt;Island Time,&lt;/i&gt;&lt;span&gt;Langkawi&lt;/span&gt;"><i>Masa Santai,</i><span>Langkawi</span></h1>
 </div>
 <div class="hero-side">
-<p>Homestays, activity packages and rental cars in Langkawi — arranged by one local team, so all you have to do is arrive.</p>
+<p data-en="Homestays, activity packages and rental cars in Langkawi — arranged by one local team, so all you have to do is arrive.">Homestay, pakej aktiviti dan kereta sewa di Langkawi — diurus oleh satu pasukan tempatan, jadi anda cuma perlu sampai.</p>
 <div class="hero-cta">
-  <button class="btn-sun" id="btnHeroPlan" type="button">Plan your trip <span class="sq"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></span></button>
-  <a class="hero-link" href="#perkhidmatan">Explore our services</a>
+  <a class="btn-sun" href="#perkhidmatan"><span data-en="Plan your trip">Rancang percutian</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+  <a class="hero-link" href="#aktiviti" data-en="See all activity packages">Lihat semua pakej aktiviti</a>
 </div>
 </div>
 </div>
 
 <div class="hero-foot">
-  <span>Homestays</span>
-  <span>Activity Packages</span>
-  <span>Car Rental</span>
-  <a href="#perkhidmatan" aria-label="Scroll to services">Scroll <svg width="12" height="16" viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 1v13M1.5 9.5L6 14l4.5-4.5"/></svg></a>
+  <span data-en="Homestays">Homestay</span>
+  <span data-en="Activity Packages">Pakej Aktiviti</span>
+  <span data-en="Car Rental">Kereta Sewa</span>
+  <a href="#perkhidmatan" aria-label="Scroll">Scroll <svg width="12" height="16" viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 1v13M1.5 9.5L6 14l4.5-4.5"/></svg></a>
 </div>
 </header>
 
@@ -1703,31 +1881,31 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 <div class="wrap">
 <div class="intro-top reveal">
 <div>
-<div class="eyebrow" style="margin-bottom:16px">About us</div>
-<h2 class="display"><i>One Team,</i><span>Your Whole Trip</span></h2>
+<div class="eyebrow" style="margin-bottom:16px" data-en="About us">Tentang kami</div>
+<h2 class="display" data-en="&lt;i&gt;One Team,&lt;/i&gt;&lt;span&gt;Your Whole Trip&lt;/span&gt;"><i>Satu Pasukan,</i><span>Seluruh Percutian</span></h2>
 <div class="intro-copy">
-<p>We are based in Langkawi. From the keys to your homestay to the boat out to the islands and the car waiting at the jetty — everything is arranged in one booking, with one number to call.</p>
-<p>Tell us your dates and we will plan the rest.</p>
+<p data-en="We are based in Langkawi. From the keys to your homestay to the boat out to the islands and the car waiting at the jetty — everything is arranged in one booking, with one number to call.">Kami orang Langkawi. Daripada kunci homestay sehinggalah bot ke pulau dan kereta di jeti — semuanya diatur dalam satu tempahan, dengan satu nombor untuk dihubungi.</p>
+<p data-en="Tell us your dates and we will plan the rest.">Beritahu tarikh anda, kami susun selebihnya.</p>
 </div>
 </div>
-<div class="intro-photo bg" style="background-image:url('images/intro_eagle.jpg')" role="img" aria-label="Dataran Lang Eagle Square in Langkawi"></div>
+<div class="intro-photo bg" style="background-image:url('images/intro_eagle.jpg')" role="img" aria-label="Dataran Lang, Langkawi"></div>
 </div>
 <div class="trio reveal-stagger">
-<a href="#homestay"><span class="num">01</span><span class="serif">Homestay</span><span class="mute">Comfortable homes near the beach and town, for families and groups.</span></a>
-<a href="#aktiviti"><span class="num">02</span><span class="serif">Activity Packages</span><span class="mute">Island hopping, Kilim mangroves, SkyCab and sunset cruises.</span></a>
-<a href="#kereta"><span class="num">03</span><span class="serif">Car Rental</span><span class="mute">Pick up at the jetty or airport. Compacts, sedans and MPVs.</span></a>
+<a href="#homestay"><span class="num">01</span><span class="serif" data-en="Hotels &amp; Homestays">Hotel &amp; Homestay</span><span class="mute" data-en="Four Pantai Cenang stays, close to the beach and Cenang Mall.">Empat penginapan Pantai Cenang, dekat pantai dan Cenang Mall.</span></a>
+<a href="#aktiviti"><span class="num">02</span><span class="serif" data-en="Activity Packages">Pakej Aktiviti</span><span class="mute" data-en="Island hopping, Kilim mangroves, SkyCab, sunset cruises and watersports.">Island hopping, bakau Kilim, SkyCab, sunset cruise dan watersport.</span></a>
+<a href="#kereta"><span class="num">03</span><span class="serif" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</span><span class="mute" data-en="Free delivery to the jetty or airport. Scooters, compacts, sedans, MPVs and vans.">Hantar percuma ke jeti atau airport. Scooter, kompak, sedan, MPV dan van.</span></a>
 </div>
 </div>
 </section>
 
-<!-- HOTEL & HOMESTAY (PANTAI CENANG SPECIALIST) -->
-<section class="home reveal" id="homestay">
+<!-- HOME: HOTEL PREVIEW -->
+<section class="home reveal" id="home-stays">
 <div class="home-head">
   <div>
-    <div class="eyebrow">Penginapan Pilihan Pantai Cenang</div>
-    <h2 class="display">Koleksi <i>Hotel &amp; Homestay</i></h2>
+    <div class="eyebrow" data-en="Pantai Cenang stays">Penginapan Pilihan Pantai Cenang</div>
+    <h2 class="display" data-en="Hotel &amp; Homestay &lt;i&gt;Collection&lt;/i&gt;">Koleksi <i>Hotel &amp; Homestay</i></h2>
   </div>
-  <p class="mute" style="max-width:480px">Pilihan hotel dan resort terbaik di Pantai Cenang, Langkawi. Akses pantas ke pantai berpasir putih, Cenang Mall, restoran dan pemandangan laut memukau.</p>
+  <p class="mute" style="max-width:480px" data-en="Our picks in Pantai Cenang, Langkawi. Quick access to the white-sand beach, Cenang Mall, restaurants and sea views.">Pilihan hotel dan resort di Pantai Cenang, Langkawi. Akses pantas ke pantai berpasir putih, Cenang Mall, restoran dan pemandangan laut.</p>
 </div>
 
 <div class="home-grid">
@@ -1735,419 +1913,237 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 <div class="home-top">
 <div class="chips"><span>Pantai Cenang</span><span>Beachfront</span><span>Family &amp; Couple</span></div>
 <div class="home-note">
-  <p><strong>Lokasi Terbaik di Cenang:</strong> Selangkah ke pantai, restoran makanan laut &amp; kedai bebas cukai.</p>
-  <form class="search" id="hsSearchForm" onsubmit="return false">
+  <p data-en="&lt;strong&gt;Best spot in Cenang:&lt;/strong&gt; steps from the beach, seafood restaurants and duty-free shops."><strong>Lokasi Terbaik di Cenang:</strong> Selangkah ke pantai, restoran makanan laut &amp; kedai bebas cukai.</p>
+  <form class="search" id="hsSearchForm">
     <label for="hs" class="vh">Cari hotel atau homestay</label>
-    <input id="hs" type="search" placeholder="Cari: Langgura, Best Star, Adya, Paretto…">
-    <button type="submit" id="btnHsSearch" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg></button>
+    <input id="hs" type="search" placeholder="Cari: Langgura, Best Star, Adya, Paretto…" data-en-ph="Search: Langgura, Best Star, Adya, Paretto…">
+    <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg></button>
   </form>
 </div>
 </div>
 <div class="home-bottom">
 <div>
   <h2 id="sliderTitle">Best Star <i>Hotel</i><br>Cenang</h2>
-  <p style="color:rgba(255,255,255,.9);font-size:15px;margin-top:6px" id="sliderDesc">Direct Beachfront Resort — Keluar bilik terus jejak pasir putih Pantai Cenang &amp; sunset view spektakular.</p>
+  <p style="color:rgba(255,255,255,.9);font-size:15px;margin-top:6px" id="sliderDesc"></p>
+  <button class="act-btn" type="button" id="sliderDetail" data-detail="hotel:beststar" style="margin-top:14px;padding:0 18px" data-en="Details &amp; booking">Butiran &amp; Tempah</button>
 </div>
-<div class="dots" role="group" aria-label="Pilihan Hotel Cenang">
-  <button type="button" aria-label="Hotel 1: Best Star Hotel Cenang" aria-pressed="true" data-img="images/hotel_cenang_beach.jpg" data-title="Best Star Hotel Cenang" data-desc="Direct Beachfront Resort — Keluar bilik terus jejak pasir putih Pantai Cenang &amp; sunset view spektakular."></button>
-  <button type="button" aria-label="Hotel 2: Langgura Baron Hotel Cenang" aria-pressed="false" data-img="images/hotel_langgura_adya.jpg" data-title="Langgura Baron Hotel Cenang" data-desc="Berhadapan Cenang Mall — Chalet kolam renang &amp; bilik hotel selesa, sangat dekat ke pantai."></button>
-  <button type="button" aria-label="Hotel 3: Adya Hotel Cenang" aria-pressed="false" data-img="images/homestay_villa.jpg" data-title="Adya Hotel Cenang" data-desc="Hotel Moden &amp; Kolam Renang — Penginapan santai di zon utama Pantai Cenang berdekatan restoran."></button>
-  <button type="button" aria-label="Hotel 4: Paretto Seaview Hotel Cenang" aria-pressed="false" data-img="images/homestay_bedroom.jpg" data-title="Paretto Seaview Hotel Cenang" data-desc="Balkoni Pemandangan Laut — Menikmati pemandangan laut lepas dari balkoni bilik peribadi."></button>
-</div>
+<div class="dots" role="group" aria-label="Pilihan hotel Cenang" id="hotelDots"></div>
 </div>
 </div>
 
 <div class="home-side">
-<!-- FEATURED HOTEL 1: BEST STAR -->
 <div class="home-feat bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,.15) 20%,rgba(0,0,0,.85) 100%),url('images/hotel_cenang_beach.jpg')">
-<button class="go" type="button" onclick="quickAdd('Best Star Hotel Cenang', 180, 'hotel', 'images/hotel_cenang_beach.jpg')" aria-label="Tambah Best Star Hotel ke Troli"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 1v12M1 7h12"/></svg></button>
+<button class="go" type="button" data-detail="hotel:beststar" aria-label="Butiran Best Star Hotel"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></button>
 <div class="feat-text">
   <span class="pill sun" style="align-self:flex-start">Beachfront Direct</span>
   <strong>Best Star Hotel Cenang</strong>
   <div class="feat-row">
-    <span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 13s4.5-4 4.5-7.5a4.5 4.5 0 10-9 0C2.5 9 7 13 7 13z"/><circle cx="7" cy="5.5" r="1.5"/></svg> Tepi Pasir Pantai Cenang</span>
-    <span class="feat-price">RM 180 / malam</span>
+    <span><svg width="14" height="14" aria-hidden="true"><use href="#i-pin"/></svg> Tepi Pasir Pantai Cenang</span>
+    <span class="feat-price">RM 180 / <span data-en="night">malam</span></span>
   </div>
-  <button class="act-btn" type="button" onclick="quickAdd('Best Star Hotel Cenang', 180, 'hotel', 'images/hotel_cenang_beach.jpg')" style="margin-top:10px;height:40px;background:var(--sun)">
-    🛒 Tempah Best Star (RM 180)
-  </button>
+  <button class="act-btn" type="button" data-detail="hotel:beststar" style="margin-top:10px;height:40px" data-en="Details &amp; booking">Butiran &amp; Tempah</button>
 </div>
 </div>
 
-<!-- QUICK BOOK FORM -->
-<form class="home-book" id="homeBookForm" onsubmit="return false">
-<div class="home-book-row"><label for="hb1">Tarikh Masuk (Check In)</label><input id="hb1" type="date"></div>
-<div class="home-book-row"><label for="hb2">Tarikh Keluar (Check Out)</label><input id="hb2" type="date"></div>
+<form class="home-book" id="homeBookForm">
+<div class="home-book-row"><label for="hb1" data-en="Check in">Tarikh Masuk (Check In)</label><input id="hb1" type="date"></div>
+<div class="home-book-row"><label for="hb2" data-en="Check out">Tarikh Keluar (Check Out)</label><input id="hb2" type="date"></div>
 <div class="home-book-row">
-  <label for="hb3">Pilih Hotel Cenang</label>
-  <select id="hb3">
-    <option value="Best Star Hotel Cenang|180|images/hotel_cenang_beach.jpg" selected>Best Star Hotel Cenang (RM 180/mlm)</option>
-    <option value="Langgura Baron Hotel Cenang|160|images/hotel_langgura_adya.jpg">Langgura Baron Hotel Cenang (RM 160/mlm)</option>
-    <option value="Adya Hotel Cenang|150|images/homestay_villa.jpg">Adya Hotel Cenang (RM 150/mlm)</option>
-    <option value="Paretto Seaview Hotel Cenang|190|images/homestay_bedroom.jpg">Paretto Seaview Hotel Cenang (RM 190/mlm)</option>
-  </select>
+  <label for="hb3" data-en="Choose a hotel">Pilih Hotel Cenang</label>
+  <select id="hb3"></select>
 </div>
-<button type="button" id="btnBookHs">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-  Tambah Tempahan Hotel ke Troli
+<button type="submit">
+  <svg width="16" height="16" aria-hidden="true"><use href="#i-cart"/></svg>
+  <span data-en="Add hotel booking to cart">Tambah Tempahan Hotel ke Troli</span>
 </button>
 </form>
 
-<!-- TWO COMPACT HOTEL CARDS: LANGGURA BARON & ADYA -->
 <div class="home-two">
 <div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/hotel_langgura_adya.jpg')">
-  <button class="go" type="button" onclick="quickAdd('Langgura Baron Hotel Cenang', 160, 'hotel', 'images/hotel_langgura_adya.jpg')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></button>
-  <div>
-    <strong>Langgura Baron Hotel</strong>
-    <span class="sub">RM 160 / malam &bull; Depan Cenang Mall</span>
-  </div>
+  <button class="go" type="button" data-detail="hotel:langgura" aria-label="Butiran Langgura Baron Hotel"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+  <div><strong>Langgura Baron Hotel</strong><span class="sub">RM 160 / malam &bull; Depan Cenang Mall</span></div>
 </div>
-<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/homestay_villa.jpg')">
-  <button class="go" type="button" onclick="quickAdd('Adya Hotel Cenang', 150, 'hotel', 'images/homestay_villa.jpg')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 1v12M1 7h12"/></svg></button>
-  <div>
-    <strong>Adya Hotel Cenang</strong>
-    <span class="sub">RM 150 / malam &bull; Kolam Renang Moden</span>
-  </div>
+<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/hotel_adya_cenang.jpg')">
+  <button class="go" type="button" data-detail="hotel:adya" aria-label="Butiran Adya Hotel"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+  <div><strong>Adya Hotel Cenang</strong><span class="sub">RM 150 / malam &bull; Kolam Renang Moden</span></div>
 </div>
 </div>
 </div>
 </div>
 
-<!-- 4 DEDICATED CENANG HOTEL CARDS -->
-<div style="margin-top:40px">
-  <h3 style="font-size:clamp(22px, 2.5vw, 30px);font-weight:700">Senarai 4 Hotel Pilihan di Pantai Cenang</h3>
-  <p class="mute sm" style="margin-top:4px">Kadar bilik harian telus. Boleh terus masukkan ke troli tempahan.</p>
-</div>
-
-<div class="hotels-grid reveal-stagger">
-  <!-- 1. Langgura Baron Hotel Cenang -->
-  <article class="hotel-card">
-    <div class="hotel-img" style="background-image:url('images/hotel_langgura_adya.jpg')">
-      <span class="hotel-badge">Depan Cenang Mall</span>
-    </div>
-    <div class="hotel-info">
-      <h3>Langgura Baron Hotel Cenang</h3>
-      <div class="hotel-loc">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Jalan Pantai Chenang, Langkawi
-      </div>
-      <p class="sm mute">Lokasi tersangat strategik berhadapan Cenang Mall dan restoran. Resort mempunyai kolam renang dan akses mudah ke pantai.</p>
-      <div class="hotel-perks">
-        <span>🏊 Kolam Renang</span>
-        <span>🛍️ Sebelah Mall</span>
-        <span>📶 Wifi Percuma</span>
-        <span>❄️ Aircond Penuh</span>
-      </div>
-      <div class="hotel-foot">
-        <div class="hotel-rate">RM 160 <small>/ malam</small></div>
-        <button class="car-action-btn" type="button" onclick="quickAdd('Langgura Baron Hotel Cenang', 160, 'hotel', 'images/hotel_langgura_adya.jpg')" style="height:38px;padding:0 14px">
-          🛒 Tempah Bilik
-        </button>
-      </div>
-    </div>
-  </article>
-
-  <!-- 2. Best Star Hotel Cenang -->
-  <article class="hotel-card">
-    <div class="hotel-img" style="background-image:url('images/hotel_cenang_beach.jpg')">
-      <span class="hotel-badge" style="background:var(--sun);color:#111">Paling Popular Beachfront</span>
-    </div>
-    <div class="hotel-info">
-      <h3>Best Star Hotel Cenang</h3>
-      <div class="hotel-loc">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Pesisir Pasir Pantai Cenang
-      </div>
-      <p class="sm mute">Hotel terus ke pesisir pasir Pantai Cenang. Buka pintu hotel terus nampak laut, kafe pantai dan pemandangan sunset yang sangat cantik.</p>
-      <div class="hotel-perks">
-        <span>🏖️ Terus ke Pasir Pantai</span>
-        <span>🌅 Sunset View</span>
-        <span>☕ Kafe Tepi Laut</span>
-        <span>📶 Wifi Percuma</span>
-      </div>
-      <div class="hotel-foot">
-        <div class="hotel-rate">RM 180 <small>/ malam</small></div>
-        <button class="car-action-btn" type="button" onclick="quickAdd('Best Star Hotel Cenang', 180, 'hotel', 'images/hotel_cenang_beach.jpg')" style="height:38px;padding:0 14px">
-          🛒 Tempah Bilik
-        </button>
-      </div>
-    </div>
-  </article>
-
-  <!-- 3. Adya Hotel Cenang -->
-  <article class="hotel-card">
-    <div class="hotel-img" style="background-image:url('images/homestay_villa.jpg')">
-      <span class="hotel-badge">Moden &amp; Selesa</span>
-    </div>
-    <div class="hotel-info">
-      <h3>Adya Hotel Cenang</h3>
-      <div class="hotel-loc">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Zon Utama Pantai Cenang
-      </div>
-      <p class="sm mute">Penginapan berkonsepkan moden dan santai. Bilik luas, kemudahan kolam renang outdoor, serta berdekatan medan selera tempatan.</p>
-      <div class="hotel-perks">
-        <span>🏊 Kolam Renang</span>
-        <span>🍽️ Dekat Medan Selera</span>
-        <span>🅿️ Parking Mudah</span>
-        <span>❄️ Bilik Berhawa Dingin</span>
-      </div>
-      <div class="hotel-foot">
-        <div class="hotel-rate">RM 150 <small>/ malam</small></div>
-        <button class="car-action-btn" type="button" onclick="quickAdd('Adya Hotel Cenang', 150, 'hotel', 'images/homestay_villa.jpg')" style="height:38px;padding:0 14px">
-          🛒 Tempah Bilik
-        </button>
-      </div>
-    </div>
-  </article>
-
-  <!-- 4. Paretto Seaview Hotel Cenang -->
-  <article class="hotel-card">
-    <div class="hotel-img" style="background-image:url('images/homestay_bedroom.jpg')">
-      <span class="hotel-badge">Balkoni Laut Lepas</span>
-    </div>
-    <div class="hotel-info">
-      <h3>Paretto Seaview Hotel Cenang</h3>
-      <div class="hotel-loc">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Pantai Cenang (Sea View Wing)
-      </div>
-      <p class="sm mute">Bilik dilengkapi balkoni peribadi dengan pemandangan laut membiru. Hanya 1 minit berjalan kaki ke pantai dan tarikan Cenang night walk.</p>
-      <div class="hotel-perks">
-        <span>🌊 Pemandangan Laut</span>
-        <span>🚪 Balkoni Peribadi</span>
-        <span>🚶 1 Minit ke Pantai</span>
-        <span>📶 High-Speed Wifi</span>
-      </div>
-      <div class="hotel-foot">
-        <div class="hotel-rate">RM 190 <small>/ malam</small></div>
-        <button class="car-action-btn" type="button" onclick="quickAdd('Paretto Seaview Hotel Cenang', 190, 'hotel', 'images/homestay_bedroom.jpg')" style="height:38px;padding:0 14px">
-          🛒 Tempah Bilik
-        </button>
-      </div>
-    </div>
-  </article>
+<div class="more-row">
+  <a class="btn-sun" href="#homestay"><span data-en="View all hotels">Lihat semua hotel</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
 </div>
 </section>
 
-<!-- AKTIVITI -->
-<section class="acts-sec" id="aktiviti">
+<!-- HOME: ACTIVITY BEST SELLERS -->
+<section class="acts-sec" id="home-acts">
 <div class="wrap">
 <div class="head reveal" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:20px">
-<div><div class="eyebrow" style="margin-bottom:14px">Activity packages</div><h2 class="display"><i>Sea, Mangrove</i><span>and Sky</span></h2></div>
-<div style="color:#C9C9C4;max-width:440px"><p>Empat aktiviti wajib Langkawi. Masukkan ke troli sekarang untuk bayar online terus di laman web.</p></div>
+<div><div class="eyebrow" style="margin-bottom:14px" data-en="Best-selling activities">Pakej aktiviti paling laris</div><h2 class="display" data-en="&lt;i&gt;Sea, Mangrove&lt;/i&gt;&lt;span&gt;and Sky&lt;/span&gt;"><i>Laut, Bakau</i><span>dan Langit</span></h2></div>
+<div style="color:#C9C9C4;max-width:440px"><p data-en="Four Langkawi must-dos. Open any package to see prices, what is included and add it to your booking cart.">Empat aktiviti wajib Langkawi. Buka mana-mana pakej untuk lihat harga, apa yang termasuk dan masukkan ke troli tempahan.</p></div>
 </div>
-
-<div class="acts reveal-stagger">
-<article class="act" style="background-image:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.82) 100%),url('images/act_island_hopping.jpg');background-color:#2F6B5E">
-<span class="pill sun">Separuh Hari &bull; 9.00 AM</span>
-<div class="act-body">
-  <h3>Island Hopping</h3>
-  <p>Tasik Dayang Bunting, eagle feeding di Pulau Singa Besar &amp; berenang di Pulau Beras Basah.</p>
-  <div class="row-end light">
-    <span class="act-price-badge">RM 35 <small>/ pax</small></span>
-    <button class="circ" type="button" onclick="quickAdd('Pakej Island Hopping', 35, 'aktiviti', 'images/act_island_hopping.jpg')" title="Tambah ke Troli">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
-  </div>
-  <button class="act-btn" type="button" onclick="quickAdd('Pakej Island Hopping', 35, 'aktiviti', 'images/act_island_hopping.jpg')">
-    🛒 Tambah ke Troli (RM 35)
-  </button>
-</div>
-</article>
-
-<article class="act" style="background-image:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.82) 100%),url('images/act_mangrove.jpg');background-color:#3C6A72">
-<span class="pill">UNESCO Geopark</span>
-<div class="act-body">
-  <h3>Kilim Mangrove Tour</h3>
-  <p>Menyusuri paya bakau Kilim, Gua Kelawar, sangkar ikan terapung &amp; tebing batu kapur purba.</p>
-  <div class="row-end light">
-    <span class="act-price-badge">RM 90 <small>/ pax</small></span>
-    <button class="circ" type="button" onclick="quickAdd('Kilim Mangrove Tour', 90, 'aktiviti', 'images/act_mangrove.jpg')" title="Tambah ke Troli">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
-  </div>
-  <button class="act-btn" type="button" onclick="quickAdd('Kilim Mangrove Tour', 90, 'aktiviti', 'images/act_mangrove.jpg')">
-    🛒 Tambah ke Troli (RM 90)
-  </button>
-</div>
-</article>
-
-<article class="act" style="background-image:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.82) 100%),url('images/act_skycab.jpg');background-color:#44705A">
-<span class="pill">Puncak Machincang</span>
-<div class="act-body">
-  <h3>SkyCab &amp; SkyBridge</h3>
-  <p>Kereta kabel gondola tercup paling curam dan merentasi jambatan gantung melengkung ikonik.</p>
-  <div class="row-end light">
-    <span class="act-price-badge">RM 55 <small>/ pax</small></span>
-    <button class="circ" type="button" onclick="quickAdd('Langkawi SkyCab & SkyBridge', 55, 'aktiviti', 'images/act_skycab.jpg')" title="Tambah ke Troli">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
-  </div>
-  <button class="act-btn" type="button" onclick="quickAdd('Langkawi SkyCab & SkyBridge', 55, 'aktiviti', 'images/act_skycab.jpg')">
-    🛒 Tambah ke Troli (RM 55)
-  </button>
-</div>
-</article>
-
-<article class="act" style="background-image:linear-gradient(180deg,rgba(0,0,0,.05) 30%,rgba(0,0,0,.82) 100%),url('images/act_sunset_cruise.jpg');background-color:#8A5A3A">
-<span class="pill sun">Sunset BBQ Dinner</span>
-<div class="act-body">
-  <h3>Sunset Cruise</h3>
-  <p>Belayar katamaran mewah ketika matahari terbenam, jamuan BBQ buffet &amp; jacuzzi jaring laut.</p>
-  <div class="row-end light">
-    <span class="act-price-badge">RM 180 <small>/ pax</small></span>
-    <button class="circ" type="button" onclick="quickAdd('Sunset Dinner Cruise', 180, 'aktiviti', 'images/act_sunset_cruise.jpg')" title="Tambah ke Troli">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-    </button>
-  </div>
-  <button class="act-btn" type="button" onclick="quickAdd('Sunset Dinner Cruise', 180, 'aktiviti', 'images/act_sunset_cruise.jpg')">
-    🛒 Tambah ke Troli (RM 180)
-  </button>
-</div>
-</article>
+<div class="acts" id="homeActs"></div>
+<div class="more-row">
+  <span class="count" id="homeActsCount"></span>
+  <a class="btn-sun" href="#aktiviti"><span data-en="View all packages">Lihat semua pakej</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
 </div>
 </div>
 </section>
 
-<!-- KERETA & SCOOTER SEWA (IBRAHIM HUSSIN EMPIRE) -->
-<section class="rent reveal" id="kereta">
+<!-- HOME: VEHICLE BEST SELLERS -->
+<section class="rent reveal" id="home-cars">
 <div class="rent-hero bg">
 <div>
   <span class="pill sun" style="align-self:flex-start;margin-bottom:8px">Ibrahim Hussin Empire Fleet</span>
-  <h2>Sewa Kereta &amp; Scooter Langkawi</h2>
-  <p>Penghantaran percuma ke Jeti Kuah atau Airport Langkawi. Kondisi kenderaan sejuk, bersih, wangi dan servis terjaga rapi.</p>
+  <h2 data-en="Car &amp; Scooter Rental in Langkawi">Sewa Kereta &amp; Scooter Langkawi</h2>
+  <p data-en="Free delivery to Kuah Jetty or Langkawi Airport. Clean, cool, well-serviced vehicles.">Penghantaran percuma ke Jeti Kuah atau Airport Langkawi. Kenderaan sejuk, bersih, wangi dan servis terjaga rapi.</p>
 </div>
-<a class="btn-sun" href="#koleksi" style="align-self:flex-start">Pilih Kenderaan &amp; Lihat Kadar <span class="sq"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6"/></svg></span></a>
+<a class="btn-sun" href="#kereta" style="align-self:flex-start"><span data-en="See all vehicles &amp; rates">Lihat semua kenderaan &amp; kadar</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+</div>
+<div class="rent-in">
+<div class="coll-head" style="margin-top:clamp(36px,5vw,56px)">
+  <div>
+    <h2 data-en="Most-rented vehicles">Kenderaan paling laris</h2>
+    <p class="mute sm" style="margin-top:2px" data-en="Weekday rates per day. Public holiday and peak rates are on the full page.">Kadar hari biasa sehari. Kadar cuti umum dan musim puncak ada di halaman penuh.</p>
+  </div>
+</div>
+<div class="cars" id="homeCars"></div>
+<div class="more-row">
+  <span class="count" id="homeCarsCount"></span>
+  <a class="btn-sun" href="#kereta"><span data-en="View all vehicles">Lihat semua kenderaan</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+</div>
+</div>
+</section>
+
+</div><!-- /page-home -->
+
+<!-- =========================================================
+   PAGE 2: HOTELS & HOMESTAYS
+   ========================================================= -->
+<div class="page" id="page-stays" data-page="stays" hidden>
+<div class="page-head wrap">
+  <div class="crumb"><a href="#utama" data-en="Home">Utama</a><span>/</span><span data-en="Hotels &amp; Homestays">Hotel &amp; Homestay</span></div>
+  <h1 class="display" data-en="Pantai Cenang &lt;i&gt;Hotels &amp; Homestays&lt;/i&gt;">Hotel &amp; Homestay <i>Pantai Cenang</i></h1>
+  <p class="lede" data-en="Clear nightly room rates. Open a hotel for the details, pick your number of nights and add it to your booking cart.">Kadar bilik semalam yang jelas. Buka hotel untuk butiran, pilih bilangan malam dan masukkan ke troli tempahan.</p>
+</div>
+<section class="home" style="margin-top:28px">
+  <div class="home-head" style="margin-bottom:0">
+    <h2 style="font-size:clamp(22px,2.5vw,30px);font-weight:700" id="hotelsHeading"></h2>
+    <button class="btn-ghost" type="button" id="btnClearHotelSearch" hidden data-en="Show all hotels">Papar semua hotel</button>
+  </div>
+  <div class="hotels-grid" id="hotelsGrid"></div>
+</section>
 </div>
 
+<!-- =========================================================
+   PAGE 3: ACTIVITY PACKAGES
+   ========================================================= -->
+<div class="page" id="page-activities" data-page="activities" hidden>
+<section class="acts-sec acts-page">
+<div class="wrap">
+  <div class="crumb"><a href="#utama" data-en="Home">Utama</a><span>/</span><span data-en="Activity Packages">Pakej Aktiviti</span></div>
+  <h1 class="display" data-en="All &lt;i&gt;Activity Packages&lt;/i&gt;">Semua <i>Pakej Aktiviti</i></h1>
+  <p style="color:#C9C9C4;max-width:620px;margin-top:14px" data-en="Island hopping, Kilim mangrove tours, SkyCab tickets, sunset cruises and watersports. Tap a package for the full price list and trip highlights.">Island hopping, mangrove tour Kilim, tiket SkyCab, sunset cruise dan watersport. Tekan pakej untuk senarai harga penuh dan trip highlight.</p>
+  <div class="car-filter-row" id="actFilters" role="group" aria-label="Kategori aktiviti"></div>
+  <div class="acts" id="allActs"></div>
+</div>
+</section>
+</div>
+
+<!-- =========================================================
+   PAGE 4: VEHICLE RENTAL
+   ========================================================= -->
+<div class="page" id="page-vehicles" data-page="vehicles" hidden>
+<div class="page-head wrap">
+  <div class="crumb"><a href="#utama" data-en="Home">Utama</a><span>/</span><span data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</span></div>
+  <h1 class="display" data-en="Car &amp; Scooter &lt;i&gt;Rental&lt;/i&gt;">Kereta &amp; Scooter <i>Sewa</i></h1>
+  <p class="lede" data-en="Every model with its daily rate for weekdays, public holidays and peak events. Free delivery to Kuah Jetty and Langkawi Airport; other locations RM20.">Semua model dengan kadar harian hari biasa, cuti umum dan musim puncak. Hantar percuma ke Jeti Kuah dan Airport Langkawi; lokasi lain caj RM20.</p>
+</div>
+<section class="rent" style="padding-top:clamp(20px,3vw,36px)">
 <div class="rent-in">
-<h2 class="perks-title">Pilihan 17 Model Kenderaan — Kadar Harian Jelas &amp; Telus</h2>
 
 <div class="perks reveal-stagger">
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Kenderaan Terjaga &amp; Wangi</h3><p>Servis berjadual, tayar baik dan dibersihkan rapi sebelum setiap penyerahan.</p></div>
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><h3>Online Booking &amp; Pay</h3><p>Pilih kenderaan, bayar selamat di website atau sahkan resit pantas di WhatsApp.</p></div>
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg><h3>Harga Rasmi Mengikut Musim</h3><p>Kadar harian telus mengikut Hari Biasa, Cuti Umum &amp; Event 5 Langkawi.</p></div>
-<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><h3>Serahan Percuma</h3><p>Jeti Kuah, Airport Langkawi atau terus di depan hotel / homestay Cenang anda.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3 data-en="Well-kept vehicles">Kenderaan Terjaga &amp; Wangi</h3><p data-en="Serviced on schedule and cleaned before every handover.">Servis berjadual, tayar baik dan dibersihkan rapi sebelum setiap penyerahan.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><h3 data-en="Book online">Tempah Online</h3><p data-en="Pick a vehicle, send the booking and we confirm it with you on WhatsApp.">Pilih kenderaan, hantar tempahan dan kami sahkan dengan anda di WhatsApp.</p></div>
+<div class="perk-card"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><line x1="12" y1="6" x2="12" y2="18"/></svg><h3 data-en="Rates by season">Harga Mengikut Musim</h3><p data-en="Clear daily rates for weekdays, public holidays and Langkawi peak events.">Kadar harian telus mengikut Hari Biasa, Cuti Umum &amp; Event 5 Langkawi.</p></div>
+<div class="perk-card"><svg width="34" height="34" aria-hidden="true" style="fill:none"><use href="#i-pin"/></svg><h3 data-en="Free delivery">Serahan Percuma</h3><p data-en="Kuah Jetty and Langkawi Airport. Other locations RM20.">Jeti Kuah dan Airport Langkawi. Lokasi lain caj RM20.</p></div>
 </div>
 
-<!-- SEASON SELECTOR (DYNAMIC RATE TOGGLE) -->
 <div class="season-selector-card" id="seasonCard">
   <div class="season-head">
     <div>
-      <span class="eyebrow" style="color:var(--sun)">PILIHAN KADAR HARGA SEWAAN</span>
-      <h3 style="font-size:20px;font-weight:800;color:#fff;margin-top:4px">Pilih Musim Sewaan Anda:</h3>
+      <span class="eyebrow" style="color:var(--sun)" data-en="Rental rate">Pilihan kadar harga sewaan</span>
+      <h3 style="font-size:20px;font-weight:800;color:#fff;margin-top:4px" data-en="Choose your rental season:">Pilih musim sewaan anda:</h3>
     </div>
-    <div class="season-pills" role="tablist">
-      <button class="season-btn active" data-season="normal" type="button" role="tab" id="btnSeasonNormal">
-        <span class="dot green"></span> Hari Biasa (Normal)
-      </button>
-      <button class="season-btn" data-season="public" type="button" role="tab" id="btnSeasonPublic">
-        <span class="dot yellow"></span> Cuti Umum (Public)
-      </button>
-      <button class="season-btn" data-season="event" type="button" role="tab" id="btnSeasonEvent">
-        <span class="dot red"></span> Event 5 Langkawi / Peak
-      </button>
+    <div class="season-pills" role="group" aria-label="Musim">
+      <button class="season-btn active" data-season="normal" type="button"><span class="dot green"></span> <span data-en="Weekday (Normal)">Hari Biasa (Normal)</span></button>
+      <button class="season-btn" data-season="public" type="button"><span class="dot yellow"></span> <span data-en="Public holiday">Cuti Umum (Public)</span></button>
+      <button class="season-btn" data-season="event" type="button"><span class="dot red"></span> <span data-en="Langkawi events / Peak">Event 5 Langkawi / Peak</span></button>
     </div>
   </div>
-  <p class="season-note" id="seasonNote">
-    💡 <strong>Kadar Semasa:</strong> <span id="seasonBadgeText" style="color:var(--sun);font-weight:700">Hari Biasa (Normal Rate)</span> &bull; Scooter dari RM35/hari &bull; Kereta Axia dari RM60/hari &bull; MPV/Van dari RM120/hari &bull; SUV/VIP dari RM250/hari.
-  </p>
+  <p class="season-note"><strong data-en="Current rate:">Kadar semasa:</strong> <span id="seasonBadgeText" style="color:var(--sun);font-weight:700"></span> &bull; <span id="seasonFromText"></span></p>
 </div>
 
-<div class="coll-head" id="koleksi">
+<div class="coll-head" id="koleksi" style="margin-top:clamp(36px,5vw,56px)">
   <div>
-    <h2>Armada Kenderaan Sewa Kami</h2>
-    <p class="mute sm" style="margin-top:2px">Pilih mengikut saiz kumpulan dan bajet percutian anda.</p>
+    <h2 data-en="Our rental fleet">Armada Kenderaan Sewa Kami</h2>
+    <p class="mute sm" style="margin-top:2px" data-en="Choose by group size and budget.">Pilih mengikut saiz kumpulan dan bajet percutian anda.</p>
   </div>
-  <button class="btn-sun" type="button" id="btnShowTableTop" style="height:42px;font-size:13.5px">
-    📋 Bandingkan Semua Harga
-  </button>
+  <button class="btn-sun" type="button" id="btnShowTableTop" style="height:42px;font-size:13.5px;padding:0 18px" data-en="Compare all prices">Bandingkan Semua Harga</button>
 </div>
 
-<!-- CATEGORY FILTER TABS -->
-<div class="car-filter-row" role="tablist">
-  <button class="filter-tab active" data-cat="all" type="button">Semua Model (17)</button>
-  <button class="filter-tab" data-cat="scooter" type="button">🛵 Scooter / Motor (3)</button>
-  <button class="filter-tab" data-cat="kompak" type="button">🚗 Kompak (2)</button>
-  <button class="filter-tab" data-cat="sedan" type="button">🚘 Sedan (4)</button>
-  <button class="filter-tab" data-cat="mpv" type="button">🚐 MPV &amp; Van (5)</button>
-  <button class="filter-tab" data-cat="vip" type="button">👑 SUV, 4x4 &amp; VIP (3)</button>
-</div>
+<div class="car-filter-row" id="vehFilters" role="group" aria-label="Kategori kenderaan"></div>
+<div class="cars" id="carsContainer"></div>
 
-<!-- DYNAMIC VEHICLE CARDS GRID (17 MODELS) -->
-<div class="cars reveal-stagger" id="carsContainer">
-  <!-- Javascript will dynamically populate & update cards based on active season & category filter -->
-</div>
-
-<!-- FULL COMPARATIVE PRICE TABLE (COLLAPSIBLE / INSTANT VIEW) -->
-<div style="text-align:center;margin-top:36px">
-  <button class="btn-sun" id="btnTogglePriceTable" type="button" style="height:48px;font-size:14.5px;margin:0 auto">
-    📋 Buka Jadual Penuh 17 Kenderaan (Normal / Public / Event 5 Lgk)
-  </button>
-</div>
-
-<div class="price-table-wrap" id="priceTableWrap" style="display:none;margin-top:24px">
-  <div style="padding:16px 20px;background:#172B28;color:#fff;display:flex;justify-content:space-between;align-items:center">
+<div class="price-table-wrap" id="priceTableWrap" hidden>
+  <div style="padding:16px 20px;background:#172B28;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px">
     <div>
-      <h3 style="font-size:17px;font-weight:700">Senarai Rasmi Harga CarRental Langkawi — Ibrahim Hussin Empire</h3>
-      <p class="sm" style="color:var(--sun);margin-top:2px">Nota: Event 5 Langkawi merujuk kepada tarikh acara khas seperti LIMA, Ironman &amp; musim puncak.</p>
+      <h3 style="font-size:17px;font-weight:700" data-en="Rental price list — Ibrahim Hussin Empire">Senarai Harga Sewa — Ibrahim Hussin Empire</h3>
+      <p class="sm" style="color:var(--sun);margin-top:2px" data-en="Event 5 Langkawi means special dates such as LIMA, Ironman and peak season.">Event 5 Langkawi merujuk kepada tarikh acara khas seperti LIMA, Ironman &amp; musim puncak.</p>
     </div>
-    <button class="close-btn" id="btnClosePriceTable" style="color:#fff;background:rgba(255,255,255,0.15)">&times;</button>
+    <button class="close-btn" id="btnClosePriceTable" type="button" style="color:#fff;background:rgba(255,255,255,0.15);flex:none" aria-label="Tutup jadual">&times;</button>
   </div>
   <table class="price-table">
-    <thead>
-      <tr>
-        <th>No.</th>
-        <th>Model Kenderaan</th>
-        <th>Kategori</th>
-        <th class="col-norm">Hari Biasa (Normal)</th>
-        <th class="col-pub">Cuti Umum (Public)</th>
-        <th class="col-event">Event 5 Langkawi</th>
-        <th>Tindakan</th>
-      </tr>
-    </thead>
-    <tbody id="priceTableBody">
-      <!-- Populated via script -->
-    </tbody>
+    <thead><tr><th>No.</th><th data-en="Model">Model Kenderaan</th><th data-en="Category">Kategori</th><th data-en="Weekday">Hari Biasa</th><th data-en="Public holiday">Cuti Umum</th><th>Event 5 Langkawi</th><th></th></tr></thead>
+    <tbody id="priceTableBody"></tbody>
   </table>
 </div>
 
 <div class="cats-row reveal" style="margin-top:44px">
-<h2>Pakej Percutian Kombo</h2>
+<h2 data-en="Combo packages">Pakej Percutian Kombo</h2>
 <div class="cats">
-  <button class="cat" type="button" onclick="quickAdd('Pakej Keluarga (Alza + Hotel Cenang)', 540, 'kombo', 'images/car_mpv.jpg')"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family</button>
-  <button class="cat" type="button" onclick="quickAdd('Pakej Rakan (Myvi + Island Hopping)', 115, 'kombo', 'images/act_island_hopping.jpg')"><span class="cat-img" style="background-image:url('images/act_island_hopping.jpg')"></span>Friends</button>
-  <button class="cat" type="button" onclick="quickAdd('Pakej Rombongan (Vellfire + Sunset Cruise)', 730, 'kombo', 'images/car_luxury.jpg')"><span class="cat-img" style="background-image:url('images/car_luxury.jpg')"></span>Groups VIP</button>
-  <button class="cat" type="button" onclick="quickAdd('Pakej Santai Scooter Pantai Cenang', 70, 'kombo', 'images/scooter.jpg')"><span class="cat-img" style="background-image:url('images/scooter.jpg')"></span>Scooter Trip</button>
+  <button class="cat" type="button" data-quick="Pakej Keluarga (Alza + Hotel Cenang)|540|kombo|images/car_mpv.jpg"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family<span class="sm mute">RM 540</span></button>
+  <button class="cat" type="button" data-quick="Pakej Rakan (Myvi + Island Hopping)|115|kombo|images/act_island_hopping.jpg"><span class="cat-img" style="background-image:url('images/act_island_hopping.jpg')"></span>Friends<span class="sm mute">RM 115</span></button>
+  <button class="cat" type="button" data-quick="Pakej Rombongan (Vellfire + Sunset Cruise)|730|kombo|images/car_luxury.jpg"><span class="cat-img" style="background-image:url('images/car_luxury.jpg')"></span>Groups VIP<span class="sm mute">RM 730</span></button>
+  <button class="cat" type="button" data-quick="Pakej Santai Scooter Pantai Cenang|70|kombo|images/scooter.jpg"><span class="cat-img" style="background-image:url('images/scooter.jpg')"></span>Scooter Trip<span class="sm mute">RM 70</span></button>
 </div>
 </div>
 
 <div class="steps reveal">
-<div class="steps-img" role="img" aria-label="Scenic coastal road in Langkawi"></div>
+<div class="steps-img" role="img" aria-label="Jalan tepi pantai di Langkawi"></div>
 <div class="steps-body">
-<h2>Tempah sewaan kenderaan dalam 3 langkah mudah</h2>
-<div class="step"><b>01</b><div><h3>Pilih Kenderaan &amp; Musim</h3><p>Pilih scooter santai, kompak jimat, sedan, MPV rombongan atau SUV 4x4 VIP mengikut musim percutian anda.</p></div></div>
-<div class="step"><b>02</b><div><h3>Tempah &amp; Bayar Terus</h3><p>Masukkan ke troli dan buat bayaran selamat online (FPX, QR, Kad atau Touch 'n Go) tanpa perlu beratur.</p></div></div>
-<div class="step"><b>03</b><div><h3>Pandu Sebaik Tiba</h3><p>Kenderaan dihantar tepat pada masanya di Jeti Kuah, Airport Langkawi atau terus di pintu hotel anda.</p></div></div>
+<h2 data-en="Rent a vehicle in 3 steps">Tempah sewaan kenderaan dalam 3 langkah mudah</h2>
+<div class="step"><b>01</b><div><h3 data-en="Pick a vehicle &amp; season">Pilih Kenderaan &amp; Musim</h3><p data-en="A scooter, a budget compact, a sedan, a group MPV or a 4x4, at the rate for your travel dates.">Pilih scooter santai, kompak jimat, sedan, MPV rombongan atau SUV 4x4 mengikut musim percutian anda.</p></div></div>
+<div class="step"><b>02</b><div><h3 data-en="Send your booking">Hantar Tempahan</h3><p data-en="Add it to the cart, fill in your details and send the booking to our WhatsApp. We confirm availability and payment there.">Masukkan ke troli, isi butiran anda dan hantar tempahan ke WhatsApp kami. Kami sahkan kekosongan dan bayaran di sana.</p></div></div>
+<div class="step"><b>03</b><div><h3 data-en="Drive when you land">Pandu Sebaik Tiba</h3><p data-en="Your vehicle is delivered on time at Kuah Jetty or Langkawi Airport.">Kenderaan dihantar tepat pada masanya di Jeti Kuah atau Airport Langkawi.</p></div></div>
 </div>
 </div>
 </div>
 </section>
+</div>
 
-<!-- CTA -->
+<!-- CTA (all pages) -->
 <section class="cta bg" id="hubungi">
-<div class="reveal">
-  <div class="eyebrow" style="color:#fff;margin-bottom:14px">Contact us</div>
-  <h2><i>See You in</i><span>Langkawi</span></h2>
+<div>
+  <div class="eyebrow" style="color:#fff;margin-bottom:14px" data-en="Contact us">Hubungi kami</div>
+  <h2 data-en="&lt;i&gt;See You in&lt;/i&gt;&lt;span&gt;Langkawi&lt;/span&gt;"><i>Jom ke</i><span>Langkawi</span></h2>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:14px">
-  <button class="btn-sun reveal" id="btnCtaCheckout" type="button" style="height:54px;font-size:16px">
-    🛒 Buka Troli &amp; Bayar Online
-  </button>
-  <a class="btn-sun reveal" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussin%20Empire,%20saya%20nak%20tanya%20pakej%20Langkawi" target="_blank" rel="noopener" style="height:54px;font-size:16px;background:#25D366;color:#fff">
-    WhatsApp Us
-    <span class="sq" style="width:38px;height:38px;background:#fff;color:#25D366"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11L11 3M5 3h6v6"/></svg></span>
+  <button class="btn-sun" type="button" data-open-cart style="height:54px;font-size:16px;padding:0 22px" data-en="Open booking cart">Buka Troli Tempahan</button>
+  <a class="btn-sun wa-link" href="#" target="_blank" rel="noopener" style="height:54px;font-size:16px;background:#25D366;color:#fff">
+    WhatsApp
+    <span class="sq" style="width:38px;height:38px;background:#fff;color:#25D366"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span>
   </a>
 </div>
 </section>
@@ -2157,27 +2153,28 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 <div class="wrap">
 <div class="foot">
 <div>
-  <div class="eyebrow">Navigasi</div>
-  <a href="#hero">Utama</a>
-  <a href="#homestay">Hotel &amp; Homestay Cenang</a>
-  <a href="#aktiviti">Pakej Aktiviti</a>
-  <a href="#kereta">Kereta &amp; Motor Sewa</a>
+  <div class="eyebrow" data-en="Navigation">Navigasi</div>
+  <a href="#utama" data-en="Home">Utama</a>
+  <a href="#homestay" data-en="Cenang Hotels &amp; Homestays">Hotel &amp; Homestay Cenang</a>
+  <a href="#aktiviti" data-en="Activity Packages">Pakej Aktiviti</a>
+  <a href="#kereta" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</a>
 </div>
 <div style="align-items:center;text-align:center">
   <div style="font-size:18px;font-weight:700;letter-spacing:.1em">IBRAHIM HUSSIN EMPIRE</div>
   <div style="font-size:12px;color:var(--sun);letter-spacing:.16em;margin-top:2px">LANGKAWI TRIP SPECIALIST</div>
   <div style="width:100%;max-width:340px;margin-top:20px">
-    <label for="nl" class="sm" style="color:#A9AEA8">Dapatkan promosi &amp; pengesahan sewaan:</label>
-    <form class="news" id="newsletterForm" onsubmit="return false">
-      <input id="nl" type="email" placeholder="Alamat emel anda…" required>
-      <button type="submit" id="btnSubscribe" aria-label="Subscribe"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
+    <label for="nl" class="sm" style="color:#A9AEA8" data-en="Enter your email to unlock the 10% promo code:">Masukkan emel untuk aktifkan kod promo 10%:</label>
+    <form class="news" id="newsletterForm">
+      <input id="nl" type="email" placeholder="Alamat emel anda…" data-en-ph="Your email address…" required>
+      <button type="submit" aria-label="Subscribe"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 8h12M9 3l5 5-5 5"/></svg></button>
     </form>
   </div>
 </div>
 <div style="text-align:right;align-items:flex-end">
-  <div class="eyebrow">Hubungi Kami</div>
+  <div class="eyebrow" data-en="Contact us">Hubungi Kami</div>
   <div><a href="mailto:Ibrahimhussin5971@gmail.com" style="color:var(--sun);font-weight:700">Ibrahimhussin5971@gmail.com</a></div>
-  <div><a href="https://wa.me/601123456789" target="_blank" rel="noopener">+60 11-2345 6789</a></div>
+  <div><a class="wa-link" href="#" target="_blank" rel="noopener">011-1183 1896 (Baim)</a></div>
+  <div><a href="https://wa.me/60124198150" target="_blank" rel="noopener">012-4198 150 (Ina)</a></div>
   <div>Pantai Cenang &amp; Jeti Kuah, Langkawi, Kedah</div>
   <div>MOTAC Registered Agency &bull; Langkawi Car Rental &amp; Stays</div>
 </div>
@@ -2189,891 +2186,898 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 </div>
 </footer>
 
-<!-- FLOATING ACTION BUTTONS -->
+<!-- FLOATING BUTTONS -->
 <div class="floating-actions">
-  <button class="cart-float" id="btnFloatCart" type="button" aria-label="Buka Troli Tempahan">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    <span class="text">Troli Tempahan</span>
+  <button class="cart-float" type="button" data-open-cart aria-label="Buka troli tempahan">
+    <svg width="20" height="20" aria-hidden="true"><use href="#i-cart"/></svg>
+    <span class="text" data-en="Booking cart">Troli Tempahan</span>
     <span class="badge cart-total-badge">0</span>
   </button>
-
-  <a class="wa-float" href="https://wa.me/601123456789?text=Salam%20Ibrahim%20Hussin%20Empire,%20saya%20berminat%20nak%20tanya%20sewa%20kereta%20dan%20hotel" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
+  <a class="wa-float wa-link" href="#" target="_blank" rel="noopener" aria-label="Chat WhatsApp">
     <span class="wa-pulse"></span>
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+    <svg width="22" height="22" aria-hidden="true"><use href="#i-wa"/></svg>
     <span>WhatsApp</span>
   </a>
 </div>
 
-<!-- =========================================================
-   CART DRAWER MODAL
-   ========================================================= -->
+<!-- DETAIL POP-UP (hotels, activity packages, vehicles) -->
+<div class="modal-overlay" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="dtTitle">
+  <div class="pay-card dt-card" id="detailCard"></div>
+</div>
+
+<!-- CART DRAWER -->
 <div class="cart-drawer-overlay" id="cartOverlay">
-  <div class="cart-drawer">
+  <div class="cart-drawer" role="dialog" aria-modal="true" aria-label="Troli tempahan">
     <div class="cart-header">
       <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        Troli Tempahan
+        <svg width="22" height="22" aria-hidden="true"><use href="#i-cart"/></svg>
+        <span data-en="Booking cart">Troli Tempahan</span>
         <span class="badge cart-total-badge" style="background:#111;color:var(--sun);font-size:12px;padding:2px 8px;border-radius:999px">0</span>
       </h3>
-      <button class="close-btn" id="btnCloseCart">&times;</button>
+      <button class="close-btn" id="btnCloseCart" type="button" aria-label="Tutup troli">&times;</button>
     </div>
-
-    <div class="cart-items" id="cartItemsContainer">
-      <!-- Items dynamically populated -->
-    </div>
-
+    <div class="cart-items" id="cartItemsContainer"></div>
     <div class="cart-footer" id="cartFooter">
       <div class="cart-promo">
-        <input type="text" id="promoInput" placeholder="KOD PROMO: LANGKAWI2026">
-        <button type="button" id="btnApplyPromo">Guna</button>
+        <label for="promoInput" class="vh">Kod promo</label>
+        <input type="text" id="promoInput" placeholder="KOD PROMO">
+        <button type="button" id="btnApplyPromo" data-en="Apply">Guna</button>
       </div>
       <div class="cart-totals">
-        <div class="cart-totals-row">
-          <span class="mute">Jumlah Item</span>
-          <span id="cartSubtotal">RM 0</span>
-        </div>
-        <div class="cart-totals-row" id="promoRow" style="display:none;color:#25D366">
-          <span>Diskaun Promosi (10%)</span>
-          <span id="cartDiscount">-RM 0</span>
-        </div>
-        <div class="cart-totals-row">
-          <span class="mute">Cukai Pulau Bebas Cukai</span>
-          <span style="color:#25D366">0% (Percuma)</span>
-        </div>
-        <div class="cart-totals-row final">
-          <span>Jumlah Keseluruhan</span>
-          <span id="cartTotal" style="color:var(--accent-teal)">RM 0</span>
-        </div>
+        <div class="cart-totals-row"><span class="mute" data-en="Subtotal">Jumlah Item</span><span id="cartSubtotal">RM 0</span></div>
+        <div class="cart-totals-row" id="promoRow" hidden style="color:#128C4B"><span data-en="Promo discount (10%)">Diskaun Promosi (10%)</span><span id="cartDiscount">-RM 0</span></div>
+        <div class="cart-totals-row final"><span data-en="Total">Jumlah Keseluruhan</span><span id="cartTotal" style="color:var(--accent-teal)">RM 0</span></div>
       </div>
-      <button class="btn-checkout" id="btnProceedCheckout" type="button">
-        Terus ke Pembayaran 🔒
-      </button>
+      <button class="btn-checkout" id="btnProceedCheckout" type="button" data-en="Continue to booking">Teruskan Tempahan</button>
     </div>
   </div>
 </div>
 
-<!-- =========================================================
-   IN-SITE PAYMENT MODAL (FPX, DUITNOW QR, CARD, EWALLET)
-   ========================================================= -->
-<div class="modal-overlay" id="payModal">
+<!-- BOOKING FORM -->
+<div class="modal-overlay" id="payModal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
   <div class="pay-card">
     <div class="pay-head">
-      <h3>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-        Pembayaran Selamat Laman Web
-      </h3>
-      <button class="close-btn" id="btnClosePay">&times;</button>
+      <h3 id="payTitle" data-en="Your booking details">Butiran Tempahan Anda</h3>
+      <button class="close-btn" id="btnClosePay" type="button" aria-label="Tutup">&times;</button>
     </div>
-
-    <form class="pay-body" id="payForm" onsubmit="return false">
-      <div style="background:#FFFDEB;border:1px solid #EADB92;padding:12px;border-radius:8px;display:flex;justify-content:space-between;align-items:center">
-        <div>
-          <span style="font-size:12px;color:#856404;font-weight:700;display:block">JUMLAH PERLU DIBAYAR</span>
-          <strong style="font-size:22px;color:#111" id="payModalAmount">RM 0</strong>
-        </div>
-        <span style="font-size:12px;background:#111;color:var(--sun);padding:4px 10px;border-radius:999px;font-weight:700">🔒 256-Bit SSL</span>
+    <form class="pay-body" id="payForm" novalidate>
+      <div style="background:#FFFDEB;border:1px solid #EADB92;padding:12px;border-radius:8px">
+        <span style="font-size:12px;color:#6B5200;font-weight:700;display:block" data-en="ESTIMATED TOTAL">ANGGARAN JUMLAH</span>
+        <strong style="font-size:22px;color:#111" id="payModalAmount">RM 0</strong>
       </div>
-
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div class="form-grp">
-          <label for="cName">Nama Penuh *</label>
-          <input type="text" id="cName" placeholder="Cth: Ahmad Daniel" required>
-        </div>
-        <div class="form-grp">
-          <label for="cPhone">No. WhatsApp / Tel *</label>
-          <input type="tel" id="cPhone" placeholder="Cth: 012-3456789" required>
-        </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+        <div class="form-grp"><label for="cName" data-en="Full name *">Nama Penuh *</label><input type="text" id="cName" autocomplete="name" placeholder="Cth: Ahmad Daniel"></div>
+        <div class="form-grp"><label for="cPhone" data-en="WhatsApp / phone no. *">No. WhatsApp / Tel *</label><input type="tel" id="cPhone" autocomplete="tel" placeholder="Cth: 012-3456789"></div>
       </div>
-
+      <div class="form-grp"><label for="cEmail" data-en="Email (optional)">Alamat Emel (jika ada)</label><input type="email" id="cEmail" autocomplete="email" placeholder="Cth: daniel@gmail.com"></div>
+      <div class="form-grp"><label for="cDates" data-en="Trip dates / notes *">Tarikh Percutian / Catatan *</label><input type="text" id="cDates" placeholder="Cth: 15–18 Okt 2026, ambil kereta di Jeti"></div>
       <div class="form-grp">
-        <label for="cEmail">Alamat Emel (Resit) *</label>
-        <input type="email" id="cEmail" placeholder="Cth: daniel@gmail.com" required>
-      </div>
-
-      <div class="form-grp">
-        <label for="cDates">Tarikh Percutian / Catatan Tambahan</label>
-        <input type="text" id="cDates" placeholder="Cth: 15 Okt - 18 Okt 2026, ambil kereta di Jeti">
-      </div>
-
-      <!-- Payment Method Selection -->
-      <div class="form-grp">
-        <label>Pilih Kaedah Bayaran</label>
-        <div class="pay-methods">
-          <div class="pay-method-opt selected" data-method="fpx">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg>
-            <span>FPX Online</span>
-          </div>
-          <div class="pay-method-opt" data-method="qr">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            <span>DuitNow QR</span>
-          </div>
-          <div class="pay-method-opt" data-method="card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            <span>Kad Debit/Kredit</span>
-          </div>
-          <div class="pay-method-opt" data-method="ewallet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>
-            <span>Touch 'n Go</span>
-          </div>
+        <label id="payMethodLabel" data-en="How would you like to pay?">Cara bayaran pilihan anda</label>
+        <div class="pay-methods" role="group" aria-labelledby="payMethodLabel">
+          <button type="button" class="pay-method-opt selected" data-method="Pindahan bank / FPX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg><span data-en="Bank transfer">Pindahan Bank</span></button>
+          <button type="button" class="pay-method-opt" data-method="DuitNow QR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>DuitNow QR</span></button>
+          <button type="button" class="pay-method-opt" data-method="Touch 'n Go eWallet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg><span>Touch 'n Go</span></button>
+          <button type="button" class="pay-method-opt" data-method="Tunai semasa serahan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="5" width="22" height="14" rx="2"/><path d="M6 9v6M18 9v6"/><circle cx="12" cy="12" r="2.5"/></svg><span data-en="Cash">Tunai</span></button>
         </div>
       </div>
-
-      <!-- FPX Option Content -->
-      <div class="pay-fpx-box pay-box-active" id="boxFpx">
-        <label style="font-size:12px;font-weight:700;display:block;margin-bottom:6px">Pilih Bank Anda (FPX B2C)</label>
-        <select id="fpxBank" style="height:42px;width:100%;border-radius:6px;border:1px solid #CCC;padding:0 10px;background:#fff">
-          <option>Maybank2u (Malayan Banking Berhad)</option>
-          <option>CIMB Clicks (CIMB Bank)</option>
-          <option>Bank Islam</option>
-          <option>RHB Now (RHB Bank)</option>
-          <option>Public Bank / PBe</option>
-          <option>Hong Leong Connect</option>
-          <option>AmBank Online</option>
-          <option>Bank Muamalat</option>
-          <option>BSN (Bank Simpanan Nasional)</option>
-        </select>
-        <p class="sm mute" style="margin-top:8px">Anda akan dialihkan ke sistem perbankan internet rasmi bank untuk pengesahan TAC/Secure2u.</p>
-      </div>
-
-      <!-- DuitNow QR Option Content -->
-      <div class="pay-qr-box" id="boxQr">
-        <p style="text-align:center;font-size:13px;font-weight:600">Imbas Kod DuitNow QR menggunakan mana-mana App Bank atau eWallet anda:</p>
-        <div class="qr-code-img">
-          <!-- Stylized Mock QR SVG -->
-          <svg viewBox="0 0 100 100" fill="#111">
-            <rect x="0" y="0" width="30" height="30" rx="4"/>
-            <rect x="6" y="6" width="18" height="18" fill="#fff" rx="2"/>
-            <rect x="10" y="10" width="10" height="10" rx="1"/>
-            
-            <rect x="70" y="0" width="30" height="30" rx="4"/>
-            <rect x="76" y="6" width="18" height="18" fill="#fff" rx="2"/>
-            <rect x="80" y="10" width="10" height="10" rx="1"/>
-
-            <rect x="0" y="70" width="30" height="30" rx="4"/>
-            <rect x="6" y="76" width="18" height="18" fill="#fff" rx="2"/>
-            <rect x="10" y="80" width="10" height="10" rx="1"/>
-
-            <rect x="40" y="10" width="10" height="20"/>
-            <rect x="40" y="40" width="20" height="20"/>
-            <rect x="70" y="40" width="10" height="20"/>
-            <rect x="10" y="40" width="20" height="10"/>
-            <rect x="40" y="70" width="20" height="10"/>
-            <rect x="70" y="70" width="20" height="20"/>
-          </svg>
-          <span style="font-size:10px;font-weight:800;color:#ED1C24;letter-spacing:1px;margin-top:4px">DuitNow QR</span>
-        </div>
-        <p style="text-align:center;font-size:12px;color:var(--mute)">Penerima: <strong>IBRAHIM HUSSAIN EMPIRE SDN BHD</strong></p>
-      </div>
-
-      <!-- Card Option Content -->
-      <div class="pay-card-box" id="boxCard">
-        <div class="form-grp">
-          <label>Nombor Kad (Visa / Mastercard)</label>
-          <input type="text" id="cardNum" placeholder="4111 2222 3333 4444" maxlength="19">
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
-          <div class="form-grp">
-            <label>Tarikh Luput (MM/YY)</label>
-            <input type="text" id="cardExp" placeholder="12/28" maxlength="5">
-          </div>
-          <div class="form-grp">
-            <label>CVV (3 Digit)</label>
-            <input type="password" id="cardCvv" placeholder="•••" maxlength="4">
-          </div>
-        </div>
-      </div>
-
-      <!-- Touch 'n Go Box -->
-      <div class="pay-fpx-box" id="boxEwallet">
-        <p style="font-size:14px;color:#111;text-align:center">Pembayaran pantas melalui <strong>Touch 'n Go eWallet</strong> atau <strong>GrabPay</strong>. Klik butang bayar untuk sambungan segera.</p>
-      </div>
-
-      <button class="btn-submit-pay" id="btnConfirmPay" type="button">
-        Sahkan &amp; Bayar Sekarang 🔒
-      </button>
+      <div class="pay-info" data-en="No payment is taken on this website. After you send the booking, our team confirms availability and sends payment details on WhatsApp.">Tiada bayaran dibuat di laman web ini. Selepas tempahan dihantar, pasukan kami sahkan kekosongan dan hantar butiran bayaran melalui WhatsApp.</div>
+      <div class="pay-err" id="payErr" role="alert"></div>
+      <button class="btn-submit-pay" id="btnConfirmPay" type="submit" data-en="Confirm booking">Sahkan Tempahan</button>
     </form>
   </div>
 </div>
 
-<!-- =========================================================
-   PAYMENT SUCCESSFUL / OFFICIAL RECEIPT MODAL
-   ========================================================= -->
-<div class="modal-overlay" id="receiptModal">
+<!-- BOOKING SUMMARY -->
+<div class="modal-overlay" id="receiptModal" role="dialog" aria-modal="true" aria-labelledby="recTitle">
   <div class="pay-card">
     <div class="pay-head" style="background:#EBF9F1">
-      <h3 style="color:#1C8C4E">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        Tempahan Berjaya Disahkan!
-      </h3>
-      <button class="close-btn" id="btnCloseReceipt">&times;</button>
+      <h3 style="color:#1C6B3F" id="recTitle" data-en="One more step: send it to us">Satu langkah lagi: hantar kepada kami</h3>
+      <button class="close-btn" id="btnCloseReceipt" type="button" aria-label="Tutup">&times;</button>
     </div>
-
     <div class="pay-body">
-      <div class="success-box">
-        <div class="success-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-        </div>
-        <div>
-          <h4 style="font-size:20px;font-weight:800">Terima Kasih, <span id="recName">Pelanggan</span>!</h4>
-          <p class="sm mute">Pembayaran anda telah disahkan dan disimpan dalam sistem Ibrahim Hussain Empire.</p>
-        </div>
+      <div>
+        <h4 style="font-size:20px;font-weight:800;margin:0"><span data-en="Thank you,">Terima kasih,</span> <span id="recName"></span>!</h4>
+        <p class="sm mute" style="margin-top:4px" data-en="Your booking summary is ready. Tap the green button to send it to our admin on WhatsApp. The booking is confirmed once we reply.">Ringkasan tempahan anda sudah siap. Tekan butang hijau untuk hantar kepada admin di WhatsApp. Tempahan sah selepas kami membalas.</p>
       </div>
-
       <div style="background:#F7F7F4;border:1px solid #E4E1D8;border-radius:8px;padding:16px">
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <span class="sm mute">No. Rujukan Tempahan:</span>
-          <strong id="recRef" style="color:#111">IHE-2026-9812</strong>
-        </div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <span class="sm mute">Kaedah Bayaran:</span>
-          <span id="recMethod" style="font-weight:700">FPX Online Banking</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px">
-          <span class="sm mute">Status:</span>
-          <span style="color:#25D366;font-weight:800">LULUS / PAID</span>
-        </div>
-
+        <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute" data-en="Booking reference:">No. Rujukan Tempahan:</span><strong id="recRef" style="color:#111"></strong></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute" data-en="Preferred payment:">Cara bayaran pilihan:</span><span id="recMethod" style="font-weight:700;text-align:right"></span></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Status:</span><span style="color:#8A5A00;font-weight:800;text-align:right" data-en="Awaiting confirmation · not paid yet">Menunggu pengesahan · belum dibayar</span></div>
         <table class="receipt-table">
-          <thead>
-            <tr style="border-bottom:1.5px solid #CCC">
-              <th style="padding:6px">Item</th>
-              <th style="padding:6px;text-align:center">Kuantiti</th>
-              <th style="padding:6px;text-align:right">Harga (RM)</th>
-            </tr>
-          </thead>
-          <tbody id="recTableBody">
-            <!-- Dynamically populated items -->
-          </tbody>
+          <thead><tr style="border-bottom:1.5px solid #CCC"><th style="padding:6px">Item</th><th style="padding:6px;text-align:center" data-en="Qty">Kuantiti</th><th style="padding:6px;text-align:right" data-en="Price (RM)">Harga (RM)</th></tr></thead>
+          <tbody id="recTableBody"></tbody>
         </table>
       </div>
-
       <div style="display:flex;flex-direction:column;gap:10px">
-        <a class="btn-submit-pay" id="btnRecWa" href="#" target="_blank" style="background:#25D366;color:#fff;text-decoration:none">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-          Hantar Baucar ke WhatsApp Admin
+        <a class="btn-submit-pay" id="btnRecWa" href="#" target="_blank" rel="noopener" style="background:#128C4B;color:#fff;text-decoration:none">
+          <svg width="20" height="20" aria-hidden="true"><use href="#i-wa"/></svg>
+          <span data-en="Send booking on WhatsApp">Hantar Tempahan ke WhatsApp</span>
         </a>
-        <button class="btn-line" type="button" onclick="window.print()" style="color:#111;border-color:#111;text-align:center;padding:12px;border-radius:8px">
-          🖨️ Cetak / Simpan Resit PDF
-        </button>
+        <button class="btn-ghost" type="button" id="btnPrint" style="height:46px" data-en="Print / save summary">Cetak / Simpan Ringkasan</button>
       </div>
     </div>
   </div>
 </div>
 
-<!-- TOAST MESSAGE -->
-<div class="toast-msg" id="toastMsg">
-  <span>Item berjaya ditambah ke troli!</span>
-</div>
+<!-- TOAST -->
+<div class="toast-msg" id="toastMsg" role="status" aria-live="polite"><span></span></div>
 
 <script>
 (function(){
-  // =========================================================
-  // 1. SHOPPING CART LOGIC & PERSISTENCE
-  // =========================================================
-  var cart = JSON.parse(localStorage.getItem('ihe_cart') || '[]');
-  var discountPercent = 0;
-
-  function saveCart(){
-    localStorage.setItem('ihe_cart', JSON.stringify(cart));
-    updateCartUI();
-  }
-
-  function showToast(text){
-    var t = document.getElementById('toastMsg');
-    t.querySelector('span').textContent = text;
-    t.classList.add('show');
-    setTimeout(function(){ t.classList.remove('show'); }, 3200);
-  }
-
-  window.quickAdd = function(title, price, category, img){
-    var found = cart.find(function(item){ return item.title === title; });
-    if(found){
-      found.qty += 1;
-    } else {
-      cart.push({
-        id: 'item_' + Date.now() + '_' + Math.random().toString(36).substr(2,4),
-        title: title,
-        price: Number(price),
-        qty: 1,
-        category: category,
-        img: img || 'images/hero.jpg'
-      });
-    }
-    saveCart();
-    showToast('🛒 Ditambah: ' + title);
-    openCart();
-  };
-
-  function updateCartUI(){
-    var totalCount = cart.reduce(function(sum, item){ return sum + item.qty; }, 0);
-    document.querySelectorAll('.cart-total-badge').forEach(function(el){
-      el.textContent = totalCount;
-    });
-
-    var container = document.getElementById('cartItemsContainer');
-    var cartFooter = document.getElementById('cartFooter');
-
-    if(!cart || cart.length === 0){
-      container.innerHTML = '<div class="cart-empty">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>' +
-        '<h4>Troli anda masih kosong</h4>' +
-        '<p class="sm mute">Sila pilih homestay, pakej aktiviti, atau kereta sewa pilihan anda.</p>' +
-        '<button class="btn-sun" onclick="closeCart();document.getElementById(\'perkhidmatan\').scrollIntoView({behavior:\'smooth\'})" style="margin-top:10px">Mula Memilih &rarr;</button>' +
-        '</div>';
-      if(cartFooter) cartFooter.style.display = 'none';
-      return;
-    }
-
-    if(cartFooter) cartFooter.style.display = 'flex';
-
-    var html = '';
-    var subtotal = 0;
-
-    cart.forEach(function(item){
-      var itemTotal = item.price * item.qty;
-      subtotal += itemTotal;
-
-      html += '<div class="cart-item">' +
-        '<div class="cart-item-img" style="background-image:url(\'' + item.img + '\')"></div>' +
-        '<div class="cart-item-info">' +
-          '<div class="item-tag">' + (item.category || 'Pakej') + '</div>' +
-          '<h4>' + item.title + '</h4>' +
-          '<div class="item-price">RM ' + item.price + ' &times; ' + item.qty + ' = <strong>RM ' + itemTotal + '</strong></div>' +
-          '<div class="cart-qty-ctrl">' +
-            '<button class="qty-btn" type="button" onclick="changeQty(\'' + item.id + '\', -1)">&minus;</button>' +
-            '<span class="qty-val">' + item.qty + '</span>' +
-            '<button class="qty-btn" type="button" onclick="changeQty(\'' + item.id + '\', 1)">&#43;</button>' +
-          '</div>' +
-        '</div>' +
-        '<button class="cart-item-del" type="button" onclick="removeItem(\'' + item.id + '\')" title="Padam">&times;</button>' +
-      '</div>';
-    });
-
-    container.innerHTML = html;
-
-    var discountAmount = Math.round(subtotal * discountPercent);
-    var finalTotal = Math.max(0, subtotal - discountAmount);
-
-    document.getElementById('cartSubtotal').textContent = 'RM ' + subtotal;
-    if(discountPercent > 0){
-      document.getElementById('promoRow').style.display = 'flex';
-      document.getElementById('cartDiscount').textContent = '-RM ' + discountAmount;
-    } else {
-      document.getElementById('promoRow').style.display = 'none';
-    }
-    document.getElementById('cartTotal').textContent = 'RM ' + finalTotal;
-  }
-
-  window.changeQty = function(id, delta){
-    var item = cart.find(function(x){ return x.id === id; });
-    if(item){
-      item.qty += delta;
-      if(item.qty <= 0){
-        cart = cart.filter(function(x){ return x.id !== id; });
-      }
-      saveCart();
-    }
-  };
-
-  window.removeItem = function(id){
-    cart = cart.filter(function(x){ return x.id !== id; });
-    saveCart();
-  };
-
-  // Promo Code
-  var btnApplyPromo = document.getElementById('btnApplyPromo');
-  if(btnApplyPromo){
-    btnApplyPromo.addEventListener('click', function(){
-      var code = (document.getElementById('promoInput').value || '').trim().toUpperCase();
-      if(code === 'LANGKAWI2026'){
-        discountPercent = 0.10;
-        showToast('🎉 Diskaun 10% (LANGKAWI2026) berjaya digunakan!');
-        saveCart();
-      } else if(code === ''){
-        showToast('Sila masukkan kod promo.');
-      } else {
-        showToast('Kod tidak sah. Gunakan kod: LANGKAWI2026');
-      }
-    });
-  }
-
-  // Cart Drawer open/close
-  var cartOverlay = document.getElementById('cartOverlay');
-  function openCart(){
-    updateCartUI();
-    cartOverlay.classList.add('open');
-  }
-  function closeCart(){
-    cartOverlay.classList.remove('open');
-  }
-  window.openCart = openCart;
-  window.closeCart = closeCart;
-
-  var btnCloseCart = document.getElementById('btnCloseCart');
-  if(btnCloseCart) btnCloseCart.addEventListener('click', closeCart);
-  if(cartOverlay){
-    cartOverlay.addEventListener('click', function(e){
-      if(e.target === cartOverlay) closeCart();
-    });
-  }
-
-  // Hook all Cart buttons
-  var btnNavCart = document.getElementById('btnNavCart');
-  if(btnNavCart) btnNavCart.addEventListener('click', openCart);
-  var btnFloatCart = document.getElementById('btnFloatCart');
-  if(btnFloatCart) btnFloatCart.addEventListener('click', openCart);
-  var btnDrawerCart = document.getElementById('btnDrawerCart');
-  if(btnDrawerCart) btnDrawerCart.addEventListener('click', function(){ closeMenu(); openCart(); });
-  var btnCtaCheckout = document.getElementById('btnCtaCheckout');
-  if(btnCtaCheckout) btnCtaCheckout.addEventListener('click', openCart);
+  'use strict';
+  var WA = '601111831896'; // Baim, from the posters
+  var PROMO = 'LANGKAWI2026';
+  var lang = 'ms';
+  var $ = function(id){ return document.getElementById(id); };
+  function T(ms, en){ return lang === 'en' ? en : ms; }
+  function tr(x){ return Array.isArray(x) ? x[lang === 'en' ? 1 : 0] : x; }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function waUrl(msg){ return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg); }
+  function icon(id, size){ return '<svg width="' + size + '" height="' + size + '" aria-hidden="true"><use href="#' + id + '"/></svg>'; }
 
   // =========================================================
-  // 2. CHECKOUT & PAYMENT MODAL LOGIC
+  // DATA: HOTELS
   // =========================================================
-  var payModal = document.getElementById('payModal');
-  var btnProceedCheckout = document.getElementById('btnProceedCheckout');
-  var btnClosePay = document.getElementById('btnClosePay');
-
-  function openPaymentModal(){
-    if(!cart || cart.length === 0){
-      showToast('Troli anda masih kosong!');
-      return;
-    }
-    closeCart();
-    var subtotal = cart.reduce(function(s, i){ return s + (i.price * i.qty); }, 0);
-    var finalAmount = Math.max(0, subtotal - Math.round(subtotal * discountPercent));
-    document.getElementById('payModalAmount').textContent = 'RM ' + finalAmount;
-    payModal.classList.add('open');
-  }
-  function closePaymentModal(){
-    payModal.classList.remove('open');
-  }
-  if(btnProceedCheckout) btnProceedCheckout.addEventListener('click', openPaymentModal);
-  if(btnClosePay) btnClosePay.addEventListener('click', closePaymentModal);
-  if(payModal){
-    payModal.addEventListener('click', function(e){
-      if(e.target === payModal) closePaymentModal();
-    });
-  }
-
-  // Payment Method Tabs
-  var methodOpts = document.querySelectorAll('.pay-method-opt');
-  var currentMethod = 'fpx';
-  methodOpts.forEach(function(opt){
-    opt.addEventListener('click', function(){
-      methodOpts.forEach(function(o){ o.classList.remove('selected'); });
-      opt.classList.add('selected');
-      currentMethod = opt.dataset.method;
-
-      document.getElementById('boxFpx').style.display = currentMethod === 'fpx' ? 'block' : 'none';
-      document.getElementById('boxQr').style.display = currentMethod === 'qr' ? 'block' : 'none';
-      document.getElementById('boxCard').style.display = currentMethod === 'card' ? 'block' : 'none';
-      document.getElementById('boxEwallet').style.display = currentMethod === 'ewallet' ? 'block' : 'none';
-    });
-  });
-
-  // Confirm & Process Payment
-  var btnConfirmPay = document.getElementById('btnConfirmPay');
-  var receiptModal = document.getElementById('receiptModal');
-  var btnCloseReceipt = document.getElementById('btnCloseReceipt');
-
-  if(btnConfirmPay){
-    btnConfirmPay.addEventListener('click', function(){
-      var name = (document.getElementById('cName').value || '').trim();
-      var phone = (document.getElementById('cPhone').value || '').trim();
-      var email = (document.getElementById('cEmail').value || '').trim();
-
-      if(!name || !phone || !email){
-        alert('Sila lengkapkan Nama, Nombor Telefon/WhatsApp dan Emel anda.');
-        return;
-      }
-
-      btnConfirmPay.disabled = true;
-      btnConfirmPay.innerHTML = '<span class="sq" style="animation:waPulse 1s infinite">⏳</span> Memproses Pembayaran Selamat...';
-
-      setTimeout(function(){
-        btnConfirmPay.disabled = false;
-        btnConfirmPay.innerHTML = 'Sahkan &amp; Bayar Sekarang 🔒';
-        closePaymentModal();
-
-        // Generate Reference
-        var refNum = 'IHE-' + Date.now().toString().slice(-6);
-        var subtotal = cart.reduce(function(s, i){ return s + (i.price * i.qty); }, 0);
-        var finalAmount = Math.max(0, subtotal - Math.round(subtotal * discountPercent));
-
-        document.getElementById('recName').textContent = name;
-        document.getElementById('recRef').textContent = refNum;
-        document.getElementById('recMethod').textContent = currentMethod === 'fpx' ? ('FPX (' + document.getElementById('fpxBank').value.split(' ')[0] + ')') : (currentMethod === 'qr' ? 'DuitNow QR' : (currentMethod === 'card' ? 'Kad Debit/Kredit' : 'Touch n Go eWallet'));
-
-        var tb = document.getElementById('recTableBody');
-        var rHtml = '';
-        var waItemsText = '';
-
-        cart.forEach(function(it){
-          rHtml += '<tr><td>' + it.title + '</td><td style="text-align:center">' + it.qty + '</td><td style="text-align:right">RM ' + (it.price * it.qty) + '</td></tr>';
-          waItemsText += '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
-        });
-
-        rHtml += '<tr style="font-weight:800;color:var(--accent-teal)"><td colspan="2">Jumlah Dibayar</td><td style="text-align:right">RM ' + finalAmount + '</td></tr>';
-        tb.innerHTML = rHtml;
-
-        // WhatsApp receipt link
-        var waMsg = "Salam Ibrahim Hussin Empire! Saya baru selesai bayar tempahan di website:\n\n" +
-          "*NO. RUJUKAN:* " + refNum + "\n" +
-          "*NAMA:* " + name + "\n" +
-          "*TEL:* " + phone + "\n" +
-          "*EMEL:* " + email + "\n" +
-          "*STATUS:* LULUS / PAID (RM " + finalAmount + ")\n\n" +
-          "*ITEM DITEMPAH:*\n" + waItemsText + "\n" +
-          "Mohon sahkan jadual dan ketersediaan kenderaan / bilik saya. Terima kasih!\n" +
-          "Emel Rasmi Tempahan: Ibrahimhussin5971@gmail.com";
-
-        document.getElementById('btnRecWa').href = "https://wa.me/601123456789?text=" + encodeURIComponent(waMsg);
-
-        // Clear cart
-        cart = [];
-        saveCart();
-
-        receiptModal.classList.add('open');
-      }, 1500);
-    });
-  }
-
-  if(btnCloseReceipt){
-    btnCloseReceipt.addEventListener('click', function(){ receiptModal.classList.remove('open'); });
-  }
-
-  // =========================================================
-  // 3. ALL BUTTON HANDLERS & NAVIGATION
-  // =========================================================
-  // Mobile Drawer
-  var mobileDrawer = document.getElementById('mobileDrawer');
-  var btnOpenMenu = document.getElementById('btnOpenMenu');
-  var btnCloseMenu = document.getElementById('btnCloseMenu');
-
-  function openMenu(){ mobileDrawer.classList.add('open'); }
-  function closeMenu(){ mobileDrawer.classList.remove('open'); }
-  window.closeMenu = closeMenu;
-
-  if(btnOpenMenu) btnOpenMenu.addEventListener('click', openMenu);
-  if(btnCloseMenu) btnCloseMenu.addEventListener('click', closeMenu);
-  document.querySelectorAll('.menu-link').forEach(function(l){
-    l.addEventListener('click', closeMenu);
-  });
-
-  // Hero Book Now button
-  var btnNavBookNow = document.getElementById('btnNavBookNow');
-  if(btnNavBookNow) btnNavBookNow.addEventListener('click', function(){
-    document.getElementById('perkhidmatan').scrollIntoView({behavior:'smooth'});
-  });
-
-  // Hero Plan button
-  var btnHeroPlan = document.getElementById('btnHeroPlan');
-  if(btnHeroPlan) btnHeroPlan.addEventListener('click', function(){
-    document.getElementById('homestay').scrollIntoView({behavior:'smooth'});
-  });
-
-  // =========================================================
-  // 4. CAR RENTAL FLEET CATALOG & SEASON PRICING LOGIC
-  // =========================================================
-  var activeSeason = 'normal'; // 'normal' | 'public' | 'event'
-  var activeCategory = 'all';
-
-  var vehicles = [
-    // 1. SCOOTER / MOTOR
-    { id:'sc_avantiz', name:'Scooter Yamaha AVANTIZ', cat:'scooter', catLabel:'Scooter / Motor', tag:'Jimat &amp; Pantas', seats:'2 Orang', trans:'Auto', luggage:'Helmet Box', img:'images/scooter.jpg', pNorm:35, pPub:50, pEvent:80 },
-    { id:'sc_nvx', name:'Scooter Yamaha NVX', cat:'scooter', catLabel:'Scooter / Motor', tag:'Paling Popular', seats:'2 Orang', trans:'Auto', luggage:'Ruang Luas', img:'images/scooter.jpg', pNorm:50, pPub:70, pEvent:100 },
-    { id:'sc_adv', name:'Scooter Honda ADV', cat:'scooter', catLabel:'Scooter / Motor', tag:'Adventure Touring', seats:'2 Orang', trans:'Auto', luggage:'Ruang Luas', img:'images/scooter.jpg', pNorm:70, pPub:90, pEvent:120 },
-
-    // 2. KOMPAK
-    { id:'c_axia_old', name:'Perodua AXIA (Old Model)', cat:'kompak', catLabel:'Kompak Jimat', tag:'Ekonomi Jimat', seats:'5 Orang', trans:'Auto', luggage:'2 Beg', img:'images/car_compact.jpg', pNorm:60, pPub:80, pEvent:150 },
-    { id:'c_axia_new', name:'Perodua AXIA (New Model)', cat:'kompak', catLabel:'Kompak Jimat', tag:'Model Terkini', seats:'5 Orang', trans:'Auto', luggage:'2 Beg', img:'images/car_compact.jpg', pNorm:70, pPub:90, pEvent:180 },
-
-    // 3. SEDAN
-    { id:'s_bezza', name:'Perodua BEZZA', cat:'sedan', catLabel:'Sedan Selesa', tag:'Boot Luas 508L', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:80, pPub:100, pEvent:200 },
-    { id:'s_almera', name:'Nissan ALMERA', cat:'sedan', catLabel:'Sedan Selesa', tag:'Selesa &amp; Senyap', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:80, pPub:100, pEvent:200 },
-    { id:'s_vios', name:'Toyota VIOS (2023)', cat:'sedan', catLabel:'Sedan Selesa', tag:'Generasi Baru', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:90, pPub:120, pEvent:250 },
-    { id:'s_city', name:'Honda CITY (2023)', cat:'sedan', catLabel:'Sedan Selesa', tag:'V-Spec Premium', seats:'5 Orang', trans:'Auto', luggage:'3-4 Beg', img:'images/car_sedan.jpg', pNorm:90, pPub:120, pEvent:250 },
-
-    // 4. MPV & VAN
-    { id:'m_avanza', name:'Toyota AVANZA (Old Model)', cat:'mpv', catLabel:'MPV 7-Seat', tag:'Keluarga Selesa', seats:'7 Orang', trans:'Auto', luggage:'3 Beg', img:'images/car_mpv.jpg', pNorm:120, pPub:150, pEvent:250 },
-    { id:'m_serena', name:'Nissan SERENA Highway Star', cat:'mpv', catLabel:'MPV 7-Seat', tag:'Pintu Slaid Auto', seats:'7 Orang', trans:'Auto', luggage:'4 Beg', img:'images/car_mpv.jpg', pNorm:150, pPub:180, pEvent:300 },
-    { id:'v_van14', name:'VAN 14-Seater (Toyota Hiace)', cat:'mpv', catLabel:'Van Rombongan', tag:'Kapasiti 14 Pax', seats:'14 Orang', trans:'Manual/Auto', luggage:'6+ Beg', img:'images/car_mpv.jpg', pNorm:150, pPub:200, pEvent:350 },
-    { id:'m_zenix', name:'Toyota INNOVA ZENIX', cat:'mpv', catLabel:'Premium MPV', tag:'Model Terbaharu', seats:'7-8 Orang', trans:'Auto', luggage:'4-5 Beg', img:'images/car_suv.jpg', pNorm:180, pPub:250, pEvent:350 },
-    { id:'v_starex', name:'Hyundai STAREX (12-Seater)', cat:'mpv', catLabel:'VIP MPV 12-Seat', tag:'Captain Seats VIP', seats:'11-12 Orang', trans:'Auto', luggage:'5 Beg', img:'images/car_mpv.jpg', pNorm:250, pPub:300, pEvent:400 },
-
-    // 5. SUV, 4x4 & MEWAH VIP
-    { id:'suv_crv', name:'Honda CR-V', cat:'vip', catLabel:'SUV Selesa', tag:'Tinggi &amp; Premium', seats:'5 Orang', trans:'Auto', luggage:'4 Beg', img:'images/car_suv.jpg', pNorm:250, pPub:300, pEvent:400 },
-    { id:'suv_hilux', name:'Toyota HILUX 4x4', cat:'vip', catLabel:'Pickup 4x4', tag:'Gagah &amp; Lasak', seats:'5 Orang', trans:'Auto', luggage:'Kargo Luas', img:'images/car_suv.jpg', pNorm:300, pPub:400, pEvent:500 },
-    { id:'vip_velfire', name:'Toyota VELLFIRE VIP', cat:'vip', catLabel:'Mewah Eksekutif', tag:'Pilot Seats VIP', seats:'7 Orang', trans:'Auto', luggage:'4-5 Beg', img:'images/car_luxury.jpg', pNorm:550, pPub:650, pEvent:750 }
+  var hotels = [
+    { id:'beststar', name:'Best Star Hotel Cenang', price:180, img:'images/hotel_cenang_beach.jpg', best:true,
+      badge:['Paling Popular Beachfront','Most popular beachfront'], loc:'Pesisir Pasir Pantai Cenang',
+      short:['Direct beachfront — keluar bilik terus jejak pasir putih Pantai Cenang dan sunset view.','Direct beachfront — step out of your room onto the white sand of Pantai Cenang, with sunset views.'],
+      desc:['Hotel terus ke pesisir pasir Pantai Cenang. Buka pintu hotel terus nampak laut, kafe pantai dan pemandangan sunset yang sangat cantik.','Right on the sand at Pantai Cenang. Open the door to the sea, a beach cafe and a beautiful sunset view.'],
+      perks:[['Terus ke pasir pantai','Straight onto the beach'],['Sunset view','Sunset view'],['Kafe tepi laut','Seaside cafe'],['Wifi percuma','Free wifi']] },
+    { id:'langgura', name:'Langgura Baron Hotel Cenang', price:160, img:'images/hotel_langgura_adya.jpg',
+      badge:['Depan Cenang Mall','Opposite Cenang Mall'], loc:'Jalan Pantai Chenang, Langkawi',
+      short:['Berhadapan Cenang Mall — chalet kolam renang dan bilik hotel selesa, sangat dekat ke pantai.','Opposite Cenang Mall — pool chalets and comfortable rooms, very close to the beach.'],
+      desc:['Lokasi strategik berhadapan Cenang Mall dan restoran. Resort mempunyai kolam renang dan akses mudah ke pantai.','A strategic spot opposite Cenang Mall and restaurants. The resort has a swimming pool and easy beach access.'],
+      perks:[['Kolam renang','Swimming pool'],['Sebelah mall','Next to the mall'],['Wifi percuma','Free wifi'],['Aircond penuh','Fully air-conditioned']] },
+    { id:'adya', name:'Adya Hotel Cenang', price:150, img:'images/hotel_adya_cenang.jpg',
+      badge:['Moden & Selesa','Modern & comfortable'], loc:'Zon Utama Pantai Cenang',
+      short:['Hotel moden dengan kolam renang — penginapan santai di zon utama Pantai Cenang.','A modern hotel with a pool — a relaxed stay in the main Pantai Cenang zone.'],
+      desc:['Penginapan berkonsepkan moden dan santai. Bilik luas, kolam renang outdoor, serta berdekatan medan selera tempatan.','A modern, relaxed stay with spacious rooms, an outdoor pool and a local food court nearby.'],
+      perks:[['Kolam renang','Swimming pool'],['Dekat medan selera','Near the food court'],['Parking mudah','Easy parking'],['Bilik berhawa dingin','Air-conditioned rooms']] },
+    { id:'paretto', name:'Paretto Seaview Hotel Cenang', price:190, img:'images/hotel_paretto_seaview.jpg',
+      badge:['Balkoni Laut Lepas','Sea-view balcony'], loc:'Pantai Cenang (Sea View Wing)',
+      short:['Balkoni pemandangan laut — nikmati laut lepas dari balkoni bilik peribadi.','Sea-view balconies — look out over the open sea from your private balcony.'],
+      desc:['Bilik dilengkapi balkoni peribadi dengan pemandangan laut membiru. Hanya 1 minit berjalan kaki ke pantai dan Cenang night walk.','Rooms come with a private balcony and blue sea views. Just a 1-minute walk to the beach and the Cenang night walk.'],
+      perks:[['Pemandangan laut','Sea view'],['Balkoni peribadi','Private balcony'],['1 minit ke pantai','1 minute to the beach'],['Wifi laju','High-speed wifi']] }
   ];
 
-  function getVehiclePrice(v, season){
-    if(season === 'public') return v.pPub;
-    if(season === 'event') return v.pEvent;
-    return v.pNorm;
+  // =========================================================
+  // DATA: ACTIVITY PACKAGES (prices as printed on the posters)
+  // =========================================================
+  var actCats = [
+    { id:'all', label:['Semua','All'] },
+    { id:'island', label:'Island Hopping' },
+    { id:'mangrove', label:'Mangrove Tour' },
+    { id:'skycab', label:'SkyCab' },
+    { id:'cruise', label:'Sunset Cruise' },
+    { id:'water', label:'Watersport' }
+  ];
+  var PAX = ['pax','pax'], BOAT = ['bot','boat'];
+  var cruiseCommon = ['Jacuzzi net', 'U jump I jump', 'Stand paddle board', ['Berenang','Swimming'], 'Sunset point', ['Sesi foto Dataran Lang (Eagle Square)','Eagle Square photo session']];
+  var mg1 = ['Fish Farm & Fish Show','Eagle Watching','Monkey Feeding','Crocodile Cave','Mangrove River Cruise'];
+  var mg2 = mg1.concat(['Bat Cave','Icon Kilim Geoforest Park','Sea Tour (Andaman Sea)']);
+  var waterNote = [['Langkawi Watersport, beroperasi sejak 2016. Kru profesional dan utamakan keselamatan.','Langkawi Watersport, operating since 2016. Professional crew, safety first.']];
+
+  var acts = [
+    { id:'island', cat:'island', best:true, name:'Island Hopping', img:'images/act_island_hopping.jpg', color:'#2F6B5E', sun:true,
+      pill:['3–4 Jam • Sharing / Private','3–4 Hours • Sharing / Private'], unit:PAX, dur:['3–4 jam (pergi & balik)','3–4 hours (round trip)'],
+      desc:['Pengalaman wajib bila datang Langkawi: Tasik Dayang Bunting, eagle watching dan Pulau Beras Basah.','The must-do Langkawi trip: Dayang Bunting Lake, eagle watching and Beras Basah Island.'],
+      options:[
+        { label:['Sharing — Dewasa','Sharing — Adult'], price:45, unit:PAX },
+        { label:['Sharing — Kanak-kanak (10 tahun ke bawah)','Sharing — Child (10 and under)'], price:35, unit:PAX },
+        { label:['Bot private — maks 8 pax','Private boat — max 8 pax'], price:350, unit:BOAT },
+        { label:['Bot private — maks 10 pax','Private boat — max 10 pax'], price:370, unit:BOAT },
+        { label:['Bot private — maks 12 pax','Private boat — max 12 pax'], price:400, unit:BOAT },
+        { label:['Bot private — maks 15 pax','Private boat — max 15 pax'], price:500, unit:BOAT },
+        { label:['Bot private — maks 18 pax','Private boat — max 18 pax'], price:550, unit:BOAT },
+        { label:['Bot private — maks 20 pax','Private boat — max 20 pax'], price:650, unit:BOAT }
+      ],
+      sections:[
+        { title:['Lokasi menarik','Stops'], items:['Dayang Bunting View (Port OOTD)', ['Tasik Dayang Bunting (1 jam)','Dayang Bunting Lake (1 hour)'], 'Fish Feeding', 'Lion Rock Island', 'Eagle Watching', 'Beras Basah Island'] },
+        { title:['Termasuk','Included'], items:[['Makanan untuk eagle feeding','Food for eagle feeding'], ['Aktiviti fish feeding','Fish feeding activity']] }
+      ],
+      notes:[['Sesuai untuk family & group. Port cun untuk bergambar.','Good for families and groups, with great photo spots.']] },
+
+    { id:'mangrove1', cat:'mangrove', name:['Mangrove Tour (1 Jam)','Mangrove Tour (1 Hour)'], img:'images/act_mangrove.jpg', color:'#3C6A72',
+      pill:['1 Jam • Bot Private','1 Hour • Private Boat'], unit:BOAT, dur:['1 jam','1 hour'],
+      desc:['Trip ringkas menyusuri sungai bakau Kilim dengan bot private.','A short private-boat trip along the Kilim mangrove river.'],
+      options:[ { label:'1–8 pax', price:250, unit:BOAT }, { label:'9–13 pax', price:350, unit:BOAT }, { label:'14–20 pax', price:350, unit:BOAT } ],
+      sections:[ { title:'Trip highlight', items:mg1 } ],
+      notes:[['Bot private, sesuai untuk family & group trip.','Private boat, good for family and group trips.']] },
+
+    { id:'mangrove2', cat:'mangrove', best:true, name:['Mangrove Tour (2 Jam)','Mangrove Tour (2 Hours)'], img:'images/act_mangrove.jpg', color:'#3C6A72', sun:true,
+      pill:['2 Jam • Full Experience','2 Hours • Full Experience'], unit:BOAT, dur:['2 jam','2 hours'],
+      desc:['Full experience Kilim Geoforest Park: sungai bakau, Gua Kelawar dan sea tour Laut Andaman.','The full Kilim Geoforest Park experience: mangrove river, Bat Cave and an Andaman Sea tour.'],
+      options:[ { label:'1–8 pax', price:300, unit:BOAT }, { label:'9–13 pax', price:350, unit:BOAT }, { label:'14–20 pax', price:450, unit:BOAT } ],
+      sections:[ { title:'Full trip highlight', items:mg2 } ],
+      notes:[['Bot private. Lagi puas & berbaloi berbanding pakej 1 jam.','Private boat. Covers more than the 1-hour package.']] },
+
+    { id:'mangrove_snorkel', cat:'mangrove', name:'Mangrove Tour + Fish Feeding + Snorkeling', img:'images/act_snorkeling.jpg', color:'#2E6C7A',
+      pill:['3–4 Jam • Snorkeling','3–4 Hours • Snorkeling'], unit:BOAT, dur:['3–4 jam','3–4 hours'],
+      desc:['Mangrove tour penuh, kemudian fish feeding dan snorkeling di Pulau Dangli.','The full mangrove tour, then fish feeding and snorkeling at Dangli Island.'],
+      options:[ { label:['Small boat (1–8 pax)','Small boat (1–8 pax)'], price:450, unit:BOAT }, { label:'Medium boat (7–10 pax)', price:600, unit:BOAT }, { label:'Big boat (11–15 pax)', price:750, unit:BOAT } ],
+      sections:[ { title:'Highlight trip', items:mg1.slice(0,4).concat(['Mangrove River','Bat Cave','Icon of Kilim Geoforest Park','Sea Tour (Andaman Sea)','Dangli Island — Fish Feeding & Snorkeling']) } ],
+      notes:[
+        ['Snorkeling goggle dipinjamkan percuma (saiz dewasa sahaja).','Snorkeling goggles are lent free of charge (adult sizes only).'],
+        ['Peralatan yang hilang dicaj RM100 / set.','Lost equipment is charged at RM100 per set.']
+      ] },
+
+    { id:'skycab', cat:'skycab', best:true, name:'SkyCab Admission', img:'images/act_skycab.jpg', color:'#44705A',
+      pill:'Langkawi SkyCab', unit:PAX,
+      desc:['Tiket kereta kabel Langkawi SkyCab, termasuk masuk percuma ke SkyDome, SkyRex dan 3D Art Langkawi.','Langkawi SkyCab cable car ticket, with complimentary entry to SkyDome, SkyRex and 3D Art Langkawi.'],
+      options:[
+        { label:['Warganegara — Dewasa','Malaysian — Adult'], price:43, unit:PAX },
+        { label:['Warganegara — Kanak-kanak','Malaysian — Child'], price:33, unit:PAX },
+        { label:['Antarabangsa — Dewasa','International — Adult'], price:85, unit:PAX },
+        { label:['Antarabangsa — Kanak-kanak','International — Child'], price:65, unit:PAX },
+        { label:['Tambahan Express Lane','Express Lane add-on'], price:50, unit:PAX }
+      ],
+      sections:[ { title:['Termasuk','Included'], items:['SkyCab','SkyDome','SkyRex','3D Art Langkawi'] } ] },
+
+    { id:'skycab_combo', cat:'skycab', name:"Eagle's Nest SkyWalk Combo", img:'images/act_skycab.jpg', color:'#44705A', sun:true,
+      pill:'SkyCab Combo', unit:PAX,
+      desc:["Tiket SkyCab bersama Eagle's Nest SkyWalk, SkyDome, SkyRex dan 3D Art Langkawi.","SkyCab ticket with the Eagle's Nest SkyWalk, SkyDome, SkyRex and 3D Art Langkawi."],
+      options:[
+        { label:['MyKad — Dewasa','MyKad — Adult'], price:68, unit:PAX },
+        { label:['MyKad — Kanak-kanak','MyKad — Child'], price:48, unit:PAX },
+        { label:['Antarabangsa — Dewasa','International — Adult'], price:130, unit:PAX },
+        { label:['Antarabangsa — Kanak-kanak','International — Child'], price:100, unit:PAX }
+      ],
+      sections:[ { title:['Termasuk','Included'], items:['SkyCab','SkyDome','SkyRex','3D Art Langkawi',"Eagle's Nest SkyWalk"] } ],
+      notes:[['Percuma untuk kanak-kanak bawah 3 tahun.','Free for children below 3 years.']] },
+
+    { id:'cruise_basic', cat:'cruise', name:'Sunset Cruise — Basic', img:'images/act_sunset_cruise.jpg', color:'#8A5A3A',
+      pill:'4pm–8pm • Basic', unit:PAX, dur:'4pm–8pm',
+      desc:['Sunset cruise harga jimat dengan minuman ringan dan aktiviti laut.','A budget sunset cruise with soft drinks and sea activities.'],
+      options:[ { label:['Dewasa','Adult'], price:110, unit:PAX }, { label:['Kanak-kanak (2 tahun ke atas)','Child (2 years and above)'], price:110, unit:PAX } ],
+      sections:[ { title:['Pakej termasuk','Package includes'], items:['Softdrinks'].concat(cruiseCommon) } ],
+      notes:[['Golden Eagle Cruise. Bot ditetapkan secara rawak: Golden Merry, Amanpuri atau Amanpuri 2.','Golden Eagle Cruise. Boat is assigned at random: Golden Merry, Amanpuri or Amanpuri 2.']] },
+
+    { id:'cruise_nonalc', cat:'cruise', name:'Sunset Cruise — Non Alcohol', img:'images/act_sunset_cruise.jpg', color:'#8A5A3A',
+      pill:'4pm–8pm • Non Alcohol', unit:PAX, dur:'4pm–8pm',
+      desc:['Sunset cruise dengan makan malam dan minuman ringan, tanpa alkohol.','A sunset cruise with dinner and soft drinks, alcohol-free.'],
+      options:[ { label:['Dewasa','Adult'], price:180, unit:PAX }, { label:['Kanak-kanak','Child'], price:130, unit:PAX } ],
+      sections:[ { title:['Pakej termasuk','Package includes'], items:[['Makan malam & softdrinks','Dinner & soft drinks']].concat(cruiseCommon) } ],
+      notes:[['Golden Eagle Cruise. Bot ditetapkan secara rawak: Golden Merry, Amanpuri atau Amanpuri 2.','Golden Eagle Cruise. Boat is assigned at random: Golden Merry, Amanpuri or Amanpuri 2.']] },
+
+    { id:'cruise_std', cat:'cruise', best:true, name:'Sunset Cruise — Standard', img:'images/act_sunset_cruise.jpg', color:'#8A5A3A', sun:true,
+      pill:'4pm–8pm • Standard', unit:PAX, dur:'4pm–8pm',
+      desc:['Belayar ketika matahari terbenam dengan makan malam, cocktail, mocktail dan jacuzzi net.','Sail at sunset with dinner, cocktails, mocktails and the jacuzzi net.'],
+      options:[ { label:['Dewasa','Adult'], price:210, unit:PAX }, { label:['Kanak-kanak','Child'], price:150, unit:PAX } ],
+      sections:[ { title:['Pakej termasuk','Package includes'], items:[['Makan malam, softdrinks, cocktail & mocktail','Dinner, soft drinks, cocktails & mocktails']].concat(cruiseCommon) } ],
+      notes:[['Golden Eagle Cruise. Bot: Ocean Magic, Princess Mary, Amanpuri atau Amanpuri 2.','Golden Eagle Cruise. Boats: Ocean Magic, Princess Mary, Amanpuri or Amanpuri 2.']] },
+
+    { id:'cruise_premium', cat:'cruise', name:'Sunset Cruise — Premium', img:'images/act_sunset_cruise.jpg', color:'#8A5A3A',
+      pill:'4pm–8pm • Premium', unit:PAX, dur:'4pm–8pm',
+      desc:['Pakej premium dengan welcome drink, makan malam, cocktail dan mocktail atas katamaran Eagle Magic.','The premium package with a welcome drink, dinner, cocktails and mocktails on the Eagle Magic catamarans.'],
+      options:[ { label:['Dewasa','Adult'], price:250, unit:PAX }, { label:['Kanak-kanak','Child'], price:200, unit:PAX } ],
+      sections:[ { title:['Pakej termasuk','Package includes'], items:['Premium check-in welcome drink', ['Makan malam, softdrinks, cocktail & mocktail','Dinner, soft drinks, cocktails & mocktails']].concat(cruiseCommon) } ],
+      notes:[['Golden Eagle Cruise. Bot: Eagle Magic, Eagle Magic 2 atau Kawanada.','Golden Eagle Cruise. Boats: Eagle Magic, Eagle Magic 2 or Kawanada.']] },
+
+    { id:'jetcar_fun', cat:'water', name:'Jetcar Fun Ride', img:'images/act_jetcar.jpg', color:'#B0356B', sun:true,
+      pill:'Watersport • Jetcar',
+      desc:['Pandu jetcar di atas laut Langkawi. Feel the speed, live the dream.','Drive a jetcar on the Langkawi sea. Feel the speed, live the dream.'],
+      options:[ { label:['15 minit','15 minutes'], price:250 }, { label:['30 minit','30 minutes'], price:350 } ], notes:waterNote },
+    { id:'jetcar_tour', cat:'water', name:'Jetcar Island Tour', img:'images/act_jetcar.jpg', color:'#2456A6',
+      pill:['Watersport • 4 Jam','Watersport • 4 Hours'], dur:['4 jam','4 hours'],
+      desc:['Jelajah pulau-pulau sekitar Langkawi dengan jetcar selama 4 jam.','Explore the islands around Langkawi by jetcar for 4 hours.'],
+      options:[ { label:'Pakej A', price:650 }, { label:'Pakej B', price:750 } ],
+      notes:waterNote.concat([['WhatsApp kami untuk perbezaan laluan Pakej A dan Pakej B.','WhatsApp us for the route difference between Pakej A and Pakej B.']]) },
+    { id:'jetski_fun', cat:'water', name:'Jetski Fun Ride', img:'images/act_jetski.jpg', color:'#5B3A8E',
+      pill:'Watersport • Jetski', dur:['30 minit','30 minutes'],
+      desc:['Tunggang jetski selama 30 minit di perairan Langkawi.','Ride a jetski for 30 minutes in Langkawi waters.'],
+      options:[ { label:['30 minit','30 minutes'], price:150 } ], notes:waterNote },
+    { id:'jetski_island', cat:'water', name:'Jetski Island Hopping Tour', img:'images/act_jetski.jpg', color:'#C2571A', sun:true,
+      pill:'Watersport • Jetski Tour',
+      desc:['Island hopping dengan jetski sendiri, diiringi kru.','Island hopping on your own jetski, escorted by crew.'],
+      options:[ { label:'Package A', price:500 }, { label:'Package B', price:600 } ],
+      notes:waterNote.concat([['WhatsApp kami untuk perbezaan laluan Package A dan Package B.','WhatsApp us for the route difference between Package A and Package B.']]) },
+    { id:'jetski_mangrove', cat:'water', name:'Jetski Mangrove Tour (Tg Rhu)', img:'images/act_jetski.jpg', color:'#8E2C3C',
+      pill:'Watersport • Tanjung Rhu',
+      desc:['Menyusuri bakau Tanjung Rhu dengan jetski.','Ride through the Tanjung Rhu mangroves by jetski.'],
+      options:[ { label:['2 jam','2 hours'], price:350 }, { label:['4 jam','4 hours'], price:550 } ], notes:waterNote },
+    { id:'parasailing', cat:'water', name:'Parasailing', img:'images/act_parasailing.jpg', color:'#B33A3A',
+      pill:'Watersport', unit:PAX,
+      desc:['Terbang dengan payung terjun ditarik bot, pemandangan laut dari atas.','Fly on a parachute towed by a boat, with sea views from above.'],
+      options:[ { label:'1 pax', price:150, unit:PAX } ], notes:waterNote },
+    { id:'sofa_boat', cat:'water', name:'Sofa Boat', img:'images/act_sofa_boat.jpg', color:'#5B3A8E',
+      pill:'Watersport', unit:['ride','ride'],
+      desc:['Duduk atas sofa boat dan ditarik laju merentas ombak.','Sit on the sofa boat and get towed fast across the waves.'],
+      options:[ { label:'1 ride', price:150, unit:['ride','ride'] } ], notes:waterNote },
+    { id:'banana_boat', cat:'water', name:'Banana Boat', img:'images/act_banana_boat.jpg', color:'#A8322D',
+      pill:['Watersport • 7 Pax','Watersport • 7 Pax'], unit:['7 pax','7 pax'],
+      desc:['Banana boat untuk satu kumpulan sehingga 7 orang.','A banana boat ride for one group of up to 7 people.'],
+      options:[ { label:['1 ride (7 pax)','1 ride (7 pax)'], price:140, unit:['ride','ride'] } ], notes:waterNote }
+  ];
+
+  // =========================================================
+  // DATA: VEHICLES. Photos go in images/cars/<file> (placeholder shown until the file exists)
+  // =========================================================
+  var vehCats = [
+    { id:'all', label:['Semua Model','All models'] },
+    { id:'scooter', label:['Scooter / Motor','Scooters'] },
+    { id:'kompak', label:['Kompak','Compact'] },
+    { id:'sedan', label:'Sedan' },
+    { id:'mpv', label:['MPV & Van','MPV & Van'] },
+    { id:'vip', label:['SUV, 4x4 & VIP','SUV, 4x4 & VIP'] }
+  ];
+  var P2 = ['2 Orang','2 people'], P5 = ['5 Orang','5 people'], P7 = ['7 Orang','7 people'];
+  var vehicles = [
+    { id:'sc_avantiz', file:'scooter-avantiz.jpg', name:'Scooter Yamaha AVANTIZ', cat:'scooter', catLabel:['Scooter / Motor','Scooter'], tag:['Jimat & Pantas','Cheap & quick'], seats:P2, trans:'Auto', luggage:'Helmet Box', pNorm:35, pPub:50, pEvent:80 },
+    { id:'sc_nvx', file:'scooter-nvx.jpg', best:true, name:'Scooter Yamaha NVX', cat:'scooter', catLabel:['Scooter / Motor','Scooter'], tag:['Paling Popular','Most popular'], seats:P2, trans:'Auto', luggage:['Ruang Luas','Roomy'], pNorm:50, pPub:70, pEvent:100 },
+    { id:'sc_adv', file:'scooter-adv.jpg', name:'Scooter Honda ADV', cat:'scooter', catLabel:['Scooter / Motor','Scooter'], tag:'Adventure Touring', seats:P2, trans:'Auto', luggage:['Ruang Luas','Roomy'], pNorm:70, pPub:90, pEvent:120 },
+
+    { id:'c_axia_old', file:'axia-old.jpg', name:'Perodua AXIA (Old Model)', cat:'kompak', catLabel:['Kompak Jimat','Budget compact'], tag:['Ekonomi Jimat','Budget pick'], seats:P5, trans:'Auto', luggage:['2 Beg','2 bags'], pNorm:60, pPub:80, pEvent:150 },
+    { id:'c_axia_new', file:'axia-new.jpg', best:true, name:'Perodua AXIA (New Model)', cat:'kompak', catLabel:['Kompak Jimat','Budget compact'], tag:['Model Terkini','Latest model'], seats:P5, trans:'Auto', luggage:['2 Beg','2 bags'], pNorm:70, pPub:90, pEvent:180 },
+    { id:'c_myvi', file:'myvi.jpg', name:'Perodua MYVI', cat:'kompak', catLabel:['Kompak','Compact'], tag:['Kegemaran Ramai','Crowd favourite'], seats:P5, trans:'Auto', luggage:['2-3 Beg','2-3 bags'], pNorm:80, pPub:100, pEvent:null },
+
+    { id:'s_bezza', file:'bezza.jpg', best:true, name:'Perodua BEZZA', cat:'sedan', catLabel:['Sedan Selesa','Comfort sedan'], tag:['Boot Luas 508L','508L boot'], seats:P5, trans:'Auto', luggage:['3-4 Beg','3-4 bags'], pNorm:80, pPub:100, pEvent:200 },
+    { id:'s_almera', file:'almera.jpg', name:'Nissan ALMERA', cat:'sedan', catLabel:['Sedan Selesa','Comfort sedan'], tag:['Selesa & Senyap','Quiet & comfy'], seats:P5, trans:'Auto', luggage:['3-4 Beg','3-4 bags'], pNorm:80, pPub:100, pEvent:200 },
+    { id:'s_vios', file:'vios.jpg', name:'Toyota VIOS (2023)', cat:'sedan', catLabel:['Sedan Selesa','Comfort sedan'], tag:['Generasi Baru','New generation'], seats:P5, trans:'Auto', luggage:['3-4 Beg','3-4 bags'], pNorm:90, pPub:120, pEvent:250 },
+    { id:'s_city', file:'city.jpg', name:'Honda CITY (2023)', cat:'sedan', catLabel:['Sedan Selesa','Comfort sedan'], tag:'V-Spec Premium', seats:P5, trans:'Auto', luggage:['3-4 Beg','3-4 bags'], pNorm:90, pPub:120, pEvent:250 },
+
+    { id:'m_avanza', file:'avanza.jpg', best:true, name:'Toyota AVANZA (Old Model)', cat:'mpv', catLabel:'MPV 7-Seat', tag:['Keluarga Selesa','Family comfort'], seats:P7, trans:'Auto', luggage:['3 Beg','3 bags'], pNorm:120, pPub:150, pEvent:250 },
+    { id:'m_serena', file:'serena.jpg', name:'Nissan SERENA Highway Star', cat:'mpv', catLabel:'MPV 7-Seat', tag:['Pintu Slaid Auto','Auto sliding doors'], seats:P7, trans:'Auto', luggage:['4 Beg','4 bags'], pNorm:150, pPub:180, pEvent:300 },
+    { id:'v_van14', file:'van-14-seater.jpg', name:'VAN 14-Seater (Toyota Hiace)', cat:'mpv', catLabel:['Van Rombongan','Group van'], tag:['Kapasiti 14 Pax','Seats 14'], seats:['14 Orang','14 people'], trans:'Manual/Auto', luggage:['6+ Beg','6+ bags'], pNorm:150, pPub:200, pEvent:350 },
+    { id:'m_zenix', file:'innova-zenix.jpg', name:'Toyota INNOVA ZENIX', cat:'mpv', catLabel:'Premium MPV', tag:['Model Terbaharu','Newest model'], seats:['7-8 Orang','7-8 people'], trans:'Auto', luggage:['4-5 Beg','4-5 bags'], pNorm:180, pPub:250, pEvent:350 },
+    { id:'v_starex', file:'starex.jpg', name:'Hyundai STAREX (12-Seater)', cat:'mpv', catLabel:'VIP MPV 12-Seat', tag:'Captain Seats VIP', seats:['11-12 Orang','11-12 people'], trans:'Auto', luggage:['5 Beg','5 bags'], pNorm:250, pPub:300, pEvent:400 },
+
+    { id:'suv_crv', file:'crv.jpg', name:'Honda CR-V', cat:'vip', catLabel:['SUV Selesa','Comfort SUV'], tag:['Tinggi & Premium','Tall & premium'], seats:P5, trans:'Auto', luggage:['4 Beg','4 bags'], pNorm:250, pPub:300, pEvent:400 },
+    { id:'suv_hilux', file:'hilux.jpg', name:'Toyota HILUX 4x4', cat:'vip', catLabel:'Pickup 4x4', tag:['Gagah & Lasak','Tough & rugged'], seats:P5, trans:'Auto', luggage:['Kargo Luas','Big cargo bed'], pNorm:300, pPub:400, pEvent:500 },
+    { id:'vip_velfire', file:'vellfire.jpg', name:'Toyota VELLFIRE VIP', cat:'vip', catLabel:['Mewah Eksekutif','Executive luxury'], tag:'Pilot Seats VIP', seats:P7, trans:'Auto', luggage:['4-5 Beg','4-5 bags'], pNorm:550, pPub:650, pEvent:750 }
+  ];
+  vehicles.forEach(function(v){ v.img = 'images/cars/' + v.file; });
+
+  var seasons = [
+    { id:'normal', key:'pNorm', label:['Hari Biasa (Normal)','Weekday (Normal)'], short:['Kadar Hari Biasa','Weekday rate'] },
+    { id:'public', key:'pPub', label:['Cuti Umum (Public)','Public holiday'], short:['Kadar Cuti Umum','Public holiday rate'] },
+    { id:'event', key:'pEvent', label:'Event 5 Langkawi / Peak', short:'Event 5 Langkawi / Peak' }
+  ];
+  var activeSeason = 'normal', activeVehCat = 'all', activeActCat = 'all', hotelQuery = '';
+  function seasonOf(id){ return seasons.filter(function(s){ return s.id === id; })[0]; }
+  function vehPrice(v, sid){ return v[seasonOf(sid).key]; }
+  function byId(list, id){ return list.filter(function(x){ return x.id === id; })[0]; }
+  function fromPrice(a){ return Math.min.apply(null, a.options.map(function(o){ return o.price; })); }
+
+  // =========================================================
+  // TOAST
+  // =========================================================
+  var toastTimer;
+  function showToast(text){
+    var t = $('toastMsg');
+    t.querySelector('span').textContent = text;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 3000);
   }
 
-  function getSeasonLabel(season){
-    if(season === 'public') return 'Kadar Cuti Umum';
-    if(season === 'event') return 'Event 5 Langkawi / Peak';
-    return 'Kadar Hari Biasa';
+  // =========================================================
+  // RENDER: ACTIVITIES
+  // =========================================================
+  function actCard(a){
+    var multi = a.options.length > 1;
+    return '<article class="act" style="background-image:url(\'' + a.img + '\');background-color:' + a.color + '">' +
+      '<span class="pill' + (a.sun ? ' sun' : '') + '">' + esc(tr(a.pill)) + '</span>' +
+      '<div class="act-body">' +
+        '<h3>' + esc(tr(a.name)) + '</h3>' +
+        '<p>' + esc(tr(a.desc)) + '</p>' +
+        '<div class="row-end">' +
+          '<span class="act-price-badge">' + (multi ? '<small>' + T('Dari','From') + '</small> ' : '') + 'RM ' + fromPrice(a) + (a.unit ? ' <small>/ ' + esc(tr(a.unit)) + '</small>' : '') + '</span>' +
+          '<span class="act-meta">' + (multi ? a.options.length + ' ' + T('pilihan harga','price options') : (a.dur ? esc(tr(a.dur)) : '')) + '</span>' +
+        '</div>' +
+        '<button class="act-btn" type="button" data-detail="act:' + a.id + '">' + T('Butiran &amp; Tempah','Details &amp; booking') + '</button>' +
+      '</div></article>';
+  }
+  function renderActs(){
+    $('homeActs').innerHTML = acts.filter(function(a){ return a.best; }).map(actCard).join('');
+    $('homeActsCount').textContent = T('Ada ' + acts.length + ' pakej semuanya', acts.length + ' packages in total');
+    $('actFilters').innerHTML = actCats.map(function(c){
+      var n = c.id === 'all' ? acts.length : acts.filter(function(a){ return a.cat === c.id; }).length;
+      return '<button class="filter-tab' + (c.id === activeActCat ? ' active' : '') + '" type="button" aria-pressed="' + (c.id === activeActCat) + '" data-actcat="' + c.id + '">' + esc(tr(c.label)) + ' (' + n + ')</button>';
+    }).join('');
+    $('allActs').innerHTML = acts.filter(function(a){ return activeActCat === 'all' || a.cat === activeActCat; }).map(actCard).join('');
   }
 
-  window.addVehicleToCart = function(id){
-    var v = vehicles.find(function(item){ return item.id === id; });
-    if(!v) return;
-    var price = getVehiclePrice(v, activeSeason);
-    var seasonLbl = getSeasonLabel(activeSeason);
-    var title = v.name + ' (' + seasonLbl + ')';
-    quickAdd(title, price, 'kereta', v.img);
-  };
-
+  // =========================================================
+  // RENDER: VEHICLES
+  // =========================================================
+  var catFallback = { scooter:'images/scooter.jpg', kompak:'images/car_compact.jpg', sedan:'images/car_sedan.jpg', mpv:'images/car_mpv.jpg', vip:'images/car_luxury.jpg' };
+  function carPhoto(v){
+    var fb = catFallback[v.cat] || 'images/rent_hero.jpg';
+    return '<div class="ph" aria-hidden="true"><svg aria-hidden="true"><use href="#i-car"/></svg></div>' +
+      '<img class="car-photo" src="' + v.img + '" alt="' + esc(v.name) + '" loading="lazy" onerror="this.onerror=null;this.src=\'' + fb + '\'">';
+  }
+  function carCard(v, sid){
+    var p = vehPrice(v, sid);
+    var priceHtml = p == null ? '<div class="price" style="font-size:14px">' + T('Tanya harga','Ask for rate') + '</div>' : '<div class="price">RM ' + p + ' <span>/' + T('hari','day') + '</span></div>';
+    return '<article class="car">' +
+      '<div class="car-img-wrap">' + carPhoto(v) + '<span class="car-tag">' + esc(tr(v.tag)) + '</span></div>' +
+      '<div class="car-head"><div><h3>' + esc(v.name) + '</h3><div class="mute sm">' + esc(tr(v.catLabel)) + '</div></div>' + priceHtml + '</div>' +
+      '<div class="rates-line">Normal: RM' + v.pNorm + ' | ' + T('Cuti','Holiday') + ': RM' + v.pPub + ' | Event: ' + (v.pEvent == null ? T('tanya','ask') : 'RM' + v.pEvent) + '</div>' +
+      '<div class="specs">' +
+        '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>' + T('Kapasiti','Seats') + '</small>' + esc(tr(v.seats)) + '</span></div>' +
+        '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Gear</small>' + esc(v.trans) + '</span></div>' +
+        '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>' + T('Bagasi','Luggage') + '</small>' + esc(tr(v.luggage)) + '</span></div>' +
+      '</div>' +
+      '<div class="car-btns">' +
+        '<button class="btn-ghost" type="button" data-detail="veh:' + v.id + '">' + T('Butiran','Details') + '</button>' +
+        (p == null
+          ? '<button class="car-action-btn" type="button" data-detail="veh:' + v.id + '">' + T('Lihat kadar','See rates') + '</button>'
+          : '<button class="car-action-btn" type="button" data-addveh="' + v.id + '" data-season="' + sid + '">' + T('Sewa sekarang','Rent now') + '</button>') +
+      '</div></article>';
+  }
   function renderVehicles(){
-    var container = document.getElementById('carsContainer');
-    if(!container) return;
+    $('homeCars').innerHTML = vehicles.filter(function(v){ return v.best; }).map(function(v){ return carCard(v, 'normal'); }).join('');
+    $('homeCarsCount').textContent = T('Ada ' + vehicles.length + ' model semuanya', vehicles.length + ' models in total');
+    $('vehFilters').innerHTML = vehCats.map(function(c){
+      var n = c.id === 'all' ? vehicles.length : vehicles.filter(function(v){ return v.cat === c.id; }).length;
+      return '<button class="filter-tab' + (c.id === activeVehCat ? ' active' : '') + '" type="button" aria-pressed="' + (c.id === activeVehCat) + '" data-vehcat="' + c.id + '">' + esc(tr(c.label)) + ' (' + n + ')</button>';
+    }).join('');
+    $('carsContainer').innerHTML = vehicles.filter(function(v){ return activeVehCat === 'all' || v.cat === activeVehCat; }).map(function(v){ return carCard(v, activeSeason); }).join('');
 
-    var filtered = vehicles.filter(function(v){
-      return activeCategory === 'all' || v.cat === activeCategory;
+    var s = seasonOf(activeSeason);
+    var badge = $('seasonBadgeText');
+    badge.textContent = tr(s.label);
+    badge.style.color = activeSeason === 'event' ? '#FF8A80' : 'var(--sun)';
+    function minOf(cat){ return Math.min.apply(null, vehicles.filter(function(v){ return v.cat === cat && v[s.key] != null; }).map(function(v){ return v[s.key]; })); }
+    $('seasonFromText').textContent = T('Scooter dari RM', 'Scooters from RM') + minOf('scooter') + T('/hari • Kereta dari RM', '/day • Cars from RM') + minOf('kompak') + T('/hari • MPV/Van dari RM', '/day • MPV/Van from RM') + minOf('mpv') + T('/hari', '/day');
+    document.querySelectorAll('.season-btn').forEach(function(b){
+      var on = b.dataset.season === activeSeason;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on);
     });
 
-    var seasonLbl = getSeasonLabel(activeSeason);
-    var html = '';
-
-    filtered.forEach(function(v){
-      var currentPrice = getVehiclePrice(v, activeSeason);
-      html += '<article class="car">' +
-        '<div class="car-img-wrap">' +
-          '<div class="car-img" style="background-image:url(\'' + v.img + '\')"></div>' +
-          '<span class="car-tag">' + v.tag + '</span>' +
-        '</div>' +
-        '<div class="car-head">' +
-          '<div>' +
-            '<h3>' + v.name + '</h3>' +
-            '<div class="mute sm">' + v.catLabel + '</div>' +
-          '</div>' +
-          '<div class="price">RM ' + currentPrice + ' <span>/hari</span></div>' +
-        '</div>' +
-        '<div style="font-size:11.5px;color:var(--mute);padding:0 4px;margin-top:-6px">' +
-          'Kadar: <strong style="color:var(--accent-teal)">' + seasonLbl + '</strong> &bull; ' +
-          'Normal: RM' + v.pNorm + ' | Cuti: RM' + v.pPub + ' | 5Lgk: RM' + v.pEvent +
-        '</div>' +
-        '<div class="specs">' +
-          '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>Kapasiti</small>' + v.seats + '</span></div>' +
-          '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Gear</small>' + v.trans + '</span></div>' +
-          '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/></svg><span><small>Bagasi</small>' + v.luggage + '</span></div>' +
-        '</div>' +
-        '<button class="car-action-btn" type="button" onclick="addVehicleToCart(\'' + v.id + '\')">' +
-          '🛒 Sewa Kenderaan Ini (RM ' + currentPrice + '/hari)' +
-        '</button>' +
-      '</article>';
-    });
-
-    container.innerHTML = html;
-  }
-
-  function renderPriceTable(){
-    var tb = document.getElementById('priceTableBody');
-    if(!tb) return;
-    var html = '';
-    vehicles.forEach(function(v, idx){
-      var curPrice = getVehiclePrice(v, activeSeason);
-      html += '<tr>' +
-        '<td style="font-weight:700;color:var(--mute)">' + (idx + 1) + '</td>' +
-        '<td class="col-model">' + v.name + '</td>' +
-        '<td><span class="sm mute">' + v.catLabel + '</span></td>' +
-        '<td class="col-norm"' + (activeSeason === 'normal' ? ' style="background:#EBF7EE;font-weight:800"' : '') + '>RM ' + v.pNorm + '</td>' +
-        '<td class="col-pub"' + (activeSeason === 'public' ? ' style="background:#FFF9E6;font-weight:800"' : '') + '>RM ' + v.pPub + '</td>' +
-        '<td class="col-event"' + (activeSeason === 'event' ? ' style="background:#FDEEEE;font-weight:800"' : '') + '>RM ' + v.pEvent + '</td>' +
-        '<td>' +
-          '<button class="car-action-btn" type="button" onclick="addVehicleToCart(\'' + v.id + '\')" style="height:34px;padding:0 12px;font-size:12px">' +
-            '🛒 Tempah (RM ' + curPrice + ')' +
-          '</button>' +
-        '</td>' +
-      '</tr>';
-    });
-    tb.innerHTML = html;
-  }
-
-  // Season Buttons
-  var seasonButtons = document.querySelectorAll('.season-btn');
-  seasonButtons.forEach(function(btn){
-    btn.addEventListener('click', function(){
-      seasonButtons.forEach(function(b){ b.classList.remove('active'); });
-      btn.classList.add('active');
-      activeSeason = btn.dataset.season;
-
-      var note = document.getElementById('seasonBadgeText');
-      if(note){
-        if(activeSeason === 'public'){
-          note.textContent = 'Cuti Umum (Public Holiday Rate)';
-          note.style.color = '#F4C91A';
-        } else if(activeSeason === 'event'){
-          note.textContent = 'Event 5 Langkawi / Peak (Ironman / LIMA)';
-          note.style.color = '#FF5252';
-        } else {
-          note.textContent = 'Hari Biasa (Normal Rate)';
-          note.style.color = 'var(--sun)';
-        }
+    $('priceTableBody').innerHTML = vehicles.map(function(v, i){
+      function cell(sid, cls, bg){
+        var val = vehPrice(v, sid);
+        return '<td class="' + cls + '"' + (activeSeason === sid ? ' style="background:' + bg + ';font-weight:800"' : '') + '>' + (val == null ? '—' : 'RM ' + val) + '</td>';
       }
+      return '<tr><td style="font-weight:700;color:var(--mute)">' + (i + 1) + '</td>' +
+        '<td class="col-model">' + esc(v.name) + '</td>' +
+        '<td><span class="sm mute">' + esc(tr(v.catLabel)) + '</span></td>' +
+        cell('normal', 'col-norm', '#EBF7EE') + cell('public', 'col-pub', '#FFF9E6') + cell('event', 'col-event', '#FDEEEE') +
+        '<td><button class="btn-ghost" type="button" data-detail="veh:' + v.id + '" style="height:34px;font-size:12px">' + T('Butiran','Details') + '</button></td></tr>';
+    }).join('');
+  }
 
-      renderVehicles();
-      renderPriceTable();
-      showToast('🔄 Kadar ditukar: ' + getSeasonLabel(activeSeason));
+  // =========================================================
+  // RENDER: HOTELS
+  // =========================================================
+  function renderHotels(){
+    var q = hotelQuery.toLowerCase();
+    var list = hotels.filter(function(h){
+      return !q || (h.name + ' ' + h.loc + ' ' + tr(h.desc) + ' ' + tr(h.badge)).toLowerCase().indexOf(q) !== -1;
     });
-  });
+    $('hotelsHeading').textContent = q
+      ? T(list.length + ' hotel sepadan dengan "' + hotelQuery + '"', list.length + ' hotel(s) matching "' + hotelQuery + '"')
+      : T('Senarai ' + hotels.length + ' hotel pilihan', hotels.length + ' selected hotels');
+    $('btnClearHotelSearch').hidden = !q;
+    $('hotelsGrid').innerHTML = list.length ? list.map(function(h){
+      return '<article class="hotel-card">' +
+        '<div class="hotel-img" style="background-image:url(\'' + h.img + '\');background-color:#4A6B69"><span class="hotel-badge"' + (h.best ? ' style="background:var(--sun);color:#111"' : '') + '>' + esc(tr(h.badge)) + '</span></div>' +
+        '<div class="hotel-info"><h3>' + esc(h.name) + '</h3>' +
+          '<div class="hotel-loc">' + icon('i-pin', 14) + esc(h.loc) + '</div>' +
+          '<p class="sm mute">' + esc(tr(h.desc)) + '</p>' +
+          '<div class="hotel-perks">' + h.perks.map(function(p){ return '<span>' + esc(tr(p)) + '</span>'; }).join('') + '</div>' +
+          '<div class="hotel-foot"><div class="hotel-rate">RM ' + h.price + ' <small>/ ' + T('malam','night') + '</small></div>' +
+            '<div class="btns"><button class="btn-ghost" type="button" data-detail="hotel:' + h.id + '" style="height:38px">' + T('Butiran','Details') + '</button>' +
+            '<button class="car-action-btn" type="button" data-addhotel="' + h.id + '" style="height:38px;padding:0 14px;margin:0">' + T('Tempah','Book') + '</button></div>' +
+          '</div></div></article>';
+    }).join('') : '<p class="mute">' + T('Tiada hotel sepadan. Cuba nama lain.','No hotels match. Try another name.') + '</p>';
 
-  // Filter Tabs
-  var filterTabs = document.querySelectorAll('.filter-tab');
-  filterTabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      filterTabs.forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
-      activeCategory = tab.dataset.cat;
-      renderVehicles();
-    });
-  });
+    $('hb3').innerHTML = hotels.map(function(h){ return '<option value="' + h.id + '">' + esc(h.name) + ' (RM ' + h.price + '/' + T('mlm','night') + ')</option>'; }).join('');
+    var dots = $('hotelDots');
+    var cur = dots.dataset.cur || hotels[0].id;
+    dots.innerHTML = hotels.map(function(h){ return '<button type="button" aria-label="' + esc(h.name) + '" aria-pressed="' + (h.id === cur) + '" data-slide="' + h.id + '"></button>'; }).join('');
+    setSlide(cur);
+  }
+  function setSlide(id){
+    var h = byId(hotels, id);
+    if(!h) return;
+    $('hotelDots').dataset.cur = id;
+    $('hotelDots').querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.slide === id); });
+    $('homeMain').style.backgroundImage = "linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('" + h.img + "')";
+    $('sliderTitle').innerHTML = esc(h.name).replace('Hotel', '<i>Hotel</i><br>');
+    $('sliderDesc').textContent = tr(h.short);
+    $('sliderDetail').dataset.detail = 'hotel:' + id;
+  }
 
-  // Comparison Price Table Toggle
-  var tableWrap = document.getElementById('priceTableWrap');
-  var btnTogglePriceTable = document.getElementById('btnTogglePriceTable');
-  var btnShowTableTop = document.getElementById('btnShowTableTop');
-  var btnClosePriceTable = document.getElementById('btnClosePriceTable');
-
-  function toggleTable(){
-    if(!tableWrap) return;
-    var isOpen = tableWrap.style.display !== 'none';
-    tableWrap.style.display = isOpen ? 'none' : 'block';
-    if(!isOpen){
-      renderPriceTable();
-      tableWrap.scrollIntoView({behavior:'smooth'});
+  // =========================================================
+  // DETAIL POP-UP
+  // =========================================================
+  var detail = null; // { title, category, img, options:[{label,price,unit}], opt, qty }
+  function buildDetail(kind, id){
+    if(kind === 'act'){
+      var a = byId(acts, id); if(!a) return null;
+      return { kind:kind, title:tr(a.name), category:T('aktiviti','activity'), img:a.img, color:a.color, tag:tr(a.pill), desc:tr(a.desc),
+        meta:[a.dur ? T('Tempoh: ','Duration: ') + tr(a.dur) : null].filter(Boolean),
+        options:a.options.map(function(o){ return { label:tr(o.label), price:o.price, unit:o.unit ? tr(o.unit) : '' }; }),
+        sections:(a.sections || []).map(function(s){ return { title:tr(s.title), items:s.items.map(tr) }; }),
+        notes:(a.notes || []).map(tr), qtyLabel:T('Kuantiti','Quantity'), opt:0, qty:1 };
     }
+    if(kind === 'hotel'){
+      var h = byId(hotels, id); if(!h) return null;
+      return { kind:kind, title:h.name, category:'hotel', img:h.img, color:'#4A6B69', tag:tr(h.badge), desc:tr(h.desc), meta:[h.loc],
+        options:[{ label:T('Bilik semalam','Room per night'), price:h.price, unit:T('malam','night') }],
+        sections:[{ title:T('Kemudahan','Features'), items:h.perks.map(tr) }],
+        notes:[T('Nyatakan tarikh daftar masuk dalam borang tempahan. Kami sahkan kekosongan bilik melalui WhatsApp.','Give your check-in date in the booking form. We confirm room availability on WhatsApp.')],
+        qtyLabel:T('Bilangan malam','Nights'), opt:0, qty:1 };
+    }
+    if(kind === 'veh'){
+      var v = byId(vehicles, id); if(!v) return null;
+      var opts = seasons.filter(function(s){ return v[s.key] != null; }).map(function(s){ return { label:tr(s.label), price:v[s.key], unit:T('hari','day'), cartLabel:tr(s.short) }; });
+      var avail = seasons.filter(function(s){ return v[s.key] != null; }).map(function(s){ return s.id; });
+      var notes = [T('Hantar percuma ke Jeti Kuah & Airport Langkawi. Lokasi lain caj RM20.','Free delivery to Kuah Jetty & Langkawi Airport. Other locations RM20.')];
+      if(v.pEvent == null) notes.push(T('Kadar Event 5 Langkawi / musim puncak: sila WhatsApp kami.','Event 5 Langkawi / peak rate: please WhatsApp us.'));
+      return { kind:kind, title:v.name, category:T('kenderaan','vehicle'), img:v.img, veh:v, tag:tr(v.tag), desc:tr(v.catLabel),
+        meta:[T('Kapasiti: ','Seats: ') + tr(v.seats), 'Gear: ' + v.trans, T('Bagasi: ','Luggage: ') + tr(v.luggage)],
+        options:opts, sections:[], notes:notes, qtyLabel:T('Bilangan hari','Days'), opt:Math.max(0, avail.indexOf(activeSeason)), qty:1 };
+    }
+    return null;
   }
+  function renderDetail(){
+    var d = detail, o = d.options[d.opt];
+    var hero = d.veh
+      ? '<div class="dt-hero"><div class="car-img-wrap">' + carPhoto(d.veh) + '</div>'
+      : '<div class="dt-hero" style="background-image:url(\'' + d.img + '\');background-color:' + d.color + '">';
+    $('detailCard').innerHTML = hero +
+        '<span class="pill sun">' + esc(d.tag) + '</span>' +
+        '<button class="close-btn" type="button" data-close-detail aria-label="' + T('Tutup','Close') + '">&times;</button></div>' +
+      '<div class="dt-body">' +
+        '<div><h3 id="dtTitle">' + esc(d.title) + '</h3><p class="mute" style="margin-top:6px">' + esc(d.desc) + '</p>' +
+          (d.meta.length ? '<div class="dt-meta">' + d.meta.map(function(m){ return '<span>' + esc(m) + '</span>'; }).join('') + '</div>' : '') + '</div>' +
+        '<div><h4>' + (d.options.length > 1 ? T('Pilih harga','Choose a price') : T('Harga','Price')) + '</h4><div class="dt-opts">' +
+          d.options.map(function(op, i){
+            return '<label class="dt-opt' + (i === d.opt ? ' sel' : '') + '">' +
+              (d.options.length > 1 ? '<input type="radio" name="dtOpt" value="' + i + '"' + (i === d.opt ? ' checked' : '') + '>' : '') +
+              '<span>' + esc(op.label) + '</span><b>RM ' + op.price + (op.unit ? ' / ' + esc(op.unit) : '') + '</b></label>';
+          }).join('') + '</div></div>' +
+        d.sections.map(function(s){
+          return '<div><h4>' + esc(s.title) + '</h4><ul class="dt-list">' + s.items.map(function(it){ return '<li>' + esc(it) + '</li>'; }).join('') + '</ul></div>';
+        }).join('') +
+        (d.notes.length ? '<div class="dt-note">' + d.notes.map(function(n){ return '<span>' + esc(n) + '</span>'; }).join('') + '</div>' : '') +
+        '<a class="dt-ask" target="_blank" rel="noopener" href="' + waUrl(T('Salam Ibrahim Hussin Empire, saya nak tanya tentang: ','Hi Ibrahim Hussin Empire, I would like to ask about: ') + d.title) + '">' + icon('i-wa', 16) + T('Tanya di WhatsApp','Ask on WhatsApp') + '</a>' +
+      '</div>' +
+      '<div class="dt-foot">' +
+        '<div class="dt-qty"><span>' + esc(d.qtyLabel) + '</span>' +
+          '<button class="qty-btn" type="button" data-dtqty="-1" aria-label="' + T('Kurang','Less') + '">&minus;</button>' +
+          '<span class="qty-val" id="dtQty">' + d.qty + '</span>' +
+          '<button class="qty-btn" type="button" data-dtqty="1" aria-label="' + T('Tambah','More') + '">+</button></div>' +
+        '<div class="dt-total">' + T('Jumlah','Total') + '<strong id="dtTotal">RM ' + (o.price * d.qty) + '</strong></div>' +
+        '<button class="btn-checkout" type="button" data-dtadd>' + icon('i-cart', 18) + T('Tambah ke Troli','Add to cart') + '</button>' +
+      '</div>';
+  }
+  var lastFocus = null;
+  function openDetail(kind, id){
+    var d = buildDetail(kind, id);
+    if(!d) return;
+    detail = d; detail.kindId = kind + ':' + id;
+    lastFocus = document.activeElement;
+    renderDetail();
+    $('detailCard').scrollTop = 0;
+    openOverlay($('detailModal'));
+    var c = $('detailCard').querySelector('.close-btn'); if(c) c.focus();
+  }
+  function closeDetail(){ closeOverlay($('detailModal')); detail = null; if(lastFocus && lastFocus.focus) lastFocus.focus(); }
 
-  if(btnTogglePriceTable) btnTogglePriceTable.addEventListener('click', toggleTable);
-  if(btnShowTableTop) btnShowTableTop.addEventListener('click', toggleTable);
-  if(btnClosePriceTable) btnClosePriceTable.addEventListener('click', function(){
-    if(tableWrap) tableWrap.style.display = 'none';
+  $('detailModal').addEventListener('click', function(e){
+    if(e.target === this || e.target.closest('[data-close-detail]')){ closeDetail(); return; }
+    if(!detail) return;
+    var q = e.target.closest('[data-dtqty]');
+    if(q){
+      detail.qty = Math.max(1, Math.min(99, detail.qty + Number(q.dataset.dtqty)));
+      $('dtQty').textContent = detail.qty;
+      $('dtTotal').textContent = 'RM ' + (detail.options[detail.opt].price * detail.qty);
+      return;
+    }
+    if(e.target.closest('[data-dtadd]')){
+      var o = detail.options[detail.opt];
+      var title = detail.title;
+      if(detail.kind === 'veh') title += ' (' + o.cartLabel + ')';
+      else if(detail.kind === 'act' && (detail.options.length > 1)) title += ' — ' + o.label;
+      var img = detail.img, qty = detail.qty, cat = detail.category;
+      closeDetail();
+      quickAdd(title, o.price, cat, img, qty);
+    }
   });
-
-  // Initial vehicle rendering
-  renderVehicles();
-  renderPriceTable();
+  $('detailModal').addEventListener('change', function(e){
+    if(detail && e.target.name === 'dtOpt'){
+      detail.opt = Number(e.target.value);
+      this.querySelectorAll('.dt-opt').forEach(function(l, i){ l.classList.toggle('sel', i === detail.opt); });
+      $('dtTotal').textContent = 'RM ' + (detail.options[detail.opt].price * detail.qty);
+    }
+  });
 
   // =========================================================
-  // 5. HOTEL & HOMESTAY (PANTAI CENANG) LOGIC
+  // OVERLAYS
   // =========================================================
-  // Hotel Dots Slider
-  var hm = document.getElementById('homeMain');
-  var sliderTitle = document.getElementById('sliderTitle');
-  var sliderDesc = document.getElementById('sliderDesc');
-  var hotelDots = document.querySelectorAll('.dots button');
-  hotelDots.forEach(function(d){
-    d.addEventListener('click', function(){
-      hotelDots.forEach(function(x){ x.setAttribute('aria-pressed', x === d ? 'true' : 'false'); });
-      hm.style.backgroundImage = "linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('" + d.dataset.img + "')";
-      if(sliderTitle && d.dataset.title) sliderTitle.innerHTML = d.dataset.title.replace('Hotel', '<i>Hotel</i><br>');
-      if(sliderDesc && d.dataset.desc) sliderDesc.textContent = d.dataset.desc;
-    });
+  function syncScrollLock(){
+    document.body.classList.toggle('no-scroll', !!document.querySelector('.modal-overlay.open, .cart-drawer-overlay.open, .mobile-drawer.open'));
+  }
+  function openOverlay(el){ el.classList.add('open'); syncScrollLock(); }
+  function closeOverlay(el){ el.classList.remove('open'); syncScrollLock(); }
+
+  // =========================================================
+  // CART
+  // =========================================================
+  var cart = [], discountPercent = 0;
+  try {
+    var saved = JSON.parse(localStorage.getItem('ihe_cart') || '[]');
+    if(Array.isArray(saved)) cart = saved.filter(function(i){ return i && i.title && isFinite(i.price) && i.qty > 0; });
+  } catch(e){ cart = []; }
+  function saveCart(){
+    try { localStorage.setItem('ihe_cart', JSON.stringify(cart)); } catch(e){}
+    updateCartUI();
+  }
+  function cartSubtotal(){ return cart.reduce(function(s, i){ return s + i.price * i.qty; }, 0); }
+  function cartTotal(){ var s = cartSubtotal(); return Math.max(0, s - Math.round(s * discountPercent)); }
+
+  function quickAdd(title, price, category, img, qty){
+    qty = qty || 1;
+    var found = cart.filter(function(i){ return i.title === title && i.price === Number(price); })[0];
+    if(found) found.qty += qty;
+    else cart.push({ id:'item_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6), title:title, price:Number(price), qty:qty, category:category, img:img || 'images/hero.jpg' });
+    saveCart();
+    openCart();
+  }
+
+  function updateCartUI(){
+    var count = cart.reduce(function(s, i){ return s + i.qty; }, 0);
+    document.querySelectorAll('.cart-total-badge').forEach(function(el){ el.textContent = count; });
+    document.querySelector('.cart-float').hidden = count === 0;
+    var box = $('cartItemsContainer'), foot = $('cartFooter');
+    if(!cart.length){
+      box.innerHTML = '<div class="cart-empty">' + icon('i-cart', 56) +
+        '<h4 style="margin:0">' + T('Troli anda masih kosong','Your cart is empty') + '</h4>' +
+        '<p class="sm mute">' + T('Pilih hotel, pakej aktiviti atau kenderaan sewa dahulu.','Pick a hotel, an activity package or a rental vehicle first.') + '</p>' +
+        '<a class="btn-sun" href="#aktiviti" data-close-cart style="margin-top:10px;padding:0 22px">' + T('Lihat pakej aktiviti','See activity packages') + '</a></div>';
+      foot.hidden = true;
+      return;
+    }
+    foot.hidden = false;
+    box.innerHTML = cart.map(function(item){
+      return '<div class="cart-item">' +
+        '<div class="cart-item-img" style="background-image:url(\'' + esc(item.img) + '\');background-color:#D9D8D0"></div>' +
+        '<div class="cart-item-info"><div class="item-tag">' + esc(item.category || 'pakej') + '</div>' +
+          '<h4>' + esc(item.title) + '</h4>' +
+          '<div class="item-price">RM ' + item.price + ' &times; ' + item.qty + ' = <strong>RM ' + (item.price * item.qty) + '</strong></div>' +
+          '<div class="cart-qty-ctrl">' +
+            '<button class="qty-btn" type="button" data-qty="-1" data-id="' + item.id + '" aria-label="' + T('Kurang','Less') + '">&minus;</button>' +
+            '<span class="qty-val">' + item.qty + '</span>' +
+            '<button class="qty-btn" type="button" data-qty="1" data-id="' + item.id + '" aria-label="' + T('Tambah','More') + '">+</button>' +
+          '</div></div>' +
+        '<button class="cart-item-del" type="button" data-del="' + item.id + '" aria-label="' + T('Padam','Remove') + '">&times;</button></div>';
+    }).join('');
+    var sub = cartSubtotal();
+    $('cartSubtotal').textContent = 'RM ' + sub;
+    $('promoRow').hidden = discountPercent <= 0;
+    $('cartDiscount').textContent = '-RM ' + Math.round(sub * discountPercent);
+    $('cartTotal').textContent = 'RM ' + cartTotal();
+  }
+  function openCart(){ updateCartUI(); openOverlay($('cartOverlay')); }
+  function closeCart(){ closeOverlay($('cartOverlay')); }
+
+  $('cartOverlay').addEventListener('click', function(e){
+    if(e.target === this || e.target.closest('[data-close-cart]')){ closeCart(); return; }
+    var q = e.target.closest('[data-qty]');
+    if(q){
+      var it = byId(cart, q.dataset.id);
+      if(it){ it.qty += Number(q.dataset.qty); if(it.qty <= 0) cart = cart.filter(function(x){ return x !== it; }); saveCart(); }
+      return;
+    }
+    var d = e.target.closest('[data-del]');
+    if(d){ cart = cart.filter(function(x){ return x.id !== d.dataset.del; }); saveCart(); }
+  });
+  $('btnCloseCart').addEventListener('click', closeCart);
+
+  function applyPromo(code){
+    code = (code || '').trim().toUpperCase();
+    if(code === PROMO){ discountPercent = 0.10; updateCartUI(); showToast(T('Diskaun 10% digunakan.','10% discount applied.')); }
+    else if(!code) showToast(T('Sila masukkan kod promo.','Please enter a promo code.'));
+    else showToast(T('Kod promo tidak sah.','That promo code is not valid.'));
+  }
+  $('btnApplyPromo').addEventListener('click', function(){ applyPromo($('promoInput').value); });
+  $('newsletterForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var em = ($('nl').value || '').trim();
+    if(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){
+      $('promoInput').value = PROMO; discountPercent = 0.10; updateCartUI(); $('nl').value = '';
+      showToast(T('Kod ' + PROMO + ' (10%) diaktifkan dalam troli anda.', 'Code ' + PROMO + ' (10%) is now active in your cart.'));
+    } else showToast(T('Sila masukkan alamat emel yang sah.','Please enter a valid email address.'));
   });
 
-  // Hotel Quick Book Form
-  var btnBookHs = document.getElementById('btnBookHs');
-  if(btnBookHs){
-    btnBookHs.addEventListener('click', function(){
-      var d1 = document.getElementById('hb1').value;
-      var d2 = document.getElementById('hb2').value;
-      var selVal = document.getElementById('hb3').value.split('|');
-      var hotelName = selVal[0] || 'Best Star Hotel Cenang';
-      var hotelPrice = Number(selVal[1] || 180);
-      var hotelImg = selVal[2] || 'images/hotel_cenang_beach.jpg';
-
-      var dateStr = (d1 && d2) ? (' (' + d1 + ' - ' + d2 + ')') : (d1 ? (' (Dari ' + d1 + ')') : '');
-      var title = hotelName + dateStr;
-
-      quickAdd(title, hotelPrice, 'hotel', hotelImg);
-    });
-  }
-
-  // Hotel Search Form
-  var btnHsSearch = document.getElementById('btnHsSearch');
-  if(btnHsSearch){
-    btnHsSearch.addEventListener('click', function(){
-      var q = (document.getElementById('hs').value || '').trim().toLowerCase();
-      if(!q){
-        showToast('Sila masukkan nama hotel (Langgura, Best Star, Adya, Paretto).');
-        return;
-      }
-      var cards = document.querySelectorAll('.hotel-card');
-      var matchCount = 0;
-      cards.forEach(function(c){
-        var text = c.textContent.toLowerCase();
-        if(text.indexOf(q) !== -1){
-          c.style.display = 'flex';
-          matchCount++;
-        } else {
-          c.style.display = 'none';
-        }
-      });
-      if(matchCount > 0){
-        showToast('🔍 Dijumpai ' + matchCount + ' hotel padanan untuk: "' + q + '"');
-        document.querySelector('.hotels-grid').scrollIntoView({behavior:'smooth'});
-      } else {
-        cards.forEach(function(c){ c.style.display = 'flex'; });
-        showToast('Semua 4 hotel Pantai Cenang sedia dipilih.');
-      }
-    });
-  }
-
-  // Newsletter subscribe
-  var btnSubscribe = document.getElementById('btnSubscribe');
-  if(btnSubscribe){
-    btnSubscribe.addEventListener('click', function(e){
-      e.preventDefault();
-      var em = (document.getElementById('nl').value || '').trim();
-      if(em && em.indexOf('@') !== -1){
-        document.getElementById('promoInput').value = 'LANGKAWI2026';
-        discountPercent = 0.10;
-        saveCart();
-        showToast('✨ Kod promosi 10% OFF diaktifkan! Pengesahan dihantar ke emel anda.');
-        document.getElementById('nl').value = '';
-      } else {
-        showToast('Sila masukkan format emel yang sah.');
-      }
-    });
-  }
-
-  // Language toggle
-  var langBtns = document.querySelectorAll('.lang-btn');
-  langBtns.forEach(function(b){
-    b.addEventListener('click', function(){
-      langBtns.forEach(function(x){ x.classList.remove('active'); });
-      b.classList.add('active');
-      var lang = b.dataset.lang;
-      if(lang === 'en'){
-        document.documentElement.lang = 'en';
-        document.querySelector('.hero h1 i').textContent = 'Island Time,';
-        document.querySelector('.hero h1 span').textContent = 'Langkawi';
-        showToast('Switched to English');
-      } else {
-        document.documentElement.lang = 'ms';
-        document.querySelector('.hero h1 i').textContent = 'Masa Santai,';
-        document.querySelector('.hero h1 span').textContent = 'Langkawi';
-        showToast('Bahasa Melayu diaktifkan');
-      }
+  // =========================================================
+  // BOOKING FORM -> WHATSAPP
+  // =========================================================
+  var payMethod = 'Pindahan bank / FPX';
+  document.querySelectorAll('.pay-method-opt').forEach(function(opt){
+    opt.setAttribute('aria-pressed', opt.classList.contains('selected'));
+    opt.addEventListener('click', function(){
+      document.querySelectorAll('.pay-method-opt').forEach(function(o){ o.classList.remove('selected'); o.setAttribute('aria-pressed', 'false'); });
+      opt.classList.add('selected'); opt.setAttribute('aria-pressed', 'true');
+      payMethod = opt.dataset.method;
     });
   });
+  $('btnProceedCheckout').addEventListener('click', function(){
+    if(!cart.length){ showToast(T('Troli anda masih kosong.','Your cart is empty.')); return; }
+    closeCart();
+    $('payModalAmount').textContent = 'RM ' + cartTotal();
+    $('payErr').classList.remove('show');
+    openOverlay($('payModal'));
+    $('cName').focus();
+  });
+  $('btnClosePay').addEventListener('click', function(){ closeOverlay($('payModal')); });
+  $('payModal').addEventListener('click', function(e){ if(e.target === this) closeOverlay(this); });
 
-  // Scroll reveal
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting) e.target.classList.add('is-visible');
+  $('payForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = $('cName').value.trim(), phone = $('cPhone').value.trim(), email = $('cEmail').value.trim(), dates = $('cDates').value.trim();
+    var err = '';
+    if(!name) err = T('Sila isi nama penuh anda.','Please enter your full name.');
+    else if(phone.replace(/\D/g, '').length < 9) err = T('Sila isi nombor WhatsApp / telefon yang sah.','Please enter a valid WhatsApp / phone number.');
+    else if(!dates) err = T('Sila isi tarikh percutian anda supaya kami boleh semak kekosongan.','Please enter your trip dates so we can check availability.');
+    else if(!cart.length) err = T('Troli anda kosong.','Your cart is empty.');
+    if(err){ $('payErr').textContent = err; $('payErr').classList.add('show'); return; }
+    $('payErr').classList.remove('show');
+
+    var ref = 'IHE-' + Date.now().toString().slice(-6), total = cartTotal(), lines = '';
+    $('recTableBody').innerHTML = cart.map(function(it){
+      lines += '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
+      return '<tr><td>' + esc(it.title) + '</td><td style="text-align:center">' + it.qty + '</td><td style="text-align:right">RM ' + (it.price * it.qty) + '</td></tr>';
+    }).join('') +
+      (discountPercent > 0 ? '<tr><td colspan="2">' + T('Diskaun promosi (10%)','Promo discount (10%)') + '</td><td style="text-align:right">-RM ' + Math.round(cartSubtotal() * discountPercent) + '</td></tr>' : '') +
+      '<tr style="color:var(--accent-teal)"><td colspan="2">' + T('Anggaran jumlah','Estimated total') + '</td><td style="text-align:right">RM ' + total + '</td></tr>';
+    $('recName').textContent = name;
+    $('recRef').textContent = ref;
+    $('recMethod').textContent = payMethod;
+    $('btnRecWa').href = waUrl('Salam Ibrahim Hussin Empire! Saya nak buat tempahan dari website:\n\n' +
+      '*NO. RUJUKAN:* ' + ref + '\n*NAMA:* ' + name + '\n*TEL:* ' + phone + '\n' + (email ? '*EMEL:* ' + email + '\n' : '') +
+      '*TARIKH / CATATAN:* ' + dates + '\n*CARA BAYARAN PILIHAN:* ' + payMethod + '\n\n*ITEM DITEMPAH:*\n' + lines +
+      (discountPercent > 0 ? 'Kod promo: ' + PROMO + ' (10%)\n' : '') + '*ANGGARAN JUMLAH:* RM ' + total + '\n\n' +
+      'Mohon sahkan kekosongan dan butiran bayaran. Terima kasih!');
+    cart = []; discountPercent = 0; saveCart();
+    closeOverlay($('payModal'));
+    openOverlay($('receiptModal'));
+  });
+  $('btnCloseReceipt').addEventListener('click', function(){ closeOverlay($('receiptModal')); });
+  $('btnPrint').addEventListener('click', function(){ window.print(); });
+
+  // =========================================================
+  // GLOBAL CLICK HANDLERS
+  // =========================================================
+  function openMenu(){ openOverlay($('mobileDrawer')); }
+  function closeMenu(){ closeOverlay($('mobileDrawer')); }
+  $('btnCloseMenu').addEventListener('click', closeMenu);
+  $('mobileDrawer').addEventListener('click', function(e){ if(e.target === this || e.target.closest('.menu-link')) closeMenu(); });
+  $('btnDrawerCart').addEventListener('click', function(){ closeMenu(); openCart(); });
+
+  document.addEventListener('click', function(e){
+    var el;
+    if((el = e.target.closest('[data-open-menu]'))){ openMenu(); return; }
+    if((el = e.target.closest('[data-open-cart]'))){ openCart(); return; }
+    if((el = e.target.closest('[data-detail]'))){ var p = el.dataset.detail.split(':'); openDetail(p[0], p[1]); return; }
+    if((el = e.target.closest('[data-addveh]'))){
+      var v = byId(vehicles, el.dataset.addveh), s = seasonOf(el.dataset.season);
+      if(v && v[s.key] != null) quickAdd(v.name + ' (' + tr(s.short) + ')', v[s.key], T('kenderaan','vehicle'), v.img, 1);
+      return;
+    }
+    if((el = e.target.closest('[data-addhotel]'))){ var h = byId(hotels, el.dataset.addhotel); if(h) quickAdd(h.name, h.price, 'hotel', h.img, 1); return; }
+    if((el = e.target.closest('[data-quick]'))){ var q = el.dataset.quick.split('|'); quickAdd(q[0], Number(q[1]), q[2], q[3], 1); return; }
+    if((el = e.target.closest('[data-actcat]'))){ activeActCat = el.dataset.actcat; renderActs(); return; }
+    if((el = e.target.closest('[data-vehcat]'))){ activeVehCat = el.dataset.vehcat; renderVehicles(); return; }
+    if((el = e.target.closest('[data-slide]'))){ setSlide(el.dataset.slide); return; }
+    if((el = e.target.closest('.season-btn'))){ activeSeason = el.dataset.season; renderVehicles(); showToast(T('Kadar ditukar: ','Rate changed: ') + tr(seasonOf(activeSeason).label)); return; }
+    if((el = e.target.closest('.lang-btn'))){ setLang(el.dataset.lang); return; }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    if($('detailModal').classList.contains('open')) closeDetail();
+    else if($('payModal').classList.contains('open')) closeOverlay($('payModal'));
+    else if($('receiptModal').classList.contains('open')) closeOverlay($('receiptModal'));
+    else if($('cartOverlay').classList.contains('open')) closeCart();
+    else if($('mobileDrawer').classList.contains('open')) closeMenu();
+  });
+
+  // Price table
+  function toggleTable(show){
+    var w = $('priceTableWrap');
+    w.hidden = show === undefined ? !w.hidden : !show;
+    if(!w.hidden) w.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+  $('btnShowTableTop').addEventListener('click', function(){ toggleTable(); });
+  $('btnClosePriceTable').addEventListener('click', function(){ toggleTable(false); });
+
+  // Hotel search + quick book
+  $('hsSearchForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    hotelQuery = $('hs').value.trim();
+    renderHotels();
+    if(location.hash === '#homestay') route(); else location.hash = '#homestay';
+  });
+  $('btnClearHotelSearch').addEventListener('click', function(){ hotelQuery = ''; $('hs').value = ''; renderHotels(); });
+  $('homeBookForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var h = byId(hotels, $('hb3').value) || hotels[0];
+    var d1 = $('hb1').value, d2 = $('hb2').value, nights = 1, label = '';
+    if(d1 && d2){
+      nights = Math.round((new Date(d2) - new Date(d1)) / 864e5);
+      if(!(nights >= 1)){ showToast(T('Tarikh keluar mesti selepas tarikh masuk.','Check-out must be after check-in.')); return; }
+      label = ' (' + d1 + ' → ' + d2 + ')';
+    } else if(d1) label = ' (' + T('dari ','from ') + d1 + ')';
+    quickAdd(h.name + label, h.price, 'hotel', h.img, nights);
+  });
+
+  // =========================================================
+  // PAGES (hash router: one file, four pages)
+  // =========================================================
+  var routes = { homestay:'stays', aktiviti:'activities', kereta:'vehicles', koleksi:'vehicles' };
+  var titles = {
+    home:'Ibrahim Hussin Empire — Langkawi Homestays, Cenang Hotels & Car Rental',
+    stays:'Hotel & Homestay Pantai Cenang — Ibrahim Hussin Empire',
+    activities:'Pakej Aktiviti Langkawi — Ibrahim Hussin Empire',
+    vehicles:'Kereta & Scooter Sewa Langkawi — Ibrahim Hussin Empire'
+  };
+  var currentPage = 'home';
+  function showPage(page){
+    currentPage = page;
+    document.querySelectorAll('.page').forEach(function(p){ p.hidden = p.dataset.page !== page; });
+    $('topbar').hidden = page === 'home';
+    document.querySelectorAll('[data-page-link]').forEach(function(a){ a.classList.toggle('active', a.dataset.pageLink === page); });
+    document.title = titles[page];
+  }
+  function jump(top){ window.scrollTo({ top:top, behavior:'instant' in window ? 'instant' : 'auto' }); }
+  function route(){
+    var h = decodeURIComponent(location.hash.slice(1));
+    if(h === 'hubungi'){ $('hubungi').scrollIntoView({ behavior:'smooth' }); return; }
+    var page = routes[h] || 'home';
+    showPage(page);
+    closeMenu(); closeCart();
+    var target = (page === 'home' && h && h !== 'utama') || h === 'koleksi' ? document.getElementById(h) : null;
+    if(target) requestAnimationFrame(function(){ target.scrollIntoView({ behavior:'auto', block:'start' }); });
+    else jump(0);
+  }
+  window.addEventListener('hashchange', route);
+
+  // =========================================================
+  // LANGUAGE
+  // =========================================================
+  function setLang(l){
+    lang = l === 'en' ? 'en' : 'ms';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.lang === lang); b.setAttribute('aria-pressed', b.dataset.lang === lang); });
+    document.querySelectorAll('[data-en]').forEach(function(el){
+      if(el._ms === undefined) el._ms = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.dataset.en : el._ms;
     });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal, .reveal-stagger').forEach(function(el){ obs.observe(el); });
+    document.querySelectorAll('[data-en-ph]').forEach(function(el){
+      if(el._msPh === undefined) el._msPh = el.placeholder;
+      el.placeholder = lang === 'en' ? el.dataset.enPh : el._msPh;
+    });
+    $('promoInput').placeholder = T('KOD PROMO','PROMO CODE');
+    renderActs(); renderVehicles(); renderHotels(); updateCartUI();
+    if(detail){ var k = detail.kindId.split(':'), keep = { opt:detail.opt, qty:detail.qty }; detail = buildDetail(k[0], k[1]); detail.kindId = k.join(':'); detail.opt = keep.opt; detail.qty = keep.qty; renderDetail(); }
+    try { localStorage.setItem('ihe_lang', lang); } catch(e){}
+  }
 
-  // Init cart badge
-  updateCartUI();
+  // =========================================================
+  // INIT
+  // =========================================================
+  var general = waUrl('Salam Ibrahim Hussin Empire, saya nak tanya tentang pakej Langkawi.');
+  document.querySelectorAll('.wa-link').forEach(function(a){ a.href = general; });
+
+  var savedLang = 'ms';
+  try { savedLang = localStorage.getItem('ihe_lang') || 'ms'; } catch(e){}
+  setLang(savedLang);
+  route();
+
+  // Scroll reveal: threshold 0 so very tall sections still appear
+  var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('is-visible'); obs.unobserve(en.target); } });
+    }, { threshold:0, rootMargin:'0px 0px -8% 0px' });
+    revealEls.forEach(function(el){ obs.observe(el); });
+  } else revealEls.forEach(function(el){ el.classList.add('is-visible'); });
 })();
 </script>
 </body>
