@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<title>Ibrahim Hussin Empire — Langkawi Homestays, Cenang Hotels &amp; Car Rental</title>
-<meta name="description" content="Tempah hotel Pantai Cenang, homestay, pakej aktiviti pulau dan kereta sewa di Langkawi bersama Ibrahim Hussin Empire.">
+<title>pulau. — Langkawi Tours &amp; Car Rental</title>
+<meta name="description" content="Tempah pakej aktiviti pulau dan kereta sewa di Langkawi dengan pulau. Mudah, pantas dan dipercayai.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -153,47 +153,39 @@ i{font-style:normal}
 .logo{
   display:inline-flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
   color:#fff;
-  transition:transform .25s ease;
+  transition:opacity .2s ease;
   text-decoration:none;
 }
-.logo:hover{transform:scale(1.02)}
+.logo:hover{opacity:.85}
 .logo-mark{
   display:inline-flex;
   align-items:center;
-  gap:6px;
+  justify-content:center;
+  width:32px;
+  height:32px;
   background:rgba(20,20,20,0.65);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   border:1.5px solid var(--sun);
-  padding:5px 12px;
-  border-radius:999px;
+  border-radius:50%;
   box-shadow:0 4px 14px rgba(0,0,0,0.25);
-}
-.logo-mark-text{
-  font-size:13px;
-  font-weight:800;
-  letter-spacing:.08em;
-  color:var(--sun);
-}
-.logo-text{
-  display:flex;
-  flex-direction:column;
-  line-height:1.15;
-  text-align:left;
+  flex:none;
 }
 .logo-name{
-  font-size:15px;
+  font-family:'Figtree',system-ui,sans-serif;
+  font-size:24px;
   font-weight:800;
-  letter-spacing:.12em;
+  letter-spacing:-0.03em;
   color:#fff;
+  line-height:1;
+  display:inline-flex;
+  align-items:baseline;
 }
-.logo-sub{
-  font-size:10px;
-  letter-spacing:.18em;
+.logo-dot{
   color:var(--sun);
-  font-weight:700;
+  font-weight:900;
 }
 
 .lang-toggle{
@@ -1433,7 +1425,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 }
 
 @media (max-width: 820px){
-  .logo-text{display:none!important} /* Name replaced by logo badge on mobile */
+  .logo-name{font-size:20px}
   .cart-nav-btn span:not(.badge){display:none} /* Icon and count badge only */
   .cart-nav-btn{padding:8px 12px}
 }
@@ -1851,18 +1843,14 @@ body.no-scroll{overflow:hidden}
   <div class="mobile-drawer-card">
     <div style="display:flex;justify-content:space-between;align-items:center">
       <div class="logo" style="pointer-events:none">
-        <div class="logo-mark"><svg width="18" height="18" aria-hidden="true"><use href="#i-logo"/></svg><span class="logo-mark-text">IHE</span></div>
-        <div class="logo-text" style="display:flex!important">
-          <span class="logo-name" style="font-size:13px">IBRAHIM HUSSIN</span>
-          <span class="logo-sub" style="font-size:9px">EMPIRE &bull; LANGKAWI</span>
-        </div>
+        <div class="logo-mark"><svg width="16" height="16" aria-hidden="true"><use href="#i-logo"/></svg></div>
+        <span class="logo-name">pulau<span class="logo-dot">.</span></span>
       </div>
       <button class="close-btn" id="btnCloseMenu" type="button" style="background:rgba(255,255,255,0.15);color:#fff" aria-label="Tutup menu">&times;</button>
     </div>
     <div class="mobile-drawer-links">
       <a href="#utama" class="menu-link" data-en="Home">Utama</a>
       <a href="#perkhidmatan" class="menu-link" data-en="About us">Tentang Kami</a>
-      <a href="#homestay" class="menu-link" data-en="Cenang Hotels &amp; Homestays">Hotel &amp; Homestay Cenang</a>
       <a href="#aktiviti" class="menu-link" data-en="Activity Packages">Pakej Aktiviti</a>
       <a href="#kereta" class="menu-link" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</a>
       <a href="#hubungi" class="menu-link" data-en="Contact us">Hubungi Kami</a>
@@ -1885,12 +1873,12 @@ body.no-scroll{overflow:hidden}
   <div class="tb-side">
     <button class="tb-btn" type="button" data-open-menu aria-label="Menu"><svg width="20" height="12" aria-hidden="true"><use href="#i-menu"/></svg><span>Menu</span></button>
     <a class="tb-link" href="#utama" data-en="Home">Utama</a>
-    <a class="tb-link" href="#homestay" data-page-link="stays" data-en="Hotels">Hotel</a>
     <a class="tb-link" href="#aktiviti" data-page-link="activities" data-en="Activities">Aktiviti</a>
     <a class="tb-link" href="#kereta" data-page-link="vehicles" data-en="Vehicles">Kenderaan</a>
   </div>
-  <a class="logo" href="#utama" aria-label="Ibrahim Hussin Empire">
-    <div class="logo-mark"><svg width="18" height="18" aria-hidden="true"><use href="#i-logo"/></svg><span class="logo-mark-text">IHE</span></div>
+  <a class="logo" href="#utama" aria-label="pulau.">
+    <div class="logo-mark"><svg width="16" height="16" aria-hidden="true"><use href="#i-logo"/></svg></div>
+    <span class="logo-name">pulau<span class="logo-dot">.</span></span>
   </a>
   <div class="tb-side">
     <button class="cart-nav-btn" type="button" data-open-cart aria-label="Buka troli tempahan">
@@ -1920,12 +1908,9 @@ body.no-scroll{overflow:hidden}
   </div>
 </div>
 
-<a class="logo" href="#utama" aria-label="Ibrahim Hussin Empire">
-  <div class="logo-mark"><svg width="20" height="20" aria-hidden="true"><use href="#i-logo"/></svg><span class="logo-mark-text">IHE</span></div>
-  <div class="logo-text">
-    <span class="logo-name">IBRAHIM HUSSIN</span>
-    <span class="logo-sub">EMPIRE &bull; LANGKAWI</span>
-  </div>
+<a class="logo" href="#utama" aria-label="pulau.">
+  <div class="logo-mark"><svg width="16" height="16" aria-hidden="true"><use href="#i-logo"/></svg></div>
+  <span class="logo-name">pulau<span class="logo-dot">.</span></span>
 </a>
 
 <div>
@@ -1944,7 +1929,7 @@ body.no-scroll{overflow:hidden}
 <h1 data-en="&lt;i&gt;Island Time,&lt;/i&gt;&lt;span&gt;Langkawi&lt;/span&gt;"><i>Masa Santai,</i><span>Langkawi</span></h1>
 </div>
 <div class="hero-side">
-<p data-en="Homestays, activity packages and rental cars in Langkawi — arranged by one local team, so all you have to do is arrive.">Homestay, pakej aktiviti dan kereta sewa di Langkawi — diurus oleh satu pasukan tempatan, jadi anda cuma perlu sampai.</p>
+<p data-en="Activity packages and rental cars in Langkawi — arranged by one local team, so all you have to do is arrive.">Pakej aktiviti dan kereta sewa di Langkawi — diurus oleh satu pasukan tempatan, jadi anda cuma perlu sampai.</p>
 <div class="hero-cta">
   <a class="btn-sun" href="#perkhidmatan"><span data-en="Plan your trip">Rancang percutian</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
   <a class="hero-link" href="#aktiviti" data-en="See all activity packages">Lihat semua pakej aktiviti</a>
@@ -1953,7 +1938,6 @@ body.no-scroll{overflow:hidden}
 </div>
 
 <div class="hero-foot">
-  <span data-en="Homestays">Homestay</span>
   <span data-en="Activity Packages">Pakej Aktiviti</span>
   <span data-en="Car Rental">Kereta Sewa</span>
   <a href="#perkhidmatan" aria-label="Scroll">Scroll <svg width="12" height="16" viewBox="0 0 12 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M6 1v13M1.5 9.5L6 14l4.5-4.5"/></svg></a>
@@ -1968,97 +1952,20 @@ body.no-scroll{overflow:hidden}
 <div class="eyebrow" style="margin-bottom:16px" data-en="About us">Tentang kami</div>
 <h2 class="display" data-en="&lt;i&gt;One Team,&lt;/i&gt;&lt;span&gt;Your Whole Trip&lt;/span&gt;"><i>Satu Pasukan,</i><span>Seluruh Percutian</span></h2>
 <div class="intro-copy">
-<p data-en="We are based in Langkawi. From the keys to your homestay to the boat out to the islands and the car waiting at the jetty — everything is arranged in one booking, with one number to call.">Kami orang Langkawi. Daripada kunci homestay sehinggalah bot ke pulau dan kereta di jeti — semuanya diatur dalam satu tempahan, dengan satu nombor untuk dihubungi.</p>
+<p data-en="We are based in Langkawi. From the boat out to the islands to the car waiting at the jetty or airport — everything is arranged in one booking, with one number to call.">Kami orang tempatan Langkawi. Daripada bot ke pulau sehinggalah kereta sedia di jeti atau airport — semuanya diatur dalam satu tempahan, dengan satu nombor untuk dihubungi.</p>
 <p data-en="Tell us your dates and we will plan the rest.">Beritahu tarikh anda, kami susun selebihnya.</p>
 </div>
 </div>
 <div class="intro-photo bg" style="background-image:url('images/intro_eagle.jpg')" role="img" aria-label="Dataran Lang, Langkawi"></div>
 </div>
-<div class="trio reveal-stagger">
-<a href="#homestay"><span class="num">01</span><span class="serif" data-en="Hotels &amp; Homestays">Hotel &amp; Homestay</span><span class="mute" data-en="Four Pantai Cenang stays, close to the beach and Cenang Mall.">Empat penginapan Pantai Cenang, dekat pantai dan Cenang Mall.</span></a>
-<a href="#aktiviti"><span class="num">02</span><span class="serif" data-en="Activity Packages">Pakej Aktiviti</span><span class="mute" data-en="Island hopping, Kilim mangroves, SkyCab, sunset cruises and watersports.">Island hopping, bakau Kilim, SkyCab, sunset cruise dan watersport.</span></a>
-<a href="#kereta"><span class="num">03</span><span class="serif" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</span><span class="mute" data-en="Free delivery to the jetty or airport. Scooters, compacts, sedans, MPVs and vans.">Hantar percuma ke jeti atau airport. Scooter, kompak, sedan, MPV dan van.</span></a>
+<div class="trio reveal-stagger" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+<a href="#aktiviti"><span class="num">01</span><span class="serif" data-en="Activity Packages">Pakej Aktiviti</span><span class="mute" data-en="Island hopping, Kilim mangroves, SkyCab, sunset cruises and watersports.">Island hopping, bakau Kilim, SkyCab, sunset cruise dan watersport.</span></a>
+<a href="#kereta"><span class="num">02</span><span class="serif" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</span><span class="mute" data-en="Free delivery to the jetty or airport. Scooters, compacts, sedans, MPVs and vans.">Hantar percuma ke jeti atau airport. Scooter, kompak, sedan, MPV dan van.</span></a>
 </div>
 </div>
 </section>
 
-<!-- HOME: HOTEL PREVIEW -->
-<section class="home reveal" id="home-stays">
-<div class="home-head">
-  <div>
-    <div class="eyebrow" data-en="Pantai Cenang stays">Penginapan Pilihan Pantai Cenang</div>
-    <h2 class="display" data-en="Hotel &amp; Homestay &lt;i&gt;Collection&lt;/i&gt;">Koleksi <i>Hotel &amp; Homestay</i></h2>
-  </div>
-  <p class="mute" style="max-width:480px" data-en="Our picks in Pantai Cenang, Langkawi. Quick access to the white-sand beach, Cenang Mall, restaurants and sea views.">Pilihan hotel dan resort di Pantai Cenang, Langkawi. Akses pantas ke pantai berpasir putih, Cenang Mall, restoran dan pemandangan laut.</p>
-</div>
 
-<div class="home-grid">
-<div class="home-main bg" id="homeMain" style="background-image:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('images/hotel_cenang_beach.jpg')">
-<div class="home-top">
-<div class="chips"><span>Pantai Cenang</span><span>Beachfront</span><span>Family &amp; Couple</span></div>
-<div class="home-note">
-  <p data-en="&lt;strong&gt;Best spot in Cenang:&lt;/strong&gt; steps from the beach, seafood restaurants and duty-free shops."><strong>Lokasi Terbaik di Cenang:</strong> Selangkah ke pantai, restoran makanan laut &amp; kedai bebas cukai.</p>
-  <form class="search" id="hsSearchForm">
-    <label for="hs" class="vh">Cari hotel atau homestay</label>
-    <input id="hs" type="search" placeholder="Cari: Langgura, Best Star, Adya, Paretto…" data-en-ph="Search: Langgura, Best Star, Adya, Paretto…">
-    <button type="submit" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg></button>
-  </form>
-</div>
-</div>
-<div class="home-bottom">
-<div>
-  <h2 id="sliderTitle">Best Star <i>Hotel</i><br>Cenang</h2>
-  <p style="color:rgba(255,255,255,.9);font-size:15px;margin-top:6px" id="sliderDesc"></p>
-  <button class="act-btn" type="button" id="sliderDetail" data-detail="hotel:beststar" style="margin-top:14px;padding:0 18px" data-en="Details &amp; booking">Butiran &amp; Tempah</button>
-</div>
-<div class="dots" role="group" aria-label="Pilihan hotel Cenang" id="hotelDots"></div>
-</div>
-</div>
-
-<div class="home-side">
-<div class="home-feat bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,.15) 20%,rgba(0,0,0,.85) 100%),url('images/hotel_cenang_beach.jpg')">
-<button class="go" type="button" data-detail="hotel:beststar" aria-label="Butiran Best Star Hotel"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-<div class="feat-text">
-  <span class="pill sun" style="align-self:flex-start">Beachfront Direct</span>
-  <strong>Best Star Hotel Cenang</strong>
-  <div class="feat-row">
-    <span><svg width="14" height="14" aria-hidden="true"><use href="#i-pin"/></svg> Tepi Pasir Pantai Cenang</span>
-    <span class="feat-price">RM 180 / <span data-en="night">malam</span></span>
-  </div>
-  <button class="act-btn" type="button" data-detail="hotel:beststar" style="margin-top:10px;height:40px" data-en="Details &amp; booking">Butiran &amp; Tempah</button>
-</div>
-</div>
-
-<form class="home-book" id="homeBookForm">
-<div class="home-book-row"><label for="hb1" data-en="Check in">Tarikh Masuk (Check In)</label><input id="hb1" type="date"></div>
-<div class="home-book-row"><label for="hb2" data-en="Check out">Tarikh Keluar (Check Out)</label><input id="hb2" type="date"></div>
-<div class="home-book-row">
-  <label for="hb3" data-en="Choose a hotel">Pilih Hotel Cenang</label>
-  <select id="hb3"></select>
-</div>
-<button type="submit">
-  <svg width="16" height="16" aria-hidden="true"><use href="#i-cart"/></svg>
-  <span data-en="Add hotel booking to cart">Tambah Tempahan Hotel ke Troli</span>
-</button>
-</form>
-
-<div class="home-two">
-<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/hotel_langgura_adya.jpg')">
-  <button class="go" type="button" data-detail="hotel:langgura" aria-label="Butiran Langgura Baron Hotel"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-  <div><strong>Langgura Baron Hotel</strong><span class="sub">RM 160 / malam &bull; Depan Cenang Mall</span></div>
-</div>
-<div class="home-sm bg" style="background-image:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.85) 100%),url('images/hotel_adya_cenang.jpg')">
-  <button class="go" type="button" data-detail="hotel:adya" aria-label="Butiran Adya Hotel"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></button>
-  <div><strong>Adya Hotel Cenang</strong><span class="sub">RM 150 / malam &bull; Kolam Renang Moden</span></div>
-</div>
-</div>
-</div>
-</div>
-
-<div class="more-row">
-  <a class="btn-sun" href="#homestay"><span data-en="View all hotels">Lihat semua hotel</span> <span class="sq"><svg width="14" height="14" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-</div>
-</section>
 
 <!-- HOME: ACTIVITY BEST SELLERS -->
 <section class="acts-sec" id="home-acts">
@@ -2079,7 +1986,7 @@ body.no-scroll{overflow:hidden}
 <section class="rent reveal" id="home-cars">
 <div class="rent-hero bg">
 <div>
-  <span class="pill sun" style="align-self:flex-start;margin-bottom:8px">Ibrahim Hussin Empire Fleet</span>
+  <span class="pill sun" style="align-self:flex-start;margin-bottom:8px">pulau. Fleet</span>
   <h2 data-en="Car &amp; Scooter Rental in Langkawi">Sewa Kereta &amp; Scooter Langkawi</h2>
   <p data-en="Free delivery to Kuah Jetty or Langkawi Airport. Clean, cool, well-serviced vehicles.">Penghantaran percuma ke Jeti Kuah atau Airport Langkawi. Kenderaan sejuk, bersih, wangi dan servis terjaga rapi.</p>
 </div>
@@ -2102,23 +2009,7 @@ body.no-scroll{overflow:hidden}
 
 </div><!-- /page-home -->
 
-<!-- =========================================================
-   PAGE 2: HOTELS & HOMESTAYS
-   ========================================================= -->
-<div class="page" id="page-stays" data-page="stays" hidden>
-<div class="page-head wrap">
-  <div class="crumb"><a href="#utama" data-en="Home">Utama</a><span>/</span><span data-en="Hotels &amp; Homestays">Hotel &amp; Homestay</span></div>
-  <h1 class="display" data-en="Pantai Cenang &lt;i&gt;Hotels &amp; Homestays&lt;/i&gt;">Hotel &amp; Homestay <i>Pantai Cenang</i></h1>
-  <p class="lede" data-en="Clear nightly room rates. Open a hotel for the details, pick your number of nights and add it to your booking cart.">Kadar bilik semalam yang jelas. Buka hotel untuk butiran, pilih bilangan malam dan masukkan ke troli tempahan.</p>
-</div>
-<section class="home" style="margin-top:28px">
-  <div class="home-head" style="margin-bottom:0">
-    <h2 style="font-size:clamp(22px,2.5vw,30px);font-weight:700" id="hotelsHeading"></h2>
-    <button class="btn-ghost" type="button" id="btnClearHotelSearch" hidden data-en="Show all hotels">Papar semua hotel</button>
-  </div>
-  <div class="hotels-grid" id="hotelsGrid"></div>
-</section>
-</div>
+
 
 <!-- =========================================================
    PAGE 3: ACTIVITY PACKAGES
@@ -2183,7 +2074,7 @@ body.no-scroll{overflow:hidden}
 <div class="price-table-wrap" id="priceTableWrap" hidden>
   <div style="padding:16px 20px;background:#172B28;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px">
     <div>
-      <h3 style="font-size:17px;font-weight:700" data-en="Rental price list — Ibrahim Hussin Empire">Senarai Harga Sewa — Ibrahim Hussin Empire</h3>
+      <h3 style="font-size:17px;font-weight:700" data-en="Rental price list — pulau.">Senarai Harga Sewa — pulau.</h3>
       <p class="sm" style="color:var(--sun);margin-top:2px" data-en="Event 5 Langkawi means special dates such as LIMA, Ironman and peak season.">Event 5 Langkawi merujuk kepada tarikh acara khas seperti LIMA, Ironman &amp; musim puncak.</p>
     </div>
     <button class="close-btn" id="btnClosePriceTable" type="button" style="color:#fff;background:rgba(255,255,255,0.15);flex:none" aria-label="Tutup jadual">&times;</button>
@@ -2197,7 +2088,7 @@ body.no-scroll{overflow:hidden}
 <div class="cats-row reveal" style="margin-top:44px">
 <h2 data-en="Combo packages">Pakej Percutian Kombo</h2>
 <div class="cats">
-  <button class="cat" type="button" data-quick="Pakej Keluarga (Alza + Hotel Cenang)|540|kombo|images/car_mpv.jpg"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family<span class="sm mute">RM 540</span></button>
+  <button class="cat" type="button" data-quick="Pakej Keluarga (Alza + Mangrove Tour)|320|kombo|images/car_mpv.jpg"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family<span class="sm mute">RM 320</span></button>
   <button class="cat" type="button" data-quick="Pakej Rakan (Myvi + Island Hopping)|115|kombo|images/act_island_hopping.jpg"><span class="cat-img" style="background-image:url('images/act_island_hopping.jpg')"></span>Friends<span class="sm mute">RM 115</span></button>
   <button class="cat" type="button" data-quick="Pakej Rombongan (Vellfire + Sunset Cruise)|730|kombo|images/car_luxury.jpg"><span class="cat-img" style="background-image:url('images/car_luxury.jpg')"></span>Groups VIP<span class="sm mute">RM 730</span></button>
   <button class="cat" type="button" data-quick="Pakej Santai Scooter Pantai Cenang|70|kombo|images/scooter.jpg"><span class="cat-img" style="background-image:url('images/scooter.jpg')"></span>Scooter Trip<span class="sm mute">RM 70</span></button>
@@ -2240,13 +2131,15 @@ body.no-scroll{overflow:hidden}
 <div>
   <div class="eyebrow" data-en="Navigation">Navigasi</div>
   <a href="#utama" data-en="Home">Utama</a>
-  <a href="#homestay" data-en="Cenang Hotels &amp; Homestays">Hotel &amp; Homestay Cenang</a>
   <a href="#aktiviti" data-en="Activity Packages">Pakej Aktiviti</a>
   <a href="#kereta" data-en="Car &amp; Scooter Rental">Kereta &amp; Motor Sewa</a>
 </div>
 <div style="align-items:center;text-align:center">
-  <div style="font-size:18px;font-weight:700;letter-spacing:.1em">IBRAHIM HUSSIN EMPIRE</div>
-  <div style="font-size:12px;color:var(--sun);letter-spacing:.16em;margin-top:2px">LANGKAWI TRIP SPECIALIST</div>
+  <div class="logo" style="margin-bottom:8px">
+    <div class="logo-mark"><svg width="16" height="16" aria-hidden="true"><use href="#i-logo"/></svg></div>
+    <span class="logo-name">pulau<span class="logo-dot">.</span></span>
+  </div>
+  <div style="font-size:11px;color:var(--sun);letter-spacing:.2em;margin-top:2px">LANGKAWI TOURS &amp; CAR RENTAL</div>
   <div style="width:100%;max-width:340px;margin-top:20px">
     <label for="nl" class="sm" style="color:#A9AEA8" data-en="Enter your email to unlock the 10% promo code:">Masukkan emel untuk aktifkan kod promo 10%:</label>
     <form class="news" id="newsletterForm">
@@ -2261,12 +2154,12 @@ body.no-scroll{overflow:hidden}
   <div><a class="wa-link" href="#" target="_blank" rel="noopener">011-1183 1896 (Baim)</a></div>
   <div><a href="https://wa.me/60124198150" target="_blank" rel="noopener">012-4198 150 (Ina)</a></div>
   <div>Pantai Cenang &amp; Jeti Kuah, Langkawi, Kedah</div>
-  <div>MOTAC Registered Agency &bull; Langkawi Car Rental &amp; Stays</div>
+  <div>MOTAC Registered Agency &bull; Langkawi Tours &amp; Car Rental</div>
 </div>
 </div>
 <div class="legal">
-  <span>© 2026 Ibrahim Hussin Empire. All rights reserved.</span>
-  <span>Local Langkawi Hospitality &bull; Cenang Hotels, Homestays, Tours &amp; Car Rental</span>
+  <span>© 2026 pulau. All rights reserved.</span>
+  <span>Local Langkawi Hospitality &bull; Island Tours, Watersports &amp; Car Rental</span>
 </div>
 </div>
 </footer>
@@ -2400,31 +2293,7 @@ body.no-scroll{overflow:hidden}
   function waUrl(msg){ return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg); }
   function icon(id, size){ return '<svg width="' + size + '" height="' + size + '" aria-hidden="true"><use href="#' + id + '"/></svg>'; }
 
-  // =========================================================
-  // DATA: HOTELS
-  // =========================================================
-  var hotels = [
-    { id:'beststar', name:'Best Star Hotel Cenang', price:180, img:'images/hotel_cenang_beach.jpg', best:true,
-      badge:['Paling Popular Beachfront','Most popular beachfront'], loc:'Pesisir Pasir Pantai Cenang',
-      short:['Direct beachfront — keluar bilik terus jejak pasir putih Pantai Cenang dan sunset view.','Direct beachfront — step out of your room onto the white sand of Pantai Cenang, with sunset views.'],
-      desc:['Hotel terus ke pesisir pasir Pantai Cenang. Buka pintu hotel terus nampak laut, kafe pantai dan pemandangan sunset yang sangat cantik.','Right on the sand at Pantai Cenang. Open the door to the sea, a beach cafe and a beautiful sunset view.'],
-      perks:[['Terus ke pasir pantai','Straight onto the beach'],['Sunset view','Sunset view'],['Kafe tepi laut','Seaside cafe'],['Wifi percuma','Free wifi']] },
-    { id:'langgura', name:'Langgura Baron Hotel Cenang', price:160, img:'images/hotel_langgura_adya.jpg',
-      badge:['Depan Cenang Mall','Opposite Cenang Mall'], loc:'Jalan Pantai Chenang, Langkawi',
-      short:['Berhadapan Cenang Mall — chalet kolam renang dan bilik hotel selesa, sangat dekat ke pantai.','Opposite Cenang Mall — pool chalets and comfortable rooms, very close to the beach.'],
-      desc:['Lokasi strategik berhadapan Cenang Mall dan restoran. Resort mempunyai kolam renang dan akses mudah ke pantai.','A strategic spot opposite Cenang Mall and restaurants. The resort has a swimming pool and easy beach access.'],
-      perks:[['Kolam renang','Swimming pool'],['Sebelah mall','Next to the mall'],['Wifi percuma','Free wifi'],['Aircond penuh','Fully air-conditioned']] },
-    { id:'adya', name:'Adya Hotel Cenang', price:150, img:'images/hotel_adya_cenang.jpg',
-      badge:['Moden & Selesa','Modern & comfortable'], loc:'Zon Utama Pantai Cenang',
-      short:['Hotel moden dengan kolam renang — penginapan santai di zon utama Pantai Cenang.','A modern hotel with a pool — a relaxed stay in the main Pantai Cenang zone.'],
-      desc:['Penginapan berkonsepkan moden dan santai. Bilik luas, kolam renang outdoor, serta berdekatan medan selera tempatan.','A modern, relaxed stay with spacious rooms, an outdoor pool and a local food court nearby.'],
-      perks:[['Kolam renang','Swimming pool'],['Dekat medan selera','Near the food court'],['Parking mudah','Easy parking'],['Bilik berhawa dingin','Air-conditioned rooms']] },
-    { id:'paretto', name:'Paretto Seaview Hotel Cenang', price:190, img:'images/hotel_paretto_seaview.jpg',
-      badge:['Balkoni Laut Lepas','Sea-view balcony'], loc:'Pantai Cenang (Sea View Wing)',
-      short:['Balkoni pemandangan laut — nikmati laut lepas dari balkoni bilik peribadi.','Sea-view balconies — look out over the open sea from your private balcony.'],
-      desc:['Bilik dilengkapi balkoni peribadi dengan pemandangan laut membiru. Hanya 1 minit berjalan kaki ke pantai dan Cenang night walk.','Rooms come with a private balcony and blue sea views. Just a 1-minute walk to the beach and the Cenang night walk.'],
-      perks:[['Pemandangan laut','Sea view'],['Balkoni peribadi','Private balcony'],['1 minit ke pantai','1 minute to the beach'],['Wifi laju','High-speed wifi']] }
-  ];
+  var hotels = [];
 
   // =========================================================
   // DATA: ACTIVITY PACKAGES (prices as printed on the posters)
@@ -2627,7 +2496,7 @@ body.no-scroll{overflow:hidden}
     { id:'public', key:'pPub', label:['Cuti Umum (Public)','Public holiday'], short:['Kadar Cuti Umum','Public holiday rate'] },
     { id:'event', key:'pEvent', label:'Event 5 Langkawi / Peak', short:'Event 5 Langkawi / Peak' }
   ];
-  var activeSeason = 'normal', activeVehCat = 'all', activeActCat = 'all', hotelQuery = '';
+  var activeSeason = 'normal', activeVehCat = 'all', activeActCat = 'all';
   function seasonOf(id){ return seasons.filter(function(s){ return s.id === id; })[0]; }
   function vehPrice(v, sid){ return v[seasonOf(sid).key]; }
   function byId(list, id){ return list.filter(function(x){ return x.id === id; })[0]; }
@@ -2732,58 +2601,13 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   // RENDER: HOTELS
   // =========================================================
-  function renderHotels(){
-    var q = hotelQuery.toLowerCase();
-    var list = hotels.filter(function(h){
-      return !q || (h.name + ' ' + h.loc + ' ' + tr(h.desc) + ' ' + tr(h.badge)).toLowerCase().indexOf(q) !== -1;
-    });
-    $('hotelsHeading').textContent = q
-      ? T(list.length + ' hotel sepadan dengan "' + hotelQuery + '"', list.length + ' hotel(s) matching "' + hotelQuery + '"')
-      : T('Senarai ' + hotels.length + ' hotel pilihan', hotels.length + ' selected hotels');
-    $('btnClearHotelSearch').hidden = !q;
-    $('hotelsGrid').innerHTML = list.length ? list.map(function(h){
-      return '<article class="hotel-card">' +
-        '<div class="hotel-img" style="background-image:url(\'' + h.img + '\');background-color:#4A6B69"><span class="hotel-badge"' + (h.best ? ' style="background:var(--sun);color:#111"' : '') + '>' + esc(tr(h.badge)) + '</span></div>' +
-        '<div class="hotel-info"><h3>' + esc(h.name) + '</h3>' +
-          '<div class="hotel-loc">' + icon('i-pin', 14) + esc(h.loc) + '</div>' +
-          '<p class="sm mute">' + esc(tr(h.desc)) + '</p>' +
-          '<div class="hotel-perks">' + h.perks.map(function(p){ return '<span>' + esc(tr(p)) + '</span>'; }).join('') + '</div>' +
-          '<div class="hotel-foot"><div class="hotel-rate">RM ' + h.price + ' <small>/ ' + T('malam','night') + '</small></div>' +
-            '<div class="btns"><button class="btn-ghost" type="button" data-detail="hotel:' + h.id + '" style="height:38px">' + T('Butiran','Details') + '</button>' +
-            '<button class="car-action-btn" type="button" data-addhotel="' + h.id + '" style="height:38px;padding:0 14px;margin:0">' + T('Tempah','Book') + '</button></div>' +
-          '</div></div></article>';
-    }).join('') : '<p class="mute">' + T('Tiada hotel sepadan. Cuba nama lain.','No hotels match. Try another name.') + '</p>';
-
-    $('hb3').innerHTML = hotels.map(function(h){ return '<option value="' + h.id + '">' + esc(h.name) + ' (RM ' + h.price + '/' + T('mlm','night') + ')</option>'; }).join('');
-    var dots = $('hotelDots');
-    var cur = dots.dataset.cur || hotels[0].id;
-    dots.innerHTML = hotels.map(function(h){ return '<button type="button" aria-label="' + esc(h.name) + '" aria-pressed="' + (h.id === cur) + '" data-slide="' + h.id + '"></button>'; }).join('');
-    setSlide(cur);
-  }
-  function setSlide(id){
-    var h = byId(hotels, id);
-    if(!h) return;
-    $('hotelDots').dataset.cur = id;
-    $('hotelDots').querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.slide === id); });
-    $('homeMain').style.backgroundImage = "linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.8) 100%),url('" + h.img + "')";
-    $('sliderTitle').innerHTML = esc(h.name).replace('Hotel', '<i>Hotel</i><br>');
-    $('sliderDesc').textContent = tr(h.short);
-    $('sliderDetail').dataset.detail = 'hotel:' + id;
-  }
+  function renderHotels(){}
 
   // =========================================================
   // DETAIL POP-UP
   // =========================================================
   var detail = null; // { title, category, img, options:[{label,price,unit}], opt, qty }
   function buildDetail(kind, id){
-    if(kind === 'hotel'){
-      var h = byId(hotels, id); if(!h) return null;
-      return { kind:kind, title:h.name, category:'hotel', img:h.img, color:'#4A6B69', tag:tr(h.badge), desc:tr(h.desc), meta:[h.loc],
-        options:[{ label:T('Bilik semalam','Room per night'), price:h.price, unit:T('malam','night') }],
-        sections:[{ title:T('Kemudahan','Features'), items:h.perks.map(tr) }],
-        notes:[T('Nyatakan tarikh daftar masuk dalam borang tempahan. Kami sahkan kekosongan bilik melalui WhatsApp.','Give your check-in date in the booking form. We confirm room availability on WhatsApp.')],
-        qtyLabel:T('Bilangan malam','Nights'), opt:0, qty:1 };
-    }
     if(kind === 'veh'){
       var v = byId(vehicles, id); if(!v) return null;
       var opts = seasons.filter(function(s){ return v[s.key] != null; }).map(function(s){ return { label:tr(s.label), price:v[s.key], unit:T('hari','day'), cartLabel:tr(s.short) }; });
@@ -2817,7 +2641,7 @@ body.no-scroll{overflow:hidden}
           return '<div><h4>' + esc(s.title) + '</h4><ul class="dt-list">' + s.items.map(function(it){ return '<li>' + esc(it) + '</li>'; }).join('') + '</ul></div>';
         }).join('') +
         (d.notes.length ? '<div class="dt-note">' + d.notes.map(function(n){ return '<span>' + esc(n) + '</span>'; }).join('') + '</div>' : '') +
-        '<a class="dt-ask" target="_blank" rel="noopener" href="' + waUrl(T('Salam Ibrahim Hussin Empire, saya nak tanya tentang: ','Hi Ibrahim Hussin Empire, I would like to ask about: ') + d.title) + '">' + icon('i-wa', 16) + T('Tanya di WhatsApp','Ask on WhatsApp') + '</a>' +
+        '<a class="dt-ask" target="_blank" rel="noopener" href="' + waUrl(T('Salam pulau., saya nak tanya tentang: ','Hi pulau., I would like to ask about: ') + d.title) + '">' + icon('i-wa', 16) + T('Tanya di WhatsApp','Ask on WhatsApp') + '</a>' +
       '</div>' +
       '<div class="dt-foot">' +
         '<div class="dt-qty"><span>' + esc(d.qtyLabel) + '</span>' +
@@ -2897,7 +2721,7 @@ body.no-scroll{overflow:hidden}
           return '<div><h4>' + esc(tr(s.title)) + '</h4><ul class="dt-list">' + s.items.map(function(it){ return '<li>' + esc(tr(it)) + '</li>'; }).join('') + '</ul></div>';
         }).join('') +
         (notes.length ? '<div class="dt-note">' + notes.map(function(n){ return '<span>' + esc(tr(n)) + '</span>'; }).join('') + '</div>' : '') +
-        '<a class="dt-ask" target="_blank" rel="noopener" href="' + waUrl(T('Salam Ibrahim Hussin Empire, saya nak tanya tentang: ','Hi Ibrahim Hussin Empire, I would like to ask about: ') + tr(a.name)) + '">' + icon('i-wa', 16) + T('Tanya di WhatsApp','Ask on WhatsApp') + '</a>' +
+        '<a class="dt-ask" target="_blank" rel="noopener" href="' + waUrl(T('Salam pulau., saya nak tanya tentang: ','Hi pulau., I would like to ask about: ') + tr(a.name)) + '">' + icon('i-wa', 16) + T('Tanya di WhatsApp','Ask on WhatsApp') + '</a>' +
       '</div>' +
       '<div class="dt-foot">' +
         '<div class="dt-total">' + T('Jumlah','Total') + '<strong id="dtTotal">RM ' + total + '</strong></div>' +
@@ -3028,7 +2852,7 @@ body.no-scroll{overflow:hidden}
     if(!cart.length){
       box.innerHTML = '<div class="cart-empty">' + icon('i-cart', 56) +
         '<h4 style="margin:0">' + T('Troli anda masih kosong','Your cart is empty') + '</h4>' +
-        '<p class="sm mute">' + T('Pilih hotel, pakej aktiviti atau kenderaan sewa dahulu.','Pick a hotel, an activity package or a rental vehicle first.') + '</p>' +
+        '<p class="sm mute">' + T('Pilih pakej aktiviti atau kenderaan sewa dahulu.','Pick an activity package or a rental vehicle first.') + '</p>' +
         '<a class="btn-sun" href="#aktiviti" data-close-cart style="margin-top:10px;padding:0 22px">' + T('Lihat pakej aktiviti','See activity packages') + '</a></div>';
       foot.hidden = true;
       return;
@@ -3119,7 +2943,7 @@ body.no-scroll{overflow:hidden}
     if(err){ $('payErr').textContent = err; $('payErr').classList.add('show'); return; }
     $('payErr').classList.remove('show');
 
-    var ref = 'IHE-' + Date.now().toString().slice(-6), total = cartTotal(), lines = '';
+    var ref = 'PULAU-' + Date.now().toString().slice(-6), total = cartTotal(), lines = '';
     $('recTableBody').innerHTML = cart.map(function(it){
       lines += '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
       return '<tr><td>' + esc(it.title) + '</td><td style="text-align:center">' + it.qty + '</td><td style="text-align:right">RM ' + (it.price * it.qty) + '</td></tr>';
@@ -3129,7 +2953,7 @@ body.no-scroll{overflow:hidden}
     $('recName').textContent = name;
     $('recRef').textContent = ref;
     $('recMethod').textContent = payMethod;
-    $('btnRecWa').href = waUrl('Salam Ibrahim Hussin Empire! Saya nak buat tempahan dari website:\n\n' +
+    $('btnRecWa').href = waUrl('Salam pulau.! Saya nak buat tempahan dari website:\n\n' +
       '*NO. RUJUKAN:* ' + ref + '\n*NAMA:* ' + name + '\n*TEL:* ' + phone + '\n' + (email ? '*EMEL:* ' + email + '\n' : '') +
       '*TARIKH / CATATAN:* ' + dates + '\n*CARA BAYARAN PILIHAN:* ' + payMethod + '\n\n*ITEM DITEMPAH:*\n' + lines +
       (discountPercent > 0 ? 'Kod promo: ' + PROMO + ' (10%)\n' : '') + '*ANGGARAN JUMLAH:* RM ' + total + '\n\n' +
@@ -3160,11 +2984,9 @@ body.no-scroll{overflow:hidden}
       if(v && v[s.key] != null) quickAdd(v.name + ' (' + tr(s.short) + ')', v[s.key], T('kenderaan','vehicle'), v.img, 1);
       return;
     }
-    if((el = e.target.closest('[data-addhotel]'))){ var h = byId(hotels, el.dataset.addhotel); if(h) quickAdd(h.name, h.price, 'hotel', h.img, 1); return; }
     if((el = e.target.closest('[data-quick]'))){ var q = el.dataset.quick.split('|'); quickAdd(q[0], Number(q[1]), q[2], q[3], 1); return; }
     if((el = e.target.closest('[data-actcat]'))){ activeActCat = el.dataset.actcat; renderActs(); return; }
     if((el = e.target.closest('[data-vehcat]'))){ activeVehCat = el.dataset.vehcat; renderVehicles(); return; }
-    if((el = e.target.closest('[data-slide]'))){ setSlide(el.dataset.slide); return; }
     if((el = e.target.closest('.season-btn'))){ activeSeason = el.dataset.season; renderVehicles(); showToast(T('Kadar ditukar: ','Rate changed: ') + tr(seasonOf(activeSeason).label)); return; }
     if((el = e.target.closest('.lang-btn'))){ setLang(el.dataset.lang); return; }
   });
@@ -3186,35 +3008,14 @@ body.no-scroll{overflow:hidden}
   $('btnShowTableTop').addEventListener('click', function(){ toggleTable(); });
   $('btnClosePriceTable').addEventListener('click', function(){ toggleTable(false); });
 
-  // Hotel search + quick book
-  $('hsSearchForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    hotelQuery = $('hs').value.trim();
-    renderHotels();
-    if(location.hash === '#homestay') route(); else location.hash = '#homestay';
-  });
-  $('btnClearHotelSearch').addEventListener('click', function(){ hotelQuery = ''; $('hs').value = ''; renderHotels(); });
-  $('homeBookForm').addEventListener('submit', function(e){
-    e.preventDefault();
-    var h = byId(hotels, $('hb3').value) || hotels[0];
-    var d1 = $('hb1').value, d2 = $('hb2').value, nights = 1, label = '';
-    if(d1 && d2){
-      nights = Math.round((new Date(d2) - new Date(d1)) / 864e5);
-      if(!(nights >= 1)){ showToast(T('Tarikh keluar mesti selepas tarikh masuk.','Check-out must be after check-in.')); return; }
-      label = ' (' + d1 + ' → ' + d2 + ')';
-    } else if(d1) label = ' (' + T('dari ','from ') + d1 + ')';
-    quickAdd(h.name + label, h.price, 'hotel', h.img, nights);
-  });
-
   // =========================================================
-  // PAGES (hash router: one file, four pages)
+  // PAGES (hash router)
   // =========================================================
-  var routes = { homestay:'stays', aktiviti:'activities', kereta:'vehicles', koleksi:'vehicles' };
+  var routes = { aktiviti:'activities', kereta:'vehicles', koleksi:'vehicles' };
   var titles = {
-    home:'Ibrahim Hussin Empire — Langkawi Homestays, Cenang Hotels & Car Rental',
-    stays:'Hotel & Homestay Pantai Cenang — Ibrahim Hussin Empire',
-    activities:'Pakej Aktiviti Langkawi — Ibrahim Hussin Empire',
-    vehicles:'Kereta & Scooter Sewa Langkawi — Ibrahim Hussin Empire'
+    home:'pulau. — Langkawi Tours & Car Rental',
+    activities:'Pakej Aktiviti Langkawi — pulau.',
+    vehicles:'Kereta & Scooter Sewa Langkawi — pulau.'
   };
   var currentPage = 'home';
   function showPage(page){
@@ -3262,7 +3063,7 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   // INIT
   // =========================================================
-  var general = waUrl('Salam Ibrahim Hussin Empire, saya nak tanya tentang pakej Langkawi.');
+  var general = waUrl('Salam pulau., saya nak tanya tentang pakej Langkawi.');
   document.querySelectorAll('.wa-link').forEach(function(a){ a.href = general; });
 
   var savedLang = 'ms';
