@@ -2060,7 +2060,6 @@ body.no-scroll{overflow:hidden}
   <button class="cat" type="button" data-quick="Family Package (Alza + Mangrove Tour)|320|combo|images/car_mpv.jpg"><span class="cat-img" style="background-image:url('images/car_mpv.jpg')"></span>Family<span class="sm mute">RM 320</span></button>
   <button class="cat" type="button" data-quick="Friends Package (Myvi + Island Hopping)|115|combo|images/act_island_hopping.jpg"><span class="cat-img" style="background-image:url('images/act_island_hopping.jpg')"></span>Friends<span class="sm mute">RM 115</span></button>
   <button class="cat" type="button" data-quick="VIP Group Package (Vellfire + Sunset Cruise)|730|combo|images/car_luxury.jpg"><span class="cat-img" style="background-image:url('images/car_luxury.jpg')"></span>VIP Groups<span class="sm mute">RM 730</span></button>
-  <button class="cat" type="button" data-quick="Pantai Cenang Scooter Trip|70|combo|images/scooter.jpg"><span class="cat-img" style="background-image:url('images/scooter.jpg')"></span>Scooter Trip<span class="sm mute">RM 70</span></button>
 </div>
 </div>
 
@@ -2427,17 +2426,13 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   var vehCats = [
     { id:'all', label:['Semua Kenderaan','All transport'] },
-    { id:'scooter', label:['Scooter / Motor','Scooters'] },
     { id:'kompak', label:['Kompak','Compact'] },
     { id:'sedan', label:'Sedan' },
     { id:'mpv', label:['MPV & Van','MPV & Van'] },
     { id:'vip', label:['SUV, 4x4 & VIP','SUV, 4x4 & VIP'] }
   ];
-  var P2 = ['2 Orang','2 people'], P5 = ['5 Orang','5 people'], P7 = ['7 Orang','7 people'];
+  var P5 = ['5 Orang','5 people'], P7 = ['7 Orang','7 people'];
   var vehicles = [
-    { id:'sc_avantiz', file:'scooter-avantiz.jpg', name:'Scooter Yamaha AVANTIZ', cat:'scooter', catLabel:['Scooter / Motor','Scooter'], tag:['Jimat & Pantas','Cheap & quick'], seats:P2, trans:'Auto', luggage:'Helmet Box', pNorm:35, pPub:50, pEvent:80 },
-    { id:'sc_nvx', file:'scooter-nvx.jpg', best:true, name:'Scooter Yamaha NVX', cat:'scooter', catLabel:['Scooter / Motor','Scooter'], tag:['Paling Popular','Most popular'], seats:P2, trans:'Auto', luggage:['Ruang Luas','Roomy'], pNorm:50, pPub:70, pEvent:100 },
-    { id:'sc_adv', file:'scooter-adv.jpg', name:'Scooter Honda ADV', cat:'scooter', catLabel:['Scooter / Motor','Scooter'], tag:'Adventure Touring', seats:P2, trans:'Auto', luggage:['Ruang Luas','Roomy'], pNorm:70, pPub:90, pEvent:120 },
 
     { id:'c_axia_old', file:'axia-old.jpg', name:'Perodua AXIA (Old Model)', cat:'kompak', catLabel:['Kompak Jimat','Budget compact'], tag:['Ekonomi Jimat','Budget pick'], seats:P5, trans:'Auto', luggage:['2 Beg','2 bags'], pNorm:60, pPub:80, pEvent:150 },
     { id:'c_axia_new', file:'axia-new.jpg', best:true, name:'Perodua AXIA (New Model)', cat:'kompak', catLabel:['Kompak Jimat','Budget compact'], tag:['Model Terkini','Latest model'], seats:P5, trans:'Auto', luggage:['2 Beg','2 bags'], pNorm:70, pPub:90, pEvent:180 },
@@ -2508,7 +2503,7 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   // RENDER: VEHICLES
   // =========================================================
-  var catFallback = { scooter:'images/scooter.jpg', kompak:'images/car_compact.jpg', sedan:'images/car_sedan.jpg', mpv:'images/car_mpv.jpg', vip:'images/car_luxury.jpg' };
+  var catFallback = { kompak:'images/car_compact.jpg', sedan:'images/car_sedan.jpg', mpv:'images/car_mpv.jpg', vip:'images/car_luxury.jpg' };
   function carPhoto(v){
     var fb = catFallback[v.cat] || 'images/rent_hero.jpg';
     return '<div class="ph" aria-hidden="true"><svg aria-hidden="true"><use href="#i-car"/></svg></div>' +
