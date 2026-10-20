@@ -563,7 +563,7 @@ i{font-style:normal}
 .cars{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .car{background:#F7F7F4;border-radius:var(--radius-md);padding:14px;display:flex;flex-direction:column;gap:14px;border:1px solid #E5E2D8;transition:transform .35s var(--ease), box-shadow .35s var(--ease)}
 .car:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);background:#fff}
-.car-img-wrap{overflow:hidden;border-radius:var(--radius-sm);height:190px;position:relative}
+.car-img-wrap{overflow:hidden;border-radius:var(--radius-sm);height:190px;position:relative;background:#fff}
 .car-img{width:100%;height:100%;background-color:#DADAD6;background-size:cover;background-position:center;transition:transform .5s var(--ease)}
 .car:hover .car-img{transform:scale(1.06)}
 .car-tag{position:absolute;top:10px;left:10px;background:rgba(18,30,28,0.85);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px}
@@ -1638,12 +1638,12 @@ body.no-scroll{overflow:hidden}
 .car-img-wrap .ph{
   position:absolute;inset:0;
   display:flex;align-items:center;justify-content:center;
-  background:#EAE8E1;
+  background:#fff;
   color:#8C8F89;
 }
 .car-img-wrap .ph svg{width:48px;height:48px;stroke:#A6A59D;opacity:.4}
-.car-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.car:hover .car-photo{transform:scale(1.06)}
+.car-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:10px;background:#fff;transition:transform .5s var(--ease)}
+.car:hover .car-photo{transform:scale(1.05)}
 .car-tag{z-index:2}
 .car-btns{margin-top:auto;display:grid;grid-template-columns:auto 1fr;gap:8px}
 .car-btns .car-action-btn{margin-top:0;padding:0 12px}
@@ -1663,7 +1663,7 @@ body.no-scroll{overflow:hidden}
   background-color:#2A403C;background-size:cover;background-position:center;
   border-radius:var(--radius-lg) var(--radius-lg) 0 0;
 }
-.dt-hero .car-img-wrap{height:100%;border-radius:0}
+.dt-hero .car-img-wrap{height:100%;border-radius:0;background:#fff}
 .dt-hero .close-btn{position:absolute;top:14px;right:14px;z-index:3;background:rgba(255,255,255,.95);box-shadow:0 4px 12px rgba(0,0,0,.2)}
 .dt-hero .pill{position:absolute;left:16px;bottom:16px;z-index:3}
 .dt-body{padding:22px 24px 8px;display:flex;flex-direction:column;gap:20px}
