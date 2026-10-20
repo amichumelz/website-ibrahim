@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <title>AFNAN LANGKAWI TOUR &amp; TRANSPORT WITH DRIVER — Langkawi Tour Packages &amp; Chauffeured Transport</title>
-<meta name="description" content="Book island activity packages, watersports, and chauffeured transport &amp; van charter in Langkawi with AFNAN LANGKAWI TOUR &amp; TRANSPORT WITH DRIVER.">
+<meta name="description" content="Book Langkawi island tours, mangrove tours, sunset cruises, park tickets and chauffeured transport &amp; van charter in Langkawi with AFNAN LANGKAWI TOUR &amp; TRANSPORT WITH DRIVER.">
 <link rel="icon" type="image/png" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1802,6 +1802,13 @@ body.no-scroll{overflow:hidden}
   #allActs .pk-price{font-size:26px}
   #allActs .pk-info{padding:20px}
 }
+.act-terms{margin-top:56px;padding-top:32px;border-top:1px solid rgba(255,255,255,.15)}
+.act-terms h2{font-size:clamp(22px,2.4vw,30px);font-weight:700;margin-bottom:20px}
+.act-terms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.act-terms-grid>div{background:var(--deep-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius-md);padding:18px}
+.act-terms-grid h3{font-size:15px;font-weight:700;color:var(--sun);margin-bottom:6px}
+.act-terms-grid p{font-size:14px;color:#C9C9C4;line-height:1.55}
+.act-terms-foot{margin-top:16px;font-size:13px;color:#A9AEA8}
 </style>
 </head>
 <body>
@@ -1928,7 +1935,7 @@ body.no-scroll{overflow:hidden}
 <div class="intro-photo bg" style="background-image:url('images/intro_eagle.jpg')" role="img" aria-label="Dataran Lang, Langkawi"></div>
 </div>
 <div class="trio reveal-stagger" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
-<a href="#aktiviti"><span class="num">01</span><span class="serif">Activity Packages</span><span class="mute">Island hopping, Kilim mangroves, SkyCab, sunset cruises and watersports.</span></a>
+<a href="#aktiviti"><span class="num">01</span><span class="serif">Activity Packages</span><span class="mute">Island hopping, Kilim mangroves, snorkeling, sunset cruises, cable car, ATV and park tickets.</span></a>
 <a href="#kereta"><span class="num">02</span><span class="serif">Transport With Driver</span><span class="mute">Airport &amp; jetty pickup. Sedans, MPVs, 14-seater vans &amp; VIP charters with experienced local drivers.</span></a>
 </div>
 </div>
@@ -1988,9 +1995,21 @@ body.no-scroll{overflow:hidden}
 <div class="wrap">
   <div class="crumb"><a href="#utama">Home</a><span>/</span><span>Activity Packages</span></div>
   <h1 class="display">All <i>Activity Packages</i></h1>
-  <p style="color:#C9C9C4;max-width:620px;margin-top:14px">Island hopping, Kilim mangrove tours, SkyCab tickets, sunset cruises and watersports. Tap any package for the full price list and trip highlights.</p>
+  <p style="color:#C9C9C4;max-width:620px;margin-top:14px">Island hopping, Kilim mangrove tours, snorkeling, sunset dinner cruises, cable car, ATV rides and attraction tickets. Tap any package for the full price list and trip highlights.</p>
   <div class="car-filter-row" id="actFilters" role="group" aria-label="Activity categories"></div>
   <div class="acts" id="allActs"></div>
+  <div class="act-terms">
+    <h2>Booking terms</h2>
+    <div class="act-terms-grid">
+      <div><h3>Booking</h3><p>Book at least 1 day before your activity. Send us your name, phone number, number of guests, activity date and time.</p></div>
+      <div><h3>Payment</h3><p>A deposit or full payment secures your booking. Any balance must be settled before the activity date.</p></div>
+      <div><h3>Tickets</h3><p>E-tickets or vouchers are issued after payment is confirmed. Issued tickets are non-transferable and non-refundable.</p></div>
+      <div><h3>Cancellation</h3><p>More than 48 hours before: partial refund, subject to the operator. Within 48 hours or no-show: non-refundable. If the operator cancels for weather or safety, you can reschedule or request a refund.</p></div>
+      <div><h3>Prices include</h3><p>Entry or participation fee and the standard inclusions listed in each package (safety gear, boat ride, guide).</p></div>
+      <div><h3>Prices exclude</h3><p>Dayang Bunting Lake entrance (RM15–RM20 per person), Bat Cave entrance (RM2 per person), meals and drinks unless stated, hotel pickup unless stated, insurance, tips and personal expenses.</p></div>
+    </div>
+    <p class="act-terms-foot">Prices are valid until 12 December 2026 and may change with government regulations, operator updates or fuel price adjustments.</p>
+  </div>
 </div>
 </section>
 </div>
@@ -2127,7 +2146,7 @@ body.no-scroll{overflow:hidden}
 </div>
 <div class="legal">
   <span>© 2026 AFNAN LANGKAWI TOUR &amp; TRANSPORT WITH DRIVER. All rights reserved.</span>
-  <span>Local Langkawi Hospitality &bull; Island Tours, Watersports &amp; Transport With Driver</span>
+  <span>Local Langkawi Hospitality &bull; Island Tours, Attractions &amp; Transport With Driver</span>
 </div>
 </div>
 </footer>
@@ -2264,151 +2283,131 @@ body.no-scroll{overflow:hidden}
   var hotels = [];
 
   // =========================================================
-  // DATA: ACTIVITY PACKAGES (prices as printed on the posters)
+  // DATA: ACTIVITY PACKAGES (selling price = rate card + 20%, rounded to RM)
+  // Photos: images/<file>. If a photo is missing, the "fb" image is shown instead.
   // =========================================================
   var actCats = [
-    { id:'all', label:['Semua','All'] },
-    { id:'boat', label:['Tour Bot','Boat tours'] },
-    { id:'skycab', label:'SkyCab' },
+    { id:'all', label:'All' },
+    { id:'boat', label:'Boat tours' },
     { id:'cruise', label:'Sunset Cruise' },
-    { id:'water', label:'Watersport' }
+    { id:'adventure', label:'Cable Car & ATV' },
+    { id:'park', label:'Parks & Attractions' }
   ];
-  var ADULT = ['Dewasa','Adult'], CHILD = ['Kanak-kanak','Child'];
-  var cruiseCommon = ['Jacuzzi net', 'U jump I jump', 'Stand paddle board', ['Berenang','Swimming'], 'Sunset point', ['Sesi foto Dataran Lang (Eagle Square)','Eagle Square photo session']];
-  var cruiseRandom = [['Golden Eagle Cruise. Bot ditetapkan secara rawak: Golden Merry, Amanpuri atau Amanpuri 2.','Golden Eagle Cruise. Boat is assigned at random: Golden Merry, Amanpuri or Amanpuri 2.']];
-  var mg1 = ['Fish Farm & Fish Show','Eagle Watching','Monkey Feeding','Crocodile Cave','Mangrove River Cruise'];
-  var mg2 = mg1.concat(['Bat Cave','Icon Kilim Geoforest Park','Sea Tour (Andaman Sea)']);
-  var waterNote = [['Langkawi Watersport, beroperasi sejak 2016. Kru profesional dan utamakan keselamatan.','Langkawi Watersport, operating since 2016. Professional crew, safety first.']];
-  var askAB = [['WhatsApp kami untuk perbezaan laluan Pakej A dan Pakej B.','WhatsApp us for the route difference between Package A and Package B.']];
+  var ADULT = 'Adult', CHILD311 = 'Child (3–11 years)';
+  var bookNote = 'Book at least 1 day in advance. Cancellations within 48 hours of the activity, or no-shows, are non-refundable.';
+  var ticketNote = 'E-tickets / vouchers are issued after payment is confirmed. Issued tickets are non-transferable and non-refundable.';
 
   // Pricing types per variant:
   //   pax  = pay per person, one counter per rate
   //   boat = ONE price for the whole boat; the tier is picked from the group size (tiers: [max pax, price, optional name])
   //   unit = fixed price x quantity
+  // extras (activity or variant level) = optional add-ons with their own counter: { label, price, unit }
   var acts = [
     { id:'island', cat:'boat', best:true, name:'Island Hopping', img:'images/act_island_hopping.jpg', color:'#2F6B5E',
-      sub:['3–4 jam · Sharing / Private','3–4 hours · Sharing / Private'],
-      desc:['Pengalaman wajib bila datang Langkawi: Tasik Dayang Bunting, eagle watching dan Pulau Beras Basah.','The must-do Langkawi trip: Dayang Bunting Lake, eagle watching and Beras Basah Island.'],
-      dur:['3–4 jam (pergi & balik)','3–4 hours (round trip)'],
-      sections:[
-        { title:['Lokasi menarik','Stops'], items:['Dayang Bunting View (Port OOTD)', ['Tasik Dayang Bunting (1 jam)','Dayang Bunting Lake (1 hour)'], 'Fish Feeding', 'Lion Rock Island', 'Eagle Watching', 'Beras Basah Island'] },
-        { title:['Termasuk','Included'], items:[['Makanan untuk eagle feeding','Food for eagle feeding'], ['Aktiviti fish feeding','Fish feeding activity']] }
-      ],
-      notes:[['Sesuai untuk family & group. Port cun untuk bergambar.','Good for families and groups, with great photo spots.']],
+      sub:'Sharing / Private boat · 3–4 hours',
+      desc:'The must-do Langkawi trip: Dayang Bunting Lake, eagle watching and island stops. Join a sharing boat or charter a private boat on your own timing.',
+      sections:[ { title:'Highlights', items:['Dayang Bunting Lake','Eagle Watching','Island stops'] } ],
+      notes:['Not included: Dayang Bunting Lake entrance fee (RM15–RM20 per person, paid at the site).', bookNote],
       variants:[
-        { label:'Sharing', hint:['Kongsi bot, bayar ikut orang','Shared boat, pay per person'], type:'pax',
-          rates:[ { label:ADULT, price:45 }, { label:['Kanak-kanak (10 tahun ke bawah)','Child (10 and under)'], price:35 } ] },
-        { label:['Bot Private','Private boat'], hint:['Satu harga untuk satu bot','One price for the whole boat'], type:'boat',
-          tiers:[[8,350],[10,370],[12,400],[15,500],[18,550],[20,650]] }
+        { label:'Sharing Boat', hint:'Shared boat, pay per person', type:'pax',
+          rates:[ { label:'Per person', price:66 } ] },
+        { label:'Private Boat', hint:'Flexible timing (3–4 hours), one price for the whole boat', type:'boat', dur:'3–4 hours, flexible timing',
+          tiers:[[10,480,'Private boat'],[15,600,'Private boat'],[20,840,'Private boat']] }
       ] },
 
-    { id:'mangrove', cat:'boat', best:true, name:'Mangrove Tour', img:'images/act_mangrove.jpg', color:'#3C6A72',
-      sub:['1, 2 atau 3–4 jam · Bot private','1, 2 or 3–4 hours · Private boat'],
-      desc:['Menyusuri sungai bakau Kilim Geoforest Park dengan bot private. Pilih trip 1 jam, 2 jam, atau 3–4 jam dengan fish feeding dan snorkeling.','Cruise the Kilim Geoforest Park mangroves by private boat. Choose the 1-hour or 2-hour trip, or 3–4 hours with fish feeding and snorkeling.'],
-      notes:[['Bot private, sesuai untuk family & group trip.','Private boat, good for family and group trips.']],
+    { id:'mangrove', cat:'boat', best:true, name:'Mangrove Tour (Kilim Geoforest Park)', img:'images/act_mangrove.jpg', color:'#3C6A72',
+      sub:'Sharing / Private boat · Kilim',
+      desc:'Cruise the Kilim Geoforest Park mangroves: Bat Cave, Crocodile Cave and more. Join a sharing boat or charter a private boat from 8 to 20 pax.',
+      extras:[ { label:'Add lunch: local seafood set', price:30, unit:'pax' } ],
+      notes:['Not included: Bat Cave (Gua Kelawar) entrance fee, RM2 per person.', bookNote],
       variants:[
-        { label:['1 Jam','1 Hour'], hint:'Trip highlight', type:'boat', tiers:[[8,250],[13,350],[20,350]],
-          sections:[ { title:'Trip highlight', items:mg1 } ] },
-        { label:['2 Jam — Full Experience','2 Hours — Full Experience'], hint:['Lagi puas & berbaloi','Covers the most'], type:'boat', tiers:[[8,300],[13,350],[20,450]],
-          sections:[ { title:'Full trip highlight', items:mg2 } ] },
-        { label:['3–4 Jam + Fish Feeding + Snorkeling','3–4 Hours + Fish Feeding + Snorkeling'], hint:['Termasuk Pulau Dangli','Includes Dangli Island'], type:'boat',
-          tiers:[[8,450,'Small boat'],[10,600,'Medium boat'],[15,750,'Big boat']],
-          sections:[ { title:'Highlight trip', items:mg1.slice(0,4).concat(['Mangrove River','Bat Cave','Icon of Kilim Geoforest Park','Sea Tour (Andaman Sea)','Dangli Island — Fish Feeding & Snorkeling']) } ],
-          notes:[
-            ['Snorkeling goggle dipinjamkan percuma (saiz dewasa sahaja).','Snorkeling goggles are lent free of charge (adult sizes only).'],
-            ['Peralatan yang hilang dicaj RM100 / set.','Lost equipment is charged at RM100 per set.']
-          ] }
+        { label:'Sharing Boat', hint:'2–3 hours, pay per person', type:'pax', dur:'2–3 hours',
+          rates:[ { label:'Per person', price:120 } ],
+          sections:[ { title:'Highlights', items:['Bat Cave','Crocodile Cave','Mangrove river cruise'] } ] },
+        { label:'Private Boat', hint:'Flexible timing, one price for the whole boat', type:'boat', dur:'Flexible timing',
+          tiers:[[8,480,'Small boat'],[12,600,'Medium boat'],[15,720,'Large boat'],[20,1200,'VIP boat (XL)']] }
       ] },
 
-    { id:'skycab', cat:'skycab', best:true, name:'Langkawi SkyCab', img:'images/act_skycab.jpg', color:'#44705A',
-      sub:["Admission / Eagle's Nest Combo","Admission / Eagle's Nest Combo"],
-      desc:["Tiket kereta kabel Langkawi SkyCab. Pilih tiket Admission biasa atau Combo dengan Eagle's Nest SkyWalk.","Langkawi SkyCab cable car tickets. Choose standard Admission or the Combo with the Eagle's Nest SkyWalk."],
+    { id:'snorkel', cat:'boat', name:'Private Snorkeling — Dangli Island & Pasir Panjang', img:'images/act_snorkeling.jpg', fb:'images/act_island_hopping.jpg', color:'#1F6F8B',
+      sub:'Private boat · 1 to 18 pax',
+      desc:'A private boat to Dangli Island and Pasir Panjang for snorkeling, with snorkeling equipment included.',
+      sections:[ { title:'Included', items:['Private boat','Snorkeling equipment'] } ],
+      notes:[bookNote],
       variants:[
-        { label:'SkyCab Admission', hint:['SkyCab + SkyDome + SkyRex + 3D Art','SkyCab + SkyDome + SkyRex + 3D Art'], type:'pax',
-          rates:[
-            { label:['Warganegara — Dewasa','Malaysian — Adult'], price:43 },
-            { label:['Warganegara — Kanak-kanak','Malaysian — Child'], price:33 },
-            { label:['Antarabangsa — Dewasa','International — Adult'], price:85 },
-            { label:['Antarabangsa — Kanak-kanak','International — Child'], price:65 },
-            { label:['Tambahan Express Lane','Express Lane add-on'], price:50, addon:true }
-          ],
-          sections:[ { title:['Termasuk','Included'], items:['SkyCab','SkyDome','SkyRex','3D Art Langkawi'] } ] },
-        { label:"Eagle's Nest SkyWalk Combo", hint:["Semua di atas + Eagle's Nest SkyWalk","All of the above + Eagle's Nest SkyWalk"], type:'pax',
-          rates:[
-            { label:['MyKad — Dewasa','MyKad — Adult'], price:68 },
-            { label:['MyKad — Kanak-kanak','MyKad — Child'], price:48 },
-            { label:['Antarabangsa — Dewasa','International — Adult'], price:130 },
-            { label:['Antarabangsa — Kanak-kanak','International — Child'], price:100 }
-          ],
-          sections:[ { title:['Termasuk','Included'], items:['SkyCab','SkyDome','SkyRex','3D Art Langkawi',"Eagle's Nest SkyWalk"] } ],
-          notes:[['Percuma untuk kanak-kanak bawah 3 tahun.','Free for children below 3 years.']] }
+        { label:'Private Boat', type:'boat', tiers:[[6,540,'Private boat'],[12,660,'Private boat'],[18,960,'Private boat']] }
       ] },
 
-    { id:'cruise', cat:'cruise', best:true, name:'Sunset Cruise', img:'images/act_sunset_cruise.jpg', color:'#8A5A3A',
-      sub:['4pm–8pm · 4 pakej','4pm–8pm · 4 packages'], dur:'4pm–8pm',
-      desc:['Belayar ketika matahari terbenam bersama Golden Eagle Cruise. Pilih pakej Basic, Non Alcohol, Standard atau Premium.','Sail at sunset with Golden Eagle Cruise. Choose the Basic, Non Alcohol, Standard or Premium package.'],
+    { id:'cruise', cat:'cruise', best:true, name:'Sunset Dinner Cruise', img:'images/act_sunset_cruise.jpg', color:'#8A5A3A',
+      sub:'Sharing cruise / Private charter',
+      desc:'Sail into the Langkawi sunset with a buffet dinner on board. Join the sharing cruise or charter the whole boat for up to 30 guests.',
+      notes:[bookNote],
       variants:[
-        { label:'Basic', hint:['Minuman ringan','Soft drinks'], type:'pax',
-          rates:[ { label:ADULT, price:110 }, { label:['Kanak-kanak (2 tahun ke atas)','Child (2 years and above)'], price:110 } ],
-          sections:[ { title:['Pakej termasuk','Package includes'], items:['Softdrinks'].concat(cruiseCommon) } ], notes:cruiseRandom },
-        { label:'Non Alcohol', hint:['Makan malam, tanpa alkohol','Dinner, alcohol-free'], type:'pax',
-          rates:[ { label:ADULT, price:180 }, { label:CHILD, price:130 } ],
-          sections:[ { title:['Pakej termasuk','Package includes'], items:[['Makan malam & softdrinks','Dinner & soft drinks']].concat(cruiseCommon) } ], notes:cruiseRandom },
-        { label:'Standard', hint:['Makan malam, cocktail & mocktail','Dinner, cocktails & mocktails'], type:'pax',
-          rates:[ { label:ADULT, price:210 }, { label:CHILD, price:150 } ],
-          sections:[ { title:['Pakej termasuk','Package includes'], items:[['Makan malam, softdrinks, cocktail & mocktail','Dinner, soft drinks, cocktails & mocktails']].concat(cruiseCommon) } ],
-          notes:[['Bot: Ocean Magic, Princess Mary, Amanpuri atau Amanpuri 2.','Boats: Ocean Magic, Princess Mary, Amanpuri or Amanpuri 2.']] },
-        { label:'Premium', hint:['Welcome drink + katamaran Eagle Magic','Welcome drink + Eagle Magic catamarans'], type:'pax',
-          rates:[ { label:ADULT, price:250 }, { label:CHILD, price:200 } ],
-          sections:[ { title:['Pakej termasuk','Package includes'], items:['Premium check-in welcome drink', ['Makan malam, softdrinks, cocktail & mocktail','Dinner, soft drinks, cocktails & mocktails']].concat(cruiseCommon) } ],
-          notes:[['Bot: Eagle Magic, Eagle Magic 2 atau Kawanada.','Boats: Eagle Magic, Eagle Magic 2 or Kawanada.']] }
+        { label:'Sharing Cruise', hint:'Buffet dinner + Jacuzzi + Open Bar', type:'pax',
+          rates:[ { label:'Per person', price:300 } ],
+          sections:[ { title:'Included', items:['Buffet dinner','Jacuzzi','Open bar'] } ] },
+        { label:'Private Charter', hint:'Whole boat for up to 30 pax, with dinner buffet', type:'boat', boatWord:'charter',
+          tiers:[[30,6000,'Private charter']],
+          sections:[ { title:'Included', items:['Private boat for your group','Dinner buffet'] } ] }
       ] },
 
-    { id:'jetcar', cat:'water', name:'Jetcar', img:'images/act_jetcar.jpg', color:'#B0356B',
-      sub:['Fun Ride / Island Tour','Fun Ride / Island Tour'],
-      desc:['Pandu jetcar di atas laut Langkawi. Pilih fun ride pendek atau island tour 4 jam.','Drive a jetcar on the Langkawi sea. Choose a short fun ride or the 4-hour island tour.'],
-      notes:waterNote,
+    { id:'cablecar', cat:'adventure', best:true, name:'Cable Car & SkyBridge Combo', img:'images/act_skycab.jpg', color:'#44705A',
+      sub:'SkyCab + SkyBridge · SkyGlide add-on',
+      desc:'Combo ticket for the Langkawi SkyCab cable car and SkyBridge, with an optional SkyGlide add-on.',
+      sections:[ { title:'Included', items:['SkyCab cable car','SkyBridge'] } ],
+      extras:[ { label:'SkyGlide add-on', price:24, unit:'pax' } ],
+      notes:[ticketNote, bookNote],
       variants:[
-        { label:['Fun Ride — 15 minit','Fun Ride — 15 minutes'], type:'unit', price:250 },
-        { label:['Fun Ride — 30 minit','Fun Ride — 30 minutes'], type:'unit', price:350 },
-        { label:['Island Tour (4 jam) — Pakej A','Island Tour (4 hours) — Package A'], type:'unit', price:650, notes:askAB },
-        { label:['Island Tour (4 jam) — Pakej B','Island Tour (4 hours) — Package B'], type:'unit', price:750, notes:askAB }
+        { label:'Cable Car Combo Ticket', type:'pax', rates:[ { label:'Per person', price:120 } ] }
       ] },
 
-    { id:'jetski', cat:'water', name:'Jetski', img:'images/act_jetski.jpg', color:'#5B3A8E',
-      sub:['Fun Ride / Island Hopping / Mangrove','Fun Ride / Island Hopping / Mangrove'],
-      desc:['Tunggang jetski di perairan Langkawi: fun ride 30 minit, island hopping tour, atau mangrove tour Tanjung Rhu.','Ride a jetski in Langkawi waters: a 30-minute fun ride, an island hopping tour, or the Tanjung Rhu mangrove tour.'],
-      notes:waterNote,
+    { id:'atv', cat:'adventure', name:'ATV Jungle Ride to Durian Perangin Waterfall', img:'images/act_atv.jpg', fb:'images/hero.jpg', color:'#6B5A2E',
+      sub:'30 min / 1 hour / 1.5 hours',
+      desc:'Ride an ATV through the forest trail to Durian Perangin Waterfall. Choose the short forest trail, the jungle route to the waterfall, or the extended waterfall and village route.',
+      extras:[ { label:'Passenger (2nd rider) seat', price:60, unit:'seat' } ],
+      notes:[bookNote],
       variants:[
-        { label:['Fun Ride — 30 minit','Fun Ride — 30 minutes'], type:'unit', price:150 },
-        { label:'Island Hopping Tour — Package A', type:'unit', price:500, notes:askAB },
-        { label:'Island Hopping Tour — Package B', type:'unit', price:600, notes:askAB },
-        { label:['Mangrove Tour (Tg Rhu) — 2 jam','Mangrove Tour (Tg Rhu) — 2 hours'], type:'unit', price:350 },
-        { label:['Mangrove Tour (Tg Rhu) — 4 jam','Mangrove Tour (Tg Rhu) — 4 hours'], type:'unit', price:550 }
+        { label:'30 Minutes', hint:'Forest trail', type:'unit', price:180, unit:'ATV' },
+        { label:'1 Hour', hint:'Jungle route to the waterfall', type:'unit', price:240, unit:'ATV' },
+        { label:'1.5 Hours', hint:'Extended waterfall + village route', type:'unit', price:300, unit:'ATV' }
       ] },
 
-    { id:'parasailing', cat:'water', name:'Parasailing', img:'images/act_parasailing.jpg', color:'#B33A3A',
-      sub:['Seorang satu penerbangan','One flight per person'],
-      desc:['Terbang dengan payung terjun ditarik bot, pemandangan laut dari atas.','Fly on a parachute towed by a boat, with sea views from above.'],
-      notes:waterNote,
-      variants:[ { label:'Parasailing', type:'pax', rates:[ { label:['Peserta','Rider'], price:150 } ] } ] },
+    { id:'wildlife', cat:'park', name:'Wildlife Park Langkawi', img:'images/act_wildlife_park.jpg', fb:'images/intro_eagle.jpg', color:'#4F6B3A',
+      sub:'Entrance tickets',
+      desc:'Entrance tickets to Wildlife Park Langkawi.',
+      notes:[ticketNote, bookNote],
+      variants:[ { label:'Entrance ticket', type:'pax', rates:[ { label:ADULT, price:66 }, { label:'Child', price:60 } ] } ] },
 
-    { id:'sofa_boat', cat:'water', name:'Sofa Boat', img:'images/act_sofa_boat.jpg', color:'#5B3A8E',
-      sub:['Harga satu ride','Price per ride'],
-      desc:['Duduk atas sofa boat dan ditarik laju merentas ombak.','Sit on the sofa boat and get towed fast across the waves.'],
-      notes:waterNote,
-      variants:[ { label:'Sofa Boat', type:'unit', price:150, unit:['ride','ride'] } ] },
+    { id:'dreamforest', cat:'park', name:'Dream Forest Langkawi (Night Walk)', img:'images/act_dream_forest.jpg', fb:'images/hero.jpg', color:'#2E3F5C',
+      sub:'Night walk tickets',
+      desc:'Entrance tickets to the Dream Forest Langkawi night walk.',
+      notes:[ticketNote, bookNote],
+      variants:[ { label:'Night walk ticket', type:'pax', rates:[ { label:ADULT, price:118 }, { label:'Child', price:102 } ] } ] },
 
-    { id:'banana_boat', cat:'water', name:'Banana Boat', img:'images/act_banana_boat.jpg', color:'#A8322D',
-      sub:['Satu ride sehingga 7 pax','One ride for up to 7 pax'],
-      desc:['Banana boat untuk satu kumpulan sehingga 7 orang, satu harga untuk satu ride.','A banana boat ride for one group of up to 7 people, one price per ride.'],
-      notes:waterNote,
-      variants:[ { label:'Banana Boat', type:'boat', boatWord:['ride','ride'], tiers:[[7,140]] } ] }
+    { id:'underwater', cat:'park', name:'Underwater World Langkawi', img:'images/act_underwater_world.jpg', fb:'images/hero.jpg', color:'#1E5C7A',
+      sub:'All zones access',
+      desc:'Entrance tickets to Underwater World Langkawi, with access to all zones.',
+      sections:[ { title:'Included', items:['Tropical Rainforest','Penguin zone','Tunnel Aquarium'] } ],
+      notes:[ticketNote, bookNote],
+      variants:[ { label:'Entrance ticket', type:'pax', rates:[ { label:ADULT, price:78 }, { label:CHILD311, price:66 } ] } ] },
+
+    { id:'crocodile', cat:'park', name:'Crocodile Adventureland (Taman Buaya Langkawi)', img:'images/act_crocodile.jpg', fb:'images/act_mangrove.jpg', color:'#5A5A32',
+      sub:'Entrance tickets · feeding combo',
+      desc:'Entrance tickets to Crocodile Adventureland, including crocodile feeding and the shows. Add a feeding combo with a bucket of food.',
+      sections:[ { title:'Included', items:['Crocodile feeding','Shows'] } ],
+      extras:[ { label:'Combo with crocodile: bucket of food', price:30, unit:'bucket' } ],
+      notes:[ticketNote, bookNote],
+      variants:[ { label:'Entrance ticket', type:'pax', rates:[ { label:ADULT, price:60 }, { label:CHILD311, price:42 } ] } ] }
   ];
+  function actBg(a){ return "background-image:url('" + a.img + "')" + (a.fb ? ",url('" + a.fb + "')" : '') + ';background-color:' + a.color; }
   function variantFrom(v){
     if(v.type === 'pax') return Math.min.apply(null, v.rates.filter(function(r){ return !r.addon; }).map(function(r){ return r.price; }));
     if(v.type === 'boat') return Math.min.apply(null, v.tiers.map(function(t){ return t[1]; }));
     return v.price;
+  }
+  function variantRange(v){
+    if(v.type === 'pax') return v.rates.filter(function(r){ return !r.addon; }).length > 1;
+    if(v.type === 'boat') return v.tiers.length > 1;
+    return false;
   }
   function variantUnit(v){
     if(v.type === 'pax') return 'pax';
@@ -2482,8 +2481,8 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   function actCard(a){
     var f = actFrom(a);
-    var multi = a.variants.length > 1 || a.variants[0].type !== 'unit';
-    return '<button class="pk" type="button" data-detail="act:' + a.id + '" style="background-image:url(\'' + a.img + '\');background-color:' + a.color + '">' +
+    var multi = a.variants.length > 1 || variantRange(a.variants[0]);
+    return '<button class="pk" type="button" data-detail="act:' + a.id + '" style="' + actBg(a) + '">' +
       (a.best ? '<span class="pk-pill">' + T('Paling laris','Best seller') + '</span>' : '') +
       '<span class="pk-info">' +
         '<span class="pk-txt"><strong>' + esc(tr(a.name)) + '</strong><small>' + icon('i-pin', 13) + '<span>' + esc(tr(a.sub)) + '</span></small></span>' +
@@ -2625,16 +2624,21 @@ body.no-scroll{overflow:hidden}
     if(v.type === 'pax' && v.rates.length === 1) actD.counts[0] = actD.people || 1;
     actD.pax = Math.min(actD.people || 2, v.type === 'boat' ? v.tiers[v.tiers.length - 1][0] : 99);
     actD.qty = 1;
+    actD.extra = actExtras().map(function(){ return 0; });
   }
+  function actExtras(){ return (actD.a.extras || []).concat(actVariant().extras || []); }
   function boatTier(v, pax){
     for(var i = 0; i < v.tiers.length; i++) if(pax <= v.tiers[i][0]) return i;
     return v.tiers.length - 1;
   }
-  function actTotal(){
+  function actBase(){
     var v = actVariant();
     if(v.type === 'pax') return v.rates.reduce(function(s, r, i){ return s + r.price * actD.counts[i]; }, 0);
     if(v.type === 'boat') return v.tiers[boatTier(v, actD.pax)][1];
     return v.price * actD.qty;
+  }
+  function actTotal(){
+    return actBase() + actExtras().reduce(function(s, x, i){ return s + x.price * (actD.extra[i] || 0); }, 0);
   }
   function stepper(key, val, min, max, label){
     return '<span class="stp" role="group" aria-label="' + esc(label) + '">' +
@@ -2665,9 +2669,16 @@ body.no-scroll{overflow:hidden}
     } else {
       pricing = '<div><h4>' + T('Kuantiti','Quantity') + '</h4><div class="dt-row"><span class="dt-row-l"><span>' + esc(tr(v.label)) + '</span><b>RM ' + v.price + (v.unit ? ' / ' + esc(tr(v.unit)) : '') + '</b></span>' + stepper('qty', actD.qty, 1, 20, T('Kuantiti','Quantity')) + '</div></div>';
     }
+    var ex = actExtras();
+    if(ex.length){
+      pricing += '<div><h4>' + T('Tambahan (pilihan)','Optional add-ons') + '</h4><div class="dt-opts">' +
+        ex.map(function(x, i){
+          return '<div class="dt-row"><span class="dt-row-l"><span>' + esc(tr(x.label)) + '</span><b>RM ' + x.price + ' / ' + esc(tr(x.unit)) + '</b></span>' + stepper('x' + i, actD.extra[i], 0, 99, tr(x.label)) + '</div>';
+        }).join('') + '</div></div>';
+    }
     var total = actTotal();
     $('detailCard').innerHTML =
-      '<div class="dt-hero" style="background-image:url(\'' + a.img + '\');background-color:' + a.color + '">' +
+      '<div class="dt-hero" style="' + actBg(a) + '">' +
         (a.best ? '<span class="pill sun">' + T('Paling laris','Best seller') + '</span>' : '') +
         '<button class="close-btn" type="button" data-close-detail aria-label="' + T('Tutup','Close') + '">&times;</button></div>' +
       '<div class="dt-body">' +
@@ -2678,7 +2689,7 @@ body.no-scroll{overflow:hidden}
             var u = variantUnit(x);
             return '<label class="dt-opt' + (i === actD.v ? ' sel' : '') + '"><input type="radio" name="actVar" value="' + i + '"' + (i === actD.v ? ' checked' : '') + '>' +
               '<span><strong>' + esc(tr(x.label)) + '</strong>' + (x.hint ? '<small>' + esc(tr(x.hint)) + '</small>' : '') + '</span>' +
-              '<b>' + (x.type === 'unit' ? '' : T('dari ','from ')) + 'RM ' + variantFrom(x) + (u ? ' / ' + esc(u) : '') + '</b></label>';
+              '<b>' + (variantRange(x) ? T('dari ','from ') : '') + 'RM ' + variantFrom(x) + (u ? ' / ' + esc(u) : '') + '</b></label>';
           }).join('') + '</div></div>' : '') +
         pricing +
         sections.map(function(s){
@@ -2689,13 +2700,14 @@ body.no-scroll{overflow:hidden}
       '</div>' +
       '<div class="dt-foot">' +
         '<div class="dt-total">' + T('Jumlah','Total') + '<strong id="dtTotal">RM ' + total + '</strong></div>' +
-        '<button class="btn-checkout" type="button" data-actadd' + (total > 0 ? '' : ' disabled') + '>' + icon('i-cart', 18) + T('Tambah ke Troli','Add to cart') + '</button>' +
+        '<button class="btn-checkout" type="button" data-actadd' + (actBase() > 0 ? '' : ' disabled') + '>' + icon('i-cart', 18) + T('Tambah ke Troli','Add to cart') + '</button>' +
       '</div>';
   }
   function actStep(key, delta){
     var v = actVariant(), card = $('detailCard'), keep = card.scrollTop;
     if(key === 'pax') actD.pax = Math.max(1, Math.min(v.tiers[v.tiers.length - 1][0], actD.pax + delta));
     else if(key === 'qty') actD.qty = Math.max(1, Math.min(20, actD.qty + delta));
+    else if(key.charAt(0) === 'x'){ var j = Number(key.slice(1)); actD.extra[j] = Math.max(0, Math.min(99, actD.extra[j] + delta)); }
     else { var i = Number(key.slice(1)); actD.counts[i] = Math.max(0, Math.min(99, actD.counts[i] + delta)); }
     renderActDetail();
     card.scrollTop = keep;
@@ -2711,6 +2723,7 @@ body.no-scroll{overflow:hidden}
       var t = v.tiers[boatTier(v, actD.pax)], word = tr(v.boatWord || ['bot','boat']);
       addItem(base + ' (1 ' + word + ', ' + actD.pax + ' pax)', t[1], cat, a.img, 1);
     } else addItem(base, v.price, cat, a.img, actD.qty);
+    actExtras().forEach(function(x, i){ if(actD.extra[i] > 0) addItem(name + ' — ' + tr(x.label), x.price, cat, a.img, actD.extra[i]); });
     closeDetail();
     saveCart();
     openCart();
@@ -2736,7 +2749,7 @@ body.no-scroll{overflow:hidden}
     if(actD){
       var st = e.target.closest('[data-step]');
       if(st && !st.disabled){ var kv = st.dataset.step.split(':'); actStep(kv[0], Number(kv[1])); }
-      else if(e.target.closest('[data-actadd]') && actTotal() > 0) actAddToCart();
+      else if(e.target.closest('[data-actadd]') && actBase() > 0) actAddToCart();
       return;
     }
     if(!detail) return;
