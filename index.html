@@ -2271,7 +2271,7 @@ body.no-scroll{overflow:hidden}
     <h2>Booking terms</h2>
     <div class="act-terms-grid">
       <div><h3>Booking</h3><p>Book at least 1 day before your activity. Send us your name, phone number, number of guests, activity date and time.</p></div>
-      <div><h3>Payment</h3><p>A deposit or full payment secures your booking. Any balance must be settled before the activity date.</p></div>
+      <div><h3>Payment</h3><p>Full payment (100%) is required upon booking for all car transport and tour packages to confirm your vehicle, assigned driver, and activity tickets.</p></div>
       <div><h3>Tickets</h3><p>E-tickets or vouchers are issued after payment is confirmed. Issued tickets are non-transferable and non-refundable.</p></div>
       <div><h3>Cancellation</h3><p>More than 48 hours before: partial refund, subject to the operator. Within 48 hours or no-show: non-refundable. If the operator cancels for weather or safety, you can reschedule or request a refund.</p></div>
       <div><h3>Prices include</h3><p>Entry or participation fee and the standard inclusions listed in each package (safety gear, boat ride, guide).</p></div>
@@ -2305,9 +2305,12 @@ body.no-scroll{overflow:hidden}
 <div class="veh-booking-card" id="vehBookingCard">
   <div class="vbc-head">
     <div>
-      <span class="eyebrow" style="color:var(--sun)">Step 1 &bull; Your Trip Details</span>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
+        <span class="eyebrow" style="color:var(--sun);margin:0">Step 1 &bull; Your Trip Details</span>
+        <span style="background:rgba(37,211,102,0.18);color:#70EF9C;font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:999px;border:1px solid rgba(37,211,102,0.3)">✓ 100% Full Payment Required Upon Booking</span>
+      </div>
       <h3 style="font-size:22px;font-weight:800;color:#fff;margin-top:4px">Chauffeured Transport Booking</h3>
-      <p style="font-size:13.5px;color:#C9C9C4;margin-top:6px">Fill in your pickup details and select your travel date on the calendar. Public holidays (PH) and peak events are marked on the calendar with different rates.</p>
+      <p style="font-size:13.5px;color:#C9C9C4;margin-top:6px">Fill in your pickup details, duration and select your travel date on the calendar. All car transport bookings require 100% full payment upfront to guarantee vehicle and driver reservation.</p>
     </div>
   </div>
 
@@ -2363,6 +2366,22 @@ body.no-scroll{overflow:hidden}
       <div class="vbc-input-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         <input type="time" id="vbcTime" value="10:00">
+      </div>
+    </div>
+
+    <div class="vbc-field">
+      <label for="vbcDays">Duration (Days)</label>
+      <div class="vbc-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+        <select id="vbcDays" style="cursor:pointer;width:100%;height:48px;padding:0 14px 0 42px;border:0;background:transparent;font-family:inherit;font-size:14.5px;font-weight:600;color:#111;outline:none;border-radius:var(--radius-sm)">
+          <option value="1" selected>1 Day (Full Day)</option>
+          <option value="2">2 Days</option>
+          <option value="3">3 Days</option>
+          <option value="4">4 Days</option>
+          <option value="5">5 Days</option>
+          <option value="6">6 Days</option>
+          <option value="7">7 Days (1 Week)</option>
+        </select>
       </div>
     </div>
   </div>
@@ -2537,9 +2556,13 @@ body.no-scroll{overflow:hidden}
       <button class="close-btn" id="btnClosePay" type="button" aria-label="Close">&times;</button>
     </div>
     <form class="pay-body" id="payForm" novalidate>
-      <div style="background:#FFFDEB;border:1px solid #EADB92;padding:12px;border-radius:8px">
-        <span style="font-size:12px;color:#6B5200;font-weight:700;display:block">ESTIMATED TOTAL</span>
-        <strong style="font-size:22px;color:#111" id="payModalAmount">RM 0</strong>
+      <div style="background:#FFFDEB;border:1px solid #EADB92;padding:14px;border-radius:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <span style="font-size:11.5px;color:#6B5200;font-weight:800;letter-spacing:.04em">TOTAL AMOUNT TO PAY (100% FULL PAYMENT)</span>
+          <span style="background:#E8F5E9;color:#1B5E20;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;border:1px solid #C8E6C9">Full Amount Required</span>
+        </div>
+        <strong style="font-size:24px;color:#111;display:block;margin-top:6px" id="payModalAmount">RM 0</strong>
+        <span style="font-size:12px;color:#7A6004;display:block;margin-top:4px">All car transport and tour packages require 100% full payment upon booking to confirm your vehicle, driver, and e-tickets.</span>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
         <div class="form-grp"><label for="cName">Full Name *</label><input type="text" id="cName" autocomplete="name" placeholder="e.g. John Smith"></div>
@@ -2954,10 +2977,11 @@ body.no-scroll{overflow:hidden}
     }
 
     // Sync trip dates to checkout modal
-    var cDates = $('cDates'), vbcTime = $('vbcTime');
+    var cDates = $('cDates'), vbcTime = $('vbcTime'), vbcDays = $('vbcDays');
     if(cDates){
       var tVal = vbcTime ? vbcTime.value : '10:00';
-      cDates.value = formatted + (tVal ? ' at ' + tVal : '');
+      var dVal = vbcDays ? vbcDays.value : '1';
+      cDates.value = formatted + (tVal ? ' at ' + tVal : '') + ' (' + dVal + (dVal === '1' ? ' Day)' : ' Days)');
     }
 
     renderCalendar();
@@ -3025,7 +3049,7 @@ body.no-scroll{overflow:hidden}
   }
   function carCard(v, sid){
     var p = vehPrice(v, sid);
-    var priceHtml = p == null ? '<div class="price" style="font-size:14px">' + T('Tanya harga','Ask for rate') + '</div>' : '<div class="price">RM ' + p + ' <span>/' + T('hari (With Driver)','day (With Driver)') + '</span></div>';
+    var priceHtml = p == null ? '<div class="price" style="font-size:14px">' + T('Tanya harga','Ask for rate') + '</div>' : '<div class="price">RM ' + p + ' <span>/' + T('hari (With Driver)','day (With Driver)') + '</span><span style="display:block;font-size:10.5px;font-weight:800;color:var(--accent-teal);margin-top:2px;letter-spacing:.02em">✓ 100% Full Payment</span></div>';
     
     var pillNorm = '<span class="rate-pill' + (sid === 'normal' ? ' active-norm' : '') + '">Normal: RM' + v.pNorm + (sid === 'normal' ? ' ✓' : '') + '</span>';
     var pillPub = '<span class="rate-pill' + (sid === 'public' ? ' active-ph' : '') + '">Holiday (PH): RM' + v.pPub + (sid === 'public' ? ' ✓' : '') + '</span>';
@@ -3045,7 +3069,7 @@ body.no-scroll{overflow:hidden}
         '<button class="btn-ghost" type="button" data-detail="veh:' + v.id + '">' + T('Butiran','Details') + '</button>' +
         (p == null
           ? '<button class="car-action-btn" type="button" data-detail="veh:' + v.id + '">' + T('Lihat kadar','See rates') + '</button>'
-          : '<button class="car-action-btn" type="button" data-addveh="' + v.id + '" data-season="' + sid + '">' + T('Tempah Pengangkutan','Book Transport') + '</button>') +
+          : '<button class="car-action-btn" type="button" data-addveh="' + v.id + '" data-season="' + sid + '">' + T('Tempah (Bayar Penuh)','Book (Full Payment)') + '</button>') +
       '</div></article>';
   }
   function renderVehicles(){
@@ -3639,14 +3663,18 @@ body.no-scroll{overflow:hidden}
   if(cNext) cNext.addEventListener('click', function(e){ e.stopPropagation(); calNav(1); });
 
   // Input synchronizers to checkout modal
-  var vName = $('vbcName'), vPhone = $('vbcPhone'), vTime = $('vbcTime');
+  var vName = $('vbcName'), vPhone = $('vbcPhone'), vTime = $('vbcTime'), vDays = $('vbcDays');
   if(vName) vName.addEventListener('input', function(){ if($('cName')) $('cName').value = this.value; });
   if(vPhone) vPhone.addEventListener('input', function(){ if($('cPhone')) $('cPhone').value = this.value; });
-  if(vTime) vTime.addEventListener('change', function(){
+  function syncDatesToCheckout(){
     if($('cDates') && $('vbcDate') && $('vbcDate').value){
-      $('cDates').value = $('vbcDate').value + (this.value ? ' at ' + this.value : '');
+      var t = $('vbcTime') ? $('vbcTime').value : '10:00';
+      var d = $('vbcDays') ? $('vbcDays').value : '1';
+      $('cDates').value = $('vbcDate').value + (t ? ' at ' + t : '') + ' (' + d + (d === '1' ? ' Day)' : ' Days)');
     }
-  });
+  }
+  if(vTime) vTime.addEventListener('change', syncDatesToCheckout);
+  if(vDays) vDays.addEventListener('change', syncDatesToCheckout);
 
   // Close calendar popover on outside click
   document.addEventListener('click', function(e){
@@ -3673,6 +3701,7 @@ body.no-scroll{overflow:hidden}
       var phoneVal = ($('vbcPhone') ? $('vbcPhone').value : '').trim();
       var dateVal = ($('vbcDate') ? $('vbcDate').value : '').trim();
       var timeVal = ($('vbcTime') ? $('vbcTime').value : '').trim();
+      var daysVal = Number($('vbcDays') ? $('vbcDays').value : 1) || 1;
 
       if(!selectedDateKey || !dateVal){
         toggleCalendar(true);
@@ -3683,14 +3712,13 @@ body.no-scroll{overflow:hidden}
 
       if(nameVal && $('cName')) $('cName').value = nameVal;
       if(phoneVal && $('cPhone')) $('cPhone').value = phoneVal;
-      if(dateVal && $('cDates')){
-        $('cDates').value = dateVal + (timeVal ? ' at ' + timeVal : '');
-      }
+      syncDatesToCheckout();
 
       var rateLabel = activeSeason === 'public' ? 'Public Holiday' : (activeSeason === 'event' ? 'Peak Event' : 'Normal Rate');
-      var itemTitle = v.name + ' (' + rateLabel + ' • ' + dateVal + (timeVal ? ' ' + timeVal : '') + ')';
+      var itemTitle = v.name + ' (' + rateLabel + ' • ' + dateVal + (timeVal ? ' ' + timeVal : '') + ' • ' + daysVal + (daysVal === 1 ? ' Day)' : ' Days)');
 
-      quickAdd(itemTitle, v[s.key], 'transport with driver', v.img, 1);
+      // Qty = daysVal so price is fully calculated: Rate * Days = Full Amount
+      quickAdd(itemTitle, v[s.key], 'transport with driver', v.img, daysVal);
       return;
     }
     if((el = e.target.closest('[data-quick]'))){ var q = el.dataset.quick.split('|'); quickAdd(q[0], Number(q[1]), q[2], q[3], 1); return; }
