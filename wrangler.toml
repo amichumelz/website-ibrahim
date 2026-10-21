@@ -1,0 +1,10 @@
+name = "afnan-langkawi-stripe"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# [vars]
+# You can set non-sensitive variables here.
+#
+# IMPORTANT:
+# For your live Stripe secret key, set STRIPE_SECRET_KEY as an encrypted secret in:
+# Cloudflare Dashboard -> Workers & Pages -> afnan-langkawi-stripe -> Settings -> Variables and Secrets
