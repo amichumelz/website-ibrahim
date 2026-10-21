@@ -3523,8 +3523,8 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   // BOOKING FORM & STRIPE CHECKOUT (VIA CLOUDFLARE WORKER)
   // =========================================================
-  // Deploy cloudflare-worker/worker.js to Cloudflare Workers, then paste your worker URL here:
-  var STRIPE_WORKER_URL = ''; 
+  // Cloudflare Pages / Worker endpoint (automatically detects origin when live on Cloudflare Pages):
+  var STRIPE_WORKER_URL = (window.location.protocol === 'http:' || window.location.protocol === 'https:') ? window.location.origin : ''; 
   var payMethod = 'Stripe Online (Card / FPX)';
 
   function updatePaySubmitBtn(){
