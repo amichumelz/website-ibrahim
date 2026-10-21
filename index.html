@@ -2550,15 +2550,16 @@ body.no-scroll{overflow:hidden}
       <div class="form-grp">
         <label id="payMethodLabel">Choose your preferred payment method</label>
         <div class="pay-methods" role="group" aria-labelledby="payMethodLabel">
-          <button type="button" class="pay-method-opt selected" data-method="Bank transfer / FPX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg><span>Bank Transfer</span></button>
+          <button type="button" class="pay-method-opt selected" data-method="Stripe Online (Card / FPX)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg><span>Card / FPX (Stripe)</span></button>
+          <button type="button" class="pay-method-opt" data-method="Bank transfer / FPX"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg><span>Manual Transfer</span></button>
           <button type="button" class="pay-method-opt" data-method="DuitNow QR"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>DuitNow QR</span></button>
           <button type="button" class="pay-method-opt" data-method="Touch 'n Go eWallet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg><span>Touch 'n Go</span></button>
           <button type="button" class="pay-method-opt" data-method="Cash on arrival"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="5" width="22" height="14" rx="2"/><path d="M6 9v6M18 9v6"/><circle cx="12" cy="12" r="2.5"/></svg><span>Cash on Arrival</span></button>
         </div>
       </div>
-      <div class="pay-info">No payment is taken on this website. After you send the booking, our team confirms availability and sends payment details on WhatsApp.</div>
+      <div class="pay-info" id="payInfo">Instant &amp; secure payment powered by Stripe. Supports Malaysian FPX Online Banking, Visa, Mastercard, Apple Pay &amp; Google Pay.</div>
       <div class="pay-err" id="payErr" role="alert"></div>
-      <button class="btn-submit-pay" id="btnConfirmPay" type="submit">Confirm Booking</button>
+      <button class="btn-submit-pay" id="btnConfirmPay" type="submit">🔒 Pay Now with Stripe</button>
     </form>
   </div>
 </div>
@@ -2578,7 +2579,7 @@ body.no-scroll{overflow:hidden}
       <div style="background:#F7F7F4;border:1px solid #E4E1D8;border-radius:8px;padding:16px">
         <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Booking reference:</span><strong id="recRef" style="color:#111"></strong></div>
         <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Preferred payment:</span><span id="recMethod" style="font-weight:700;text-align:right"></span></div>
-        <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Status:</span><span style="color:#8A5A00;font-weight:800;text-align:right">Awaiting confirmation · not paid yet</span></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Status:</span><span id="recStatus" style="color:#8A5A00;font-weight:800;text-align:right">Awaiting confirmation · not paid yet</span></div>
         <table class="receipt-table">
           <thead><tr style="border-bottom:1.5px solid #CCC"><th style="padding:6px">Item</th><th style="padding:6px;text-align:center">Qty</th><th style="padding:6px;text-align:right">Price (RM)</th></tr></thead>
           <tbody id="recTableBody"></tbody>
@@ -3420,13 +3421,32 @@ body.no-scroll{overflow:hidden}
   // =========================================================
   // BOOKING FORM -> WHATSAPP
   // =========================================================
-  var payMethod = 'Bank transfer / FPX';
+  // =========================================================
+  // BOOKING FORM & STRIPE CHECKOUT (VIA CLOUDFLARE WORKER)
+  // =========================================================
+  // Deploy cloudflare-worker/worker.js to Cloudflare Workers, then paste your worker URL here:
+  var STRIPE_WORKER_URL = ''; 
+  var payMethod = 'Stripe Online (Card / FPX)';
+
+  function updatePaySubmitBtn(){
+    var btn = $('btnConfirmPay'), info = $('payInfo');
+    var tot = cartTotal();
+    if(payMethod === 'Stripe Online (Card / FPX)'){
+      if(btn) btn.innerHTML = '🔒 Pay with Stripe &bull; RM ' + tot;
+      if(info) info.textContent = 'Instant & secure checkout powered by Stripe. Supports Malaysian FPX Online Banking, Visa, Mastercard, Apple Pay & Google Pay.';
+    } else {
+      if(btn) btn.innerHTML = 'Confirm Booking on WhatsApp';
+      if(info) info.textContent = 'No payment is taken on this website. After you send the booking, our team confirms availability and sends payment details on WhatsApp.';
+    }
+  }
+
   document.querySelectorAll('.pay-method-opt').forEach(function(opt){
     opt.setAttribute('aria-pressed', opt.classList.contains('selected'));
     opt.addEventListener('click', function(){
       document.querySelectorAll('.pay-method-opt').forEach(function(o){ o.classList.remove('selected'); o.setAttribute('aria-pressed', 'false'); });
       opt.classList.add('selected'); opt.setAttribute('aria-pressed', 'true');
       payMethod = opt.dataset.method;
+      updatePaySubmitBtn();
     });
   });
   $('btnProceedCheckout').addEventListener('click', function(){
@@ -3434,13 +3454,14 @@ body.no-scroll{overflow:hidden}
     closeCart();
     $('payModalAmount').textContent = 'RM ' + cartTotal();
     $('payErr').classList.remove('show');
+    updatePaySubmitBtn();
     openOverlay($('payModal'));
     $('cName').focus();
   });
   $('btnClosePay').addEventListener('click', function(){ closeOverlay($('payModal')); });
   $('payModal').addEventListener('click', function(e){ if(e.target === this) closeOverlay(this); });
 
-  $('payForm').addEventListener('submit', function(e){
+  $('payForm').addEventListener('submit', async function(e){
     e.preventDefault();
     var name = $('cName').value.trim(), phone = $('cPhone').value.trim(), email = $('cEmail').value.trim(), dates = $('cDates').value.trim();
     var err = '';
@@ -3451,6 +3472,62 @@ body.no-scroll{overflow:hidden}
     if(err){ $('payErr').textContent = err; $('payErr').classList.add('show'); return; }
     $('payErr').classList.remove('show');
 
+    // --- STRIPE ONLINE PAYMENT VIA CLOUDFLARE WORKER ---
+    if(payMethod === 'Stripe Online (Card / FPX)'){
+      if(!STRIPE_WORKER_URL || STRIPE_WORKER_URL.indexOf('http') !== 0){
+        $('payErr').innerHTML = '<strong>Cloudflare Worker URL is not configured yet.</strong><br><small style="display:block;margin-top:4px">Please deploy <code>cloudflare-worker/worker.js</code> in Cloudflare and paste the worker URL into <code>STRIPE_WORKER_URL</code> in index.html, or choose Manual Transfer below.</small>';
+        $('payErr').classList.add('show');
+        return;
+      }
+
+      var btn = $('btnConfirmPay');
+      var origText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Connecting to Stripe...';
+
+      try {
+        var resp = await fetch(STRIPE_WORKER_URL.replace(/\/+$/, '') + '/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: cart,
+            customerName: name,
+            customerPhone: phone,
+            customerEmail: email,
+            tripDates: dates,
+            returnUrl: window.location.origin + window.location.pathname
+          })
+        });
+
+        var data = await resp.json();
+        if(resp.ok && data.url){
+          // Save customer details for receipt on return
+          try {
+            localStorage.setItem('stripe_last_booking', JSON.stringify({
+              name: name,
+              phone: phone,
+              email: email,
+              dates: dates,
+              items: cart,
+              total: cartTotal()
+            }));
+          } catch(e){}
+
+          window.location.href = data.url;
+          return;
+        } else {
+          throw new Error(data.error || 'Failed to create Stripe Checkout session.');
+        }
+      } catch(fetchErr){
+        btn.disabled = false;
+        btn.innerHTML = origText;
+        $('payErr').textContent = 'Stripe Error: ' + fetchErr.message;
+        $('payErr').classList.add('show');
+        return;
+      }
+    }
+
+    // --- MANUAL WHATSAPP FLOW ---
     var ref = 'AFNAN-' + Date.now().toString().slice(-6), total = cartTotal(), lines = '';
     $('recTableBody').innerHTML = cart.map(function(it){
       lines += '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
@@ -3472,6 +3549,72 @@ body.no-scroll{overflow:hidden}
   });
   $('btnCloseReceipt').addEventListener('click', function(){ closeOverlay($('receiptModal')); });
   $('btnPrint').addEventListener('click', function(){ window.print(); });
+
+  // Handle Stripe return redirect (?payment=success or ?payment=cancelled)
+  function checkStripeReturn(){
+    var params = new URLSearchParams(window.location.search);
+    var paymentStatus = params.get('payment');
+    var sessionId = params.get('session_id');
+
+    if(paymentStatus === 'success'){
+      var saved = null;
+      try {
+        saved = JSON.parse(localStorage.getItem('stripe_last_booking') || 'null');
+      } catch(e){}
+
+      cart = []; discountPercent = 0; saveCart();
+
+      var ref = sessionId ? 'STRIPE-' + sessionId.slice(-8).toUpperCase() : ('AFNAN-' + Date.now().toString().slice(-6));
+      var name = saved ? saved.name : 'Valued Guest';
+      var phone = saved ? saved.phone : '';
+      var dates = saved ? saved.dates : '';
+      var total = saved ? saved.total : '';
+
+      var lines = '';
+      if(saved && saved.items){
+        lines = saved.items.map(function(it){
+          return '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
+        }).join('');
+        $('recTableBody').innerHTML = saved.items.map(function(it){
+          return '<tr><td>' + esc(it.title) + '</td><td style="text-align:center">' + it.qty + '</td><td style="text-align:right">RM ' + (it.price * it.qty) + '</td></tr>';
+        }).join('') + '<tr style="color:var(--accent-teal);font-weight:800"><td colspan="2">Paid Total (Stripe)</td><td style="text-align:right">RM ' + total + '</td></tr>';
+      }
+
+      $('recTitle').textContent = 'Payment Successful! Booking Confirmed';
+      $('recName').textContent = name;
+      $('recRef').textContent = ref;
+      $('recMethod').textContent = 'Paid Online via Stripe (Card / FPX)';
+      var statusEl = $('recStatus');
+      if(statusEl){
+        statusEl.textContent = 'Paid & Verified ✓';
+        statusEl.style.color = '#128C4B';
+      }
+
+      $('btnRecWa').href = waUrl('Hello AFNAN LANGKAWI TOUR & TRANSPORT WITH DRIVER! I have completed my payment via Stripe:\n\n' +
+        '*PAYMENT STATUS:* PAID VIA STRIPE ✓\n' +
+        '*STRIPE REF:* ' + ref + '\n' +
+        '*NAME:* ' + name + '\n' +
+        (phone ? '*PHONE:* ' + phone + '\n' : '') +
+        (dates ? '*TRIP DATES:* ' + dates + '\n' : '') +
+        (total ? '*AMOUNT PAID:* RM ' + total + '\n\n' : '\n') +
+        (lines ? '*BOOKED ITEMS:*\n' + lines + '\n' : '') +
+        'Please confirm receipt and send my driver & tour details. Thank you!');
+
+      $('btnRecWa').querySelector('span').textContent = 'Send Payment Receipt on WhatsApp';
+      openOverlay($('receiptModal'));
+
+      if(window.history && window.history.replaceState){
+        var cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    } else if(paymentStatus === 'cancelled'){
+      showToast('Stripe payment was cancelled. You can try again or book via WhatsApp.');
+      if(window.history && window.history.replaceState){
+        var cleanUrl = window.location.pathname + window.location.hash;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    }
+  }
 
   // =========================================================
   // GLOBAL CLICK HANDLERS
@@ -3625,6 +3768,7 @@ body.no-scroll{overflow:hidden}
 
   initLang();
   route();
+  checkStripeReturn();
 
   // Scroll reveal: threshold 0 so very tall sections still appear
   var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
