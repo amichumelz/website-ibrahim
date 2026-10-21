@@ -2302,106 +2302,10 @@ body.no-scroll{overflow:hidden}
 <div class="perk-card"><svg width="34" height="34" aria-hidden="true" style="fill:none"><use href="#i-pin"/></svg><h3>Free Pickup &amp; Dropoff</h3><p>At Kuah Jetty and Langkawi Airport. Ready when you arrive.</p></div>
 </div>
 
-<div class="veh-booking-card" id="vehBookingCard">
-  <div class="vbc-head">
-    <div>
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap">
-        <span class="eyebrow" style="color:var(--sun);margin:0">Step 1 &bull; Your Trip Details</span>
-        <span style="background:rgba(37,211,102,0.18);color:#70EF9C;font-size:11.5px;font-weight:800;padding:2px 10px;border-radius:999px;border:1px solid rgba(37,211,102,0.3)">✓ 100% Full Payment Required Upon Booking</span>
-      </div>
-      <h3 style="font-size:22px;font-weight:800;color:#fff;margin-top:4px">Chauffeured Transport Booking</h3>
-      <p style="font-size:13.5px;color:#C9C9C4;margin-top:6px">Fill in your pickup details, duration and select your travel date on the calendar. All car transport bookings require 100% full payment upfront to guarantee vehicle and driver reservation.</p>
-    </div>
-  </div>
-
-  <div class="vbc-grid">
-    <div class="vbc-field">
-      <label for="vbcName">Full Name</label>
-      <div class="vbc-input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <input type="text" id="vbcName" placeholder="Your name (e.g. Fatin)" autocomplete="name">
-      </div>
-    </div>
-
-    <div class="vbc-field">
-      <label for="vbcPhone">WhatsApp / Phone No.</label>
-      <div class="vbc-input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <input type="tel" id="vbcPhone" placeholder="e.g. 012-345 6789" autocomplete="tel">
-      </div>
-    </div>
-
-    <div class="vbc-field vbc-date-field">
-      <label for="vbcDate">Pickup Date <span class="vbc-ph-hint">🔴 Red = PH Rate</span></label>
-      <div class="vbc-input-wrap" id="vbcDateWrap" style="cursor:pointer">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <input type="text" id="vbcDate" readonly placeholder="Tap to select date" style="cursor:pointer">
-        <button type="button" class="vbc-cal-btn" id="btnToggleCal" aria-label="Open calendar">
-          <span class="cal-badge-pill" id="vbcDatePill">Select date</span>
-        </button>
-      </div>
-
-      <!-- POPUP CALENDAR -->
-      <div class="cal-popover" id="calPopover" hidden>
-        <div class="cal-pop-header">
-          <button type="button" class="cal-nav-btn" id="calPrev" aria-label="Previous month">&lsaquo;</button>
-          <div class="cal-month-title" id="calMonthTitle">October 2026</div>
-          <button type="button" class="cal-nav-btn" id="calNext" aria-label="Next month">&rsaquo;</button>
-        </div>
-        <div class="cal-weekdays">
-          <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-        </div>
-        <div class="cal-days-grid" id="calDaysGrid"></div>
-        <div class="cal-legend">
-          <span class="leg-item"><span class="leg-dot ph"></span> <b>PH (Red Tag)</b> = Public Holiday Rate</span>
-          <span class="leg-item"><span class="leg-dot event"></span> <b>Event (Purple)</b> = Peak Event Rate</span>
-          <span class="leg-item"><span class="leg-dot norm"></span> <b>Green</b> = Normal Weekday Rate</span>
-        </div>
-        <div class="cal-holiday-banner" id="calHolidayBanner" hidden></div>
-      </div>
-    </div>
-
-    <div class="vbc-field">
-      <label for="vbcTime">Pickup Time</label>
-      <div class="vbc-input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <input type="time" id="vbcTime" value="10:00">
-      </div>
-    </div>
-
-    <div class="vbc-field">
-      <label for="vbcDays">Duration (Days)</label>
-      <div class="vbc-input-wrap">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
-        <select id="vbcDays" style="cursor:pointer;width:100%;height:48px;padding:0 14px 0 42px;border:0;background:transparent;font-family:inherit;font-size:14.5px;font-weight:600;color:#111;outline:none;border-radius:var(--radius-sm)">
-          <option value="1" selected>1 Day (Full Day)</option>
-          <option value="2">2 Days</option>
-          <option value="3">3 Days</option>
-          <option value="4">4 Days</option>
-          <option value="5">5 Days</option>
-          <option value="6">6 Days</option>
-          <option value="7">7 Days (1 Week)</option>
-        </select>
-      </div>
-    </div>
-  </div>
-
-  <div class="vbc-status-bar">
-    <div class="vbc-status-tag is-norm" id="vbcRateBadge">
-      <span class="dot green"></span>
-      <strong id="vbcRateType">Normal Weekday Rate</strong>
-    </div>
-    <div class="vbc-status-desc" id="vbcRateDesc">
-      Standard daily rate applied. Pick any date above to check public holiday or peak event rates.
-    </div>
-    <div class="vbc-price-range" id="seasonFromText"></div>
-  </div>
-</div>
-
-<div class="coll-head" id="koleksi" style="margin-top:clamp(36px,5vw,56px)">
+<div class="coll-head" id="koleksi" style="margin-top:clamp(28px,4vw,44px)">
   <div>
     <h2>Our Chauffeured Transport Fleet</h2>
-    <p class="mute sm" style="margin-top:2px">Choose by group size and holiday style.</p>
+    <p class="mute sm" style="margin-top:2px">Select your preferred vehicle below to book with private driver. 100% full payment required upon booking.</p>
   </div>
   <button class="btn-sun" type="button" id="btnShowTableTop" style="height:42px;font-size:13.5px;padding:0 18px">Compare All Prices</button>
 </div>
@@ -2587,6 +2491,153 @@ body.no-scroll{overflow:hidden}
   </div>
 </div>
 
+<!-- TRANSPORT WITH DRIVER BOOKING MODAL -->
+<div class="modal-overlay" id="vehBookingModal" role="dialog" aria-modal="true" aria-labelledby="vbmTitle">
+  <div class="pay-card" style="max-width:560px">
+    <div class="pay-head" style="background:#F4F6F4">
+      <div>
+        <h3 id="vbmTitle" style="color:var(--deep)">Book Transport With Driver</h3>
+        <p class="mute sm" style="margin-top:2px">Private chauffeured car • 100% full payment required</p>
+      </div>
+      <button class="close-btn" id="btnCloseVehModal" type="button" aria-label="Close">&times;</button>
+    </div>
+    
+    <!-- Vehicle Summary Preview Card -->
+    <div style="padding:14px 20px;background:#F9FBF9;border-bottom:1px solid #E5E8E5;display:flex;align-items:center;gap:14px">
+      <div style="width:72px;height:52px;border-radius:6px;overflow:hidden;background:#fff;border:1px solid #E0E4E0;flex:none;display:flex;align-items:center;justify-content:center">
+        <img id="vbmCarImg" src="" alt="Vehicle" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <strong id="vbmCarName" style="font-size:16px;color:#111"></strong>
+          <span style="font-size:10.5px;font-weight:800;background:#E8F5E9;color:#1B5E20;padding:2px 6px;border-radius:4px;border:1px solid #C8E6C9">With Driver</span>
+        </div>
+        <div id="vbmCarMeta" class="sm mute" style="margin-top:2px;font-size:11.5px"></div>
+      </div>
+      <div style="text-align:right;flex:none">
+        <span class="sm mute" style="font-size:11px;display:block">Daily Rate</span>
+        <strong id="vbmDailyRate" style="font-size:16px;color:var(--accent-teal)">RM 0</strong>
+      </div>
+    </div>
+
+    <form class="pay-body" id="vehBookForm" novalidate style="padding:20px">
+      <!-- Customer Information -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+        <div class="form-grp">
+          <label for="vbmName">Full Name *</label>
+          <input type="text" id="vbmName" required autocomplete="name" placeholder="e.g. Fatin Shamirah">
+        </div>
+        <div class="form-grp">
+          <label for="vbmPhone">WhatsApp / Phone No. *</label>
+          <input type="tel" id="vbmPhone" required autocomplete="tel" placeholder="e.g. +6012-3456789">
+        </div>
+      </div>
+      <div class="form-grp">
+        <label for="vbmEmail">Email Address (optional)</label>
+        <input type="email" id="vbmEmail" autocomplete="email" placeholder="e.g. fatin@example.com">
+      </div>
+
+      <!-- Pickup Date & Calendar with PH Red Remark -->
+      <div class="form-grp" style="position:relative" id="vbmDateWrap">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <label for="vbmDate" style="margin-bottom:0">Pickup Date *</label>
+          <span id="vbmDatePill" style="font-size:11.5px;font-weight:800;color:#1B5E20">🟢 Normal Rate</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="vbmDate" readonly style="cursor:pointer;background:#fff;font-weight:600" placeholder="Select pickup date">
+          <button type="button" class="btn-ghost" id="btnToggleCalModal" style="padding:0 14px;height:42px;display:flex;align-items:center;gap:6px;border-color:#D8D5CA;white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Calendar</span>
+          </button>
+        </div>
+
+        <!-- Calendar Popover inside Modal -->
+        <div class="cal-popover" id="calPopoverModal" hidden style="z-index:200;width:100%;max-width:360px">
+          <div class="cal-pop-header">
+            <span class="cal-pop-title" id="calMonthTitleModal">October 2026</span>
+            <div class="cal-pop-nav">
+              <button type="button" id="calPrevModal" aria-label="Previous month">&larr;</button>
+              <button type="button" id="calNextModal" aria-label="Next month">&rarr;</button>
+            </div>
+          </div>
+          <div class="cal-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="cal-days-grid" id="calDaysGridModal"></div>
+          <div class="cal-legend">
+            <div class="leg-item"><span class="leg-dot" style="background:#D32F2F"></span><span><b>Red (PH):</b> Public Holiday Rate</span></div>
+            <div class="leg-item"><span class="leg-dot" style="background:#F5C71A"></span><span><b>Yellow (PEAK):</b> Langkawi Peak Event Rate</span></div>
+            <div class="leg-item"><span class="leg-dot" style="background:#1B5E20"></span><span><b>Green:</b> Standard Weekday Rate</span></div>
+          </div>
+          <div class="cal-holiday-banner" id="calHolidayBannerModal" hidden style="margin-top:8px;font-size:11.5px;padding:6px 10px;border-radius:6px;background:#FFF1F0;color:#D32F2F;border:1px solid #FFCDD2"></div>
+        </div>
+      </div>
+
+      <!-- Pickup Time & Duration in Days -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="form-grp">
+          <label for="vbmTime">Pickup Time *</label>
+          <input type="time" id="vbmTime" value="10:00" required>
+        </div>
+        <div class="form-grp">
+          <label for="vbmDays">Duration (Days) *</label>
+          <select id="vbmDays" style="height:42px;border:1px solid var(--line);border-radius:6px;padding:0 12px;font-weight:600;background:#fff">
+            <option value="1" selected>1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3">3 Days</option>
+            <option value="4">4 Days</option>
+            <option value="5">5 Days</option>
+            <option value="6">6 Days</option>
+            <option value="7">7 Days</option>
+            <option value="10">10 Days</option>
+            <option value="14">14 Days</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grp">
+        <label for="vbmNotes">Pickup Location &amp; Special Requests (optional)</label>
+        <input type="text" id="vbmNotes" placeholder="e.g. Langkawi Airport flight AK6324 or Kuah Jetty at 10 AM">
+      </div>
+
+      <!-- Live Price Calculation Box (100% Full Payment) -->
+      <div style="background:#FFFDEB;border:1.5px solid #EADB92;padding:14px 16px;border-radius:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+          <span style="font-size:11px;color:#6B5200;font-weight:800;letter-spacing:.04em">100% FULL PAYMENT REQUIRED</span>
+          <span id="vbmRateTypePill" style="background:#E8F5E9;color:#1B5E20;font-size:11px;font-weight:800;padding:2px 8px;border-radius:4px;border:1px solid #C8E6C9">Normal Weekday Rate</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:8px">
+          <div>
+            <span id="vbmCalcDesc" style="font-size:13px;color:#555">RM 0 / day × 1 day</span>
+            <div style="font-size:11.5px;color:#7A6004;margin-top:2px">Includes chauffeured driver service &amp; fuel</div>
+          </div>
+          <strong id="vbmTotalPrice" style="font-size:26px;color:#111;font-weight:900">RM 0</strong>
+        </div>
+      </div>
+
+      <!-- Payment Method Selection -->
+      <div class="form-grp" style="margin-top:6px">
+        <label id="vbmPayLabel">Choose payment option</label>
+        <div class="pay-methods" role="group" aria-labelledby="vbmPayLabel">
+          <button type="button" class="pay-method-opt selected" data-vbmpay="Stripe Online (Card / FPX)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span>Card / FPX (Stripe)</span>
+          </button>
+          <button type="button" class="pay-method-opt" data-vbmpay="Manual Transfer / WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg>
+            <span>Manual Transfer</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="pay-info" id="vbmPayInfo">Instant &amp; secure 100% full payment via Stripe. Accepts FPX Online Banking (Maybank, CIMB, etc.), Visa, Mastercard, Apple Pay &amp; Google Pay.</div>
+      <div class="pay-err" id="vbmErr" role="alert"></div>
+
+      <button class="btn-submit-pay" id="btnSubmitVehBooking" type="submit">🔒 Pay Full Amount with Stripe • RM 0</button>
+    </form>
+  </div>
+</div>
+
 <!-- BOOKING SUMMARY -->
 <div class="modal-overlay" id="receiptModal" role="dialog" aria-modal="true" aria-labelledby="recTitle">
   <div class="pay-card">
@@ -2603,6 +2654,27 @@ body.no-scroll{overflow:hidden}
         <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Booking reference:</span><strong id="recRef" style="color:#111"></strong></div>
         <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Preferred payment:</span><span id="recMethod" style="font-weight:700;text-align:right"></span></div>
         <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><span class="sm mute">Status:</span><span id="recStatus" style="color:#8A5A00;font-weight:800;text-align:right">Awaiting confirmation · not paid yet</span></div>
+
+        <!-- Vehicle transport details box (shown when booking is transport with driver) -->
+        <div id="recVehDetailsBox" hidden style="margin-bottom:12px;padding:12px;background:#fff;border:1px solid #E2E8F0;border-radius:6px">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+            <img id="recVehImg" src="" alt="" style="width:54px;height:38px;object-fit:cover;border-radius:4px;border:1px solid #DDD;background:#f5f5f5">
+            <div>
+              <strong id="recVehName" style="font-size:14px;display:block;color:#111"></strong>
+              <span style="font-size:11px;color:#1B5E20;font-weight:700">Chauffeured Transport (With Driver)</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12px">
+            <div><span class="mute">Pickup Date:</span> <strong id="recVehDate" style="color:#111"></strong></div>
+            <div><span class="mute">Pickup Time:</span> <strong id="recVehTime" style="color:#111"></strong></div>
+            <div><span class="mute">Duration:</span> <strong id="recVehDays" style="color:#111"></strong></div>
+            <div><span class="mute">Rate Applied:</span> <strong id="recVehRate" style="color:#111"></strong></div>
+          </div>
+          <div id="recVehNotesRow" hidden style="margin-top:8px;font-size:12px;padding-top:6px;border-top:1px dashed #EEE">
+            <span class="mute">Pickup Location / Notes:</span> <span id="recVehNotes" style="color:#111;font-weight:600"></span>
+          </div>
+        </div>
+
         <table class="receipt-table">
           <thead><tr style="border-bottom:1.5px solid #CCC"><th style="padding:6px">Item</th><th style="padding:6px;text-align:center">Qty</th><th style="padding:6px;text-align:right">Price (RM)</th></tr></thead>
           <tbody id="recTableBody"></tbody>
@@ -3067,9 +3139,7 @@ body.no-scroll{overflow:hidden}
       '</div>' +
       '<div class="car-btns">' +
         '<button class="btn-ghost" type="button" data-detail="veh:' + v.id + '">' + T('Butiran','Details') + '</button>' +
-        (p == null
-          ? '<button class="car-action-btn" type="button" data-detail="veh:' + v.id + '">' + T('Lihat kadar','See rates') + '</button>'
-          : '<button class="car-action-btn" type="button" data-addveh="' + v.id + '" data-season="' + sid + '">' + T('Tempah (Bayar Penuh)','Book (Full Payment)') + '</button>') +
+        '<button class="car-action-btn" type="button" data-bookveh="' + v.id + '">' + T('Tempah (Bayar Penuh)','Book Transport (Full Payment)') + '</button>' +
       '</div></article>';
   }
   function renderVehicles(){
@@ -3113,7 +3183,10 @@ body.no-scroll{overflow:hidden}
         '<td class="col-model">' + esc(v.name) + '</td>' +
         '<td><span class="sm mute">' + esc(tr(v.catLabel)) + '</span></td>' +
         cell('normal', 'col-norm', '#EBF7EE') + cell('public', 'col-pub', '#FFF9E6') + cell('event', 'col-event', '#FDEEEE') +
-        '<td><button class="btn-ghost" type="button" data-detail="veh:' + v.id + '" style="height:34px;font-size:12px">' + T('Butiran','Details') + '</button></td></tr>';
+        '<td><div style="display:flex;gap:6px">' +
+          '<button class="btn-ghost" type="button" data-detail="veh:' + v.id + '" style="height:34px;font-size:12px">' + T('Butiran','Details') + '</button>' +
+          '<button class="btn-sun" type="button" data-bookveh="' + v.id + '" style="height:34px;font-size:12px;padding:0 12px;white-space:nowrap">' + T('Tempah','Book') + '</button>' +
+        '</div></td></tr>';
     }).join('');
   }
 
@@ -3163,12 +3236,14 @@ body.no-scroll{overflow:hidden}
         '<a class="dt-ask" target="_blank" rel="noopener" href="' + waUrl(T('Salam Afnan Langkawi Tour & Transport, saya nak tanya tentang: ','Hi Afnan Langkawi Tour & Transport, I would like to ask about: ') + d.title) + '">' + icon('i-wa', 16) + T('Tanya di WhatsApp','Ask on WhatsApp') + '</a>' +
       '</div>' +
       '<div class="dt-foot">' +
-        '<div class="dt-qty"><span>' + esc(d.qtyLabel) + '</span>' +
-          '<button class="qty-btn" type="button" data-dtqty="-1" aria-label="' + T('Kurang','Less') + '">&minus;</button>' +
-          '<span class="qty-val" id="dtQty">' + d.qty + '</span>' +
-          '<button class="qty-btn" type="button" data-dtqty="1" aria-label="' + T('Tambah','More') + '">+</button></div>' +
-        '<div class="dt-total">' + T('Jumlah','Total') + '<strong id="dtTotal">RM ' + (o.price * d.qty) + '</strong></div>' +
-        '<button class="btn-checkout" type="button" data-dtadd>' + icon('i-cart', 18) + T('Tambah ke Troli','Add to cart') + '</button>' +
+        (d.veh
+          ? '<button class="btn-checkout" type="button" data-bookveh="' + d.veh.id + '" style="flex:1">' + icon('i-car', 18) + ' ' + T('Tempah (Bayar Penuh)','Book Transport (Full Payment)') + '</button>'
+          : '<div class="dt-qty"><span>' + esc(d.qtyLabel) + '</span>' +
+              '<button class="qty-btn" type="button" data-dtqty="-1" aria-label="' + T('Kurang','Less') + '">&minus;</button>' +
+              '<span class="qty-val" id="dtQty">' + d.qty + '</span>' +
+              '<button class="qty-btn" type="button" data-dtqty="1" aria-label="' + T('Tambah','More') + '">+</button></div>' +
+            '<div class="dt-total">' + T('Jumlah','Total') + '<strong id="dtTotal">RM ' + (o.price * d.qty) + '</strong></div>' +
+            '<button class="btn-checkout" type="button" data-dtadd>' + icon('i-cart', 18) + T('Tambah ke Troli','Add to cart') + '</button>') +
       '</div>';
   }
   // ---------- Activity pop-up: variant picker + pax / boat / unit pricing ----------
@@ -3574,6 +3649,405 @@ body.no-scroll{overflow:hidden}
   $('btnCloseReceipt').addEventListener('click', function(){ closeOverlay($('receiptModal')); });
   $('btnPrint').addEventListener('click', function(){ window.print(); });
 
+  // =========================================================
+  // VEHICLE BOOKING MODAL & CALENDAR LOGIC
+  // =========================================================
+  var selectedVeh = null;
+  var vehPayMethod = 'Stripe Online (Card / FPX)';
+  var vehCalYear = 2026, vehCalMonth = 9, selectedVehDateKey = '';
+
+  function openVehBooking(vehId){
+    var v = byId(vehicles, vehId);
+    if(!v) return;
+    selectedVeh = v;
+
+    if($('detailModal') && $('detailModal').classList.contains('open')) closeDetail();
+
+    $('vbmCarImg').src = v.img;
+    $('vbmCarImg').alt = v.name;
+    $('vbmCarName').textContent = v.name;
+    $('vbmCarMeta').textContent = tr(v.seats) + ' • ' + v.trans + ' • ' + tr(v.luggage);
+
+    // Initialize pickup date to tomorrow if not set
+    if(!selectedVehDateKey){
+      var now = new Date();
+      var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      vehCalYear = tomorrow.getFullYear();
+      vehCalMonth = tomorrow.getMonth();
+      var defaultKey = tomorrow.getFullYear() + '-' + pad2(tomorrow.getMonth() + 1) + '-' + pad2(tomorrow.getDate());
+      selectVehCalendarDate(defaultKey, true);
+    } else {
+      renderVehCalendar();
+      updateVehBookingPrice();
+    }
+
+    $('vbmErr').classList.remove('show');
+    openOverlay($('vehBookingModal'));
+    if(!$('vbmName').value) $('vbmName').focus();
+  }
+
+  function closeVehBooking(){
+    closeOverlay($('vehBookingModal'));
+    toggleVehCalendar(false);
+  }
+
+  function toggleVehCalendar(open){
+    var pop = $('calPopoverModal');
+    if(!pop) return;
+    if(open === undefined) pop.hidden = !pop.hidden;
+    else pop.hidden = !open;
+  }
+
+  function renderVehCalendar(){
+    var grid = $('calDaysGridModal');
+    if(!grid) return;
+    var title = $('calMonthTitleModal');
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    if(title) title.textContent = months[vehCalMonth] + ' ' + vehCalYear;
+
+    var firstDayIndex = new Date(vehCalYear, vehCalMonth, 1).getDay();
+    var daysInMonth = new Date(vehCalYear, vehCalMonth + 1, 0).getDate();
+    var now = new Date();
+    var todayKey = now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate());
+
+    var html = '';
+    for(var e = 0; e < firstDayIndex; e++){
+      html += '<div class="cal-day-cell is-empty" aria-hidden="true"></div>';
+    }
+
+    for(var day = 1; day <= daysInMonth; day++){
+      var dKey = vehCalYear + '-' + pad2(vehCalMonth + 1) + '-' + pad2(day);
+      var isPast = dKey < todayKey;
+      var isToday = dKey === todayKey;
+      var isSel = dKey === selectedVehDateKey;
+      var isPH = !!HOLIDAYS[dKey];
+      var isEvt = !!EVENTS[dKey];
+
+      var cls = ['cal-day-cell'];
+      if(isPast) cls.push('is-disabled');
+      if(isToday) cls.push('is-today');
+      if(isSel) cls.push('is-selected');
+      if(isPH) cls.push('is-ph');
+      else if(isEvt) cls.push('is-event');
+
+      var tagHtml = '';
+      if(isPH) tagHtml = '<span class="day-ph-pill">PH</span>';
+      else if(isEvt) tagHtml = '<span class="day-ph-pill">PEAK</span>';
+
+      var desc = isPH ? HOLIDAYS[dKey] + ' (Public Holiday Rate)' : (isEvt ? EVENTS[dKey] + ' (Peak Event Rate)' : 'Normal Weekday Rate');
+
+      html += '<button type="button" class="' + cls.join(' ') + '"' +
+        (isPast ? ' disabled aria-disabled="true"' : ' data-veh-cal-date="' + dKey + '"') +
+        ' title="' + esc(desc) + '">' +
+        '<span>' + day + '</span>' + tagHtml +
+        '</button>';
+    }
+    grid.innerHTML = html;
+  }
+
+  function vehCalNav(delta){
+    vehCalMonth += delta;
+    if(vehCalMonth > 11){ vehCalMonth = 0; vehCalYear++; }
+    else if(vehCalMonth < 0){ vehCalMonth = 11; vehCalYear--; }
+    renderVehCalendar();
+  }
+
+  function selectVehCalendarDate(key, noClose){
+    selectedVehDateKey = key;
+    var info = getRateTypeForDate(key);
+
+    var parts = key.split('-');
+    var y = Number(parts[0]), m = Number(parts[1]) - 1, d = Number(parts[2]);
+    var dt = new Date(y, m, d);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var formatted = days[dt.getDay()] + ', ' + d + ' ' + months[m] + ' ' + y;
+
+    $('vbmDate').value = formatted;
+
+    var pill = $('vbmDatePill');
+    if(pill){
+      if(info.isHoliday){ pill.textContent = '🔴 PH Rate (' + (info.name || 'Holiday') + ')'; pill.style.color = '#D32F2F'; }
+      else if(info.isEvent){ pill.textContent = '⭐ Peak Rate (' + (info.name || 'Event') + ')'; pill.style.color = '#B78103'; }
+      else { pill.textContent = '🟢 Normal Weekday Rate'; pill.style.color = '#1B5E20'; }
+    }
+
+    var ban = $('calHolidayBannerModal');
+    if(ban){
+      if(info.isHoliday){
+        ban.hidden = false;
+        ban.innerHTML = '🔴 <b>Public Holiday:</b> ' + esc(info.name) + ' — Holiday rate applied!';
+      } else if(info.isEvent){
+        ban.hidden = false;
+        ban.innerHTML = '⭐ <b>Langkawi Peak Event:</b> ' + esc(info.name) + ' — Peak event rate applied!';
+      } else {
+        ban.hidden = true;
+        ban.innerHTML = '';
+      }
+    }
+
+    renderVehCalendar();
+    updateVehBookingPrice();
+
+    if(!noClose){
+      toggleVehCalendar(false);
+      var toastText = info.isHoliday ? 'Holiday rate (' + info.name + ') applied' : (info.isEvent ? 'Peak rate (' + info.name + ') applied' : 'Normal weekday rate applied');
+      showToast(toastText);
+    }
+  }
+
+  function updateVehBookingPrice(){
+    if(!selectedVeh) return;
+    var info = selectedVehDateKey ? getRateTypeForDate(selectedVehDateKey) : { season:'normal' };
+
+    var daily = (info.season === 'public' && selectedVeh.pPub != null) ? selectedVeh.pPub :
+                (info.season === 'event' && selectedVeh.pEvent != null) ? selectedVeh.pEvent :
+                selectedVeh.pNorm;
+
+    var days = Number($('vbmDays').value) || 1;
+    var total = daily * days;
+
+    $('vbmDailyRate').textContent = 'RM ' + daily;
+    $('vbmCalcDesc').textContent = 'RM ' + daily + ' / day × ' + days + (days === 1 ? ' day' : ' days');
+    $('vbmTotalPrice').textContent = 'RM ' + total;
+
+    var ratePill = $('vbmRateTypePill');
+    if(ratePill){
+      if(info.isHoliday){
+        ratePill.textContent = '🔴 Public Holiday Rate (' + (info.name || 'PH') + ')';
+        ratePill.style.color = '#D32F2F';
+        ratePill.style.background = '#FFF1F0';
+        ratePill.style.borderColor = '#FFCDD2';
+      } else if(info.isEvent){
+        ratePill.textContent = '⭐ Peak Event Rate (' + (info.name || 'Peak') + ')';
+        ratePill.style.color = '#B78103';
+        ratePill.style.background = '#FFF9E6';
+        ratePill.style.borderColor = '#FFE082';
+      } else {
+        ratePill.textContent = '🟢 Normal Weekday Rate';
+        ratePill.style.color = '#1B5E20';
+        ratePill.style.background = '#E8F5E9';
+        ratePill.style.borderColor = '#C8E6C9';
+      }
+    }
+
+    var btn = $('btnSubmitVehBooking');
+    if(btn){
+      if(vehPayMethod === 'Stripe Online (Card / FPX)'){
+        btn.innerHTML = '🔒 Pay Full Amount with Stripe • RM ' + total;
+      } else {
+        btn.innerHTML = 'Confirm Booking on WhatsApp • RM ' + total;
+      }
+    }
+  }
+
+  $('btnCloseVehModal').addEventListener('click', closeVehBooking);
+  $('vehBookingModal').addEventListener('click', function(e){ if(e.target === this) closeVehBooking(); });
+
+  $('btnToggleCalModal').addEventListener('click', function(e){ e.stopPropagation(); toggleVehCalendar(); });
+  $('vbmDate').addEventListener('click', function(e){ e.stopPropagation(); toggleVehCalendar(); });
+  $('calPrevModal').addEventListener('click', function(e){ e.stopPropagation(); vehCalNav(-1); });
+  $('calNextModal').addEventListener('click', function(e){ e.stopPropagation(); vehCalNav(1); });
+  $('vbmDays').addEventListener('change', updateVehBookingPrice);
+
+  document.querySelectorAll('[data-vbmpay]').forEach(function(opt){
+    opt.setAttribute('aria-pressed', opt.classList.contains('selected'));
+    opt.addEventListener('click', function(){
+      document.querySelectorAll('[data-vbmpay]').forEach(function(o){ o.classList.remove('selected'); o.setAttribute('aria-pressed', 'false'); });
+      opt.classList.add('selected'); opt.setAttribute('aria-pressed', 'true');
+      vehPayMethod = opt.dataset.vbmpay;
+      var info = $('vbmPayInfo');
+      if(vehPayMethod === 'Stripe Online (Card / FPX)'){
+        if(info) info.textContent = 'Instant & secure 100% full payment via Stripe. Accepts FPX Online Banking (Maybank, CIMB, Public Bank, etc.), Visa, Mastercard, Apple Pay & Google Pay.';
+      } else {
+        if(info) info.textContent = 'Pay via Malaysian bank transfer, DuitNow QR, or Touch \'n Go. Send your booking details directly to our WhatsApp admin to receive banking details and driver confirmation.';
+      }
+      updateVehBookingPrice();
+    });
+  });
+
+  $('vehBookForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(!selectedVeh) return;
+
+    var name = $('vbmName').value.trim();
+    var phone = $('vbmPhone').value.trim();
+    var email = $('vbmEmail').value.trim();
+    var time = $('vbmTime').value.trim() || '10:00';
+    var days = Number($('vbmDays').value) || 1;
+    var notes = $('vbmNotes').value.trim();
+    var dateStr = $('vbmDate').value.trim();
+
+    var errEl = $('vbmErr');
+    errEl.classList.remove('show');
+
+    if(!name){
+      errEl.textContent = 'Please enter your full name.';
+      errEl.classList.add('show');
+      $('vbmName').focus();
+      return;
+    }
+    if(!phone || phone.replace(/\D/g, '').length < 8){
+      errEl.textContent = 'Please enter a valid WhatsApp / phone number.';
+      errEl.classList.add('show');
+      $('vbmPhone').focus();
+      return;
+    }
+    if(!selectedVehDateKey || !dateStr){
+      errEl.textContent = 'Please select a pickup date from the calendar.';
+      errEl.classList.add('show');
+      toggleVehCalendar(true);
+      return;
+    }
+
+    var info = getRateTypeForDate(selectedVehDateKey);
+    var daily = (info.season === 'public' && selectedVeh.pPub != null) ? selectedVeh.pPub :
+                (info.season === 'event' && selectedVeh.pEvent != null) ? selectedVeh.pEvent :
+                selectedVeh.pNorm;
+    var total = daily * days;
+    var rateLabel = info.isHoliday ? ('Public Holiday (' + info.name + ')') : (info.isEvent ? ('Peak Event (' + info.name + ')') : 'Normal Weekday');
+
+    var bookingData = {
+      type: 'vehicle_transport',
+      vehId: selectedVeh.id,
+      vehName: selectedVeh.name,
+      vehImg: selectedVeh.img,
+      name: name,
+      phone: phone,
+      email: email,
+      date: dateStr,
+      dateKey: selectedVehDateKey,
+      time: time,
+      days: days,
+      notes: notes,
+      rateType: rateLabel,
+      dailyPrice: daily,
+      total: total,
+      payMethod: vehPayMethod
+    };
+
+    if(vehPayMethod === 'Stripe Online (Card / FPX)'){
+      if(!STRIPE_WORKER_URL || STRIPE_WORKER_URL.indexOf('http') !== 0){
+        errEl.innerHTML = '<strong>Cloudflare Worker URL is not configured yet.</strong><br><small style="display:block;margin-top:4px">Please deploy <code>cloudflare-worker/worker.js</code> in Cloudflare and paste the worker URL into <code>STRIPE_WORKER_URL</code> in index.html, or choose Manual Transfer below.</small>';
+        errEl.classList.add('show');
+        return;
+      }
+
+      var btn = $('btnSubmitVehBooking');
+      var origText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = 'Connecting to Stripe...';
+
+      try {
+        localStorage.setItem('stripe_last_booking', JSON.stringify(bookingData));
+
+        var itemTitle = selectedVeh.name + ' with Driver (' + rateLabel + ' • ' + dateStr + ' ' + time + ' • ' + days + (days === 1 ? ' Day)' : ' Days)');
+        var resp = await fetch(STRIPE_WORKER_URL.replace(/\/+$/, '') + '/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: [{ title: itemTitle, price: daily, qty: days }],
+            customerName: name,
+            customerPhone: phone,
+            customerEmail: email,
+            tripDates: dateStr + ' at ' + time + ' (' + days + ' Days)',
+            returnUrl: window.location.origin + window.location.pathname
+          })
+        });
+
+        var data = await resp.json();
+        if(resp.ok && data.url){
+          window.location.href = data.url;
+          return;
+        } else {
+          throw new Error(data.error || 'Failed to initialize Stripe Checkout session.');
+        }
+      } catch(err){
+        btn.disabled = false;
+        btn.innerHTML = origText;
+        errEl.innerHTML = '<strong>Payment Connection Error:</strong> ' + esc(err.message || 'Unable to connect to Stripe.') + '<br><small>You can choose "Manual Transfer" below to complete your booking directly on WhatsApp.</small>';
+        errEl.classList.add('show');
+        return;
+      }
+    } else {
+      // Manual Transfer / WhatsApp
+      var ref = 'AFNAN-V' + Date.now().toString().slice(-6);
+      closeVehBooking();
+      showReceiptForVehBooking(bookingData, ref, false);
+    }
+  });
+
+  // Display receipt for vehicle bookings (handles both Stripe verified return & WhatsApp booking)
+  function showReceiptForVehBooking(b, ref, isStripePaid){
+    var vehBox = $('recVehDetailsBox');
+    if(vehBox){
+      vehBox.hidden = false;
+      if($('recVehImg')) $('recVehImg').src = b.vehImg || '';
+      if($('recVehName')) $('recVehName').textContent = b.vehName;
+      if($('recVehDate')) $('recVehDate').textContent = b.date;
+      if($('recVehTime')) $('recVehTime').textContent = b.time;
+      if($('recVehDays')) $('recVehDays').textContent = b.days + (b.days == 1 ? ' Day' : ' Days');
+      if($('recVehRate')) $('recVehRate').textContent = b.rateType;
+      var notesRow = $('recVehNotesRow');
+      if(notesRow){
+        if(b.notes){
+          notesRow.hidden = false;
+          $('recVehNotes').textContent = b.notes;
+        } else {
+          notesRow.hidden = true;
+        }
+      }
+    }
+
+    $('recName').textContent = b.name;
+    $('recRef').textContent = ref;
+    $('recMethod').textContent = isStripePaid ? 'Paid Online via Stripe (Card / FPX)' : b.payMethod;
+
+    var statusEl = $('recStatus');
+    if(statusEl){
+      if(isStripePaid){
+        statusEl.textContent = '100% Full Payment Verified (Stripe) ✓';
+        statusEl.style.color = '#128C4B';
+      } else {
+        statusEl.textContent = 'Awaiting Confirmation · Not Paid Yet';
+        statusEl.style.color = '#8A5A00';
+      }
+    }
+
+    if($('recTitle')){
+      $('recTitle').textContent = isStripePaid ? 'Payment Successful! 100% Full Payment Confirmed' : 'Booking Details Ready — Send to WhatsApp';
+    }
+
+    var itemTitle = b.vehName + ' with Driver (' + b.rateType + ' • ' + b.date + ' ' + b.time + ' • ' + b.days + (b.days == 1 ? ' Day)' : ' Days)');
+    $('recTableBody').innerHTML = '<tr><td>' + esc(itemTitle) + '</td><td style="text-align:center">' + b.days + '</td><td style="text-align:right">RM ' + b.total + '</td></tr>' +
+      '<tr style="color:var(--accent-teal);font-weight:800"><td colspan="2">' + (isStripePaid ? 'Total Paid (100% Full Payment via Stripe)' : 'Total Payable (100% Full Payment)') + '</td><td style="text-align:right">RM ' + b.total + '</td></tr>';
+
+    var waStatus = isStripePaid ? '100% FULL PAYMENT COMPLETED VIA STRIPE ✓' : 'Awaiting Confirmation (Manual Transfer)';
+    var waMsg = 'Hello AFNAN LANGKAWI TOUR & TRANSPORT WITH DRIVER! Here are my chauffeured transport booking details:\n\n' +
+      '*BOOKING REFERENCE:* ' + ref + '\n' +
+      '*PAYMENT STATUS:* ' + waStatus + '\n' +
+      '*VEHICLE:* ' + b.vehName + ' (With Driver)\n' +
+      '*CUSTOMER NAME:* ' + b.name + '\n' +
+      '*WHATSAPP / PHONE:* ' + b.phone + '\n' +
+      (b.email ? '*EMAIL:* ' + b.email + '\n' : '') +
+      '*PICKUP DATE:* ' + b.date + '\n' +
+      '*PICKUP TIME:* ' + b.time + '\n' +
+      '*DURATION:* ' + b.days + (b.days == 1 ? ' Day\n' : ' Days\n') +
+      '*RATE APPLIED:* ' + b.rateType + '\n' +
+      '*TOTAL AMOUNT (100% FULL PAYMENT):* RM ' + b.total + '\n' +
+      '*PAYMENT METHOD:* ' + (isStripePaid ? 'Stripe Online (Card / FPX)' : b.payMethod) + '\n' +
+      (b.notes ? '*PICKUP LOCATION / NOTES:* ' + b.notes + '\n\n' : '\n') +
+      (isStripePaid ? 'My payment has been successfully completed. Please confirm my driver assignment and pickup schedule. Thank you!' : 'Please confirm vehicle availability and send payment details. Thank you!');
+
+    $('btnRecWa').href = waUrl(waMsg);
+    var btnSpan = $('btnRecWa').querySelector('span');
+    if(btnSpan){
+      btnSpan.textContent = isStripePaid ? 'Send Full Booking Receipt on WhatsApp' : 'Send Booking on WhatsApp';
+    }
+
+    openOverlay($('receiptModal'));
+  }
+
   // Handle Stripe return redirect (?payment=success or ?payment=cancelled)
   function checkStripeReturn(){
     var params = new URLSearchParams(window.location.search);
@@ -3587,45 +4061,50 @@ body.no-scroll{overflow:hidden}
       } catch(e){}
 
       cart = []; discountPercent = 0; saveCart();
-
       var ref = sessionId ? 'STRIPE-' + sessionId.slice(-8).toUpperCase() : ('AFNAN-' + Date.now().toString().slice(-6));
-      var name = saved ? saved.name : 'Valued Guest';
-      var phone = saved ? saved.phone : '';
-      var dates = saved ? saved.dates : '';
-      var total = saved ? saved.total : '';
 
-      var lines = '';
-      if(saved && saved.items){
-        lines = saved.items.map(function(it){
-          return '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
-        }).join('');
-        $('recTableBody').innerHTML = saved.items.map(function(it){
-          return '<tr><td>' + esc(it.title) + '</td><td style="text-align:center">' + it.qty + '</td><td style="text-align:right">RM ' + (it.price * it.qty) + '</td></tr>';
-        }).join('') + '<tr style="color:var(--accent-teal);font-weight:800"><td colspan="2">Paid Total (Stripe)</td><td style="text-align:right">RM ' + total + '</td></tr>';
+      if(saved && saved.type === 'vehicle_transport'){
+        showReceiptForVehBooking(saved, ref, true);
+      } else {
+        if($('recVehDetailsBox')) $('recVehDetailsBox').hidden = true;
+        var name = saved ? saved.name : 'Valued Guest';
+        var phone = saved ? saved.phone : '';
+        var dates = saved ? saved.dates : '';
+        var total = saved ? saved.total : '';
+
+        var lines = '';
+        if(saved && saved.items){
+          lines = saved.items.map(function(it){
+            return '- ' + it.title + ' (' + it.qty + 'x) = RM ' + (it.price * it.qty) + '\n';
+          }).join('');
+          $('recTableBody').innerHTML = saved.items.map(function(it){
+            return '<tr><td>' + esc(it.title) + '</td><td style="text-align:center">' + it.qty + '</td><td style="text-align:right">RM ' + (it.price * it.qty) + '</td></tr>';
+          }).join('') + '<tr style="color:var(--accent-teal);font-weight:800"><td colspan="2">Paid Total (Stripe)</td><td style="text-align:right">RM ' + total + '</td></tr>';
+        }
+
+        $('recTitle').textContent = 'Payment Successful! Booking Confirmed';
+        $('recName').textContent = name;
+        $('recRef').textContent = ref;
+        $('recMethod').textContent = 'Paid Online via Stripe (Card / FPX)';
+        var statusEl = $('recStatus');
+        if(statusEl){
+          statusEl.textContent = 'Paid & Verified ✓';
+          statusEl.style.color = '#128C4B';
+        }
+
+        $('btnRecWa').href = waUrl('Hello AFNAN LANGKAWI TOUR & TRANSPORT WITH DRIVER! I have completed my payment via Stripe:\n\n' +
+          '*PAYMENT STATUS:* PAID VIA STRIPE ✓\n' +
+          '*STRIPE REF:* ' + ref + '\n' +
+          '*NAME:* ' + name + '\n' +
+          (phone ? '*PHONE:* ' + phone + '\n' : '') +
+          (dates ? '*TRIP DATES:* ' + dates + '\n' : '') +
+          (total ? '*AMOUNT PAID:* RM ' + total + '\n\n' : '\n') +
+          (lines ? '*BOOKED ITEMS:*\n' + lines + '\n' : '') +
+          'Please confirm receipt and send my driver & tour details. Thank you!');
+
+        $('btnRecWa').querySelector('span').textContent = 'Send Payment Receipt on WhatsApp';
+        openOverlay($('receiptModal'));
       }
-
-      $('recTitle').textContent = 'Payment Successful! Booking Confirmed';
-      $('recName').textContent = name;
-      $('recRef').textContent = ref;
-      $('recMethod').textContent = 'Paid Online via Stripe (Card / FPX)';
-      var statusEl = $('recStatus');
-      if(statusEl){
-        statusEl.textContent = 'Paid & Verified ✓';
-        statusEl.style.color = '#128C4B';
-      }
-
-      $('btnRecWa').href = waUrl('Hello AFNAN LANGKAWI TOUR & TRANSPORT WITH DRIVER! I have completed my payment via Stripe:\n\n' +
-        '*PAYMENT STATUS:* PAID VIA STRIPE ✓\n' +
-        '*STRIPE REF:* ' + ref + '\n' +
-        '*NAME:* ' + name + '\n' +
-        (phone ? '*PHONE:* ' + phone + '\n' : '') +
-        (dates ? '*TRIP DATES:* ' + dates + '\n' : '') +
-        (total ? '*AMOUNT PAID:* RM ' + total + '\n\n' : '\n') +
-        (lines ? '*BOOKED ITEMS:*\n' + lines + '\n' : '') +
-        'Please confirm receipt and send my driver & tour details. Thank you!');
-
-      $('btnRecWa').querySelector('span').textContent = 'Send Payment Receipt on WhatsApp';
-      openOverlay($('receiptModal'));
 
       if(window.history && window.history.replaceState){
         var cleanUrl = window.location.pathname + window.location.hash;
@@ -3676,13 +4155,20 @@ body.no-scroll{overflow:hidden}
   if(vTime) vTime.addEventListener('change', syncDatesToCheckout);
   if(vDays) vDays.addEventListener('change', syncDatesToCheckout);
 
-  // Close calendar popover on outside click
+  // Close calendar popovers on outside click
   document.addEventListener('click', function(e){
     var pop = $('calPopover');
     if(pop && !pop.hidden){
       var wrap = $('vbcDateWrap');
       if(!pop.contains(e.target) && (!wrap || !wrap.contains(e.target))){
         toggleCalendar(false);
+      }
+    }
+    var popModal = $('calPopoverModal');
+    if(popModal && !popModal.hidden){
+      var wrapModal = $('vbmDateWrap');
+      if(!popModal.contains(e.target) && (!wrapModal || !wrapModal.contains(e.target))){
+        toggleVehCalendar(false);
       }
     }
   });
@@ -3692,35 +4178,9 @@ body.no-scroll{overflow:hidden}
     if((el = e.target.closest('[data-open-menu]'))){ openMenu(); return; }
     if((el = e.target.closest('[data-open-cart]'))){ openCart(); return; }
     if((el = e.target.closest('[data-detail]'))){ var p = el.dataset.detail.split(':'); openDetail(p[0], p[1]); return; }
-    if((el = e.target.closest('[data-addveh]'))){
-      var v = byId(vehicles, el.dataset.addveh);
-      var s = seasonOf(activeSeason);
-      if(!v || v[s.key] == null) return;
-
-      var nameVal = ($('vbcName') ? $('vbcName').value : '').trim();
-      var phoneVal = ($('vbcPhone') ? $('vbcPhone').value : '').trim();
-      var dateVal = ($('vbcDate') ? $('vbcDate').value : '').trim();
-      var timeVal = ($('vbcTime') ? $('vbcTime').value : '').trim();
-      var daysVal = Number($('vbcDays') ? $('vbcDays').value : 1) || 1;
-
-      if(!selectedDateKey || !dateVal){
-        toggleCalendar(true);
-        if($('vbcDate')) $('vbcDate').focus();
-        showToast('Please select your pickup date on the calendar first.');
-        return;
-      }
-
-      if(nameVal && $('cName')) $('cName').value = nameVal;
-      if(phoneVal && $('cPhone')) $('cPhone').value = phoneVal;
-      syncDatesToCheckout();
-
-      var rateLabel = activeSeason === 'public' ? 'Public Holiday' : (activeSeason === 'event' ? 'Peak Event' : 'Normal Rate');
-      var itemTitle = v.name + ' (' + rateLabel + ' • ' + dateVal + (timeVal ? ' ' + timeVal : '') + ' • ' + daysVal + (daysVal === 1 ? ' Day)' : ' Days)');
-
-      // Qty = daysVal so price is fully calculated: Rate * Days = Full Amount
-      quickAdd(itemTitle, v[s.key], 'transport with driver', v.img, daysVal);
-      return;
-    }
+    if((el = e.target.closest('[data-bookveh]'))){ openVehBooking(el.dataset.bookveh); return; }
+    if((el = e.target.closest('[data-addveh]'))){ openVehBooking(el.dataset.addveh); return; }
+    if((el = e.target.closest('[data-veh-cal-date]')) && !el.disabled){ selectVehCalendarDate(el.dataset.vehCalDate); return; }
     if((el = e.target.closest('[data-quick]'))){ var q = el.dataset.quick.split('|'); quickAdd(q[0], Number(q[1]), q[2], q[3], 1); return; }
     if((el = e.target.closest('[data-actcat]'))){ activeActCat = el.dataset.actcat; renderActs(); return; }
     if((el = e.target.closest('[data-vehcat]'))){ activeVehCat = el.dataset.vehcat; renderVehicles(); return; }
@@ -3728,7 +4188,8 @@ body.no-scroll{overflow:hidden}
   });
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Escape') return;
-    if($('detailModal').classList.contains('open')) closeDetail();
+    if($('vehBookingModal') && $('vehBookingModal').classList.contains('open')) closeVehBooking();
+    else if($('detailModal').classList.contains('open')) closeDetail();
     else if($('payModal').classList.contains('open')) closeOverlay($('payModal'));
     else if($('receiptModal').classList.contains('open')) closeOverlay($('receiptModal'));
     else if($('cartOverlay').classList.contains('open')) closeCart();
