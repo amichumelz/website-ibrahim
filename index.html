@@ -592,68 +592,337 @@ i{font-style:normal}
 .car-action-btn:hover{background:var(--sun);color:#111;transform:translateY(-2px)}
 
 /* =========================================================
-   SEASON SELECTOR & CAR FLEET FILTERS
+/* =========================================================
+   TRANSPORT WITH DRIVER: BOOKING DETAILS & CALENDAR
    ========================================================= */
-.season-selector-card{
-  background:var(--deep);
+.veh-booking-card{
+  background:linear-gradient(135deg, #172B28 0%, #10201D 100%);
   color:#fff;
   border-radius:var(--radius-md);
-  padding:clamp(18px, 2.5vw, 26px);
+  padding:clamp(20px, 3vw, 32px);
   margin-top:clamp(28px, 4vw, 44px);
-  border:1.5px solid rgba(245,199,26,0.25);
-  box-shadow:var(--shadow-md);
+  border:1.5px solid rgba(245,199,26,0.3);
+  box-shadow:0 12px 36px rgba(0,0,0,0.25);
+  position:relative;
 }
-.season-head{
+.vbc-head{margin-bottom:20px}
+.vbc-head h3{font-size:clamp(20px,2.4vw,28px);font-weight:800;color:#fff;margin-top:4px}
+.vbc-head p{font-size:14px;color:#C9C9C4;margin-top:6px;max-width:720px;line-height:1.5}
+
+.vbc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:16px;
+  position:relative;
+}
+.vbc-field{
   display:flex;
-  flex-wrap:wrap;
+  flex-direction:column;
+  gap:6px;
+  position:relative;
+}
+.vbc-field label{
+  font-size:12px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:0.06em;
+  color:#EAE6DC;
+  display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:16px;
 }
-.season-pills{
-  display:inline-flex;
-  flex-wrap:wrap;
-  gap:8px;
-  background:rgba(255,255,255,0.08);
-  padding:5px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.15);
+.vbc-ph-hint{
+  font-size:11px;
+  color:#FF8A80;
+  font-weight:700;
+  text-transform:none;
 }
-.season-btn{
+.vbc-input-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  background:#fff;
+  border-radius:var(--radius-sm);
+  border:1.5px solid rgba(255,255,255,0.25);
+  transition:border-color .2s ease, box-shadow .2s ease;
+}
+.vbc-input-wrap:focus-within{
+  border-color:var(--sun);
+  box-shadow:0 0 0 3px rgba(245,199,26,0.28);
+}
+.vbc-input-wrap svg{
+  position:absolute;
+  left:14px;
+  width:18px;
+  height:18px;
+  stroke:#5A6258;
+  flex:none;
+  pointer-events:none;
+}
+.vbc-input-wrap input{
+  width:100%;
+  height:48px;
+  padding:0 14px 0 42px;
   border:0;
   background:transparent;
-  color:#E6E3DB;
-  font-size:13.5px;
+  font-family:inherit;
+  font-size:14.5px;
+  font-weight:600;
+  color:#111;
+  outline:none;
+  border-radius:var(--radius-sm);
+}
+.vbc-input-wrap input::placeholder{
+  color:#8C8F89;
+  font-weight:400;
+}
+.vbc-cal-btn{
+  position:absolute;
+  right:6px;
+  height:36px;
+  padding:0 12px;
+  border:0;
+  background:rgba(23,43,40,0.08);
+  border-radius:6px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  font-family:inherit;
+  transition:all .2s ease;
+}
+.vbc-cal-btn:hover{
+  background:var(--sun);
+  color:#111;
+}
+.cal-badge-pill{
+  font-size:11.5px;
   font-weight:700;
-  padding:8px 18px;
-  border-radius:999px;
+  color:#172B28;
+}
+
+/* Status Bar below Inputs */
+.vbc-status-bar{
+  margin-top:20px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,0.14);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px 18px;
+}
+.vbc-status-tag{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  transition:all .25s ease;
-  cursor:pointer;
+  padding:6px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,0.09);
+  border:1px solid rgba(255,255,255,0.18);
+  font-size:13px;
+  font-weight:700;
 }
-.season-btn .dot{
-  width:9px;
-  height:9px;
-  border-radius:50%;
-  display:inline-block;
+.vbc-status-tag.is-ph{
+  background:rgba(255,75,75,0.2);
+  border-color:#FF4B4B;
+  color:#FF8A80;
 }
-.dot.green{background:#25D366;box-shadow:0 0 8px rgba(37,211,102,.6)}
-.dot.yellow{background:#F4C91A;box-shadow:0 0 8px rgba(244,201,26,.6)}
-.dot.red{background:#FF4B4B;box-shadow:0 0 8px rgba(255,75,75,.6)}
-.season-btn.active{
-  background:var(--sun);
-  color:#111;
-  box-shadow:0 4px 14px rgba(244,201,26,0.4);
+.vbc-status-tag.is-event{
+  background:rgba(245,199,26,0.2);
+  border-color:var(--sun);
+  color:var(--sun);
 }
-.season-note{
-  margin-top:14px;
-  padding-top:12px;
-  border-top:1px solid rgba(255,255,255,0.12);
+.vbc-status-tag.is-norm{
+  background:rgba(37,211,102,0.18);
+  border-color:#25D366;
+  color:#70EF9C;
+}
+.vbc-status-desc{
   font-size:13.5px;
-  color:#C9C9C4;
+  color:#E2DFD6;
+  flex:1;
+  min-width:240px;
 }
+.vbc-price-range{
+  font-size:13px;
+  color:var(--sun);
+  font-weight:700;
+}
+
+/* INTERACTIVE CALENDAR POPOVER */
+.cal-popover{
+  position:absolute;
+  top:calc(100% + 8px);
+  left:0;
+  width:340px;
+  max-width:calc(100vw - 32px);
+  background:#ffffff;
+  color:#111;
+  border-radius:var(--radius-md);
+  box-shadow:0 20px 48px rgba(0,0,0,0.35), 0 0 0 1px rgba(0,0,0,0.08);
+  padding:16px;
+  z-index:100;
+  user-select:none;
+}
+.cal-pop-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:12px;
+}
+.cal-month-title{
+  font-size:15px;
+  font-weight:800;
+  color:#172B28;
+}
+.cal-nav-btn{
+  width:32px;
+  height:32px;
+  border-radius:8px;
+  border:1px solid #E5E2D8;
+  background:#F7F7F4;
+  color:#111;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.cal-nav-btn:hover{
+  background:var(--deep);
+  color:#fff;
+  border-color:var(--deep);
+}
+.cal-weekdays{
+  display:grid;
+  grid-template-columns:repeat(7, 1fr);
+  text-align:center;
+  font-size:11px;
+  font-weight:800;
+  color:#8C8F89;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.cal-days-grid{
+  display:grid;
+  grid-template-columns:repeat(7, 1fr);
+  gap:4px;
+}
+.cal-day-cell{
+  position:relative;
+  aspect-ratio:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  color:#2B2F2A;
+  border:1px solid transparent;
+  cursor:pointer;
+  background:transparent;
+  transition:all .15s ease;
+  padding:2px;
+}
+.cal-day-cell:hover:not(.is-disabled){
+  background:#F0EEE6;
+  border-color:#DCD8CD;
+}
+.cal-day-cell.is-disabled{
+  opacity:0.28;
+  cursor:not-allowed;
+  color:#A9AEA8;
+}
+.cal-day-cell.is-empty{
+  cursor:default;
+}
+.cal-day-cell.is-selected{
+  background:var(--deep) !important;
+  color:#fff !important;
+  font-weight:800;
+  border-color:var(--deep) !important;
+}
+.cal-day-cell.is-today{
+  border-color:#172B28;
+  font-weight:800;
+}
+.cal-day-cell.is-ph{
+  background:#FFF1F0;
+  color:#D32F2F;
+  border-color:#FFCDD2;
+  font-weight:800;
+}
+.cal-day-cell.is-ph:hover:not(.is-disabled){
+  background:#FFCDD2;
+}
+.cal-day-cell.is-ph.is-selected{
+  background:#D32F2F !important;
+  color:#fff !important;
+  border-color:#D32F2F !important;
+}
+.day-ph-pill{
+  font-size:8.5px;
+  font-weight:800;
+  color:#D32F2F;
+  line-height:1;
+  margin-top:1px;
+}
+.cal-day-cell.is-selected .day-ph-pill{
+  color:#fff;
+}
+.cal-day-cell.is-event{
+  background:#FFF9E6;
+  color:#B78103;
+  border-color:#FFE082;
+  font-weight:800;
+}
+.cal-day-cell.is-event .day-ph-pill{
+  color:#B78103;
+}
+.cal-day-cell.is-event.is-selected{
+  background:#F5C71A !important;
+  color:#111 !important;
+  border-color:#F5C71A !important;
+}
+.cal-day-cell.is-event.is-selected .day-ph-pill{
+  color:#111;
+}
+
+.cal-legend{
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid #ECE9E0;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:11px;
+  color:#6C726B;
+}
+.leg-item{display:flex;align-items:center;gap:6px}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex:none}
+.leg-dot.ph{background:#D32F2F}
+.leg-dot.event{background:#F5C71A}
+.leg-dot.norm{background:#25D366}
+
+.cal-holiday-banner{
+  margin-top:10px;
+  padding:8px 10px;
+  border-radius:6px;
+  background:#FFF1F0;
+  border:1px solid #FFCDD2;
+  color:#C62828;
+  font-size:11.5px;
+  font-weight:700;
+  line-height:1.35;
+}
+
+/* Rate pills on vehicle cards */
+.rate-pill{display:inline-block;padding:2px 6px;border-radius:4px;font-weight:700}
+.rate-pill.active-norm{background:#E8F5E9;color:#1B5E20;border:1px solid #C8E6C9}
+.rate-pill.active-ph{background:#FFEBEE;color:#C62828;border:1px solid #FFCDD2}
+.rate-pill.active-evt{background:#FFF9C4;color:#F57F17;border:1px solid #FFF59D}
 
 /* Category filter tabs */
 .car-filter-row{
@@ -2033,19 +2302,81 @@ body.no-scroll{overflow:hidden}
 <div class="perk-card"><svg width="34" height="34" aria-hidden="true" style="fill:none"><use href="#i-pin"/></svg><h3>Free Pickup &amp; Dropoff</h3><p>At Kuah Jetty and Langkawi Airport. Ready when you arrive.</p></div>
 </div>
 
-<div class="season-selector-card" id="seasonCard">
-  <div class="season-head">
+<div class="veh-booking-card" id="vehBookingCard">
+  <div class="vbc-head">
     <div>
-      <span class="eyebrow" style="color:var(--sun)">Transport rates</span>
-      <h3 style="font-size:20px;font-weight:800;color:#fff;margin-top:4px">Choose your travel season:</h3>
-    </div>
-    <div class="season-pills" role="group" aria-label="Season">
-      <button class="season-btn active" data-season="normal" type="button"><span class="dot green"></span> <span>Weekday (Normal)</span></button>
-      <button class="season-btn" data-season="public" type="button"><span class="dot yellow"></span> <span>Public Holiday</span></button>
-      <button class="season-btn" data-season="event" type="button"><span class="dot red"></span> <span>Event 5 Langkawi / Peak</span></button>
+      <span class="eyebrow" style="color:var(--sun)">Step 1 &bull; Your Trip Details</span>
+      <h3 style="font-size:22px;font-weight:800;color:#fff;margin-top:4px">Chauffeured Transport Booking</h3>
+      <p style="font-size:13.5px;color:#C9C9C4;margin-top:6px">Fill in your pickup details and select your travel date on the calendar. Public holidays (PH) and peak events are marked on the calendar with different rates.</p>
     </div>
   </div>
-  <p class="season-note"><strong>Current rate:</strong> <span id="seasonBadgeText" style="color:var(--sun);font-weight:700"></span> &bull; <span id="seasonFromText"></span></p>
+
+  <div class="vbc-grid">
+    <div class="vbc-field">
+      <label for="vbcName">Full Name</label>
+      <div class="vbc-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <input type="text" id="vbcName" placeholder="Your name (e.g. Fatin)" autocomplete="name">
+      </div>
+    </div>
+
+    <div class="vbc-field">
+      <label for="vbcPhone">WhatsApp / Phone No.</label>
+      <div class="vbc-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <input type="tel" id="vbcPhone" placeholder="e.g. 012-345 6789" autocomplete="tel">
+      </div>
+    </div>
+
+    <div class="vbc-field vbc-date-field">
+      <label for="vbcDate">Pickup Date <span class="vbc-ph-hint">🔴 Red = PH Rate</span></label>
+      <div class="vbc-input-wrap" id="vbcDateWrap" style="cursor:pointer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <input type="text" id="vbcDate" readonly placeholder="Tap to select date" style="cursor:pointer">
+        <button type="button" class="vbc-cal-btn" id="btnToggleCal" aria-label="Open calendar">
+          <span class="cal-badge-pill" id="vbcDatePill">Select date</span>
+        </button>
+      </div>
+
+      <!-- POPUP CALENDAR -->
+      <div class="cal-popover" id="calPopover" hidden>
+        <div class="cal-pop-header">
+          <button type="button" class="cal-nav-btn" id="calPrev" aria-label="Previous month">&lsaquo;</button>
+          <div class="cal-month-title" id="calMonthTitle">October 2026</div>
+          <button type="button" class="cal-nav-btn" id="calNext" aria-label="Next month">&rsaquo;</button>
+        </div>
+        <div class="cal-weekdays">
+          <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+        </div>
+        <div class="cal-days-grid" id="calDaysGrid"></div>
+        <div class="cal-legend">
+          <span class="leg-item"><span class="leg-dot ph"></span> <b>PH (Red Tag)</b> = Public Holiday Rate</span>
+          <span class="leg-item"><span class="leg-dot event"></span> <b>Event (Purple)</b> = Peak Event Rate</span>
+          <span class="leg-item"><span class="leg-dot norm"></span> <b>Green</b> = Normal Weekday Rate</span>
+        </div>
+        <div class="cal-holiday-banner" id="calHolidayBanner" hidden></div>
+      </div>
+    </div>
+
+    <div class="vbc-field">
+      <label for="vbcTime">Pickup Time</label>
+      <div class="vbc-input-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <input type="time" id="vbcTime" value="10:00">
+      </div>
+    </div>
+  </div>
+
+  <div class="vbc-status-bar">
+    <div class="vbc-status-tag is-norm" id="vbcRateBadge">
+      <span class="dot green"></span>
+      <strong id="vbcRateType">Normal Weekday Rate</strong>
+    </div>
+    <div class="vbc-status-desc" id="vbcRateDesc">
+      Standard daily rate applied. Pick any date above to check public holiday or peak event rates.
+    </div>
+    <div class="vbc-price-range" id="seasonFromText"></div>
+  </div>
 </div>
 
 <div class="coll-head" id="koleksi" style="margin-top:clamp(36px,5vw,56px)">
@@ -2465,6 +2796,189 @@ body.no-scroll{overflow:hidden}
   function byId(list, id){ return list.filter(function(x){ return x.id === id; })[0]; }
 
   // =========================================================
+  // MALAYSIAN & KEDAH PUBLIC HOLIDAYS & LANGKAWI PEAK EVENTS
+  // =========================================================
+  var HOLIDAYS = {
+    // 2025
+    '2025-01-01': "New Year's Day", '2025-01-27': 'Israk and Mikraj (Kedah)', '2025-01-29': 'Chinese New Year (Day 1)',
+    '2025-01-30': 'Chinese New Year (Day 2)', '2025-02-11': 'Thaipusam', '2025-03-02': 'Awal Ramadan (Kedah)',
+    '2025-03-18': 'Nuzul Al-Quran', '2025-03-31': 'Hari Raya Aidilfitri', '2025-04-01': 'Hari Raya Aidilfitri (Day 2)',
+    '2025-05-01': 'Labour Day', '2025-05-12': 'Wesak Day', '2025-06-02': "Agong's Birthday",
+    '2025-06-07': 'Hari Raya Haji / Aidiladha', '2025-06-15': "Sultan of Kedah's Birthday", '2025-06-27': 'Awal Muharram',
+    '2025-08-31': 'National Day (Merdeka)', '2025-09-05': 'Maulidur Rasul', '2025-09-16': 'Malaysia Day',
+    '2025-10-20': 'Deepavali', '2025-12-25': 'Christmas Day',
+
+    // 2026
+    '2026-01-01': "New Year's Day", '2026-01-18': 'Israk and Mikraj (Kedah)', '2026-02-01': 'Thaipusam',
+    '2026-02-17': 'Chinese New Year (Day 1)', '2026-02-18': 'Chinese New Year (Day 2)', '2026-02-19': 'Awal Ramadan (Kedah)',
+    '2026-03-07': 'Nuzul Al-Quran', '2026-03-20': 'Hari Raya Aidilfitri', '2026-03-21': 'Hari Raya Aidilfitri (Day 2)',
+    '2026-03-22': 'Hari Raya Aidilfitri Holiday', '2026-05-01': 'Labour Day', '2026-05-27': 'Hari Raya Haji / Aidiladha',
+    '2026-05-31': 'Wesak Day', '2026-06-01': "Agong's Birthday", '2026-06-16': 'Awal Muharram',
+    '2026-06-21': "Sultan of Kedah's Birthday", '2026-08-25': 'Maulidur Rasul', '2026-08-31': 'National Day (Merdeka)',
+    '2026-09-16': 'Malaysia Day', '2026-11-08': 'Deepavali', '2026-12-25': 'Christmas Day',
+
+    // 2027
+    '2027-01-01': "New Year's Day", '2027-01-06': 'Israk and Mikraj (Kedah)', '2027-01-22': 'Thaipusam',
+    '2027-02-06': 'Chinese New Year (Day 1)', '2027-02-07': 'Chinese New Year (Day 2)', '2027-02-08': 'Awal Ramadan (Kedah)',
+    '2027-02-24': 'Nuzul Al-Quran', '2027-03-10': 'Hari Raya Aidilfitri', '2027-03-11': 'Hari Raya Aidilfitri (Day 2)',
+    '2027-05-01': 'Labour Day', '2027-05-16': 'Hari Raya Haji / Aidiladha', '2027-05-20': 'Wesak Day',
+    '2027-06-05': 'Awal Muharram', '2027-06-07': "Agong's Birthday", '2027-06-20': "Sultan of Kedah's Birthday",
+    '2027-08-14': 'Maulidur Rasul', '2027-08-31': 'National Day (Merdeka)', '2027-09-16': 'Malaysia Day',
+    '2027-10-29': 'Deepavali', '2027-12-25': 'Christmas Day'
+  };
+
+  var EVENTS = {
+    // 2025
+    '2025-05-20': 'LIMA Langkawi 2025', '2025-05-21': 'LIMA Langkawi 2025', '2025-05-22': 'LIMA Langkawi 2025',
+    '2025-05-23': 'LIMA Langkawi 2025', '2025-05-24': 'LIMA Langkawi 2025',
+    '2025-10-18': 'Ironman Langkawi', '2025-10-19': 'Ironman Langkawi',
+    '2025-12-24': 'Christmas Eve Peak', '2025-12-31': 'New Year Eve Peak',
+    // 2026
+    '2026-05-19': 'LIMA Langkawi 2026', '2026-05-20': 'LIMA Langkawi 2026', '2026-05-21': 'LIMA Langkawi 2026',
+    '2026-05-22': 'LIMA Langkawi 2026', '2026-05-23': 'LIMA Langkawi 2026',
+    '2026-10-24': 'Ironman Langkawi', '2026-10-25': 'Ironman Langkawi',
+    '2026-12-24': 'Christmas Eve Peak', '2026-12-30': 'New Year Eve Peak', '2026-12-31': 'New Year Eve Peak',
+    // 2027
+    '2027-05-18': 'LIMA Langkawi 2027', '2027-05-19': 'LIMA Langkawi 2027', '2027-05-20': 'LIMA Langkawi 2027',
+    '2027-05-21': 'LIMA Langkawi 2027', '2027-05-22': 'LIMA Langkawi 2027',
+    '2027-10-23': 'Ironman Langkawi', '2027-10-24': 'Ironman Langkawi',
+    '2027-12-24': 'Christmas Eve Peak', '2027-12-31': 'New Year Eve Peak'
+  };
+
+  // Calendar state
+  var calViewYear = 2026, calViewMonth = 9, selectedDateKey = '';
+  function pad2(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function getRateTypeForDate(key){
+    if(HOLIDAYS[key]) return { season:'public', name:HOLIDAYS[key], isHoliday:true };
+    if(EVENTS[key]) return { season:'event', name:EVENTS[key], isEvent:true };
+    return { season:'normal', name:'Normal Weekday', isNormal:true };
+  }
+
+  function renderCalendar(){
+    var grid = $('calDaysGrid');
+    if(!grid) return;
+    var title = $('calMonthTitle');
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    if(title) title.textContent = months[calViewMonth] + ' ' + calViewYear;
+
+    var firstDayIndex = new Date(calViewYear, calViewMonth, 1).getDay();
+    var daysInMonth = new Date(calViewYear, calViewMonth + 1, 0).getDate();
+    var now = new Date();
+    var todayKey = now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate());
+
+    var html = '';
+    for(var e = 0; e < firstDayIndex; e++){
+      html += '<div class="cal-day-cell is-empty" aria-hidden="true"></div>';
+    }
+
+    for(var day = 1; day <= daysInMonth; day++){
+      var dKey = calViewYear + '-' + pad2(calViewMonth + 1) + '-' + pad2(day);
+      var isPast = dKey < todayKey;
+      var isToday = dKey === todayKey;
+      var isSel = dKey === selectedDateKey;
+      var isPH = !!HOLIDAYS[dKey];
+      var isEvt = !!EVENTS[dKey];
+
+      var cls = ['cal-day-cell'];
+      if(isPast) cls.push('is-disabled');
+      if(isToday) cls.push('is-today');
+      if(isSel) cls.push('is-selected');
+      if(isPH) cls.push('is-ph');
+      else if(isEvt) cls.push('is-event');
+
+      var tagHtml = '';
+      if(isPH) tagHtml = '<span class="day-ph-pill">PH</span>';
+      else if(isEvt) tagHtml = '<span class="day-ph-pill">PEAK</span>';
+
+      var desc = isPH ? HOLIDAYS[dKey] + ' (Public Holiday Rate)' : (isEvt ? EVENTS[dKey] + ' (Peak Event Rate)' : 'Normal Weekday Rate');
+
+      html += '<button type="button" class="' + cls.join(' ') + '"' +
+        (isPast ? ' disabled aria-disabled="true"' : ' data-cal-date="' + dKey + '"') +
+        ' title="' + esc(desc) + '">' +
+        '<span>' + day + '</span>' + tagHtml +
+        '</button>';
+    }
+    grid.innerHTML = html;
+  }
+
+  function calNav(delta){
+    calViewMonth += delta;
+    if(calViewMonth > 11){ calViewMonth = 0; calViewYear++; }
+    else if(calViewMonth < 0){ calViewMonth = 11; calViewYear--; }
+    renderCalendar();
+  }
+
+  function toggleCalendar(open){
+    var pop = $('calPopover');
+    if(!pop) return;
+    if(open === undefined) pop.hidden = !pop.hidden;
+    else pop.hidden = !open;
+  }
+
+  function selectCalendarDate(key, noClose){
+    selectedDateKey = key;
+    var info = getRateTypeForDate(key);
+    activeSeason = info.season;
+
+    var parts = key.split('-');
+    var y = Number(parts[0]), m = Number(parts[1]) - 1, d = Number(parts[2]);
+    var dt = new Date(y, m, d);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var formatted = days[dt.getDay()] + ', ' + d + ' ' + months[m] + ' ' + y;
+
+    var vbcDate = $('vbcDate');
+    if(vbcDate) vbcDate.value = formatted;
+
+    var pill = $('vbcDatePill');
+    if(pill){
+      if(info.isHoliday){ pill.textContent = '🔴 PH Rate'; pill.style.color = '#D32F2F'; }
+      else if(info.isEvent){ pill.textContent = '⭐ Peak Rate'; pill.style.color = '#B78103'; }
+      else { pill.textContent = '🟢 Normal Rate'; pill.style.color = '#1B5E20'; }
+    }
+
+    var ban = $('calHolidayBanner');
+    if(ban){
+      if(info.isHoliday){
+        ban.hidden = false;
+        ban.innerHTML = '🔴 <b>Public Holiday:</b> ' + esc(info.name) + ' — Holiday rate applied!';
+      } else if(info.isEvent){
+        ban.hidden = false;
+        ban.innerHTML = '⭐ <b>Langkawi Peak Event:</b> ' + esc(info.name) + ' — Peak event rate applied!';
+      } else {
+        ban.hidden = true;
+        ban.innerHTML = '';
+      }
+    }
+
+    // Sync trip dates to checkout modal
+    var cDates = $('cDates'), vbcTime = $('vbcTime');
+    if(cDates){
+      var tVal = vbcTime ? vbcTime.value : '10:00';
+      cDates.value = formatted + (tVal ? ' at ' + tVal : '');
+    }
+
+    renderCalendar();
+    renderVehicles();
+    if(!noClose){
+      toggleCalendar(false);
+      var toastText = info.isHoliday ? 'Holiday rate (' + info.name + ') applied' : (info.isEvent ? 'Peak rate (' + info.name + ') applied' : 'Normal weekday rate applied');
+      showToast(toastText);
+    }
+  }
+
+  function initBookingCalendar(){
+    var now = new Date();
+    var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    calViewYear = tomorrow.getFullYear();
+    calViewMonth = tomorrow.getMonth();
+    var defaultKey = tomorrow.getFullYear() + '-' + pad2(tomorrow.getMonth() + 1) + '-' + pad2(tomorrow.getDate());
+    selectCalendarDate(defaultKey, true);
+    toggleCalendar(false);
+  }
+
+  // =========================================================
   // TOAST
   // =========================================================
   var toastTimer;
@@ -2511,10 +3025,16 @@ body.no-scroll{overflow:hidden}
   function carCard(v, sid){
     var p = vehPrice(v, sid);
     var priceHtml = p == null ? '<div class="price" style="font-size:14px">' + T('Tanya harga','Ask for rate') + '</div>' : '<div class="price">RM ' + p + ' <span>/' + T('hari (With Driver)','day (With Driver)') + '</span></div>';
+    
+    var pillNorm = '<span class="rate-pill' + (sid === 'normal' ? ' active-norm' : '') + '">Normal: RM' + v.pNorm + (sid === 'normal' ? ' ✓' : '') + '</span>';
+    var pillPub = '<span class="rate-pill' + (sid === 'public' ? ' active-ph' : '') + '">Holiday (PH): RM' + v.pPub + (sid === 'public' ? ' ✓' : '') + '</span>';
+    var pillEvt = '<span class="rate-pill' + (sid === 'event' ? ' active-evt' : '') + '">Event: ' + (v.pEvent == null ? 'Ask' : 'RM' + v.pEvent) + (sid === 'event' ? ' ✓' : '') + '</span>';
+    var ratesLine = '<div class="rates-line">' + pillNorm + ' &bull; ' + pillPub + ' &bull; ' + pillEvt + '</div>';
+
     return '<article class="car">' +
       '<div class="car-img-wrap">' + carPhoto(v) + '<span class="car-tag">' + esc(tr(v.tag)) + '</span></div>' +
       '<div class="car-head"><div><h3>' + esc(v.name) + '</h3><div class="mute sm">' + esc(tr(v.catLabel)) + '</div></div>' + priceHtml + '</div>' +
-      '<div class="rates-line">Normal: RM' + v.pNorm + ' | ' + T('Cuti','Holiday') + ': RM' + v.pPub + ' | Event: ' + (v.pEvent == null ? T('tanya','ask') : 'RM' + v.pEvent) + '</div>' +
+      ratesLine +
       '<div class="specs">' +
         '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><span><small>' + T('Kapasiti','Seats') + '</small>' + esc(tr(v.seats)) + '</span></div>' +
         '<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><span><small>Gear</small>' + esc(v.trans) + '</span></div>' +
@@ -2537,16 +3057,27 @@ body.no-scroll{overflow:hidden}
     $('carsContainer').innerHTML = vehicles.filter(function(v){ return activeVehCat === 'all' || v.cat === activeVehCat; }).map(function(v){ return carCard(v, activeSeason); }).join('');
 
     var s = seasonOf(activeSeason);
-    var badge = $('seasonBadgeText');
-    badge.textContent = tr(s.label);
-    badge.style.color = activeSeason === 'event' ? '#FF8A80' : 'var(--sun)';
     function minOf(cat){ return Math.min.apply(null, vehicles.filter(function(v){ return v.cat === cat && v[s.key] != null; }).map(function(v){ return v[s.key]; })); }
-    $('seasonFromText').textContent = T('Kompak dari RM', 'Compact from RM') + minOf('kompak') + T('/hari • Sedan dari RM', '/day • Sedan from RM') + minOf('sedan') + T('/hari • MPV/Van dari RM', '/day • MPV/Van from RM') + minOf('mpv') + T('/hari (With Driver)', '/day (With Driver)');
-    document.querySelectorAll('.season-btn').forEach(function(b){
-      var on = b.dataset.season === activeSeason;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-pressed', on);
-    });
+    var minText = T('Kompak dari RM', 'Compact from RM') + minOf('kompak') + T('/hari • Sedan dari RM', '/day • Sedan from RM') + minOf('sedan') + T('/hari • MPV/Van dari RM', '/day • MPV/Van from RM') + minOf('mpv') + T('/hari (With Driver)', '/day (With Driver)');
+    var seasonFromEl = $('seasonFromText');
+    if(seasonFromEl) seasonFromEl.textContent = minText;
+
+    // Update status bar
+    var badge = $('vbcRateBadge'), rateType = $('vbcRateType'), rateDesc = $('vbcRateDesc');
+    if(badge && rateType && rateDesc){
+      var info = selectedDateKey ? getRateTypeForDate(selectedDateKey) : { season:'normal' };
+      badge.className = 'vbc-status-tag ' + (activeSeason === 'public' ? 'is-ph' : (activeSeason === 'event' ? 'is-event' : 'is-norm'));
+      if(activeSeason === 'public'){
+        rateType.textContent = '🔴 Public Holiday Rate (PH)';
+        rateDesc.textContent = (info.name || 'Public Holiday') + ' active. Holiday pricing applied across all chauffeured vehicles below.';
+      } else if(activeSeason === 'event'){
+        rateType.textContent = '⭐ Langkawi Peak Event Rate';
+        rateDesc.textContent = (info.name || 'Peak Event') + ' active. Peak event pricing applied across all chauffeured vehicles below.';
+      } else {
+        rateType.textContent = '🟢 Normal Weekday Rate';
+        rateDesc.textContent = 'Standard chauffeured transport daily rate applied. Pick any date on the calendar above to check holiday rates.';
+      }
+    }
 
     $('priceTableBody').innerHTML = vehicles.map(function(v, i){
       function cell(sid, cls, bg){
@@ -2951,20 +3482,78 @@ body.no-scroll{overflow:hidden}
   $('mobileDrawer').addEventListener('click', function(e){ if(e.target === this || e.target.closest('.menu-link')) closeMenu(); });
   $('btnDrawerCart').addEventListener('click', function(){ closeMenu(); openCart(); });
 
+  // Calendar popover & input event listeners
+  var calWrap = $('vbcDateWrap');
+  if(calWrap){
+    calWrap.addEventListener('click', function(e){
+      var pop = $('calPopover');
+      if(pop && pop.contains(e.target)) return;
+      toggleCalendar();
+    });
+  }
+  var cPrev = $('calPrev'), cNext = $('calNext');
+  if(cPrev) cPrev.addEventListener('click', function(e){ e.stopPropagation(); calNav(-1); });
+  if(cNext) cNext.addEventListener('click', function(e){ e.stopPropagation(); calNav(1); });
+
+  // Input synchronizers to checkout modal
+  var vName = $('vbcName'), vPhone = $('vbcPhone'), vTime = $('vbcTime');
+  if(vName) vName.addEventListener('input', function(){ if($('cName')) $('cName').value = this.value; });
+  if(vPhone) vPhone.addEventListener('input', function(){ if($('cPhone')) $('cPhone').value = this.value; });
+  if(vTime) vTime.addEventListener('change', function(){
+    if($('cDates') && $('vbcDate') && $('vbcDate').value){
+      $('cDates').value = $('vbcDate').value + (this.value ? ' at ' + this.value : '');
+    }
+  });
+
+  // Close calendar popover on outside click
+  document.addEventListener('click', function(e){
+    var pop = $('calPopover');
+    if(pop && !pop.hidden){
+      var wrap = $('vbcDateWrap');
+      if(!pop.contains(e.target) && (!wrap || !wrap.contains(e.target))){
+        toggleCalendar(false);
+      }
+    }
+  });
+
   document.addEventListener('click', function(e){
     var el;
     if((el = e.target.closest('[data-open-menu]'))){ openMenu(); return; }
     if((el = e.target.closest('[data-open-cart]'))){ openCart(); return; }
     if((el = e.target.closest('[data-detail]'))){ var p = el.dataset.detail.split(':'); openDetail(p[0], p[1]); return; }
     if((el = e.target.closest('[data-addveh]'))){
-      var v = byId(vehicles, el.dataset.addveh), s = seasonOf(el.dataset.season);
-      if(v && v[s.key] != null) quickAdd(v.name + ' (' + tr(s.short) + ')', v[s.key], 'transport with driver', v.img, 1);
+      var v = byId(vehicles, el.dataset.addveh);
+      var s = seasonOf(activeSeason);
+      if(!v || v[s.key] == null) return;
+
+      var nameVal = ($('vbcName') ? $('vbcName').value : '').trim();
+      var phoneVal = ($('vbcPhone') ? $('vbcPhone').value : '').trim();
+      var dateVal = ($('vbcDate') ? $('vbcDate').value : '').trim();
+      var timeVal = ($('vbcTime') ? $('vbcTime').value : '').trim();
+
+      if(!selectedDateKey || !dateVal){
+        toggleCalendar(true);
+        if($('vbcDate')) $('vbcDate').focus();
+        showToast('Please select your pickup date on the calendar first.');
+        return;
+      }
+
+      if(nameVal && $('cName')) $('cName').value = nameVal;
+      if(phoneVal && $('cPhone')) $('cPhone').value = phoneVal;
+      if(dateVal && $('cDates')){
+        $('cDates').value = dateVal + (timeVal ? ' at ' + timeVal : '');
+      }
+
+      var rateLabel = activeSeason === 'public' ? 'Public Holiday' : (activeSeason === 'event' ? 'Peak Event' : 'Normal Rate');
+      var itemTitle = v.name + ' (' + rateLabel + ' • ' + dateVal + (timeVal ? ' ' + timeVal : '') + ')';
+
+      quickAdd(itemTitle, v[s.key], 'transport with driver', v.img, 1);
       return;
     }
     if((el = e.target.closest('[data-quick]'))){ var q = el.dataset.quick.split('|'); quickAdd(q[0], Number(q[1]), q[2], q[3], 1); return; }
     if((el = e.target.closest('[data-actcat]'))){ activeActCat = el.dataset.actcat; renderActs(); return; }
     if((el = e.target.closest('[data-vehcat]'))){ activeVehCat = el.dataset.vehcat; renderVehicles(); return; }
-    if((el = e.target.closest('.season-btn'))){ activeSeason = el.dataset.season; renderVehicles(); showToast('Rate changed: ' + tr(seasonOf(activeSeason).label)); return; }
+    if((el = e.target.closest('[data-cal-date]')) && !el.disabled){ selectCalendarDate(el.dataset.calDate); return; }
   });
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Escape') return;
@@ -3021,6 +3610,7 @@ body.no-scroll{overflow:hidden}
     lang = 'en';
     document.documentElement.lang = 'en';
     $('promoInput').placeholder = 'PROMO CODE';
+    initBookingCalendar();
     renderActs(); renderVehicles(); renderHotels(); updateCartUI();
     if(actD) renderActDetail();
     if(detail){ var k = detail.kindId.split(':'), keep = { opt:detail.opt, qty:detail.qty }; detail = buildDetail(k[0], k[1]); detail.kindId = k.join(':'); detail.opt = keep.opt; detail.qty = keep.qty; renderDetail(); }
