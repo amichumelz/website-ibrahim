@@ -91,12 +91,12 @@ export async function onRequestPost(context) {
 
         <div style="text-align:center;padding:16px;background:#ebf8ff;border-radius:8px;border:1px solid #bee3f8">
           <p style="margin:0 0 10px;font-size:13px;color:#2b6cb0">Need instant assistance or driver updates?</p>
-          <a href="https://wa.me/60123456789" style="display:inline-block;background:#128c4b;color:#ffffff;text-decoration:none;font-weight:bold;font-size:14px;padding:10px 22px;border-radius:6px">Chat With Us on WhatsApp</a>
+          <a href="https://wa.me/601123528648" style="display:inline-block;background:#128c4b;color:#ffffff;text-decoration:none;font-weight:bold;font-size:14px;padding:10px 22px;border-radius:6px">Chat With Us on WhatsApp (+601123528648)</a>
         </div>
 
         <div style="margin-top:24px;text-align:center;font-size:11.5px;color:#a0aec0">
           <p style="margin:4px 0">AFNAN LANGKAWI TOUR &amp; TRANSPORT WITH DRIVER</p>
-          <p style="margin:4px 0">Email: ${ADMIN_EMAIL} • Langkawi, Kedah, Malaysia</p>
+          <p style="margin:4px 0">Email: ${ADMIN_EMAIL} • Phone: +601123528648 / +60133365815 • Langkawi, Kedah</p>
         </div>
       </div>
     `;
