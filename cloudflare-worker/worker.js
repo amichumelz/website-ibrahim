@@ -95,16 +95,34 @@ async function handleCreateCheckout(request, env) {
     params.append('metadata[customer_phone]', customerPhone || '-');
     params.append('metadata[trip_dates]', tripDates || '-');
 
-    // Add each cart item as a line item in MYR (Stripe expects amount in sen: RM1 = 100 sen)
+    let subtotal = 0;
     items.forEach((item, index) => {
       const priceInMyr = Number(item.price) || 0;
+      const qty = Number(item.qty) || 1;
+      subtotal += priceInMyr * qty;
       const unitAmountInSen = Math.round(priceInMyr * 100);
 
       params.append(`line_items[${index}][price_data][currency]`, 'myr');
       params.append(`line_items[${index}][price_data][product_data][name]`, String(item.title || 'Tour / Transport Item'));
       params.append(`line_items[${index}][price_data][unit_amount]`, unitAmountInSen.toString());
-      params.append(`line_items[${index}][quantity]`, (Number(item.qty) || 1).toString());
+      params.append(`line_items[${index}][quantity]`, qty.toString());
     });
+
+    // Add Online Payment Processing Fee (3% + RM 1.00 gross-up) so merchant receives 100% net amount
+    if (subtotal > 0) {
+      const totalWithFee = Math.round(((subtotal + 1.00) / 0.97) * 100) / 100;
+      const feeInMyr = Math.round((totalWithFee - subtotal) * 100) / 100;
+      const feeIndex = items.length;
+
+      params.append(`line_items[${feeIndex}][price_data][currency]`, 'myr');
+      params.append(`line_items[${feeIndex}][price_data][product_data][name]`, 'Online Payment Processing Fee (3% + RM 1.00)');
+      params.append(`line_items[${feeIndex}][price_data][unit_amount]`, Math.round(feeInMyr * 100).toString());
+      params.append(`line_items[${feeIndex}][quantity]`, '1');
+
+      params.append('metadata[subtotal_myr]', subtotal.toFixed(2));
+      params.append('metadata[processing_fee_myr]', feeInMyr.toFixed(2));
+      params.append('metadata[total_paid_myr]', totalWithFee.toFixed(2));
+    }
 
     // Make request to Stripe API
     const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
