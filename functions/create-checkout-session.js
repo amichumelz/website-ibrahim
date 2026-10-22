@@ -43,9 +43,8 @@ export async function onRequestPost(context) {
     params.append('success_url', `${baseUrl}/?payment=success&session_id={CHECKOUT_SESSION_ID}`);
     params.append('cancel_url', `${baseUrl}/?payment=cancelled`);
 
-    // Enable Credit Card & Malaysian FPX Online Banking
-    params.append('payment_method_types[0]', 'card');
-    params.append('payment_method_types[1]', 'fpx');
+    // Dynamic Payment Methods: Payment methods (Cards, FPX, Apple Pay, Google Pay)
+    // are automatically managed from your Stripe Dashboard settings for MYR.
 
     if (customerEmail && customerEmail.trim()) {
       params.append('customer_email', customerEmail.trim());
