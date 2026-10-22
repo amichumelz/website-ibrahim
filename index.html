@@ -1182,25 +1182,56 @@ i{font-style:normal}
   display:block;
   font-size:14px;
 }
-.reviews-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(310px,1fr));
-  gap:24px;
+/* Horizontal Slider Wrapper */
+.reviews-slider-wrap{
+  position:relative;
+  width:100%;
 }
+.reviews-track{
+  display:flex;
+  flex-wrap:nowrap;
+  align-items:stretch;
+  gap:20px;
+  overflow-x:auto;
+  overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding:10px 4px 18px;
+  cursor:grab;
+  user-select:none;
+}
+.reviews-track::-webkit-scrollbar{
+  display:none;
+}
+.reviews-track.is-dragging{
+  cursor:grabbing;
+  scroll-snap-type:none;
+  scroll-behavior:auto;
+}
+
+/* Review Cards in Horizontal Slider */
 .review-card{
+  flex:0 0 380px;
+  max-width:86vw;
+  scroll-snap-align:start;
+  scroll-snap-stop:normal;
   background:#fff;
   border-radius:var(--radius-md);
   padding:24px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  box-shadow:0 4px 20px rgba(27,48,44,0.05);
+  box-shadow:0 4px 20px rgba(27,48,44,0.06);
   border:1px solid rgba(0,0,0,0.05);
   transition:transform .25s ease,box-shadow .25s ease;
+  user-select:none;
 }
 .review-card:hover{
   transform:translateY(-4px);
-  box-shadow:0 12px 32px rgba(27,48,44,0.1);
+  box-shadow:0 12px 32px rgba(27,48,44,0.12);
 }
 .review-card-top{
   display:flex;
@@ -1325,9 +1356,111 @@ i{font-style:normal}
   box-shadow:0 6px 20px rgba(66,133,244,0.18);
   transform:translateY(-2px);
 }
+
+/* Floating Prev/Next Buttons (Desktop) */
+.reviews-side-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:#fff;
+  color:var(--deep);
+  border:1px solid rgba(0,0,0,0.12);
+  box-shadow:0 6px 20px rgba(0,0,0,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:5;
+  transition:all .2s ease;
+}
+.reviews-side-btn:hover:not(:disabled){
+  background:var(--sun);
+  color:#111;
+  transform:translateY(-50%) scale(1.08);
+  box-shadow:0 8px 24px rgba(229,160,35,0.35);
+}
+.reviews-side-btn:disabled{
+  opacity:0.25;
+  cursor:not-allowed;
+  pointer-events:none;
+}
+.reviews-side-btn.prev{left:-20px}
+.reviews-side-btn.next{right:-20px}
+
+/* Controls Bar (Dots + Arrows) */
+.reviews-controls-bar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-top:14px;
+}
+.reviews-ctrl-btn{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.12);
+  color:var(--deep);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all .2s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+}
+.reviews-ctrl-btn:hover:not(:disabled){
+  background:var(--sun);
+  color:#111;
+  border-color:var(--sun);
+  transform:scale(1.06);
+}
+.reviews-ctrl-btn:disabled{
+  opacity:0.3;
+  cursor:not-allowed;
+}
+.reviews-dots{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.rev-dot{
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:#D1D5DB;
+  border:none;
+  padding:0;
+  cursor:pointer;
+  transition:all .25s ease;
+}
+.rev-dot:hover{
+  background:#9CA3AF;
+}
+.rev-dot.active{
+  width:28px;
+  background:var(--sun);
+}
+
+@media (max-width:992px){
+  .review-card{flex:0 0 340px}
+  .reviews-side-btn{display:none}
+}
 @media (max-width:768px){
   .reviews-summary-card{width:100%;justify-content:center}
   .reviews-header{flex-direction:column;align-items:stretch}
+}
+@media (max-width:640px){
+  .reviews-sec{padding:48px 16px}
+  .reviews-track{gap:14px;padding:8px 0 16px}
+  .review-card{
+    flex:0 0 85%;
+    padding:20px 18px;
+  }
+  .reviews-side-btn{display:none}
 }
 
 /* =========================================================
@@ -2620,7 +2753,12 @@ body.no-scroll{overflow:hidden}
     </div>
   </div>
 
-  <div class="reviews-grid">
+  <div class="reviews-slider-wrap">
+    <button class="reviews-side-btn prev rev-btn-prev" type="button" aria-label="Previous review">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+
+    <div class="reviews-track" id="reviewsTrack">
     <!-- Review 1: Odilbek -->
     <article class="review-card">
       <div>
@@ -2800,6 +2938,28 @@ body.no-scroll{overflow:hidden}
         <div class="review-reply-text">&ldquo;Terima kasih Asyraf! Terbaik!&rdquo;</div>
       </div>
     </article>
+    </div>
+
+    <button class="reviews-side-btn next rev-btn-next" type="button" aria-label="Next review">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Controls Bar: Prev Button, Indicator Dots, Next Button -->
+  <div class="reviews-controls-bar">
+    <button class="reviews-ctrl-btn rev-btn-prev" type="button" aria-label="Previous review">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="reviews-dots" id="reviewsDots">
+      <button class="rev-dot active" type="button" aria-label="View review 1" data-index="0"></button>
+      <button class="rev-dot" type="button" aria-label="View review 2" data-index="1"></button>
+      <button class="rev-dot" type="button" aria-label="View review 3" data-index="2"></button>
+      <button class="rev-dot" type="button" aria-label="View review 4" data-index="3"></button>
+      <button class="rev-dot" type="button" aria-label="View review 5" data-index="4"></button>
+    </div>
+    <button class="reviews-ctrl-btn rev-btn-next" type="button" aria-label="Next review">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
 
   <div class="reviews-cta-bar">
@@ -5069,12 +5229,115 @@ body.no-scroll{overflow:hidden}
   }
 
   // =========================================================
+  // REVIEWS HORIZONTAL SLIDER
+  // =========================================================
+  function initReviewsSlider(){
+    var track = $('reviewsTrack');
+    if(!track) return;
+    var prevBtns = document.querySelectorAll('.rev-btn-prev');
+    var nextBtns = document.querySelectorAll('.rev-btn-next');
+    var dots = document.querySelectorAll('.rev-dot');
+    var cards = track.querySelectorAll('.review-card');
+    if(!cards.length) return;
+
+    function getCardStep(){
+      var card = cards[0];
+      var gap = 20;
+      try {
+        var style = window.getComputedStyle(track);
+        var parsedGap = parseFloat(style.gap);
+        if(!isNaN(parsedGap)) gap = parsedGap;
+      } catch(e){}
+      return card.offsetWidth + gap;
+    }
+
+    function updateControls(){
+      var sl = track.scrollLeft;
+      var maxScroll = track.scrollWidth - track.clientWidth - 8;
+      prevBtns.forEach(function(b){ b.disabled = sl <= 6; });
+      nextBtns.forEach(function(b){ b.disabled = sl >= maxScroll; });
+
+      var step = getCardStep();
+      var activeIdx = Math.round(sl / step);
+      if(activeIdx >= cards.length) activeIdx = cards.length - 1;
+      if(activeIdx < 0) activeIdx = 0;
+      dots.forEach(function(d, i){
+        d.classList.toggle('active', i === activeIdx);
+      });
+    }
+
+    prevBtns.forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.preventDefault();
+        track.scrollBy({ left: -getCardStep(), behavior: 'smooth' });
+      });
+    });
+
+    nextBtns.forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.preventDefault();
+        track.scrollBy({ left: getCardStep(), behavior: 'smooth' });
+      });
+    });
+
+    dots.forEach(function(d){
+      d.addEventListener('click', function(e){
+        e.preventDefault();
+        var idx = parseInt(d.dataset.index, 10);
+        if(!isNaN(idx) && cards[idx]){
+          cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        }
+      });
+    });
+
+    track.addEventListener('scroll', updateControls, { passive: true });
+
+    // Desktop Mouse Drag-to-Slide
+    var isDown = false, startX = 0, scrollStart = 0;
+    track.addEventListener('mousedown', function(e){
+      if(e.target.closest('button, a')) return;
+      isDown = true;
+      track.classList.add('is-dragging');
+      startX = e.pageX - track.offsetLeft;
+      scrollStart = track.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', function(){
+      if(isDown){
+        isDown = false;
+        track.classList.remove('is-dragging');
+        updateControls();
+      }
+    });
+
+    track.addEventListener('mouseleave', function(){
+      if(isDown){
+        isDown = false;
+        track.classList.remove('is-dragging');
+        updateControls();
+      }
+    });
+
+    track.addEventListener('mousemove', function(e){
+      if(!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - track.offsetLeft;
+      var walk = (x - startX);
+      track.scrollLeft = scrollStart - walk;
+    });
+
+    updateControls();
+    window.addEventListener('resize', updateControls);
+  }
+
+  // =========================================================
   // INIT
   // =========================================================
   var general = waUrl('Hello AFNAN LANGKAWI TOUR & TRANSPORT WITH DRIVER, I would like to inquire about Langkawi tour & transport packages.');
   document.querySelectorAll('.wa-link').forEach(function(a){ a.href = general; });
 
   initLang();
+  initReviewsSlider();
   route();
   checkStripeReturn();
 
