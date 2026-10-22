@@ -2633,7 +2633,7 @@ body.no-scroll{overflow:hidden}
       <div class="pay-info" id="vbmPayInfo">Instant &amp; secure 100% full payment via Stripe. Accepts FPX Online Banking (Maybank, CIMB, etc.), Visa, Mastercard, Apple Pay &amp; Google Pay.</div>
       <div class="pay-err" id="vbmErr" role="alert"></div>
 
-      <button class="btn-submit-pay" id="btnSubmitVehBooking" type="submit">🔒 Pay Full Amount with Stripe • RM 0</button>
+      <button class="btn-submit-pay" id="btnSubmitVehBooking" type="submit">🔒 Pay with Stripe • RM 0</button>
     </form>
   </div>
 </div>
@@ -3139,7 +3139,7 @@ body.no-scroll{overflow:hidden}
       '</div>' +
       '<div class="car-btns">' +
         '<button class="btn-ghost" type="button" data-detail="veh:' + v.id + '">' + T('Butiran','Details') + '</button>' +
-        '<button class="car-action-btn" type="button" data-bookveh="' + v.id + '">' + T('Tempah (Bayar Penuh)','Book Transport (Full Payment)') + '</button>' +
+        '<button class="car-action-btn" type="button" data-bookveh="' + v.id + '">' + T('Tempah Pengangkutan','Book Transport') + '</button>' +
       '</div></article>';
   }
   function renderVehicles(){
@@ -3237,7 +3237,7 @@ body.no-scroll{overflow:hidden}
       '</div>' +
       '<div class="dt-foot">' +
         (d.veh
-          ? '<button class="btn-checkout" type="button" data-bookveh="' + d.veh.id + '" style="flex:1">' + icon('i-car', 18) + ' ' + T('Tempah (Bayar Penuh)','Book Transport (Full Payment)') + '</button>'
+          ? '<button class="btn-checkout" type="button" data-bookveh="' + d.veh.id + '" style="flex:1">' + icon('i-car', 18) + ' ' + T('Tempah Pengangkutan','Book Transport') + '</button>'
           : '<div class="dt-qty"><span>' + esc(d.qtyLabel) + '</span>' +
               '<button class="qty-btn" type="button" data-dtqty="-1" aria-label="' + T('Kurang','Less') + '">&minus;</button>' +
               '<span class="qty-val" id="dtQty">' + d.qty + '</span>' +
@@ -3834,7 +3834,7 @@ body.no-scroll{overflow:hidden}
     var btn = $('btnSubmitVehBooking');
     if(btn){
       if(vehPayMethod === 'Stripe Online (Card / FPX)'){
-        btn.innerHTML = '🔒 Pay Full Amount with Stripe • RM ' + total;
+        btn.innerHTML = '🔒 Pay with Stripe • RM ' + total;
       } else {
         btn.innerHTML = 'Confirm Booking on WhatsApp • RM ' + total;
       }
