@@ -1,6 +1,6 @@
 /**
  * Cloudflare Pages Function: /send-booking-email
- * Sends booking confirmation emails to both customer and admin (Ibrahimhussin5971@gmail.com)
+ * Sends booking confirmation emails to both customer and admin (aabusinessandservices99@gmail.com)
  */
 
 const CORS_HEADERS = {
@@ -9,7 +9,7 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type, Authorization',
 };
 
-const ADMIN_EMAIL = 'Ibrahimhussin5971@gmail.com';
+const ADMIN_EMAIL = 'aabusinessandservices99@gmail.com';
 
 export async function onRequestOptions() {
   return new Response(null, { headers: CORS_HEADERS });

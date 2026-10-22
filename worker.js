@@ -204,7 +204,7 @@ async function handleVerifySession(url, env) {
 }
 
 async function handleSendBookingEmail(request, env) {
-  const ADMIN_EMAIL = 'Ibrahimhussin5971@gmail.com';
+  const ADMIN_EMAIL = 'aabusinessandservices99@gmail.com';
   try {
     const data = await request.json();
     const {
