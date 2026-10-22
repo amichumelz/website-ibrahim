@@ -2487,7 +2487,65 @@ body.no-scroll{overflow:hidden}
         <div class="form-grp"><label for="cPhone">WhatsApp / Phone No. *</label><input type="tel" id="cPhone" autocomplete="tel" placeholder="e.g. +6012-3456789"></div>
       </div>
       <div class="form-grp"><label for="cEmail">Email Address * <span style="font-size:11.5px;color:#666;font-weight:normal">(for booking confirmation &amp; receipt)</span></label><input type="email" id="cEmail" autocomplete="email" required placeholder="e.g. john@example.com"></div>
-      <div class="form-grp"><label for="cDates">Trip Dates / Notes *</label><input type="text" id="cDates" placeholder="e.g. 15–18 Oct 2026, pickup at Kuah Jetty"></div>
+      <!-- Activity / Trip Date & Calendar Popover -->
+      <div class="form-grp" style="position:relative" id="payDateWrap">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+          <label for="cDate" style="margin-bottom:0">Activity / Trip Date *</label>
+          <span id="cDatePill" style="font-size:11.5px;font-weight:800;color:#1B5E20">🟢 Selected Date</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <input type="text" id="cDate" readonly style="cursor:pointer;background:#fff;font-weight:600" placeholder="Select activity date">
+          <button type="button" class="btn-ghost" id="btnToggleCalPay" style="padding:0 14px;height:44px;display:flex;align-items:center;gap:6px;border-color:#D8D5CA;white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <span>Calendar</span>
+          </button>
+        </div>
+
+        <!-- Calendar Popover inside Pay Modal -->
+        <div class="cal-popover" id="calPopoverPay" hidden style="z-index:200;width:100%;max-width:360px">
+          <div class="cal-pop-header">
+            <span class="cal-pop-title" id="calMonthTitlePay">October 2026</span>
+            <div class="cal-pop-nav">
+              <button type="button" id="calPrevPay" aria-label="Previous month">&larr;</button>
+              <button type="button" id="calNextPay" aria-label="Next month">&rarr;</button>
+            </div>
+          </div>
+          <div class="cal-weekdays">
+            <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+          </div>
+          <div class="cal-days-grid" id="calDaysGridPay"></div>
+          <div class="cal-legend">
+            <div class="leg-item"><span class="leg-dot" style="background:#D32F2F"></span><span><b>Red (PH):</b> Public Holiday</span></div>
+            <div class="leg-item"><span class="leg-dot" style="background:#F5C71A"></span><span><b>Yellow (PEAK):</b> Peak Event</span></div>
+            <div class="leg-item"><span class="leg-dot" style="background:#1B5E20"></span><span><b>Green:</b> Available Date</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preferred Time (Dropdown) -->
+      <div class="form-grp">
+        <label for="cTime">Preferred Time / Slot *</label>
+        <select id="cTime" style="font-weight:600">
+          <option value="09:00 AM">09:00 AM (Morning Session)</option>
+          <option value="09:30 AM">09:30 AM</option>
+          <option value="10:00 AM" selected>10:00 AM (Recommended / Standard)</option>
+          <option value="10:30 AM">10:30 AM</option>
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="02:00 PM">02:00 PM (Afternoon Session)</option>
+          <option value="02:30 PM">02:30 PM</option>
+          <option value="03:00 PM">03:00 PM</option>
+          <option value="04:30 PM">04:30 PM (Sunset Cruise / Late Afternoon)</option>
+          <option value="05:00 PM">05:00 PM (Sunset Cruise)</option>
+          <option value="08:00 PM">08:00 PM (Dream Forest Night Walk)</option>
+        </select>
+      </div>
+
+      <!-- Pickup Location / Notes (Optional) -->
+      <div class="form-grp">
+        <label for="cNotes">Pickup Location / Special Requests (optional)</label>
+        <input type="text" id="cNotes" placeholder="e.g. Hotel name (Pelangi Beach Resort) or flight details">
+      </div>
+      <input type="hidden" id="cDates" name="cDates">
       <div class="form-grp">
         <label id="payMethodLabel">Choose your preferred payment method</label>
         <div class="pay-methods" role="group" aria-labelledby="payMethodLabel">
@@ -3614,29 +3672,140 @@ body.no-scroll{overflow:hidden}
       updatePaySubmitBtn();
     });
   });
+
+  // =========================================================
+  // CART CHECKOUT MODAL & CALENDAR LOGIC
+  // =========================================================
+  var payCalYear = 2026, payCalMonth = 9, selectedPayDateKey = '';
+
+  function togglePayCalendar(open){
+    var pop = $('calPopoverPay');
+    if(!pop) return;
+    if(open === undefined) pop.hidden = !pop.hidden;
+    else pop.hidden = !open;
+  }
+
+  function renderPayCalendar(){
+    var grid = $('calDaysGridPay');
+    if(!grid) return;
+    var title = $('calMonthTitlePay');
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    if(title) title.textContent = months[payCalMonth] + ' ' + payCalYear;
+
+    var firstDayIndex = new Date(payCalYear, payCalMonth, 1).getDay();
+    var daysInMonth = new Date(payCalYear, payCalMonth + 1, 0).getDate();
+    var now = new Date();
+    var todayKey = now.getFullYear() + '-' + pad2(now.getMonth() + 1) + '-' + pad2(now.getDate());
+
+    var html = '';
+    for(var e = 0; e < firstDayIndex; e++){
+      html += '<div class="cal-day-cell is-empty" aria-hidden="true"></div>';
+    }
+
+    for(var day = 1; day <= daysInMonth; day++){
+      var dKey = payCalYear + '-' + pad2(payCalMonth + 1) + '-' + pad2(day);
+      var isPast = dKey < todayKey;
+      var isToday = dKey === todayKey;
+      var isSel = dKey === selectedPayDateKey;
+      var isPH = !!HOLIDAYS[dKey];
+      var isEvt = !!EVENTS[dKey];
+
+      var cls = ['cal-day-cell'];
+      if(isPast) cls.push('is-disabled');
+      if(isToday) cls.push('is-today');
+      if(isSel) cls.push('is-selected');
+      if(isPH) cls.push('is-ph');
+      else if(isEvt) cls.push('is-event');
+
+      var tagHtml = '';
+      if(isPH) tagHtml = '<span class="day-ph-pill">PH</span>';
+      else if(isEvt) tagHtml = '<span class="day-ph-pill">PEAK</span>';
+
+      var desc = isPH ? HOLIDAYS[dKey] : (isEvt ? EVENTS[dKey] : 'Available Date');
+
+      html += '<button type="button" class="' + cls.join(' ') + '"' +
+        (isPast ? ' disabled aria-disabled="true"' : ' data-pay-cal-date="' + dKey + '"') +
+        ' title="' + esc(desc) + '">' +
+        '<span>' + day + '</span>' + tagHtml +
+        '</button>';
+    }
+    grid.innerHTML = html;
+  }
+
+  function payCalNav(delta){
+    payCalMonth += delta;
+    if(payCalMonth > 11){ payCalMonth = 0; payCalYear++; }
+    else if(payCalMonth < 0){ payCalMonth = 11; payCalYear--; }
+    renderPayCalendar();
+  }
+
+  function selectPayCalendarDate(key, noClose){
+    selectedPayDateKey = key;
+    var parts = key.split('-');
+    var y = Number(parts[0]), m = Number(parts[1]) - 1, d = Number(parts[2]);
+    var dt = new Date(y, m, d);
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var formatted = days[dt.getDay()] + ', ' + d + ' ' + months[m] + ' ' + y;
+
+    if($('cDate')) $('cDate').value = formatted;
+    renderPayCalendar();
+
+    if(!noClose){
+      togglePayCalendar(false);
+      showToast('Date selected: ' + formatted);
+    }
+  }
+
+  function closePayModal(){
+    closeOverlay($('payModal'));
+    togglePayCalendar(false);
+  }
+
   $('btnProceedCheckout').addEventListener('click', function(){
     if(!cart.length){ showToast('Your cart is empty.'); return; }
     closeCart();
     $('payModalAmount').textContent = 'RM ' + cartTotal();
     $('payErr').classList.remove('show');
     updatePaySubmitBtn();
+
+    if(!selectedPayDateKey){
+      var now = new Date();
+      var tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      payCalYear = tomorrow.getFullYear();
+      payCalMonth = tomorrow.getMonth();
+      var defaultKey = tomorrow.getFullYear() + '-' + pad2(tomorrow.getMonth() + 1) + '-' + pad2(tomorrow.getDate());
+      selectPayCalendarDate(defaultKey, true);
+    } else {
+      renderPayCalendar();
+    }
+
     openOverlay($('payModal'));
-    $('cName').focus();
+    if(!$('cName').value) $('cName').focus();
   });
-  $('btnClosePay').addEventListener('click', function(){ closeOverlay($('payModal')); });
-  $('payModal').addEventListener('click', function(e){ if(e.target === this) closeOverlay(this); });
+  $('btnClosePay').addEventListener('click', closePayModal);
+  $('payModal').addEventListener('click', function(e){ if(e.target === this) closePayModal(); });
 
   $('payForm').addEventListener('submit', async function(e){
     e.preventDefault();
-    var name = $('cName').value.trim(), phone = $('cPhone').value.trim(), email = $('cEmail').value.trim(), dates = $('cDates').value.trim();
+    var name = $('cName').value.trim();
+    var phone = $('cPhone').value.trim();
+    var email = $('cEmail').value.trim();
+    var dateVal = $('cDate') ? $('cDate').value.trim() : '';
+    var timeVal = $('cTime') ? $('cTime').value.trim() : '10:00 AM';
+    var notesVal = $('cNotes') ? $('cNotes').value.trim() : '';
+
     var err = '';
     if(!name) err = 'Please enter your full name.';
     else if(phone.replace(/\D/g, '').length < 8) err = 'Please enter a valid WhatsApp / phone number.';
     else if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) err = 'Please enter a valid email address for your booking receipt.';
-    else if(!dates) err = 'Please enter your trip dates so we can check availability.';
+    else if(!dateVal) err = 'Please select your activity / trip date from the calendar.';
     else if(!cart.length) err = 'Your cart is empty.';
     if(err){ $('payErr').textContent = err; $('payErr').classList.add('show'); return; }
     $('payErr').classList.remove('show');
+
+    var tripDatesFormatted = dateVal + ' at ' + timeVal + (notesVal ? ' (' + notesVal + ')' : '');
+    if($('cDates')) $('cDates').value = tripDatesFormatted;
 
     if(!STRIPE_WORKER_URL || STRIPE_WORKER_URL.indexOf('http') !== 0){
       $('payErr').innerHTML = '<strong>Payment service is initializing.</strong><br><small style="display:block;margin-top:4px">Please refresh the page in a moment or contact our WhatsApp support.</small>';
@@ -3658,7 +3827,7 @@ body.no-scroll{overflow:hidden}
           customerName: name,
           customerPhone: phone,
           customerEmail: email,
-          tripDates: dates,
+          tripDates: tripDatesFormatted,
           returnUrl: window.location.origin + window.location.pathname
         })
       });
@@ -3673,7 +3842,10 @@ body.no-scroll{overflow:hidden}
             name: name,
             phone: phone,
             email: email,
-            dates: dates,
+            date: dateVal,
+            time: timeVal,
+            notes: notesVal,
+            dates: tripDatesFormatted,
             items: cart,
             subtotal: subtotalVal,
             processingFee: feeVal,
@@ -4299,6 +4471,15 @@ body.no-scroll{overflow:hidden}
   if(cPrev) cPrev.addEventListener('click', function(e){ e.stopPropagation(); calNav(-1); });
   if(cNext) cNext.addEventListener('click', function(e){ e.stopPropagation(); calNav(1); });
 
+  // Pay modal calendar event listeners
+  var btnTogglePayCal = $('btnToggleCalPay');
+  if(btnTogglePayCal) btnTogglePayCal.addEventListener('click', function(e){ e.stopPropagation(); togglePayCalendar(); });
+  var cDateInp = $('cDate');
+  if(cDateInp) cDateInp.addEventListener('click', function(e){ e.stopPropagation(); togglePayCalendar(); });
+  var cPrevPay = $('calPrevPay'), cNextPay = $('calNextPay');
+  if(cPrevPay) cPrevPay.addEventListener('click', function(e){ e.stopPropagation(); payCalNav(-1); });
+  if(cNextPay) cNextPay.addEventListener('click', function(e){ e.stopPropagation(); payCalNav(1); });
+
   // Input synchronizers to checkout modal
   var vName = $('vbcName'), vPhone = $('vbcPhone'), vTime = $('vbcTime'), vDays = $('vbcDays');
   if(vName) vName.addEventListener('input', function(){ if($('cName')) $('cName').value = this.value; });
@@ -4329,6 +4510,13 @@ body.no-scroll{overflow:hidden}
         toggleVehCalendar(false);
       }
     }
+    var popPay = $('calPopoverPay');
+    if(popPay && !popPay.hidden){
+      var wrapPay = $('payDateWrap');
+      if(!popPay.contains(e.target) && (!wrapPay || !wrapPay.contains(e.target))){
+        togglePayCalendar(false);
+      }
+    }
   });
 
   document.addEventListener('click', function(e){
@@ -4339,6 +4527,7 @@ body.no-scroll{overflow:hidden}
     if((el = e.target.closest('[data-bookveh]'))){ openVehBooking(el.dataset.bookveh); return; }
     if((el = e.target.closest('[data-addveh]'))){ openVehBooking(el.dataset.addveh); return; }
     if((el = e.target.closest('[data-veh-cal-date]')) && !el.disabled){ selectVehCalendarDate(el.dataset.vehCalDate); return; }
+    if((el = e.target.closest('[data-pay-cal-date]')) && !el.disabled){ selectPayCalendarDate(el.dataset.payCalDate); return; }
     if((el = e.target.closest('[data-quick]'))){ var q = el.dataset.quick.split('|'); quickAdd(q[0], Number(q[1]), q[2], q[3], 1); return; }
     if((el = e.target.closest('[data-actcat]'))){ activeActCat = el.dataset.actcat; renderActs(); return; }
     if((el = e.target.closest('[data-vehcat]'))){ activeVehCat = el.dataset.vehcat; renderVehicles(); return; }
@@ -4348,7 +4537,7 @@ body.no-scroll{overflow:hidden}
     if(e.key !== 'Escape') return;
     if($('vehBookingModal') && $('vehBookingModal').classList.contains('open')) closeVehBooking();
     else if($('detailModal').classList.contains('open')) closeDetail();
-    else if($('payModal').classList.contains('open')) closeOverlay($('payModal'));
+    else if($('payModal').classList.contains('open')) closePayModal();
     else if($('receiptModal').classList.contains('open')) closeOverlay($('receiptModal'));
     else if($('cartOverlay').classList.contains('open')) closeCart();
     else if($('mobileDrawer').classList.contains('open')) closeMenu();
