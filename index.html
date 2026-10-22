@@ -1455,7 +1455,7 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   flex-direction:column;
   gap:20px;
 }
-.form-grp{display:flex;flex-direction:column;gap:6px}
+.form-grp{display:flex;flex-direction:column;gap:6px;min-width:0}
 .form-grp label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
 .form-grp input, .form-grp select, .form-grp textarea{
   height:44px;
@@ -1466,10 +1466,18 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   background:#FAFAF8;
   color:var(--ink);
   width:100%;
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
   outline:none;
 }
 .form-grp textarea{height:72px;padding:10px 14px;resize:none}
 .form-grp input:focus, .form-grp select:focus, .form-grp textarea:focus{border-color:#111;background:#fff}
+.veh-time-days-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:12px;
+}
 
 .pay-methods{
   display:grid;
@@ -1850,6 +1858,8 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
   .cart-drawer{width:100vw}
   .pay-card{max-height:88vh;width:calc(100% - 20px);margin:10px}
   .pay-body{padding:16px}
+  .form-grp input, .form-grp select, .form-grp textarea{font-size:16px}
+  .veh-time-days-grid{grid-template-columns:1fr !important;gap:14px !important}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -2585,14 +2595,14 @@ body.no-scroll{overflow:hidden}
       </div>
 
       <!-- Pickup Time & Duration in Days -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="veh-time-days-grid">
         <div class="form-grp">
           <label for="vbmTime">Pickup Time *</label>
           <input type="time" id="vbmTime" value="10:00" required>
         </div>
         <div class="form-grp">
           <label for="vbmDays">Duration (Days) *</label>
-          <select id="vbmDays" style="height:42px;border:1px solid var(--line);border-radius:6px;padding:0 12px;font-weight:600;background:#fff">
+          <select id="vbmDays">
             <option value="1" selected>1 Day</option>
             <option value="2">2 Days</option>
             <option value="3">3 Days</option>
