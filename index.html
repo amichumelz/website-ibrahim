@@ -1100,89 +1100,93 @@ i{font-style:normal}
 .step h3{font-size:16px;font-weight:700;margin-bottom:4px}.step p{font-size:14px;color:#C9C9C4;line-height:1.5}
 
 /* =========================================================
-   GOOGLE REVIEWS SECTION
+   GOOGLE REVIEWS SECTION - ALIF/GOOGLE WIDGET STYLE
    ========================================================= */
 .reviews-sec{
-  padding:clamp(60px,7vw,96px) var(--pad);
-  background:linear-gradient(180deg,#F4F6F4 0%,#EBF0EC 100%);
+  padding:clamp(56px,7vw,92px) var(--pad);
+  background:#FAFBF9;
   position:relative;
+  overflow:hidden;
 }
 .reviews-sec .wrap{
-  max-width:var(--max);
+  max-width:1120px;
   margin:0 auto;
 }
-.reviews-header{
+.reviews-main-head{
+  text-align:left;
+  margin-bottom:clamp(24px,3.5vw,36px);
+  max-width:680px;
+}
+.reviews-main-head h2{
+  font-size:clamp(28px,3.4vw,40px);
+  font-weight:800;
+  line-height:1.2;
+  color:#0F172A;
+  letter-spacing:-.025em;
+  margin-bottom:8px;
+}
+.reviews-main-head p{
+  font-size:clamp(15px,1.2vw,17px);
+  color:#64748B;
+  line-height:1.55;
+  margin:0;
+}
+
+/* Big Google Widget Container */
+.gw-card{
+  background:#EEF2F6;
+  border-radius:28px;
+  padding:clamp(32px,5vw,52px) clamp(16px,4vw,36px);
+  border:1px solid #E2E8F0;
+  box-shadow:0 10px 30px rgba(15,23,42,0.04);
+}
+.gw-badge-head{
+  text-align:center;
   display:flex;
-  flex-wrap:wrap;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:24px;
-  margin-bottom:clamp(36px,5vw,52px);
-}
-.reviews-header-left{
-  max-width:620px;
-}
-.reviews-badge{
-  display:inline-flex;
+  flex-direction:column;
   align-items:center;
-  gap:8px;
-  background:#fff;
-  padding:6px 14px;
-  border-radius:999px;
-  box-shadow:0 2px 10px rgba(0,0,0,0.06);
-  font-size:12px;
-  font-weight:700;
-  color:#1F2937;
+  justify-content:center;
+  margin-bottom:clamp(24px,3.5vw,36px);
+}
+.gw-excellent{
+  font-size:clamp(22px,2.6vw,28px);
+  font-weight:900;
+  color:#0F172A;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.gw-stars{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  margin-bottom:8px;
+}
+.gw-stars svg{
+  width:clamp(28px,3.5vw,36px);
+  height:clamp(28px,3.5vw,36px);
+}
+.gw-rating-text{
+  font-size:15px;
+  color:#334155;
   margin-bottom:12px;
 }
-.reviews-badge svg{flex-shrink:0}
-.reviews-header h2{
-  font-size:clamp(28px,3.5vw,42px);
+.gw-rating-text b{
+  color:#0F172A;
   font-weight:700;
-  line-height:1.15;
-  color:var(--deep);
-  letter-spacing:-.02em;
 }
-.reviews-header p{
-  margin-top:10px;
-  color:#596561;
-  font-size:clamp(15px,1.2vw,17px);
-  line-height:1.6;
-}
-.reviews-summary-card{
-  background:#fff;
-  border-radius:var(--radius-md);
-  padding:20px 24px;
+.gw-google-logo{
   display:flex;
   align-items:center;
-  gap:20px;
-  box-shadow:0 8px 30px rgba(27,48,44,0.08);
-  border:1px solid rgba(229,160,35,0.25);
+  justify-content:center;
 }
-.reviews-score{
-  font-size:42px;
-  font-weight:800;
-  line-height:1;
-  color:var(--deep);
+.gw-google-logo svg{
+  height:38px;
+  width:auto;
 }
-.reviews-stars{
-  color:#F59E0B;
-  display:flex;
-  gap:2px;
-  font-size:16px;
-  margin:4px 0;
-}
-.reviews-summary-text{
-  font-size:13px;
-  color:#6B7280;
-  line-height:1.3;
-}
-.reviews-summary-text b{
-  color:#111827;
-  display:block;
-  font-size:14px;
-}
-/* Horizontal Slider Wrapper */
+
+/* Slider Track inside Widget Card */
 .reviews-slider-wrap{
   position:relative;
   width:100%;
@@ -1191,7 +1195,7 @@ i{font-style:normal}
   display:flex;
   flex-wrap:nowrap;
   align-items:stretch;
-  gap:20px;
+  gap:18px;
   overflow-x:auto;
   overflow-y:hidden;
   scroll-snap-type:x mandatory;
@@ -1199,7 +1203,7 @@ i{font-style:normal}
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
   -ms-overflow-style:none;
-  padding:10px 4px 18px;
+  padding:8px 4px 18px;
   cursor:grab;
   user-select:none;
 }
@@ -1212,149 +1216,124 @@ i{font-style:normal}
   scroll-behavior:auto;
 }
 
-/* Review Cards in Horizontal Slider */
+/* Inner White Review Card */
 .review-card{
-  flex:0 0 380px;
-  max-width:86vw;
+  flex:0 0 360px;
+  max-width:88vw;
   scroll-snap-align:start;
   scroll-snap-stop:normal;
-  background:#fff;
-  border-radius:var(--radius-md);
-  padding:24px;
+  background:#ffffff;
+  border-radius:20px;
+  padding:22px;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  box-shadow:0 4px 20px rgba(27,48,44,0.06);
-  border:1px solid rgba(0,0,0,0.05);
+  box-shadow:0 4px 18px rgba(15,23,42,0.05);
+  border:1px solid rgba(0,0,0,0.04);
   transition:transform .25s ease,box-shadow .25s ease;
   user-select:none;
 }
 .review-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 12px 32px rgba(27,48,44,0.12);
+  transform:translateY(-3px);
+  box-shadow:0 10px 28px rgba(15,23,42,0.09);
 }
-.review-card-top{
+.review-card-head{
   display:flex;
   align-items:center;
+  justify-content:space-between;
   gap:12px;
-  margin-bottom:14px;
+  margin-bottom:12px;
 }
 .review-avatar{
-  width:46px;
-  height:46px;
+  width:44px;
+  height:44px;
   border-radius:50%;
-  background:linear-gradient(135deg,var(--deep),#3A5E56);
+  background:#0E5E53;
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:800;
-  font-size:17px;
+  font-size:16px;
   flex-shrink:0;
+}
+.review-meta{
+  flex-grow:1;
+  min-width:0;
 }
 .review-meta h4{
   font-size:15px;
   font-weight:700;
-  color:#111827;
+  color:#0F172A;
   margin:0;
-  display:flex;
-  align-items:center;
-  gap:6px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
-.review-badge-lg{
-  display:inline-block;
-  background:#EFF6FF;
-  color:#1D4ED8;
-  font-size:10px;
-  font-weight:700;
-  padding:1px 6px;
-  border-radius:4px;
-  text-transform:uppercase;
-  letter-spacing:.04em;
-}
-.review-meta .review-date{
+.review-sub{
   font-size:12px;
-  color:#9CA3AF;
+  color:#64748B;
   margin-top:2px;
 }
-.review-rating-row{
+.review-date{
+  font-size:11px;
+  color:#94A3B8;
+  margin-top:1px;
+}
+.review-google-icon{
+  flex-shrink:0;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
 }
 .review-stars-gold{
   color:#F59E0B;
   display:flex;
-  gap:2px;
-  font-size:15px;
-}
-.review-google-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  font-size:11px;
-  font-weight:600;
-  color:#4B5563;
+  gap:3px;
+  margin-bottom:12px;
 }
 .review-text{
   font-size:14px;
   line-height:1.65;
-  color:#374151;
-  margin-bottom:16px;
+  color:#334155;
+  margin-bottom:14px;
   flex-grow:1;
 }
 .review-reply{
-  background:#F9FAFB;
+  background:#F8FAFC;
   border-left:3px solid var(--sun);
-  padding:12px 14px;
+  padding:10px 12px;
   border-radius:0 8px 8px 0;
-  margin-top:12px;
+  margin-top:8px;
+  margin-bottom:12px;
 }
 .review-reply-head{
   font-size:11px;
   font-weight:700;
-  color:var(--deep);
-  margin-bottom:4px;
+  color:#0F172A;
+  margin-bottom:3px;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
 }
 .review-reply-text{
   font-size:12px;
-  color:#4B5563;
-  line-height:1.5;
+  color:#475569;
+  line-height:1.45;
   font-style:italic;
 }
-.reviews-cta-bar{
-  margin-top:36px;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  text-align:center;
-}
-.btn-google-reviews{
+.review-readmore{
   display:inline-flex;
   align-items:center;
-  gap:10px;
-  background:#fff;
-  color:#1F2937;
-  border:1px solid #D1D5DB;
-  padding:12px 24px;
-  border-radius:999px;
-  font-size:14px;
+  gap:4px;
+  font-size:13px;
   font-weight:700;
-  box-shadow:0 4px 14px rgba(0,0,0,0.06);
-  transition:all .2s ease;
+  color:#1E293B;
   text-decoration:none;
+  transition:color .2s ease;
+  margin-top:auto;
 }
-.btn-google-reviews:hover{
-  border-color:#4285F4;
-  color:#1A73E8;
-  box-shadow:0 6px 20px rgba(66,133,244,0.18);
-  transform:translateY(-2px);
+.review-readmore:hover{
+  color:#2563EB;
 }
 
 /* Floating Prev/Next Buttons (Desktop) */
@@ -1366,9 +1345,9 @@ i{font-style:normal}
   height:46px;
   border-radius:50%;
   background:#fff;
-  color:var(--deep);
-  border:1px solid rgba(0,0,0,0.12);
-  box-shadow:0 6px 20px rgba(0,0,0,0.12);
+  color:#0F172A;
+  border:1px solid #E2E8F0;
+  box-shadow:0 4px 16px rgba(15,23,42,0.1);
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1379,16 +1358,17 @@ i{font-style:normal}
 .reviews-side-btn:hover:not(:disabled){
   background:var(--sun);
   color:#111;
+  border-color:var(--sun);
   transform:translateY(-50%) scale(1.08);
-  box-shadow:0 8px 24px rgba(229,160,35,0.35);
+  box-shadow:0 6px 20px rgba(229,160,35,0.3);
 }
 .reviews-side-btn:disabled{
   opacity:0.25;
   cursor:not-allowed;
   pointer-events:none;
 }
-.reviews-side-btn.prev{left:-20px}
-.reviews-side-btn.next{right:-20px}
+.reviews-side-btn.prev{left:-18px}
+.reviews-side-btn.next{right:-18px}
 
 /* Controls Bar (Dots + Arrows) */
 .reviews-controls-bar{
@@ -1396,21 +1376,21 @@ i{font-style:normal}
   align-items:center;
   justify-content:center;
   gap:16px;
-  margin-top:14px;
+  margin-top:16px;
 }
 .reviews-ctrl-btn{
   width:38px;
   height:38px;
   border-radius:50%;
   background:#fff;
-  border:1px solid rgba(0,0,0,0.12);
-  color:var(--deep);
+  border:1px solid #E2E8F0;
+  color:#0F172A;
   display:flex;
   align-items:center;
   justify-content:center;
   cursor:pointer;
   transition:all .2s ease;
-  box-shadow:0 2px 8px rgba(0,0,0,0.06);
+  box-shadow:0 2px 8px rgba(15,23,42,0.06);
 }
 .reviews-ctrl-btn:hover:not(:disabled){
   background:var(--sun);
@@ -1431,34 +1411,69 @@ i{font-style:normal}
   width:10px;
   height:10px;
   border-radius:999px;
-  background:#D1D5DB;
+  background:#CBD5E1;
   border:none;
   padding:0;
   cursor:pointer;
   transition:all .25s ease;
 }
 .rev-dot:hover{
-  background:#9CA3AF;
+  background:#94A3B8;
 }
 .rev-dot.active{
   width:28px;
-  background:var(--sun);
+  background:#F59E0B;
+}
+
+.reviews-cta-bar{
+  margin-top:32px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  text-align:center;
+}
+.btn-google-reviews{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  color:#1E293B;
+  border:1px solid #CBD5E1;
+  padding:12px 26px;
+  border-radius:999px;
+  font-size:14px;
+  font-weight:700;
+  box-shadow:0 4px 14px rgba(15,23,42,0.06);
+  transition:all .2s ease;
+  text-decoration:none;
+}
+.btn-google-reviews:hover{
+  border-color:#4285F4;
+  color:#1A73E8;
+  box-shadow:0 6px 20px rgba(66,133,244,0.18);
+  transform:translateY(-2px);
 }
 
 @media (max-width:992px){
-  .review-card{flex:0 0 340px}
+  .review-card{flex:0 0 320px}
   .reviews-side-btn{display:none}
 }
-@media (max-width:768px){
-  .reviews-summary-card{width:100%;justify-content:center}
-  .reviews-header{flex-direction:column;align-items:stretch}
-}
 @media (max-width:640px){
-  .reviews-sec{padding:48px 16px}
-  .reviews-track{gap:14px;padding:8px 0 16px}
+  .reviews-sec{padding:44px 14px}
+  .gw-card{
+    border-radius:22px;
+    padding:26px 14px 22px;
+  }
+  .reviews-track{
+    gap:12px;
+    padding:6px 0 14px;
+  }
   .review-card{
-    flex:0 0 85%;
-    padding:20px 18px;
+    flex:0 0 88%;
+    padding:18px 16px;
+    border-radius:16px;
   }
   .reviews-side-btn{display:none}
 }
@@ -2726,240 +2741,264 @@ body.no-scroll{overflow:hidden}
 <!-- GOOGLE REVIEWS SECTION (Verified Reviews from Google Maps) -->
 <section class="reviews-sec reveal" id="reviews">
 <div class="wrap">
-  <div class="reviews-header">
-    <div class="reviews-header-left">
-      <div class="reviews-badge">
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-        <span>Verified Google Reviews &bull; Langkawi, Malaysia</span>
-      </div>
-      <h2>Loved by Travelers in Langkawi</h2>
-      <p>Real feedback from travelers who booked tours and private transport with driver with Afnan Langkawi Tour.</p>
-    </div>
-    <div class="reviews-summary-card">
-      <div class="reviews-score">5.0</div>
-      <div>
-        <div class="reviews-stars" aria-label="5 out of 5 stars">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-        </div>
-        <div class="reviews-summary-text">
-          <b>100% 5-Star Rating</b>
-          <span>Based on Google Maps Reviews</span>
-        </div>
-      </div>
-    </div>
+  <div class="reviews-main-head">
+    <h2>What Travelers Say on Google</h2>
+    <p>Genuine reviews from real guests, directly from our verified Google ratings.</p>
   </div>
 
-  <div class="reviews-slider-wrap">
-    <button class="reviews-side-btn prev rev-btn-prev" type="button" aria-label="Previous review">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-
-    <div class="reviews-track" id="reviewsTrack">
-    <!-- Review 1: Odilbek -->
-    <article class="review-card">
-      <div>
-        <div class="review-card-top">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#0E7490,#0369A1)">OY</div>
-          <div class="review-meta">
-            <h4>Odilbek Yuldoshev</h4>
-            <div class="review-date">Verified Traveler &bull; Google Maps</div>
-          </div>
-        </div>
-        <div class="review-rating-row">
-          <div class="review-stars-gold" aria-label="5 stars">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="review-google-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-            Google
-          </span>
-        </div>
-        <div class="review-text">
-          &ldquo;In my opinion, Afnan is an excellent guide—warm, approachable, and genuinely helpful. He has great knowledge of Langkawi’s most beautiful spots and the best activities to do there. Communication was seamless from start to finish, and he always went out of his way to make sure we were comfortable and having a great time. If you&apos;re looking for an unforgettable trip, I can’t recommend him enough!&rdquo;
-        </div>
+  <!-- Google Rating Feature Box (Widget Style) -->
+  <div class="gw-card">
+    <div class="gw-badge-head">
+      <div class="gw-excellent">EXCELLENT</div>
+      <div class="gw-stars" aria-label="5 out of 5 stars">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
       </div>
-      <div class="review-reply">
-        <div class="review-reply-head">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
-          Response from Afnan (Owner)
-        </div>
-        <div class="review-reply-text">&ldquo;Thank you so much Odilbek! It was truly a pleasure hosting you in Langkawi. Hope to see you again soon!&rdquo;</div>
+      <div class="gw-rating-text">Based on <b>verified Google reviews</b></div>
+      <div class="gw-google-logo">
+        <svg width="136" height="46" viewBox="0 0 272 92" aria-label="Google">
+          <path fill="#EA4335" d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+          <path fill="#FBBC05" d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"/>
+          <path fill="#4285F4" d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 8.16 11.18 8.16 7.31 0 11.84-4.53 11.84-13.01v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.89h9.44zm-8.74 21c0-7.81-5.21-13.61-11.93-13.61-6.8 0-12.51 5.79-12.51 13.61 0 7.73 5.71 13.36 12.51 13.36 6.72 0 11.93-5.63 11.93-13.36z"/>
+          <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"/>
+          <path fill="#EA4335" d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-13.27-8.23l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"/>
+          <path fill="#4285F4" d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35 0 53.79 0 34.68S16.32 0 35.3 0c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.96-6.72-13.86 0-24.7 11.17-24.7 25.27 0 14.11 10.84 25.28 24.7 25.28 8.99 0 14.11-3.61 17.39-6.89 2.69-2.69 4.45-6.55 5.12-11.67h-22.52z"/>
+        </svg>
       </div>
-    </article>
-
-    <!-- Review 2: NICE DAY GOOD DAY -->
-    <article class="review-card">
-      <div>
-        <div class="review-card-top">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#D97706,#B45309)">ND</div>
-          <div class="review-meta">
-            <h4>NICE DAY GOOD DAY <span class="review-badge-lg">Local Guide</span></h4>
-            <div class="review-date">Verified Local Guide &bull; Google Maps</div>
-          </div>
-        </div>
-        <div class="review-rating-row">
-          <div class="review-stars-gold" aria-label="5 stars">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="review-google-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-            Google
-          </span>
-        </div>
-        <div class="review-text">
-          &ldquo;Excellent service! Very easy to deal with Afnan, friendly driver and well-organized tour. We really enjoyed our Langkawi trip. Highly recommended for anyone visiting Langkawi!&rdquo;
-        </div>
-      </div>
-      <div class="review-reply">
-        <div class="review-reply-head">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
-          Response from Afnan (Owner)
-        </div>
-        <div class="review-reply-text">&ldquo;Thank you for the wonderful review and recommendation! Glad you enjoyed the tour.&rdquo;</div>
-      </div>
-    </article>
-
-    <!-- Review 3: Jakaria Bipul -->
-    <article class="review-card">
-      <div>
-        <div class="review-card-top">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#059669,#047857)">JB</div>
-          <div class="review-meta">
-            <h4>Jakaria Bipul</h4>
-            <div class="review-date">Verified Traveler &bull; Google Maps</div>
-          </div>
-        </div>
-        <div class="review-rating-row">
-          <div class="review-stars-gold" aria-label="5 stars">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="review-google-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-            Google
-          </span>
-        </div>
-        <div class="review-text">
-          &ldquo;Afnan is really nice and expert one to make communication and providing services. Afnan brother wishing you all the success&rdquo;
-        </div>
-      </div>
-      <div class="review-reply">
-        <div class="review-reply-head">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
-          Response from Afnan (Owner)
-        </div>
-        <div class="review-reply-text">&ldquo;Thank you so much Jakaria brother! Really appreciate your kind words and support.&rdquo;</div>
-      </div>
-    </article>
-
-    <!-- Review 4: alif iqmal -->
-    <article class="review-card">
-      <div>
-        <div class="review-card-top">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#4F46E5,#4338CA)">AI</div>
-          <div class="review-meta">
-            <h4>alif iqmal</h4>
-            <div class="review-date">Verified Customer &bull; Google Maps</div>
-          </div>
-        </div>
-        <div class="review-rating-row">
-          <div class="review-stars-gold" aria-label="5 stars">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="review-google-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-            Google
-          </span>
-        </div>
-        <div class="review-text">
-          &ldquo;Very good service! Friendly driver and smooth tour. Highly recommended.&rdquo;
-        </div>
-      </div>
-      <div class="review-reply">
-        <div class="review-reply-head">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
-          Response from Afnan (Owner)
-        </div>
-        <div class="review-reply-text">&ldquo;Terima kasih banyak Alif! Jumpa lagi di Langkawi!&rdquo;</div>
-      </div>
-    </article>
-
-    <!-- Review 5: Muhammad Asyraf -->
-    <article class="review-card">
-      <div>
-        <div class="review-card-top">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#7C3AED,#6D28D9)">MA</div>
-          <div class="review-meta">
-            <h4>Muhammad Asyraf</h4>
-            <div class="review-date">Verified Customer &bull; Google Maps</div>
-          </div>
-        </div>
-        <div class="review-rating-row">
-          <div class="review-stars-gold" aria-label="5 stars">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-          </div>
-          <span class="review-google-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/><path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/></svg>
-            Google
-          </span>
-        </div>
-        <div class="review-text">
-          &ldquo;Good service. Recommended ⭐⭐⭐⭐⭐&rdquo;
-        </div>
-      </div>
-      <div class="review-reply">
-        <div class="review-reply-head">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
-          Response from Afnan (Owner)
-        </div>
-        <div class="review-reply-text">&ldquo;Terima kasih Asyraf! Terbaik!&rdquo;</div>
-      </div>
-    </article>
     </div>
 
-    <button class="reviews-side-btn next rev-btn-next" type="button" aria-label="Next review">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
-  </div>
+    <!-- Inner Horizontal Slider -->
+    <div class="reviews-slider-wrap">
+      <button class="reviews-side-btn prev rev-btn-prev" type="button" aria-label="Previous review">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
 
-  <!-- Controls Bar: Prev Button, Indicator Dots, Next Button -->
-  <div class="reviews-controls-bar">
-    <button class="reviews-ctrl-btn rev-btn-prev" type="button" aria-label="Previous review">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="reviews-dots" id="reviewsDots">
-      <button class="rev-dot active" type="button" aria-label="View review 1" data-index="0"></button>
-      <button class="rev-dot" type="button" aria-label="View review 2" data-index="1"></button>
-      <button class="rev-dot" type="button" aria-label="View review 3" data-index="2"></button>
-      <button class="rev-dot" type="button" aria-label="View review 4" data-index="3"></button>
-      <button class="rev-dot" type="button" aria-label="View review 5" data-index="4"></button>
+      <div class="reviews-track" id="reviewsTrack">
+        <!-- Review 1: Odilbek -->
+        <article class="review-card">
+          <div>
+            <div class="review-card-head">
+              <div class="review-avatar" style="background:#0F5146">OY</div>
+              <div class="review-meta">
+                <h4>Odilbek Yuldoshev</h4>
+                <div class="review-sub">Verified Traveler &bull; Langkawi Tour</div>
+                <div class="review-date">Recent review</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars-gold" aria-label="5 stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div class="review-text">
+              &ldquo;In my opinion, Afnan is an excellent guide—warm, approachable, and genuinely helpful. He has great knowledge of Langkawi’s most beautiful spots and the best activities to do there. Communication was seamless from start to finish, and he always went out of his way to make sure we were comfortable and having a great time. If you&apos;re looking for an unforgettable trip, I can’t recommend him enough!&rdquo;
+            </div>
+            <div class="review-reply">
+              <div class="review-reply-head">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+                Response from Afnan (Owner)
+              </div>
+              <div class="review-reply-text">&ldquo;Thank you so much Odilbek! It was truly a pleasure hosting you in Langkawi. Hope to see you again soon!&rdquo;</div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/1QVyiXq5mQV6sahZ8?g_st=iwb" target="_blank" rel="noopener" class="review-readmore">Read on Google Maps &rarr;</a>
+        </article>
+
+        <!-- Review 2: NICE DAY GOOD DAY -->
+        <article class="review-card">
+          <div>
+            <div class="review-card-head">
+              <div class="review-avatar" style="background:#B45309">ND</div>
+              <div class="review-meta">
+                <h4>NICE DAY GOOD DAY</h4>
+                <div class="review-sub">Local Guide &bull; 5 reviews</div>
+                <div class="review-date">Recent review</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars-gold" aria-label="5 stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div class="review-text">
+              &ldquo;Excellent service! Very easy to deal with Afnan, friendly driver and well-organized tour. We really enjoyed our Langkawi trip. Highly recommended for anyone visiting Langkawi!&rdquo;
+            </div>
+            <div class="review-reply">
+              <div class="review-reply-head">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+                Response from Afnan (Owner)
+              </div>
+              <div class="review-reply-text">&ldquo;Thank you for the wonderful review and recommendation! Glad you enjoyed the tour.&rdquo;</div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/1QVyiXq5mQV6sahZ8?g_st=iwb" target="_blank" rel="noopener" class="review-readmore">Read on Google Maps &rarr;</a>
+        </article>
+
+        <!-- Review 3: Jakaria Bipul -->
+        <article class="review-card">
+          <div>
+            <div class="review-card-head">
+              <div class="review-avatar" style="background:#047857">JB</div>
+              <div class="review-meta">
+                <h4>Jakaria Bipul</h4>
+                <div class="review-sub">Verified Traveler &bull; Langkawi Trip</div>
+                <div class="review-date">Recent review</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars-gold" aria-label="5 stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div class="review-text">
+              &ldquo;Afnan is really nice and expert one to make communication and providing services. Afnan brother wishing you all the success&rdquo;
+            </div>
+            <div class="review-reply">
+              <div class="review-reply-head">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+                Response from Afnan (Owner)
+              </div>
+              <div class="review-reply-text">&ldquo;Thank you so much Jakaria brother! Really appreciate your kind words and support.&rdquo;</div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/1QVyiXq5mQV6sahZ8?g_st=iwb" target="_blank" rel="noopener" class="review-readmore">Read on Google Maps &rarr;</a>
+        </article>
+
+        <!-- Review 4: alif iqmal -->
+        <article class="review-card">
+          <div>
+            <div class="review-card-head">
+              <div class="review-avatar" style="background:#4338CA">AI</div>
+              <div class="review-meta">
+                <h4>alif iqmal</h4>
+                <div class="review-sub">Verified Customer &bull; Transport with Driver</div>
+                <div class="review-date">Recent review</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars-gold" aria-label="5 stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div class="review-text">
+              &ldquo;Very good service! Friendly driver and smooth tour. Highly recommended.&rdquo;
+            </div>
+            <div class="review-reply">
+              <div class="review-reply-head">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+                Response from Afnan (Owner)
+              </div>
+              <div class="review-reply-text">&ldquo;Terima kasih banyak Alif! Jumpa lagi di Langkawi!&rdquo;</div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/1QVyiXq5mQV6sahZ8?g_st=iwb" target="_blank" rel="noopener" class="review-readmore">Read on Google Maps &rarr;</a>
+        </article>
+
+        <!-- Review 5: Muhammad Asyraf -->
+        <article class="review-card">
+          <div>
+            <div class="review-card-head">
+              <div class="review-avatar" style="background:#6D28D9">MA</div>
+              <div class="review-meta">
+                <h4>Muhammad Asyraf</h4>
+                <div class="review-sub">Verified Customer &bull; Private Driver</div>
+                <div class="review-date">Recent review</div>
+              </div>
+              <div class="review-google-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.65v3h3.86c2.26-2.09 3.685-5.17 3.685-9.09z"/>
+                  <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.37 24 12 24z"/>
+                  <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.61H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.39l3.98-3.1z"/>
+                  <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.26 2.7 1.29 6.61l3.98 3.1c.95-2.85 3.6-4.96 6.73-4.96z"/>
+                </svg>
+              </div>
+            </div>
+            <div class="review-stars-gold" aria-label="5 stars">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#F59E0B"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+            </div>
+            <div class="review-text">
+              &ldquo;Good service. Recommended ⭐⭐⭐⭐⭐&rdquo;
+            </div>
+            <div class="review-reply">
+              <div class="review-reply-head">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 17 4 12 9 7"/><path d="M20 18v-2a4 4 0 0 0-4-4H4"/></svg>
+                Response from Afnan (Owner)
+              </div>
+              <div class="review-reply-text">&ldquo;Terima kasih Asyraf! Terbaik!&rdquo;</div>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/1QVyiXq5mQV6sahZ8?g_st=iwb" target="_blank" rel="noopener" class="review-readmore">Read on Google Maps &rarr;</a>
+        </article>
+      </div>
+
+      <button class="reviews-side-btn next rev-btn-next" type="button" aria-label="Next review">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
-    <button class="reviews-ctrl-btn rev-btn-next" type="button" aria-label="Next review">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-    </button>
+
+    <!-- Controls Bar: Prev Button, Indicator Dots, Next Button -->
+    <div class="reviews-controls-bar">
+      <button class="reviews-ctrl-btn rev-btn-prev" type="button" aria-label="Previous review">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="reviews-dots" id="reviewsDots">
+        <button class="rev-dot active" type="button" aria-label="View review 1" data-index="0"></button>
+        <button class="rev-dot" type="button" aria-label="View review 2" data-index="1"></button>
+        <button class="rev-dot" type="button" aria-label="View review 3" data-index="2"></button>
+        <button class="rev-dot" type="button" aria-label="View review 4" data-index="3"></button>
+        <button class="rev-dot" type="button" aria-label="View review 5" data-index="4"></button>
+      </div>
+      <button class="reviews-ctrl-btn rev-btn-next" type="button" aria-label="Next review">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
   </div>
 
   <div class="reviews-cta-bar">
