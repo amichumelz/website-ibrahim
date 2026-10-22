@@ -48,6 +48,11 @@ export default {
       return handleVerifySession(url, env);
     }
 
+    // 5. Send Booking Confirmation Email endpoint
+    if (url.pathname === '/send-booking-email' && request.method === 'POST') {
+      return handleSendBookingEmail(request, env);
+    }
+
     return new Response(JSON.stringify({ error: 'Endpoint not found' }), {
       status: 404,
       headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' },
@@ -188,6 +193,107 @@ async function handleVerifySession(url, env) {
         customer_phone: session.metadata?.customer_phone,
         trip_dates: session.metadata?.trip_dates,
       }),
+      { status: 200, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
+    );
+  } catch (err) {
+    return new Response(
+      JSON.stringify({ error: err.message }),
+      { status: 500, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
+    );
+  }
+}
+
+async function handleSendBookingEmail(request, env) {
+  const ADMIN_EMAIL = 'Ibrahimhussin5971@gmail.com';
+  try {
+    const data = await request.json();
+    const {
+      ref = 'PAY-' + Date.now().toString().slice(-6),
+      customerName = 'Valued Guest',
+      customerPhone = '-',
+      customerEmail = '',
+      bookingDetails = {},
+      totalPaid = '0.00',
+      payMethod = 'Online Payment'
+    } = data;
+
+    if (!customerEmail || !customerEmail.includes('@')) {
+      return new Response(
+        JSON.stringify({ error: 'Valid customer email is required' }),
+        { status: 400, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const vehName = bookingDetails.vehName || 'Tour / Transport Service';
+    const pickupDate = bookingDetails.date || bookingDetails.dates || '-';
+    const pickupTime = bookingDetails.time || '10:00';
+    const duration = (bookingDetails.days || 1) + (bookingDetails.days == 1 ? ' Day' : ' Days');
+    const notes = bookingDetails.notes || 'None';
+    const rateType = bookingDetails.rateType || 'Standard Rate';
+    const subtotal = bookingDetails.subtotal != null ? bookingDetails.subtotal : totalPaid;
+    const processingFee = bookingDetails.processingFee != null ? bookingDetails.processingFee : '0.00';
+
+    let emailSent = false;
+    let providerUsed = 'none';
+
+    if (env.RESEND_API_KEY) {
+      try {
+        const fromAddress = env.RESEND_FROM || 'Afnan Langkawi Tour <onboarding@resend.dev>';
+        const resendRes = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${env.RESEND_API_KEY.trim()}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: fromAddress,
+            to: [customerEmail.trim(), ADMIN_EMAIL],
+            subject: `Booking & Payment Confirmation: ${ref} - Afnan Langkawi Tour`,
+            html: `<div style="font-family:sans-serif;max-width:600px;margin:auto;padding:20px;border:1px solid #ddd;border-radius:8px"><h2>AFNAN LANGKAWI TOUR &amp; TRANSPORT</h2><p>Payment Verified ✓</p><p>Ref: <b>${ref}</b></p><p>Customer: ${customerName} (${customerPhone})</p><p>Service: ${vehName} on ${pickupDate} at ${pickupTime} (${duration})</p><p>Total Paid: RM ${totalPaid} via ${payMethod}</p></div>`
+          })
+        });
+        if (resendRes.ok) {
+          emailSent = true;
+          providerUsed = 'resend';
+        }
+      } catch (e) {
+        console.error('Resend error:', e);
+      }
+    }
+
+    try {
+      await fetch(`https://formsubmit.co/ajax/${ADMIN_EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: `New Paid Booking: ${ref} (${customerName})`,
+          _replyto: customerEmail,
+          'Reference': ref,
+          'Customer Name': customerName,
+          'Customer Phone': customerPhone,
+          'Customer Email': customerEmail,
+          'Service': vehName,
+          'Pickup Date': pickupDate,
+          'Pickup Time': pickupTime,
+          'Duration': duration,
+          'Notes': notes,
+          'Subtotal': 'RM ' + subtotal,
+          'Processing Fee': 'RM ' + processingFee,
+          'Total Paid': 'RM ' + totalPaid,
+          'Payment Method': payMethod,
+          'Payment Status': 'VERIFIED PAID 100%'
+        })
+      });
+      if (!emailSent) {
+        emailSent = true;
+        providerUsed = 'formsubmit';
+      }
+    } catch (e) {
+      console.error('Admin notification error:', e);
+    }
+
+    return new Response(
+      JSON.stringify({ success: true, emailSent, provider: providerUsed, recipientCustomer: customerEmail, recipientAdmin: ADMIN_EMAIL }),
       { status: 200, headers: { ...CORS_HEADERS, 'Content-Type': 'application/json' } }
     );
   } catch (err) {
