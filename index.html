@@ -127,6 +127,7 @@ i{font-style:normal}
 }
 .hero>*:not(.hero-bg){position:relative;z-index:2}
 
+/* FLOATING NAVBAR CONTAINER */
 .nav{
   display:flex;
   align-items:center;
@@ -135,21 +136,54 @@ i{font-style:normal}
   font-size:14px;
   position:relative;
   z-index:100;
-  padding-bottom:12px;
+  max-width:1280px;
+  width:100%;
+  margin:4px auto 0;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.9);
+  border-radius:18px;
+  padding:8px 20px;
+  box-shadow:0 12px 36px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.06);
   transition:all 0.35s var(--ease);
 }
-.nav>div{display:flex;align-items:center;gap:18px;flex:1 1 200px}
+.nav>div{display:flex;align-items:center;gap:12px;flex:1 1 200px}
 .nav>div:last-child{justify-content:flex-end}
 .nav a, .nav button{
-  min-height:44px;
+  min-height:38px;
   display:inline-flex;
   align-items:center;
   gap:8px;
-  color:#fff;
+  color:var(--ink);
   font-weight:600;
-  transition:color .2s ease, opacity .2s ease;
+  transition:all .2s ease;
 }
-.nav a:hover, .nav button:hover{color:var(--sun)}
+.nav a:hover, .nav button:hover{color:var(--accent-teal)}
+
+.nav button[data-open-menu]{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 16px;
+  border-radius:999px;
+  background:rgba(22,49,46,0.06);
+  color:#16312E;
+  border:1px solid rgba(22,49,46,0.12);
+  font-size:13.5px;
+  font-weight:700;
+  cursor:pointer;
+  transition:all .2s ease;
+}
+.nav button[data-open-menu]:hover{
+  background:rgba(22,49,46,0.12);
+  color:#111;
+  border-color:rgba(22,49,46,0.22);
+  transform:translateY(-1px);
+}
+.nav button[data-open-menu] svg{
+  stroke:currentColor;
+}
 
 .logo{
   display:inline-flex;
@@ -161,41 +195,92 @@ i{font-style:normal}
 }
 .logo:hover{opacity:.95;transform:scale(1.02)}
 .logo-img{
-  height:48px;
+  height:44px;
   width:auto;
   display:block;
   object-fit:contain;
-  filter:drop-shadow(0 2px 8px rgba(0,0,0,0.35));
 }
 
-/* Top Navbar, Sticky Topbar & Drawer Logo Pill */
-.nav .logo,
-.topbar .logo,
-.mobile-drawer .logo{
-  background:rgba(255,255,255,0.96);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  padding:5px 14px;
-  border-radius:999px;
-  box-shadow:0 4px 16px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.08);
-  border:1px solid rgba(255,255,255,0.9);
+.nav .logo{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  transition:all .25s ease;
+  background:transparent;
+  border:none;
+  border-radius:0;
+  box-shadow:none;
+  padding:0;
+  transition:transform .2s ease;
 }
-.nav .logo:hover,
-.topbar .logo:hover{
-  background:#ffffff;
-  transform:translateY(-1px) scale(1.03);
-  box-shadow:0 6px 22px rgba(0,0,0,0.22);
+.nav .logo:hover{
+  transform:scale(1.03);
 }
-.nav .logo .logo-img,
-.topbar .logo .logo-img,
-.mobile-drawer .logo .logo-img{
-  height:42px;
+.nav .logo .logo-img{
+  height:44px;
   width:auto;
   filter:none;
+}
+
+.nav .cart-nav-btn{
+  position:relative;
+  background:rgba(22,49,46,0.06);
+  color:#16312E;
+  border:1px solid rgba(22,49,46,0.12);
+  padding:7px 15px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:13px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:all .2s ease;
+}
+.nav .cart-nav-btn:hover{
+  background:var(--sun);
+  color:#111;
+  border-color:var(--sun);
+  transform:translateY(-1px);
+}
+.nav .cart-nav-btn .badge{
+  background:var(--sun);
+  color:#111;
+  font-size:11px;
+  font-weight:800;
+  min-width:20px;
+  height:20px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 4px;
+  transition:all .2s ease;
+}
+.nav .cart-nav-btn:hover .badge{
+  background:#111;
+  color:var(--sun);
+}
+
+.nav .btn-line{
+  padding:0 20px;
+  min-height:38px;
+  background:var(--sun);
+  color:#111 !important;
+  border:1.5px solid var(--sun);
+  border-radius:999px;
+  font-weight:800;
+  font-size:13px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 3px 10px rgba(229,160,35,0.3);
+  transition:all .25s ease;
+}
+.nav .btn-line:hover{
+  background:#16312E;
+  color:#fff !important;
+  border-color:#16312E;
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(22,49,46,0.3);
 }
 
 .lang-toggle{
@@ -2091,10 +2176,9 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
 }
 
 @media (max-width: 820px){
-  .nav .logo, .topbar .logo, .mobile-drawer .logo{padding:4px 12px}
-  .nav .logo .logo-img, .topbar .logo .logo-img, .mobile-drawer .logo .logo-img{height:34px}
   .cart-nav-btn span:not(.badge){display:none} /* Icon and count badge only */
   .cart-nav-btn{padding:8px 12px}
+  .nav .btn-line{display:none}
 }
 
 @media (max-width: 680px){
@@ -2112,11 +2196,22 @@ footer{background:#0E1816;color:#E6E3DB;padding:56px var(--pad) 28px;font-size:1
     justify-content:space-between;
     gap:8px;
     flex-wrap:nowrap;
-    padding-bottom:8px;
+    padding:6px 12px;
+    border-radius:14px;
+    margin-top:0;
+    box-shadow:0 8px 24px rgba(0,0,0,0.18);
   }
   .nav>div{flex:0 0 auto;gap:8px}
-  .nav .logo, .topbar .logo{padding:3px 10px}
-  .nav .logo .logo-img, .topbar .logo .logo-img{height:30px}
+  .nav button[data-open-menu]{
+    padding:6px 12px;
+    font-size:12.5px;
+  }
+  .nav .logo .logo-img{
+    height:32px;
+  }
+  .nav .cart-nav-btn{
+    padding:6px 10px;
+  }
 
   .hero-end{
     gap:18px;
@@ -2568,7 +2663,7 @@ body.no-scroll{overflow:hidden}
 <div class="hero-bg" aria-hidden="true"></div>
 <nav class="nav" aria-label="Main">
 <div>
-  <button type="button" data-open-menu style="font-size:14px;font-weight:700">
+  <button type="button" data-open-menu aria-label="Open menu">
     <svg width="20" height="12" aria-hidden="true"><use href="#i-menu"/></svg>
     <span>Menu</span>
   </button>
